@@ -345,7 +345,7 @@ a.link-subtle:hover { color: var(--white); border-color: var(--white-dim); }
 .stat-purple .stat-number { color: var(--navy-dark); }
 
 /* Top bar — sweeps on reveal */
-.stat-bar { position: absolute; top: 0; left: 0; height: 2px; width: 0%; transition: width 0.8s var(--ease-out); background: rgba(30,44,58,0.15); }
+.stat-bar { display: none; }
 
 /* Lime card — CTA or thesis statement */
 .card-lime {
