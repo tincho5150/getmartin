@@ -16,11 +16,16 @@
   --font-body:    'Roboto', sans-serif;
 }
 
-html, body { height: 100%; overflow-x: hidden; }
+html, body { height: 100%; overflow: hidden; }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   NAV
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.site-wrapper {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* NAV */
 .site-nav {
   position: fixed; top: 0; left: 0; right: 0;
   height: var(--nav-height); z-index: 100;
@@ -38,19 +43,16 @@ html, body { height: 100%; overflow-x: hidden; }
 .nav-wordmark span { color: var(--lime); }
 .nav-links { display: flex; align-items: center; gap: 2rem; }
 .nav-link {
-  font-family: var(--font-body); font-size: 0.85rem; font-weight: 400;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--white-dim); text-decoration: none;
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white-dim); text-decoration: none;
   transition: color var(--dur-base);
 }
 .nav-link:hover { color: var(--white); }
 .nav-link.active { color: var(--white); }
 .nav-link-cta {
-  font-family: var(--font-body); font-size: 0.85rem; font-weight: 400;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--navy-dark); background: var(--lime);
-  padding: 0.4rem 1rem; text-decoration: none;
-  transition: background var(--dur-base);
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
+  padding: 0.4rem 1rem; text-decoration: none; transition: background var(--dur-base);
 }
 .nav-link-cta:hover { background: var(--lime-hover); }
 .nav-progress {
@@ -59,313 +61,164 @@ html, body { height: 100%; overflow-x: hidden; }
   transition: width 0.3s var(--ease-out);
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   PAGE LAYOUT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.page {
-  min-height: 100vh;
-  padding-top: var(--nav-height);
-  background: #1e2c3a;
-  position: relative;
+/* CHAPTER */
+.chapter {
+  scroll-snap-align: start; scroll-snap-stop: always;
+  height: 100vh; padding-top: var(--nav-height);
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
 }
-.page::before {
-  content: '';
-  position: fixed; inset: 0;
-  background-image:
-    linear-gradient(rgba(240,239,240,0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(240,239,240,0.035) 1px, transparent 1px);
-  background-size: 72px 72px;
-  pointer-events: none; z-index: 0;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   HERO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.hero {
-  display: grid; grid-template-columns: 1fr 1fr;
-  min-height: 50vh;
-  position: relative; z-index: 1;
-  border-bottom: 1px solid var(--white-faint);
-}
-.hero-left {
-  padding: 6vw 3.5vw 6vw 5vw;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  border-right: 1px solid var(--white-faint);
-}
-.hero-right {
-  padding: 6vw 5vw 6vw 3.5vw;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  background: #ffffff;
-  position: relative;
-}
-.hero-right::before {
+.chapter::before {
   content: ''; position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(30,44,58,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(30,44,58,0.05) 1px, transparent 1px);
-  background-size: 72px 72px; pointer-events: none;
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none; z-index: 0;
 }
-.hero-eyebrow {
-  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--lime);
-  margin-bottom: 1.2rem;
-  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.2s forwards;
-}
-.hero-headline {
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4vw, 4rem);
-  font-weight: 700; line-height: 1.0; letter-spacing: -0.02em;
-  color: var(--white);
-  opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.35s forwards;
-}
-.hero-headline .dim { color: var(--white-dim); }
+#ch0::after { content: ''; position: absolute; top: -160px; left: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(184,212,0,0.06) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+#ch1::after { content: ''; position: absolute; bottom: -120px; right: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+#ch2::after { content: ''; position: absolute; top: -120px; right: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+#ch3::after { content: ''; position: absolute; bottom: -120px; left: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
 
-.hero-right-inner {
-  position: relative; z-index: 1;
-}
-.hero-sub {
-  font-size: 1rem; font-weight: 300; line-height: 1.8;
-  color: rgba(30,44,58,0.6); max-width: 42ch;
-  margin-bottom: 2rem;
-  opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.45s forwards;
-}
-.hero-sub strong { color: #1e2c3a; font-weight: 500; }
-.hero-stat {
-  display: flex; flex-direction: column; gap: 0.2rem;
-  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.6s forwards;
-}
-.hero-stat-num {
-  font-family: var(--font-display);
-  font-size: 2.4rem; font-weight: 700;
-  letter-spacing: -0.03em; color: #1e2c3a; line-height: 1;
-}
-.hero-stat-label {
-  font-size: 0.8rem; font-weight: 400; letter-spacing: 0.08em;
-  text-transform: uppercase; color: rgba(30,44,58,0.45);
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   CASES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.case {
+/* COLUMNS */
+.columns {
+  position: relative; z-index: 1; flex: 1;
   display: grid; grid-template-columns: 1fr 1fr;
-  border-bottom: 1px solid var(--white-faint);
-  position: relative; z-index: 1;
-  min-height: 100vh;
+  overflow: hidden; height: 100%;
 }
-.case:nth-child(even) { direction: rtl; }
-.case:nth-child(even) > * { direction: ltr; }
-
-.case-left {
-  padding: 6vw 3.5vw 6vw 5vw;
+.col-left {
   display: flex; flex-direction: column; justify-content: center;
-  border-right: 1px solid var(--white-faint);
+  padding: 4vw 3.5vw 4vw 5vw;
+  border-right: 1px solid rgba(30,44,58,0.15);
 }
-.case:nth-child(even) .case-left {
-  border-right: none;
-  border-left: 1px solid var(--white-faint);
-}
-
-.case-right {
-  background: #ffffff;
+.col-right {
   display: flex; flex-direction: column;
-  position: relative;
+  position: relative; z-index: 1; background: #ffffff;
 }
-.case-right::before {
+.col-right::before {
   content: ''; position: absolute; inset: 0;
   background-image:
     linear-gradient(rgba(30,44,58,0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(30,44,58,0.05) 1px, transparent 1px);
   background-size: 72px 72px; pointer-events: none; z-index: 0;
 }
+.col-right > * { position: relative; z-index: 1; }
+.col-right { opacity: 0; animation: fadeIn 0.7s var(--ease-out) 0.4s forwards; }
 
-/* Case top bar */
-.case-bar {
+/* CHAPTER INDICATOR */
+.ch-indicator {
   display: flex; align-items: center;
   padding: 0 2rem; height: 44px;
   border-bottom: 1px solid rgba(30,44,58,0.1);
-  background: #ffffff;
-  position: relative; z-index: 2; flex-shrink: 0;
+  background: #ffffff; flex-shrink: 0;
 }
-.case-bar-label {
-  font-size: 0.72rem; font-weight: 500;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: #1e2c3a; flex: 1;
+.ch-indicator-label {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #1e2c3a; flex: 1;
 }
-.case-bar-num {
-  font-size: 0.72rem; font-weight: 700;
-  letter-spacing: 0.08em; color: #1e2c3a;
+.ch-indicator-sep {
+  width: 1px; height: 16px; background: rgba(30,44,58,0.15);
+  margin: 0 1.5rem; flex-shrink: 0;
+}
+.ch-indicator-dots { display: flex; gap: 1.2rem; align-items: center; flex-shrink: 0; }
+.ch-dot {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.08em;
+  color: rgba(30,44,58,0.25); border: none; background: none;
+  cursor: pointer; padding: 0; transition: color var(--dur-base);
+}
+.ch-dot:hover  { color: rgba(30,44,58,0.5); }
+.ch-dot.active { color: #1e2c3a; font-weight: 700; }
+
+/* RIGHT CONTENT */
+.col-right-content {
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+  gap: var(--col-gap); padding: 3vw 3.5vw 3vw 3vw;
 }
 
-/* Case right content */
-.case-right-content {
-  flex: 1; padding: 3vw 3.5vw;
-  display: flex; flex-direction: column; justify-content: center;
-  gap: 1rem; position: relative; z-index: 1;
-}
-
-/* Case left content */
-.case-tag {
+/* LEFT TYPOGRAPHY */
+.ch-eyebrow {
   font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--lime);
-  margin-bottom: 1rem;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
+  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.2s forwards;
 }
-.case-title {
+.ch-headline {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-size: clamp(2rem, 3.2vw, 3.4rem);
   font-weight: 700; line-height: 1.05; letter-spacing: -0.02em;
-  color: var(--white); margin-bottom: 1.4rem;
+  color: var(--white); margin-bottom: 1.6rem;
+  opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards;
 }
-.case-title .dim { color: var(--white-dim); }
-
-.case-section-label {
+.ch-headline .dim { color: var(--white-dim); }
+.ch-section {
   font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--lime);
-  margin-bottom: 0.5rem; margin-top: 1.4rem;
+  margin-bottom: 0.4rem; margin-top: 1.1rem;
+  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.4s forwards;
 }
-.case-section-label:first-of-type { margin-top: 0; }
-
-.case-body {
+.ch-body {
   font-size: 1rem; font-weight: 300; line-height: 1.8;
-  color: var(--white-dim); max-width: 44ch;
+  color: var(--white-dim); max-width: 42ch;
+  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.45s forwards;
 }
-.case-body strong { color: var(--white); font-weight: 400; }
-
-.case-link {
+.ch-body strong { color: var(--white); font-weight: 400; }
+.ch-next {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 0.85rem; font-weight: 400; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--navy-dark);
-  background: var(--lime); padding: 0.75rem 1.5rem;
-  text-decoration: none; margin-top: 1.4rem; width: fit-content;
+  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
+  border: none; padding: 0.9rem 1.8rem; cursor: pointer;
+  text-decoration: none; width: fit-content; margin-top: 2rem;
   transition: background var(--dur-base), gap var(--dur-base) var(--ease-out);
+  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.6s forwards;
 }
-.case-link:hover { background: var(--lime-hover); gap: 14px; }
+.ch-next:hover { background: var(--lime-hover); gap: 14px; }
 
-/* Right column cards */
-.detail-card {
-  background: #1e2c3a; border: 1px solid #1e2c3a;
-  padding: 1.4rem;
+/* CARDS */
+.card-navy {
+  background: #1e2c3a; border: 1px solid #1e2c3a; padding: 1.4rem;
 }
-.detail-card-label {
+.card-navy-label {
   font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; color: rgba(240,239,240,0.4);
-  margin-bottom: 0.6rem;
+  text-transform: uppercase; color: rgba(240,239,240,0.35); margin-bottom: 0.6rem;
 }
-.detail-card-text {
-  font-size: 1rem; font-weight: 300; line-height: 1.7;
-  color: rgba(240,239,240,0.75);
+.card-navy-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.75);
 }
-.detail-card-text strong { color: #f0eff0; font-weight: 500; }
+.card-navy-text strong { color: #f0eff0; font-weight: 500; }
 
-.metric-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: var(--col-gap);
-}
-.metric-card {
-  background: var(--lime); border: 1px solid var(--lime);
-  padding: 1.2rem 1.3rem;
-}
+.metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); }
+.metric-card { background: var(--lime); border: 1px solid var(--lime); padding: 1.2rem 1.3rem; }
 .metric-num {
   font-family: var(--font-display);
-  font-size: 2.4rem; font-weight: 700;
-  line-height: 1; letter-spacing: -0.03em;
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 700; line-height: 1; letter-spacing: -0.03em;
   color: #1e2c3a; margin-bottom: 0.4rem;
 }
-.metric-label {
-  font-size: 0.82rem; font-weight: 300;
-  color: rgba(30,44,58,0.65); line-height: 1.4;
-}
+.metric-label { font-size: 0.82rem; font-weight: 300; color: rgba(30,44,58,0.65); line-height: 1.4; }
 .metric-label strong { color: #1e2c3a; font-weight: 500; }
 
-.tag-row {
-  display: flex; flex-wrap: wrap; gap: 6px;
+.tag-card {
+  background: #1e2c3a; border: 1px solid #1e2c3a;
+  padding: 1rem 1.4rem; display: flex; flex-wrap: wrap; gap: 6px;
 }
 .tag {
-  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.08em;
-  text-transform: uppercase; padding: 0.3rem 0.7rem;
-  border: 1px solid rgba(30,44,58,0.15);
-  color: rgba(30,44,58,0.5); background: transparent;
+  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 0.25rem 0.6rem;
+  border: 1px solid rgba(240,239,240,0.15); color: rgba(240,239,240,0.5);
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   FOOTER CTA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.footer-cta {
-  display: grid; grid-template-columns: 1fr 1fr;
-  position: relative; z-index: 1;
-  min-height: 40vh;
-}
-.footer-cta-left {
-  padding: 6vw 3.5vw 6vw 5vw;
-  display: flex; flex-direction: column; justify-content: center;
-  border-right: 1px solid var(--white-faint);
-}
-.footer-cta-headline {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 3rem);
-  font-weight: 700; line-height: 1.05; letter-spacing: -0.02em;
-  color: var(--white); margin-bottom: 1rem;
-}
-.footer-cta-sub {
-  font-size: 1rem; font-weight: 300; line-height: 1.8;
-  color: var(--white-dim); max-width: 40ch;
-}
-.footer-cta-right {
-  background: #ffffff; padding: 6vw 5vw 6vw 3.5vw;
-  display: flex; flex-direction: column; justify-content: center;
-  position: relative;
-}
-.footer-cta-right::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(30,44,58,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(30,44,58,0.05) 1px, transparent 1px);
-  background-size: 72px 72px; pointer-events: none;
-}
-.footer-cta-right-inner {
-  position: relative; z-index: 1;
-}
-.footer-cta-link {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--navy-dark);
-  background: var(--lime); padding: 0.9rem 2rem;
-  text-decoration: none;
-  transition: background var(--dur-base), gap var(--dur-base);
-}
-.footer-cta-link:hover { background: var(--lime-hover); gap: 14px; }
-.footer-cta-note {
-  font-size: 0.85rem; font-weight: 300;
-  color: rgba(30,44,58,0.45); margin-top: 1rem; line-height: 1.6;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   ANIMATIONS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ANIMATIONS */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   MOBILE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* MOBILE */
 @media (max-width: 768px) {
-  .hero, .case, .footer-cta { grid-template-columns: 1fr; }
-  .hero-left, .case-left { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--white-faint); }
-  .hero-right, .case-right, .footer-cta-right { padding: 2rem 1.5rem 3rem; }
-  .case:nth-child(even) { direction: ltr; }
-  .case:nth-child(even) .case-left { border-left: none; border-bottom: 1px solid var(--white-faint); }
+  html, body { overflow: auto; height: auto; }
+  .site-wrapper { overflow: visible; scroll-snap-type: none; height: auto; }
+  .chapter { height: auto; scroll-snap-align: none; }
+  .columns { grid-template-columns: 1fr; height: auto; }
+  .col-left { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--white-faint); }
+  .col-right-content { padding: 2rem 1.5rem 3rem; }
   .metric-grid { grid-template-columns: 1fr 1fr; }
-  .footer-cta-left { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--white-faint); }
   .nav-link { display: none; }
   .nav-link-cta { display: block; }
 }
@@ -374,7 +227,6 @@ html, body { height: 100%; overflow-x: hidden; }
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="site-nav">
   <a class="nav-wordmark" href="/">get<span>martin</span></a>
   <div class="nav-links">
@@ -386,201 +238,163 @@ html, body { height: 100%; overflow-x: hidden; }
   <div class="nav-progress"></div>
 </nav>
 
-<div class="page">
+<div class="site-wrapper" id="site-wrapper">
 
-  <!-- HERO -->
-  <div class="hero">
-
-    <div class="hero-left">
-      <p class="hero-eyebrow">Proof</p>
-      <h1 class="hero-headline">
-        The argument<br>
-        <span class="dim">backed up.</span>
-      </h1>
-    </div>
-
-    <div class="hero-right">
-      <div class="hero-right-inner">
-        <p class="hero-sub">
-          Three experiences built for real companies with real sales problems.
-          <strong>Different industries, different buyers, different formats.</strong>
-          Same method. Same outcome — the prospect arrives already sold on the problem.
-        </p>
-        <div class="hero-stat">
-          <div class="hero-stat-num">3</div>
-          <div class="hero-stat-label">Experiences built — more on the way</div>
+  <!-- CH0 — INTRO -->
+  <section class="chapter" id="ch0">
+    <div class="columns">
+      <div class="col-left">
+        <p class="ch-eyebrow">Proof</p>
+        <h1 class="ch-headline">The argument<br><span class="dim">backed up.</span></h1>
+        <p class="ch-body">Three experiences built for real companies with real sales problems. <strong>Different formats, same method, same outcome</strong> — the prospect arrives already sold on the problem.</p>
+      </div>
+      <div class="col-right">
+        <div class="ch-indicator">
+          <span class="ch-indicator-label">What you'll see</span>
+          <div class="ch-indicator-sep"></div>
+          <div class="ch-indicator-dots">
+            <button class="ch-dot active" data-chapter="0">01</button>
+            <button class="ch-dot" data-chapter="1">02</button>
+            <button class="ch-dot" data-chapter="2">03</button>
+            <button class="ch-dot" data-chapter="3">04</button>
+          </div>
+        </div>
+        <div class="col-right-content">
+          <div class="card-navy">
+            <div class="card-navy-label">The method behind every piece</div>
+            <div class="card-navy-text">Every experience starts with the same question: <strong>what does the prospect need to feel before they'll say yes?</strong> The research leads. The format follows. The output is always different. The result is always the same.</div>
+          </div>
+          <div class="metric-grid">
+            <div class="metric-card">
+              <div class="metric-num">3</div>
+              <div class="metric-label">Experiences built — <strong>more on the way</strong></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-num">0</div>
+              <div class="metric-label">Templates used — <strong>every piece is purpose-built</strong></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-num">1</div>
+              <div class="metric-label">Method — <strong>research first, always</strong></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-num">∞</div>
+              <div class="metric-label">Formats possible — <strong>research points the way</strong></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-  </div>
-
-  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━
-       CASE 01 — LOSS ANALYSIS
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-  <div class="case" id="case-1">
-
-    <div class="case-left reveal">
-      <p class="case-tag">Supply chain · Diagnostic tool</p>
-      <h2 class="case-title">
-        Make them feel<br>
-        <span class="dim">the cost they didn't know they had.</span>
-      </h2>
-
-      <p class="case-section-label">The problem</p>
-      <p class="case-body">
-        ProvisionAI's buyers were convinced their supply chains were fine.
-        No pain, no urgency, no reason to change.
-        <strong>The product was excellent. The prospect couldn't feel why they needed it.</strong>
-      </p>
-
-      <p class="case-section-label">What we built</p>
-      <p class="case-body">
-        A four-module self-diagnostic built around loss — not features.
-        Prospects score themselves across load optimisation, network flow,
-        OTIF performance, and system sync.
-        <strong>The lowest score becomes their #1 priority automatically.</strong>
-        They leave with a personalised action plan built from their own answers.
-      </p>
-
-      <p class="case-section-label">What it changes</p>
-      <p class="case-body">
-        The call starts with the prospect already knowing their biggest gap.
-        They surfaced it themselves.
-        <strong>The rep arrives to confirm, not convince.</strong>
-      </p>
-
-      <a class="case-link" href="https://provision-loss-analysis.vercel.app/" target="_blank">
-        See it live →
-      </a>
-    </div>
-
-    <div class="case-right">
-      <div class="case-bar">
-        <span class="case-bar-label">Supply Chain Loss Analysis</span>
-        <span class="case-bar-num">01 / 03</span>
+  <!-- CH1 — LOSS ANALYSIS -->
+  <section class="chapter" id="ch1">
+    <div class="columns">
+      <div class="col-left">
+        <p class="ch-eyebrow">Supply chain · Diagnostic tool</p>
+        <h2 class="ch-headline">Make them feel<br><span class="dim">the cost they didn't know they had.</span></h2>
+        <p class="ch-section">The problem</p>
+        <p class="ch-body">ProvisionAI's buyers were convinced their supply chains were fine. No pain, no urgency, no reason to change. <strong>The product was excellent. The prospect couldn't feel why they needed it.</strong></p>
+        <p class="ch-section">What we built</p>
+        <p class="ch-body">A four-module self-diagnostic built around loss — not features. Prospects score themselves. <strong>The lowest score becomes their #1 priority automatically.</strong> They leave with a personalised action plan built from their own answers.</p>
+        <p class="ch-section">What it changes</p>
+        <p class="ch-body">The call starts with the prospect already knowing their biggest gap. <strong>The rep arrives to confirm, not convince.</strong></p>
+        <a class="ch-next" href="https://provision-loss-analysis.vercel.app/" target="_blank">See it live →</a>
       </div>
-      <div class="case-right-content reveal">
-
-        <div class="detail-card">
-          <div class="detail-card-label">The insight that unlocked it</div>
-          <div class="detail-card-text">
-            Buyers don't resist buying — they resist feeling the problem.
-            <strong>A tool that surfaces hidden cost in their own words removes the resistance before the sales conversation begins.</strong>
+      <div class="col-right">
+        <div class="ch-indicator">
+          <span class="ch-indicator-label">Supply Chain Loss Analysis</span>
+          <div class="ch-indicator-sep"></div>
+          <div class="ch-indicator-dots">
+            <button class="ch-dot" data-chapter="0">01</button>
+            <button class="ch-dot active" data-chapter="1">02</button>
+            <button class="ch-dot" data-chapter="2">03</button>
+            <button class="ch-dot" data-chapter="3">04</button>
           </div>
         </div>
-
-        <div class="metric-grid">
-          <div class="metric-card">
-            <div class="metric-num">4</div>
-            <div class="metric-label">Diagnostic modules — <strong>load, network, OTIF, systems</strong></div>
+        <div class="col-right-content">
+          <div class="card-navy">
+            <div class="card-navy-label">The insight that unlocked it</div>
+            <div class="card-navy-text">Buyers don't resist buying — they resist feeling the problem. <strong>A tool that surfaces hidden cost in their own words removes the resistance before the sales conversation begins.</strong></div>
           </div>
-          <div class="metric-card">
-            <div class="metric-num">1</div>
-            <div class="metric-label">Personalised roadmap — <strong>built from their own scores</strong></div>
+          <div class="metric-grid">
+            <div class="metric-card">
+              <div class="metric-num">4</div>
+              <div class="metric-label">Diagnostic modules — <strong>load, network, OTIF, systems</strong></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-num">7–10%</div>
+              <div class="metric-label">Of freight value — <strong>the hidden cost they surface</strong></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-num">1</div>
+              <div class="metric-label">Personalised roadmap — <strong>built from their own scores</strong></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-num">0</div>
+              <div class="metric-label">Cold calls needed — <strong>they arrive knowing their gap</strong></div>
+            </div>
           </div>
-          <div class="metric-card">
-            <div class="metric-num">7–10%</div>
-            <div class="metric-label">Of total freight value — <strong>the hidden cost they surface</strong></div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-num">0</div>
-            <div class="metric-label">Cold calls needed — <strong>they arrive knowing their gap</strong></div>
-          </div>
-        </div>
-
-        <div class="detail-card">
-          <div class="detail-card-label">Format</div>
-          <div class="tag-row">
+          <div class="tag-card">
             <span class="tag">Self-diagnostic</span>
             <span class="tag">Scoring system</span>
             <span class="tag">Personalised roadmap</span>
             <span class="tag">Pre-call qualifier</span>
           </div>
         </div>
-
       </div>
     </div>
+  </section>
 
-  </div>
-
-  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━
-       CASE 02 — 3D TRUCK LOADER
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-  <div class="case" id="case-2">
-
-    <div class="case-left reveal">
-      <p class="case-tag">Supply chain · Interactive explainer</p>
-      <h2 class="case-title">
-        Show them the math<br>
-        <span class="dim">everyone else avoids.</span>
-      </h2>
-
-      <p class="case-section-label">The problem</p>
-      <p class="case-body">
-        Load optimisation software is invisible by definition — it works inside systems buyers can't see.
-        <strong>The value was real but abstract.</strong>
-        Prospects couldn't connect the software to the savings.
-      </p>
-
-      <p class="case-section-label">What we built</p>
-      <p class="case-body">
-        A real-time 3D truck loading visualiser that shows the optimizer working live.
-        Three load scenarios — beverage, CPG mixed, food and beverage.
-        <strong>The buyer watches the algorithm pack their truck in real time,</strong>
-        sees the utilisation percentage climb, and runs their own ROI calculation against their actual freight spend.
-        A network flow simulator shows what happens when a promotion spike hits — and how LevelLoad absorbs it.
-      </p>
-
-      <p class="case-section-label">What it changes</p>
-      <p class="case-body">
-        The abstract becomes concrete.
-        <strong>They've seen their truck get packed before the demo.</strong>
-        The question shifts from "does this work?" to "when can we start?"
-      </p>
-
-      <a class="case-link" href="https://provision-onboarding.vercel.app/" target="_blank">
-        See it live →
-      </a>
-    </div>
-
-    <div class="case-right">
-      <div class="case-bar">
-        <span class="case-bar-label">Load Optimisation Visualiser</span>
-        <span class="case-bar-num">02 / 03</span>
+  <!-- CH2 — 3D TRUCK LOADER -->
+  <section class="chapter" id="ch2">
+    <div class="columns">
+      <div class="col-left">
+        <p class="ch-eyebrow">Supply chain · Interactive explainer</p>
+        <h2 class="ch-headline">Show them the math<br><span class="dim">everyone else avoids.</span></h2>
+        <p class="ch-section">The problem</p>
+        <p class="ch-body">Load optimisation software is invisible by definition — it works inside systems buyers can't see. <strong>The value was real but abstract.</strong> Prospects couldn't connect the software to the savings.</p>
+        <p class="ch-section">What we built</p>
+        <p class="ch-body">A real-time 3D truck loading visualiser. Three load scenarios. <strong>The buyer watches the algorithm pack their truck in real time</strong> and runs their own ROI calculation against their actual freight spend.</p>
+        <p class="ch-section">What it changes</p>
+        <p class="ch-body">The abstract becomes concrete. <strong>They've seen their truck get packed before the demo.</strong> The question shifts from "does this work?" to "when can we start?"</p>
+        <a class="ch-next" href="https://provision-onboarding.vercel.app/" target="_blank">See it live →</a>
       </div>
-      <div class="case-right-content reveal">
-
-        <div class="detail-card">
-          <div class="detail-card-label">The insight that unlocked it</div>
-          <div class="detail-card-text">
-            You can't sell invisible software with a slide deck.
-            <strong>When the buyer watches their own truck get optimised in real time, the ROI conversation starts itself.</strong>
+      <div class="col-right">
+        <div class="ch-indicator">
+          <span class="ch-indicator-label">Load Optimisation Visualiser</span>
+          <div class="ch-indicator-sep"></div>
+          <div class="ch-indicator-dots">
+            <button class="ch-dot" data-chapter="0">01</button>
+            <button class="ch-dot" data-chapter="1">02</button>
+            <button class="ch-dot active" data-chapter="2">03</button>
+            <button class="ch-dot" data-chapter="3">04</button>
           </div>
         </div>
-
-        <div class="metric-grid">
-          <div class="metric-card">
-            <div class="metric-num">3D</div>
-            <div class="metric-label">Real-time visualiser — <strong>watch the optimizer work live</strong></div>
+        <div class="col-right-content">
+          <div class="card-navy">
+            <div class="card-navy-label">The insight that unlocked it</div>
+            <div class="card-navy-text">You can't sell invisible software with a slide deck. <strong>When the buyer watches their own truck get optimised in real time, the ROI conversation starts itself.</strong></div>
           </div>
-          <div class="metric-card">
-            <div class="metric-num">5–10%</div>
-            <div class="metric-label">More product per truck — <strong>the number they calculate themselves</strong></div>
+          <div class="metric-grid">
+            <div class="metric-card">
+              <div class="metric-num">3D</div>
+              <div class="metric-label">Real-time visualiser — <strong>watch the optimizer work live</strong></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-num">5–10%</div>
+              <div class="metric-label">More product per truck — <strong>the number they calculate themselves</strong></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-num">97%</div>
+              <div class="metric-label">OTIF achieved — <strong>what the network flow module shows</strong></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-num">ROI</div>
+              <div class="metric-label">Calculator built in — <strong>their freight spend, their savings</strong></div>
+            </div>
           </div>
-          <div class="metric-card">
-            <div class="metric-num">97%</div>
-            <div class="metric-label">OTIF — <strong>what the network flow module shows</strong></div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-num">ROI</div>
-            <div class="metric-label">Calculator built in — <strong>their freight spend, their savings rate</strong></div>
-          </div>
-        </div>
-
-        <div class="detail-card">
-          <div class="detail-card-label">Format</div>
-          <div class="tag-row">
+          <div class="tag-card">
             <span class="tag">3D visualiser</span>
             <span class="tag">Interactive scenarios</span>
             <span class="tag">ROI calculator</span>
@@ -588,90 +402,59 @@ html, body { height: 100%; overflow-x: hidden; }
             <span class="tag">Onboarding experience</span>
           </div>
         </div>
-
       </div>
     </div>
+  </section>
 
-  </div>
-
-  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━
-       CASE 03 — PROVISIONAI.COM
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-  <div class="case" id="case-3">
-
-    <div class="case-left reveal">
-      <p class="case-tag">Supply chain · Full site + resource hub</p>
-      <h2 class="case-title">
-        The Netflix of<br>
-        <span class="dim">supply chain content.</span>
-      </h2>
-
-      <p class="case-section-label">The problem</p>
-      <p class="case-body">
-        ProvisionAI needed to own the supply chain optimisation conversation online — not just rank for it.
-        <strong>Competitors had more brand recognition. The product had more depth.</strong>
-        The site needed to close that gap before a prospect ever picked up the phone.
-      </p>
-
-      <p class="case-section-label">What we built</p>
-      <p class="case-body">
-        A GEO-optimised full site built to be found and understood —
-        by humans and AI search engines equally.
-        A resource hub modelled on content depth over content volume:
-        <strong>podcasts, case studies, product explainers, and thought leadership
-        organised so a CFO, an ops VP, and a supply chain analyst each find what they need.</strong>
-      </p>
-
-      <p class="case-section-label">What it changes</p>
-      <p class="case-body">
-        Prospects arrive from organic search already educated.
-        The resource hub turns a single visit into a recurring relationship.
-        <strong>The site does the selling before the SDR sends the first email.</strong>
-      </p>
-
-      <a class="case-link" href="https://provisionai.com" target="_blank">
-        See it live →
-      </a>
-    </div>
-
-    <div class="case-right">
-      <div class="case-bar">
-        <span class="case-bar-label">ProvisionAI — Full Site</span>
-        <span class="case-bar-num">03 / 03</span>
+  <!-- CH3 — PROVISIONAI.COM -->
+  <section class="chapter" id="ch3">
+    <div class="columns">
+      <div class="col-left">
+        <p class="ch-eyebrow">Supply chain · Full site + resource hub</p>
+        <h2 class="ch-headline">The Netflix of<br><span class="dim">supply chain content.</span></h2>
+        <p class="ch-section">The problem</p>
+        <p class="ch-body">ProvisionAI needed to own the supply chain optimisation conversation online. <strong>Competitors had more brand recognition. The product had more depth.</strong> The site needed to close that gap before a prospect ever picked up the phone.</p>
+        <p class="ch-section">What we built</p>
+        <p class="ch-body">A GEO-optimised full site built to be found and understood — by humans and AI equally. A resource hub with podcasts, case studies, and thought leadership <strong>organised so a CFO, an ops VP, and a supply chain analyst each find what they need.</strong></p>
+        <p class="ch-section">What it changes</p>
+        <p class="ch-body">Prospects arrive from organic search already educated. <strong>The site does the selling before the SDR sends the first email.</strong></p>
+        <a class="ch-next" href="https://provisionai.com" target="_blank">See it live →</a>
       </div>
-      <div class="case-right-content reveal">
-
-        <div class="detail-card">
-          <div class="detail-card-label">The insight that unlocked it</div>
-          <div class="detail-card-text">
-            GEO isn't just SEO for AI — it's writing so clearly that any system,
-            human or machine, immediately understands what you do and who you do it for.
-            <strong>Clarity at that level is a competitive advantage most B2B sites don't have.</strong>
+      <div class="col-right">
+        <div class="ch-indicator">
+          <span class="ch-indicator-label">ProvisionAI — Full Site</span>
+          <div class="ch-indicator-sep"></div>
+          <div class="ch-indicator-dots">
+            <button class="ch-dot" data-chapter="0">01</button>
+            <button class="ch-dot" data-chapter="1">02</button>
+            <button class="ch-dot" data-chapter="2">03</button>
+            <button class="ch-dot active" data-chapter="3">04</button>
           </div>
         </div>
-
-        <div class="metric-grid">
-          <div class="metric-card">
-            <div class="metric-num">GEO</div>
-            <div class="metric-label">Optimised for AI search — <strong>found by humans and LLMs equally</strong></div>
+        <div class="col-right-content">
+          <div class="card-navy">
+            <div class="card-navy-label">The insight that unlocked it</div>
+            <div class="card-navy-text">GEO isn't just SEO for AI — it's writing so clearly that any system, human or machine, immediately understands what you do and who you do it for. <strong>Clarity at that level is a competitive advantage most B2B sites don't have.</strong></div>
           </div>
-          <div class="metric-card">
-            <div class="metric-num">3</div>
-            <div class="metric-label">Buyer personas served — <strong>CFO, ops VP, supply chain analyst</strong></div>
+          <div class="metric-grid">
+            <div class="metric-card">
+              <div class="metric-num">GEO</div>
+              <div class="metric-label">Optimised for AI search — <strong>found by humans and LLMs equally</strong></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-num">3</div>
+              <div class="metric-label">Buyer personas — <strong>CFO, ops VP, supply chain analyst</strong></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-num">Hub</div>
+              <div class="metric-label">Resource library — <strong>podcasts, case studies, explainers</strong></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-num">Full</div>
+              <div class="metric-label">End-to-end — <strong>strategy, copy, design, deploy</strong></div>
+            </div>
           </div>
-          <div class="metric-card">
-            <div class="metric-num">Hub</div>
-            <div class="metric-label">Resource library — <strong>podcasts, case studies, explainers</strong></div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-num">Full</div>
-            <div class="metric-label">End-to-end build — <strong>strategy, copy, design, deploy</strong></div>
-          </div>
-        </div>
-
-        <div class="detail-card">
-          <div class="detail-card-label">Format</div>
-          <div class="tag-row">
+          <div class="tag-card">
             <span class="tag">Full site</span>
             <span class="tag">GEO optimisation</span>
             <span class="tag">Resource hub</span>
@@ -679,58 +462,40 @@ html, body { height: 100%; overflow-x: hidden; }
             <span class="tag">Content strategy</span>
           </div>
         </div>
-
       </div>
     </div>
-
-  </div>
-
-  <!-- FOOTER CTA -->
-  <div class="footer-cta">
-
-    <div class="footer-cta-left">
-      <h2 class="footer-cta-headline">Your sales problem<br>is next.</h2>
-      <p class="footer-cta-sub">
-        Tell me about the product, the buyer, and where deals usually stall.
-        I'll come back with a point of view on what would move it.
-      </p>
-    </div>
-
-    <div class="footer-cta-right">
-      <div class="footer-cta-right-inner">
-        <a class="footer-cta-link" href="/#ch5">
-          Let's talk →
-        </a>
-        <p class="footer-cta-note">I read every message and respond personally.<br>Give me a day or two — I'll come back with a point of view, not a sales pitch.</p>
-      </div>
-    </div>
-
-  </div>
+  </section>
 
 </div>
 
 <script>
-/* Progress bar */
+const chapters = document.querySelectorAll('.chapter');
 const progress = document.querySelector('.nav-progress');
-window.addEventListener('scroll', () => {
-  const scrollH = document.documentElement.scrollHeight - window.innerHeight;
-  const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
-  if (progress) progress.style.width = pct + '%';
-}, { passive: true });
+const wrapper  = document.getElementById('site-wrapper');
 
-/* Scroll reveal */
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
+function scrollToChapter(index) {
+  if (chapters[index]) chapters[index].scrollIntoView({ behavior: 'smooth' });
+}
+
+document.querySelectorAll('.ch-dot').forEach(dot => {
+  dot.addEventListener('click', () => scrollToChapter(parseInt(dot.dataset.chapter)));
+});
+
+wrapper.addEventListener('scroll', () => {
+  const scrollTop = wrapper.scrollTop;
+  const scrollH   = wrapper.scrollHeight - wrapper.clientHeight;
+  const pct       = scrollH > 0 ? (scrollTop / scrollH) * 100 : 0;
+  if (progress) progress.style.width = pct + '%';
+  chapters.forEach((ch, i) => {
+    const rect = ch.getBoundingClientRect();
+    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+      document.querySelectorAll('.ch-dot').forEach(d => {
+        d.classList.toggle('active', parseInt(d.dataset.chapter) === i);
+      });
     }
   });
-}, { threshold: 0.15 });
-reveals.forEach(el => observer.observe(el));
+}, { passive: true });
 </script>
 
 </body>
 </html>
-
