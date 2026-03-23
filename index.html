@@ -179,11 +179,11 @@ html, body {
   position: relative; z-index: 1;
   background: #ffffff;
 }
-.col-right > *:not(.ch-indicator) {
-  padding: 3vw 5vw 3vw 3.5vw;
+.col-right-content {
   flex: 1;
   display: flex; flex-direction: column; justify-content: center;
   gap: var(--col-gap);
+  padding: 3vw 5vw 3vw 3.5vw;
   position: relative; z-index: 1;
 }
 .col-right::before {
@@ -421,7 +421,7 @@ html, body {
   .chapter { height: auto; scroll-snap-align: none; padding-top: var(--nav-height); }
   .columns { grid-template-columns: 1fr; height: auto; }
   .col-left  { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--white-faint); }
-  .col-right > *:not(.ch-indicator) { padding: 2rem 1.5rem 4rem; }
+  .col-right-content { padding: 2rem 1.5rem 4rem; }
   .col-left * { opacity: 1 !important; animation: none !important; }
   .format-grid { grid-template-columns: 1fr; }
   .format-card-featured { grid-column: 1; }
@@ -483,6 +483,7 @@ html, body {
             <button class="ch-dot" data-chapter="4">05</button>
           </div>
         </div>
+        <div class="col-right-content">
         <div class="stats-grid">
 
           <div class="card-lime span-full no-hover">
@@ -521,7 +522,8 @@ html, body {
         </div>
       </div>
 
-    </div>
+            </div>
+      </div>
 
   </section>
 
@@ -574,6 +576,7 @@ html, body {
             <button class="ch-dot" data-chapter="4">05</button>
           </div>
         </div>
+        <div class="col-right-content">
 
         <div class="card-lime">
           <div class="card-lime-text">Your product is ready. The experience around it isn't.</div>
@@ -604,7 +607,8 @@ html, body {
 
       </div>
 
-    </div>
+            </div>
+      </div>
 
   </section>
 
@@ -647,6 +651,7 @@ html, body {
             <button class="ch-dot" data-chapter="4">05</button>
           </div>
         </div>
+        <div class="col-right-content">
 
         <div class="card-lime">
           <div class="card-lime-text">This is what separates a thinking partner from a production shop.</div>
@@ -686,7 +691,8 @@ html, body {
 
       </div>
 
-    </div>
+            </div>
+      </div>
 
   </section>
 
@@ -731,6 +737,7 @@ html, body {
             <button class="ch-dot" data-chapter="4">05</button>
           </div>
         </div>
+        <div class="col-right-content">
 
         <div class="format-grid">
 
@@ -766,7 +773,8 @@ html, body {
 
       </div>
 
-    </div>
+            </div>
+      </div>
 
   </section>
 
@@ -804,6 +812,7 @@ html, body {
             <button class="ch-dot active" data-chapter="4">05</button>
           </div>
         </div>
+        <div class="col-right-content">
 
         <div class="form-card">
 
@@ -846,7 +855,8 @@ html, body {
 
       </div>
 
-    </div>
+            </div>
+      </div>
 
   </section>
 
