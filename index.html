@@ -215,9 +215,13 @@ html, body {
 .headline .dim    { color: var(--white-dim); }
 
 .headline-a { opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards; }
-.card-lime-consequence {
-  font-weight: 300;
-  color: rgba(240,239,240,0.65);
+.headline-aside {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  font-weight: 300; line-height: 1.7;
+  color: rgba(240,239,240,0.35);
+  margin-top: 1.4rem; max-width: 38ch;
+  opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.55s forwards;
 }
 
 .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); flex-shrink: 0; }
@@ -465,6 +469,7 @@ html, body {
             before a prospect
             <span class="dim">decides you sound like everyone else.</span>
           </h1>
+          <p class="headline-aside">They already decided. Your deck gets forwarded without you. Every call starts cold.</p>
         </div>
       </div>
 
@@ -484,7 +489,7 @@ html, body {
         <div class="stats-grid">
 
           <div class="card-lime span-full no-hover">
-            <p class="card-lime-text"><span class="card-lime-consequence">They already decided. Your deck gets forwarded without you. Every call starts cold.</span> Your prospect needs to feel the problem before they'll believe in the solution.</p>
+            <p class="card-lime-text">Your prospect needs to feel the problem before they'll believe in the solution.</p>
           </div>
 
           <div class="stat-card stat-lime">
