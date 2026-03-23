@@ -214,11 +214,15 @@ html, body {
 .headline .accent { color: var(--lime); }
 .headline .dim    { color: var(--white-dim); }
 
-.headline-a { transition: opacity 8s linear; pointer-events: auto; }
-.headline-a.fade-out { opacity: 0; pointer-events: none; }
-.headline-b { opacity: 0; color: var(--white); transition: opacity 1.2s var(--ease-out); pointer-events: none; }
-.headline-b.fade-in { opacity: 1; pointer-events: auto; }
-.headline-b-sub { display: inline; font-family: var(--font-display); font-size: inherit; font-weight: 400; line-height: inherit; letter-spacing: inherit; color: var(--lime); }
+.headline-a { opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards; }
+.headline-consequence {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.2vw, 2.4rem);
+  font-weight: 300; line-height: 1.15;
+  letter-spacing: -0.01em; color: var(--white-dim);
+  margin-top: 1.2rem;
+  opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.55s forwards;
+}
 
 .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); flex-shrink: 0; }
 .span-full  { grid-column: 1 / -1; }
@@ -465,9 +469,9 @@ html, body {
             before a prospect
             <span class="dim">decides you sound like everyone else.</span>
           </h1>
-          <h1 class="headline headline-b" aria-hidden="true">
-            They already decided. <span class="headline-b-sub">Your deck gets forwarded without you.</span> Every call starts cold.
-          </h1>
+          <p class="headline-consequence">
+            They already decided. Your deck gets forwarded without you. Every call starts cold.
+          </p>
         </div>
       </div>
 
@@ -902,14 +906,7 @@ wrapper.addEventListener('scroll', () => {
   });
 }, { passive: true });
 
-/* CH1 — Headline fade */
-setTimeout(() => {
-  const headA = document.querySelector('.headline-a');
-  const headB = document.querySelector('.headline-b');
-  if (!headA || !headB) return;
-  headA.classList.add('fade-out');
-  setTimeout(() => headB.classList.add('fade-in'), 8000);
-}, 1200);
+/* CH1 — headline is now static, no fade needed */
 
 /* CH1 — Scramble counter */
 function scramble(card, target, delay) {
