@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="getmartin — We build the experience your prospects go through before they say yes.">
+<title>getmartin — B2B Sales Experiences</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500,400&f[]=satoshi@700,500,400,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css">
+<style>
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SITE LAYOUT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.site-wrapper {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.chapter {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shared scene grid */
+.chapter::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px;
+  pointer-events: none; z-index: 0;
+}
+
+/* Chapter ambient glows */
+#ch1::after {
+  content: '';
+  position: absolute;
+  top: -160px; left: -80px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(184,212,0,0.07) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+#ch2::after {
+  content: '';
+  position: absolute;
+  bottom: -120px; right: -80px;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(244,115,32,0.05) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+#ch3::after {
+  content: '';
+  position: absolute;
+  top: -120px; right: -80px;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(123,53,216,0.06) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+#ch4::after {
+  content: '';
+  position: absolute;
+  bottom: -120px; left: -80px;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(184,212,0,0.05) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+#ch5::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   NAV — fixed, single instance
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-height); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--white-faint);
+  background: rgba(30,44,58,0.8);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em; color: var(--white);
+}
+.nav-wordmark span { color: var(--lime); }
+
+.nav-dots { display: flex; gap: 6px; align-items: center; position: relative; }
+
+.nav-dot {
+  height: 5px; width: 5px;
+  background: var(--white-faint);
+  border: none; cursor: pointer;
+  transition: all var(--dur-base) var(--ease-out);
+  position: relative;
+}
+.nav-dot:hover  { background: var(--white-dim); width: 14px; }
+.nav-dot.active { background: var(--lime); width: 24px; }
+
+/* Dot tooltip */
+.nav-dot::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%; transform: translateX(-50%);
+  font-family: var(--font-body);
+  font-size: 1rem; font-weight: 300;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--white); background: var(--navy);
+  border: 1px solid var(--white-faint);
+  padding: 0.3rem 0.7rem;
+  white-space: nowrap;
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--dur-base);
+}
+.nav-dot:hover::after { opacity: 1; }
+
+.chapter-tag {
+  font-family: var(--font-body);
+  font-size: 1rem; font-weight: 300; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--white-dim);
+  display: flex; align-items: center; gap: 6px;
+  transition: opacity var(--dur-base);
+}
+.chapter-tag .dot { width: 6px; height: 6px; background: var(--lime); display: inline-block; }
+
+.nav-progress {
+  position: absolute; bottom: 0; left: 0;
+  height: 1px; background: var(--lime); width: 0%;
+  transition: width 0.3s var(--ease-out);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   COLUMNS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.columns {
+  position: relative; z-index: 1;
+  flex: 1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  margin-top: var(--nav-height);
+}
+
+.col-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 4vw 3.5vw 4vw 5vw;
+  border-right: 1px solid var(--white-faint);
+}
+
+.col-right {
+  display: flex; flex-direction: column; justify-content: center;
+  gap: var(--col-gap);
+  padding: 4vw 5vw 4vw 3.5vw;
+  position: relative; z-index: 1;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CH1 — SPECIFIC
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.headline-wrap {
+  display: grid;
+  margin-bottom: 0;
+}
+.headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3.6rem);
+  font-weight: 700; line-height: 1.05;
+  letter-spacing: -0.02em; color: var(--white);
+  grid-area: 1 / 1;
+}
+.headline .accent { color: var(--lime); }
+.headline .dim    { color: var(--white-dim); }
+
+.headline-a { transition: opacity 8s linear; pointer-events: auto; }
+.headline-a.fade-out { opacity: 0; pointer-events: none; }
+.headline-b { opacity: 0; color: var(--white); transition: opacity 1.2s var(--ease-out); pointer-events: none; }
+.headline-b.fade-in { opacity: 1; pointer-events: auto; }
+.headline-b-sub { display: inline; font-family: var(--font-display); font-size: inherit; font-weight: 400; line-height: inherit; letter-spacing: inherit; color: var(--lime); }
+
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); flex-shrink: 0; }
+.span-full  { grid-column: 1 / -1; }
+
+.stat-card {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  padding: 1.4rem 1.4rem 1.6rem;
+  position: relative; overflow: hidden;
+  transition: background var(--dur-base), border-color var(--dur-base), transform var(--dur-base) var(--ease-out);
+}
+.stat-card:hover { background: var(--card-bg-hover); border-color: var(--card-border-hover); transform: translateY(-2px); }
+
+.stat-lime   .stat-number { color: var(--lime); }
+.stat-orange .stat-number { color: var(--orange); }
+.stat-purple .stat-number { color: var(--purple-muted); }
+
+.stat-bar { position: absolute; top: 0; left: 0; height: 2px; width: 0%; transition: width 0.8s var(--ease-out); }
+.stat-lime   .stat-bar { background: var(--lime); }
+.stat-orange .stat-bar { background: var(--orange); }
+.stat-purple .stat-bar { background: var(--purple); }
+
+.stat-number { font-family: var(--font-display); font-weight: 700; line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 0.8rem; display: flex; align-items: baseline; gap: 1px; font-size: clamp(2.4rem, 4.2vw, 4rem); }
+.num-val { display: inline-block; font-variant-numeric: tabular-nums; }
+.num-suf { display: inline-block; opacity: 0; font-size: 0.6em; align-self: flex-start; padding-top: 0.2em; }
+.num-suf:empty { display: none; }
+.num-suf.show { animation: sufIn 0.3s var(--ease-out) forwards; }
+.stat-desc { font-size: 1rem; font-weight: 300; line-height: 1.4; color: rgba(240,239,240,0.6); }
+.stat-desc strong { color: var(--white); font-weight: 500; }
+
+.card-lime {
+  background: var(--lime) !important; border: 1px solid var(--lime) !important;
+  padding: 1.4rem; display: flex; flex-direction: column; justify-content: space-between;
+  transition: background var(--dur-base); cursor: pointer;
+}
+.card-lime:hover { background: var(--lime-hover) !important; }
+.card-lime.no-hover:hover { background: var(--lime) !important; transform: none; }
+.card-lime-text { font-family: var(--font-display); font-size: clamp(1.3rem, 2.2vw, 2rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--navy-dark); }
+.card-lime-arrow { color: var(--navy-dark); width: 24px; height: 24px; transition: transform var(--dur-base) var(--ease-out); flex-shrink: 0; }
+.card-lime:hover .card-lime-arrow { transform: translateX(5px); }
+
+.card-ink { background: #0a0f14 !important; border: 1px solid #0a0f14 !important; padding: 1.4rem; }
+.card-ink-text { font-family: var(--font-display); font-size: clamp(1.3rem, 2.2vw, 2rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--white); }
+
+.card-orange { background: var(--orange) !important; border: 1px solid var(--orange) !important; padding: 1.4rem; transition: background var(--dur-base); }
+.card-orange:hover { background: #ff8535 !important; }
+.card-orange-text { font-family: var(--font-display); font-size: clamp(1.3rem, 2.2vw, 2rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--navy-dark); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CH2 — SPECIFIC
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ch-headline { font-family: var(--font-display); font-size: clamp(2.2rem, 3.5vw, 3.8rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; color: var(--white); margin-bottom: 1.8rem; opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards; }
+.ch-headline .accent { color: var(--lime); }
+.ch-headline .dim    { color: var(--white-dim); }
+
+.ch-subquote { font-family: var(--font-display); font-size: clamp(1rem, 1.4vw, 1.2rem); font-weight: 500; line-height: 1.45; letter-spacing: -0.01em; color: var(--white-dim); margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.45s forwards; }
+
+.pain-list { display: flex; flex-direction: column; gap: 0; opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.55s forwards; }
+.pain-item { display: flex; align-items: flex-start; gap: 1rem; padding: 0.95rem 0; border-bottom: 1px solid var(--white-faint); transition: border-color var(--dur-base); }
+.pain-item:first-child { border-top: 1px solid var(--white-faint); }
+.pain-item:hover { border-color: rgba(240,239,240,0.2); }
+.pain-item:hover .pain-square { background: var(--lime-hover); }
+.pain-item:hover .pain-text   { color: var(--white); }
+.pain-square { width: 5px; height: 5px; background: var(--lime); flex-shrink: 0; margin-top: 0.55rem; transition: background var(--dur-base); }
+.pain-text   { font-size: 1.05rem; font-weight: 400; color: var(--white); line-height: 1.5; transition: color var(--dur-base); }
+
+.card-reveal {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-left: 3px solid transparent;
+  padding: 1.2rem 1.4rem; position: relative; overflow: hidden; cursor: pointer;
+  transition: background var(--dur-base), border-color var(--dur-base), border-left-color 0.6s var(--ease-out), transform var(--dur-base) var(--ease-out);
+}
+.card-reveal:hover { background: var(--card-bg-hover); border-color: var(--card-border-hover); transform: translateY(-2px); }
+.card-reveal.bar-lime.bar-active,
+.card-reveal.bar-purple.bar-active,
+.card-reveal.bar-orange.bar-active { border-left-color: rgba(240,239,240,0.4); background: rgba(240,239,240,0.05); }
+.card-reveal.bar-lime.bar-active:hover,
+.card-reveal.bar-purple.bar-active:hover,
+.card-reveal.bar-orange.bar-active:hover { background: var(--card-bg-hover); border-left-color: rgba(240,239,240,0.6); }
+
+.card-reveal-title { font-family: var(--font-display); font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; color: var(--white); padding-right: 1.5rem; }
+.card-reveal-body  { font-size: 1rem; font-weight: 300; color: var(--white-dim); line-height: 1.6; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.5s var(--ease-out), opacity 0.4s var(--ease-out), margin-top var(--dur-base); }
+.card-reveal:hover .card-reveal-body { max-height: 100px; opacity: 1; margin-top: 0.6rem; }
+.card-reveal-arrow { position: absolute; bottom: 1rem; right: 1.2rem; color: var(--white-dim); transition: transform var(--dur-base) var(--ease-out), color var(--dur-base); }
+.card-reveal:hover .card-reveal-arrow { transform: translateX(4px); color: var(--lime); }
+
+.ch-next { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 1rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-dark); background: var(--lime); border: none; padding: 0.9rem 2rem; cursor: pointer; width: fit-content; transition: background var(--dur-base) var(--ease-out), gap var(--dur-base) var(--ease-out); opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.8s forwards; }
+.ch-next:hover { background: var(--lime-hover); gap: 14px; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CH3 — SPECIFIC
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ch-philosophy { font-size: 1rem; font-weight: 300; color: var(--white-dim); line-height: 1.8; max-width: 44ch; opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.5s forwards; }
+.ch-philosophy strong { color: var(--white); font-weight: 400; }
+
+.step-card { background: var(--card-bg); border: 1px solid var(--card-border); border-left: 3px solid rgba(240,239,240,0.4); padding: 1.1rem 1.3rem; display: grid; grid-template-columns: 2rem 1fr; gap: 0 1rem; align-items: start; transition: background var(--dur-base), border-color var(--dur-base), transform var(--dur-base) var(--ease-out); }
+.step-card:hover { background: var(--card-bg-hover); border-color: var(--card-border-hover); border-left-color: var(--lime); transform: translateY(-2px); }
+.step-num     { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--lime); letter-spacing: 0.04em; padding-top: 0.1rem; }
+.step-content { display: flex; flex-direction: column; gap: 0.25rem; }
+.step-title   { font-family: var(--font-display); font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; color: var(--white); }
+.step-desc    { font-size: 1rem; font-weight: 300; color: var(--white-dim); line-height: 1.55; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CH4 — SPECIFIC
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.format-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto; gap: var(--col-gap); }
+
+.format-card-featured { grid-column: 1 / -1; background: var(--card-bg); border: 1px solid var(--card-border); border-left: 3px solid var(--lime); padding: 1.6rem 1.8rem; position: relative; transition: background var(--dur-base), border-color var(--dur-base), transform var(--dur-base) var(--ease-out); }
+.format-card-featured:hover { background: var(--card-bg-hover); border-color: var(--card-border-hover); border-left-color: var(--lime); transform: translateY(-2px); }
+
+.format-featured-lime { background: var(--lime) !important; border: 1px solid var(--lime) !important; display: flex; flex-direction: column; gap: 0.8rem; transition: background var(--dur-base), transform var(--dur-base) var(--ease-out); }
+.format-featured-lime:hover { background: var(--lime-hover) !important; transform: translateY(-2px); }
+.format-featured-body { font-family: var(--font-body); font-size: 1rem; font-weight: 300; line-height: 1.6; color: rgba(30,44,58,0.7); }
+.format-card-lime-text { font-family: var(--font-display); font-size: clamp(1.3rem, 2.2vw, 2rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--navy-dark); }
+
+.format-card { background: var(--card-bg); border: 1px solid var(--card-border); border-left: 3px solid transparent; padding: 1.3rem 1.4rem 1.5rem; position: relative; overflow: hidden; transition: background var(--dur-base), border-color var(--dur-base), border-left-color 0.6s var(--ease-out), transform var(--dur-base) var(--ease-out); }
+.format-card:hover { background: var(--card-bg-hover); border-color: var(--card-border-hover); transform: translateY(-2px); }
+.format-card:not(.format-card-lime).bar-active { border-left-color: rgba(240,239,240,0.4); }
+.format-card:not(.format-card-lime).bar-active:hover { border-left-color: rgba(240,239,240,0.6); }
+.format-card-lime { background: var(--lime) !important; border: 1px solid var(--lime) !important; border-left: 3px solid rgba(30,44,58,0.15) !important; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 0.5rem; transition: background var(--dur-base), transform var(--dur-base) var(--ease-out); }
+.format-card-lime:hover { background: var(--lime-hover) !important; transform: translateY(-2px); }
+.format-card-lime-sub { font-family: var(--font-body); font-size: 1rem; font-weight: 300; line-height: 1.55; color: rgba(30,44,58,0.65); }
+
+.format-tag   { font-family: var(--font-body); font-size: 0.85rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,239,240,0.35); margin-bottom: 0.4rem; }
+.format-title { font-family: var(--font-display); font-size: clamp(1rem, 1.3vw, 1.1rem); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; color: var(--white); margin-bottom: 0.3rem; }
+.format-desc  { font-size: 1rem; font-weight: 300; color: var(--white-dim); line-height: 1.5; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CH5 — SPECIFIC
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ch-sub { font-size: 1rem; font-weight: 300; color: var(--white-dim); line-height: 1.8; max-width: 40ch; opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.5s forwards; }
+.ch-sub strong { color: var(--white); font-weight: 400; }
+
+.form-card { background: var(--card-bg); border: 1px solid var(--card-border); padding: 2rem 2rem 1.6rem; }
+.contact-form { display: flex; flex-direction: column; gap: 0; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); }
+.form-group { display: flex; flex-direction: column; gap: 0; padding: 0.8rem 0; }
+.form-row:first-child .form-group, .form-group:first-child { padding-top: 0; }
+.form-label { font-family: var(--font-body); font-size: 1rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white-dim); margin-bottom: 0.5rem; transition: color var(--dur-base); }
+.form-group:focus-within .form-label { color: var(--lime); }
+.form-input, .form-textarea { font-family: var(--font-body); font-size: 1rem; font-weight: 300; color: var(--white); background: rgba(240,239,240,0.05); border: 1px solid var(--white-faint); outline: none; padding: 0.7rem 0.9rem; width: 100%; resize: none; line-height: 1.6; transition: border-color var(--dur-base), background var(--dur-base); }
+.form-input:focus, .form-textarea:focus { border-color: var(--lime); background: rgba(240,239,240,0.07); }
+.form-input::placeholder, .form-textarea::placeholder { color: var(--white-dim); }
+.form-textarea { min-height: 90px; }
+.form-submit { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 1rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-dark); background: var(--lime); border: none; padding: 0.9rem 2rem; cursor: pointer; margin-top: 1.6rem; width: fit-content; transition: background var(--dur-base) var(--ease-out), gap var(--dur-base) var(--ease-out); }
+.form-submit:hover { background: var(--lime-hover); gap: 14px; }
+.form-success { display: none; flex-direction: column; gap: 1rem; }
+.form-success.visible { display: flex; }
+.success-title { font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.8rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--lime); }
+.success-body  { font-size: 1rem; font-weight: 300; color: var(--white-dim); line-height: 1.7; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ANIMATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@keyframes fadeUp   { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn   { from { opacity: 0; } to { opacity: 1; } }
+@keyframes numSlam  { 0% { opacity: 0; transform: translateY(20px) scale(0.85); } 60% { opacity: 1; transform: translateY(-5px) scale(1.06); } 80% { transform: translateY(2px) scale(0.98); } 100% { transform: translateY(0) scale(1); } }
+@keyframes breathe  { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+@keyframes sufIn    { from { opacity: 0; transform: translateX(-3px); } to { opacity: 1; transform: translateX(0); } }
+.num-val.slam  { animation: numSlam 0.65s var(--ease-out) forwards; }
+.num-val.pulse { animation: breathe 3.5s var(--ease-inout) infinite; }
+
+/* Col-right fade in */
+.col-right { opacity: 0; animation: fadeIn 0.7s var(--ease-out) 0.4s forwards; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MOBILE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 768px) {
+  html, body { overflow: auto; height: auto; }
+  .site-wrapper { overflow: visible; scroll-snap-type: none; height: auto; }
+  .chapter { height: auto; scroll-snap-align: none; }
+  .columns { grid-template-columns: 1fr; margin-top: var(--nav-height); }
+  .col-left  { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--white-faint); }
+  .col-right { padding: 2rem 1.5rem 4rem; opacity: 1; animation: none; }
+  .col-left * { opacity: 1 !important; animation: none !important; }
+  .format-grid { grid-template-columns: 1fr; }
+  .format-card-featured { grid-column: 1; }
+  .form-row { grid-template-columns: 1fr; }
+  .card-reveal-body { max-height: none !important; opacity: 1 !important; margin-top: 0.6rem !important; }
+  .site-nav { position: fixed; }
+  .nav-dots { display: none; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- SINGLE NAV — fixed, updates dynamically -->
+<nav class="site-nav">
+  <div class="nav-wordmark">get<span>martin</span></div>
+  <div class="nav-dots">
+    <button class="nav-dot active" data-label="The Problem" data-index="0"></button>
+    <button class="nav-dot" data-label="The Contrast" data-index="1"></button>
+    <button class="nav-dot" data-label="The Method" data-index="2"></button>
+    <button class="nav-dot" data-label="The Formats" data-index="3"></button>
+    <button class="nav-dot" data-label="Let's talk" data-index="4"></button>
+  </div>
+  <div class="chapter-tag">
+    <span class="dot"></span><span class="chapter-tag-text">01 / 05 — The Problem</span>
+  </div>
+  <div class="nav-progress"></div>
+</nav>
+
+<!-- SCROLL WRAPPER -->
+<div class="site-wrapper" id="site-wrapper">
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CH1 — THE PROBLEM
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section class="chapter" id="ch1" data-chapter="01 / 05 — The Problem">
+
+    <div class="columns">
+
+      <div class="col-left">
+        <div class="headline-wrap">
+          <h1 class="headline headline-a">
+            You have <span class="accent">8 seconds</span>
+            before a prospect
+            <span class="dim">decides you sound like everyone else.</span>
+          </h1>
+          <h1 class="headline headline-b" aria-hidden="true">
+            They already decided. <span class="headline-b-sub">Your deck gets forwarded without you.</span> Every call starts cold.
+          </h1>
+        </div>
+      </div>
+
+      <div class="col-right">
+        <div class="stats-grid">
+
+          <div class="card-lime span-full no-hover">
+            <p class="card-lime-text">Your prospect needs to feel the problem before they'll believe in the solution.</p>
+          </div>
+
+          <div class="stat-card stat-lime">
+            <div class="stat-bar"></div>
+            <div class="stat-number">
+              <span class="num-val" data-target="6">0</span><span style="font-size:0.55em;color:rgba(240,239,240,0.25);padding:0 3px;font-weight:400">/</span><span style="font-variant-numeric:tabular-nums">10</span>
+            </div>
+            <div class="stat-desc"><strong>Decision-makers</strong> in a typical complex B2B deal — each with <strong>different priorities</strong></div>
+          </div>
+
+          <div class="stat-card stat-orange">
+            <div class="stat-bar"></div>
+            <div class="stat-number">
+              <span class="num-val" data-target="77">0</span><span class="num-suf">%</span>
+            </div>
+            <div class="stat-desc">Of B2B buyers call their last purchase <strong>"very complex or difficult"</strong></div>
+          </div>
+
+          <div class="stat-card stat-purple">
+            <div class="stat-bar"></div>
+            <div class="stat-number">
+              <span class="num-val" data-target="75">0</span><span class="num-suf">%</span>
+            </div>
+            <div class="stat-desc">Prefer to decide without ever talking to a rep</div>
+          </div>
+
+          <div class="card-lime" id="ch1-cta" onclick="scrollToChapter(1)">
+            <div class="card-lime-text">See what we build</div>
+            <svg class="card-lime-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CH2 — THE CONTRAST
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section class="chapter" id="ch2" data-chapter="02 / 05 — The Contrast">
+
+    <div class="columns">
+
+      <div class="col-left">
+
+        <h1 class="ch-headline">
+          The best products lose<br>
+          to <span class="accent">better-explained</span> <span class="dim">ones.</span>
+        </h1>
+
+        <p class="ch-subquote">If they can't feel the value before the call, the call is already lost.</p>
+
+        <div class="pain-list">
+          <div class="pain-item">
+            <div class="pain-square"></div>
+            <div class="pain-text">They visit, they read, they leave. They still don't get it.</div>
+          </div>
+          <div class="pain-item">
+            <div class="pain-square"></div>
+            <div class="pain-text">Only the founder can sell it.</div>
+          </div>
+          <div class="pain-item">
+            <div class="pain-square"></div>
+            <div class="pain-text">Prospects go silent after the first meeting.</div>
+          </div>
+          <div class="pain-item">
+            <div class="pain-square"></div>
+            <div class="pain-text">Your champion tried to explain it. The deal died in that meeting.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-right">
+
+        <div class="card-lime">
+          <div class="card-lime-text">Your product is ready. The experience around it isn't.</div>
+        </div>
+
+        <div class="card-reveal bar-lime">
+          <div class="card-reveal-title">Prospects arrive already sold on the problem.</div>
+          <div class="card-reveal-body">Before the first call, they've gone through an experience built around their exact situation — in their own words. The call becomes a confirmation, not an introduction.</div>
+          <div class="card-reveal-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h12M8 2l5 5-5 5"/></svg></div>
+        </div>
+
+        <div class="card-reveal bar-purple">
+          <div class="card-reveal-title">Every stakeholder gets their version of yes.</div>
+          <div class="card-reveal-body">The CFO sees the financial case. The end user sees their workflow. The VP sees pipeline impact. One experience, built to work for whoever is reading it — without you in the room.</div>
+          <div class="card-reveal-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h12M8 2l5 5-5 5"/></svg></div>
+        </div>
+
+        <div class="card-reveal bar-orange">
+          <div class="card-reveal-title">When your champion forwards it, it sells without you.</div>
+          <div class="card-reveal-body">It doesn't lose context when it leaves the room. Each stakeholder who receives it gets exactly what they need to move forward — on their own terms, in their own time.</div>
+          <div class="card-reveal-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h12M8 2l5 5-5 5"/></svg></div>
+        </div>
+
+        <button class="ch-next" onclick="scrollToChapter(2)">
+          How does this get built?
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CH3 — THE METHOD
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section class="chapter" id="ch3" data-chapter="03 / 05 — The Method">
+
+    <div class="columns">
+
+      <div class="col-left">
+
+        <h1 class="ch-headline">
+          We start with <span class="accent">your buyer.</span><br>
+          <span class="dim">Not how you think about your product.</span>
+        </h1>
+
+        <p class="ch-philosophy">
+          Most briefs start with a product tour and a timeline.
+          Ours starts with a question: <strong>what does your prospect need to feel before they'll say yes?</strong>
+          The research comes first. The build follows.
+        </p>
+
+        <button class="ch-next" onclick="scrollToChapter(3)">
+          See what we build
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+        </button>
+
+      </div>
+
+      <div class="col-right">
+
+        <div class="card-lime">
+          <div class="card-lime-text">This is what separates a thinking partner from a production shop.</div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title">Map the buying committee</div>
+            <div class="step-desc">Who buys, who blocks, who champions. What each stakeholder needs to feel — not just hear — before the deal moves.</div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title">Surface what's blocking the deal before they can name it</div>
+            <div class="step-desc">Many buyers don't know they have a problem — they just know something isn't working. We surface the tension, name it precisely, and make it impossible to ignore.</div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title">Match the experience to the sales motion</div>
+            <div class="step-desc">Diagnostic, simulator, narrative, microsite — each format fits a different decision pattern. We recommend the one that matches how your buyer moves from interest to yes.</div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <div class="step-title">From brief to live experience. Nothing delegated.</div>
+            <div class="step-desc">We write the copy, design the experience, and deploy it on your domain. Analytics included. You hand it to a prospect on day one.</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CH4 — THE FORMATS
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section class="chapter" id="ch4" data-chapter="04 / 05 — The Formats">
+
+    <div class="columns">
+
+      <div class="col-left">
+
+        <h1 class="ch-headline">
+          No two sales problems<br>
+          are the <span class="accent">same.</span><br>
+          <span class="dim">Neither is the experience that gets them to yes.</span>
+        </h1>
+
+        <p class="ch-philosophy">
+          The experience I build for a logistics company selling to ops teams
+          looks nothing like what I'd build for a fintech selling to CFOs.
+          <strong>Same method. Completely different output.</strong>
+          The research leads. The format follows.
+        </p>
+
+        <button class="ch-next" onclick="scrollToChapter(4)">
+          Let's talk about yours
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+        </button>
+
+      </div>
+
+      <div class="col-right">
+
+        <div class="format-grid">
+
+          <div class="format-card-featured format-featured-lime">
+            <div class="format-card-lime-text">One experience.<br>Built for no one else.</div>
+            <div class="format-featured-body">Their language, their pain points, their buying committee addressed by name. Not a template with their logo dropped in — a purpose-built experience for a single account.</div>
+          </div>
+
+          <div class="format-card">
+            <div class="format-tag" style="color:var(--lime)">Unrecognised pain</div>
+            <div class="format-title">A prospect who qualifies themselves</div>
+            <div class="format-desc">They surface their own tension. You arrive knowing exactly what they need to hear.</div>
+          </div>
+
+          <div class="format-card">
+            <div class="format-tag" style="color:var(--orange)">Finance sign-off</div>
+            <div class="format-title">A number they built themselves</div>
+            <div class="format-desc">They model their own ROI before the call. Finance arrives with their own case already made.</div>
+          </div>
+
+          <div class="format-card">
+            <div class="format-tag" style="color:var(--purple-muted)">Committee alignment</div>
+            <div class="format-title">A story that travels without you</div>
+            <div class="format-desc">A guided experience that explains itself to whoever receives it — without you having to be there.</div>
+          </div>
+
+          <div class="format-card format-card-lime">
+            <div class="format-card-lime-text">Something we haven't built yet</div>
+            <div class="format-card-lime-sub">The research points to the format. If what you need doesn't have a name, we'll figure it out together.</div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CH5 — LET'S TALK
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section class="chapter" id="ch5" data-chapter="05 / 05 — Let's talk">
+
+    <div class="columns">
+
+      <div class="col-left">
+
+        <h1 class="ch-headline">
+          Let's find<br>
+          <span class="accent">yours.</span>
+        </h1>
+
+        <p class="ch-sub">
+          Every sales problem is different.
+          <strong>Tell me about yours</strong> — the product, the buyer, where the deal usually stalls.
+          I'll come back with a point of view on what would move it.
+        </p>
+
+      </div>
+
+      <div class="col-right">
+
+        <div class="form-card">
+
+          <div class="contact-form" id="contact-form">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-input" id="name" type="text" placeholder="Your name" autocomplete="off">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="company">Company</label>
+                <input class="form-input" id="company" type="text" placeholder="Your company" autocomplete="off">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input class="form-input" id="email" type="email" placeholder="you@company.com" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="problem">Your sales problem</label>
+              <textarea class="form-textarea" id="problem" placeholder="Tell me about the product, the buyer, and where deals usually stall."></textarea>
+            </div>
+
+            <button class="form-submit" id="submit-btn">
+              Send it
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+            </button>
+
+          </div>
+
+          <div class="form-success" id="form-success">
+            <div class="success-title">Got it. I'll be in touch.</div>
+            <div class="success-body">I read every message and respond personally. Give me a day or two — I'll come back with a point of view, not a sales pitch.</div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div><!-- /site-wrapper -->
+
+<script src="js/main.js"></script>
+<script>
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CHAPTER NAVIGATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+const chapters = document.querySelectorAll('.chapter');
+const navDots  = document.querySelectorAll('.nav-dot');
+const tagText  = document.querySelector('.chapter-tag-text');
+const progress = document.querySelector('.nav-progress');
+const wrapper  = document.getElementById('site-wrapper');
+
+function scrollToChapter(index) {
+  if (chapters[index]) {
+    chapters[index].scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+navDots.forEach((dot, i) => {
+  dot.addEventListener('click', () => scrollToChapter(i));
+});
+
+/* Update nav on scroll */
+wrapper.addEventListener('scroll', () => {
+  const scrollTop  = wrapper.scrollTop;
+  const scrollH    = wrapper.scrollHeight - wrapper.clientHeight;
+  const pct        = scrollH > 0 ? (scrollTop / scrollH) * 100 : 0;
+  progress.style.width = pct + '%';
+
+  /* Active dot */
+  chapters.forEach((ch, i) => {
+    const rect = ch.getBoundingClientRect();
+    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+      navDots.forEach((d, j) => d.classList.toggle('active', i === j));
+      if (tagText) tagText.textContent = ch.dataset.chapter || '';
+    }
+  });
+}, { passive: true });
+
+/* CH1 — Headline fade */
+setTimeout(() => {
+  const headA = document.querySelector('.headline-a');
+  const headB = document.querySelector('.headline-b');
+  if (!headA || !headB) return;
+  headA.classList.add('fade-out');
+  setTimeout(() => headB.classList.add('fade-in'), 8000);
+}, 1200);
+
+/* CH1 — Scramble counter */
+function scramble(card, target, delay) {
+  const numEl = card.querySelector('.num-val');
+  const sufEl = card.querySelector('.num-suf');
+  const bar   = card.querySelector('.stat-bar');
+  if (!numEl) return;
+  const total = 1500, scrEnd = 0.40, setEnd = 0.78;
+  let ts0 = null;
+  setTimeout(() => {
+    if (bar) bar.style.width = '100%';
+    numEl.classList.add('slam');
+    function tick(ts) {
+      if (!ts0) ts0 = ts;
+      const p = Math.min((ts - ts0) / total, 1);
+      if (p < scrEnd) {
+        const sp = p / scrEnd;
+        numEl.textContent = sp > 0.65 ? Math.round(sp * target) : Math.floor(Math.random() * Math.max(target * 1.5, 20));
+      } else if (p < setEnd) {
+        const sp = (p - scrEnd) / (setEnd - scrEnd);
+        const eased = 1 - Math.pow(1 - sp, 2);
+        numEl.textContent = Math.min(Math.round(eased * target) + Math.round((1 - sp) * 3), target + 3);
+      } else {
+        numEl.textContent = target;
+        if (sufEl && !sufEl.classList.contains('show')) sufEl.classList.add('show');
+        if (p === 1) { numEl.classList.add('pulse'); return; }
+      }
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }, delay);
+}
+
+const statDelays = [500, 700, 900];
+let si = 0;
+document.querySelectorAll('.stats-grid .stat-card').forEach(card => {
+  const numEl = card.querySelector('.num-val');
+  if (!numEl) return;
+  scramble(card, parseInt(numEl.dataset.target), statDelays[si++]);
+});
+
+/* CH2 — Bar sweeps on scroll into view */
+const ch2 = document.getElementById('ch2');
+const ch2Observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      [600, 800, 1000].forEach((d, i) => {
+        const cards = ch2.querySelectorAll('.card-reveal');
+        if (cards[i]) setTimeout(() => cards[i].classList.add('bar-active'), d);
+      });
+      ch2Observer.unobserve(ch2);
+    }
+  });
+}, { threshold: 0.3 });
+if (ch2) ch2Observer.observe(ch2);
+
+/* CH4 — Bar sweeps on scroll into view */
+const ch4 = document.getElementById('ch4');
+const ch4Observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      [500, 700, 900, 1100].forEach((d, i) => {
+        const cards = ch4.querySelectorAll('.format-card');
+        if (cards[i]) setTimeout(() => cards[i].classList.add('bar-active'), d);
+      });
+      ch4Observer.unobserve(ch4);
+    }
+  });
+}, { threshold: 0.3 });
+if (ch4) ch4Observer.observe(ch4);
+
+/* CH5 — Form submit */
+const submitBtn = document.getElementById('submit-btn');
+if (submitBtn) {
+  submitBtn.addEventListener('click', () => {
+    const name    = document.getElementById('name')?.value.trim();
+    const email   = document.getElementById('email')?.value.trim();
+    const problem = document.getElementById('problem')?.value.trim();
+    if (!name || !email || !problem) return;
+    const form = document.getElementById('contact-form');
+    form.style.opacity = '0';
+    form.style.transition = 'opacity 0.4s';
+    setTimeout(() => {
+      form.style.display = 'none';
+      document.getElementById('form-success').classList.add('visible');
+    }, 400);
+  });
+}
+</script>
+
+</body>
+</html>
