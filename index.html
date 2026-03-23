@@ -149,35 +149,7 @@ html, body {
 }
 .nav-link-cta:hover { background: var(--lime-hover); }
 
-/* Dot navigation */
-.nav-dots { display: flex; gap: 6px; align-items: center; position: relative; }
-.nav-dot {
-  height: 5px; width: 5px;
-  background: var(--white-faint);
-  border: none; cursor: pointer;
-  transition: all var(--dur-base) var(--ease-out);
-  position: relative;
-}
-.nav-dot:hover  { background: var(--white-dim); width: 14px; }
-.nav-dot.active { background: var(--lime); width: 24px; }
-
-/* Dot tooltip */
-.nav-dot::after {
-  content: attr(data-label);
-  position: absolute;
-  bottom: calc(100% + 10px);
-  left: 50%; transform: translateX(-50%);
-  font-family: var(--font-body);
-  font-size: 0.75rem; font-weight: 300;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--white); background: var(--navy);
-  border: 1px solid var(--white-faint);
-  padding: 0.3rem 0.7rem;
-  white-space: nowrap;
-  opacity: 0; pointer-events: none;
-  transition: opacity var(--dur-base);
-}
-.nav-dot:hover::after { opacity: 1; }
+/* Dot tooltip — removed, dots now in right column */
 
 .nav-progress {
   position: absolute; bottom: 0; left: 0;
@@ -398,6 +370,30 @@ html, body {
 .num-val.slam  { animation: numSlam 0.65s var(--ease-out) forwards; }
 .num-val.pulse { animation: breathe 3.5s var(--ease-inout) infinite; }
 
+/* Chapter indicator — top of right column */
+.ch-indicator {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 1.5rem;
+  position: relative; z-index: 2;
+}
+.ch-indicator-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem; font-weight: 400;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(30,44,58,0.35);
+}
+.ch-indicator-dots {
+  display: flex; gap: 5px; align-items: center;
+}
+.ch-dot {
+  height: 4px; width: 4px;
+  background: rgba(30,44,58,0.2);
+  border: none; cursor: pointer; padding: 0;
+  transition: all var(--dur-base) var(--ease-out);
+}
+.ch-dot:hover  { background: rgba(30,44,58,0.4); width: 12px; }
+.ch-dot.active { background: #1e2c3a; width: 20px; }
+
 /* Col-right fade in */
 .col-right { opacity: 0; animation: fadeIn 0.7s var(--ease-out) 0.4s forwards; }
 
@@ -416,7 +412,6 @@ html, body {
   .format-card-featured { grid-column: 1; }
   .form-row { grid-template-columns: 1fr; }
   .card-reveal-body { max-height: none !important; opacity: 1 !important; margin-top: 0.6rem !important; }
-  .nav-dots { display: none; }
   .nav-links { gap: 1rem; }
   .nav-link { display: none; }
   .nav-link-cta { display: block; }
@@ -426,16 +421,9 @@ html, body {
 </head>
 <body>
 
-<!-- SINGLE NAV — fixed, updates dynamically -->
+<!-- SINGLE NAV — fixed, single instance -->
 <nav class="site-nav">
   <div class="nav-wordmark">get<span>martin</span></div>
-  <div class="nav-dots">
-    <button class="nav-dot active" data-label="The Problem" data-index="0"></button>
-    <button class="nav-dot" data-label="The Contrast" data-index="1"></button>
-    <button class="nav-dot" data-label="The Method" data-index="2"></button>
-    <button class="nav-dot" data-label="The Formats" data-index="3"></button>
-    <button class="nav-dot" data-label="Let's talk" data-index="4"></button>
-  </div>
   <div class="nav-links">
     <a class="nav-link" href="/">This First</a>
     <a class="nav-link" href="/proof">Proof</a>
@@ -469,6 +457,16 @@ html, body {
       </div>
 
       <div class="col-right">
+        <div class="ch-indicator">
+          <span class="ch-indicator-label">01 / 05 — The Problem</span>
+          <div class="ch-indicator-dots">
+            <button class="ch-dot active" data-chapter="0"></button>
+            <button class="ch-dot" data-chapter="1"></button>
+            <button class="ch-dot" data-chapter="2"></button>
+            <button class="ch-dot" data-chapter="3"></button>
+            <button class="ch-dot" data-chapter="4"></button>
+          </div>
+        </div>
         <div class="stats-grid">
 
           <div class="card-lime span-full no-hover">
@@ -549,6 +547,16 @@ html, body {
       </div>
 
       <div class="col-right">
+        <div class="ch-indicator">
+          <span class="ch-indicator-label">02 / 05 — The Contrast</span>
+          <div class="ch-indicator-dots">
+            <button class="ch-dot" data-chapter="0"></button>
+            <button class="ch-dot active" data-chapter="1"></button>
+            <button class="ch-dot" data-chapter="2"></button>
+            <button class="ch-dot" data-chapter="3"></button>
+            <button class="ch-dot" data-chapter="4"></button>
+          </div>
+        </div>
 
         <div class="card-lime">
           <div class="card-lime-text">Your product is ready. The experience around it isn't.</div>
@@ -611,6 +619,16 @@ html, body {
       </div>
 
       <div class="col-right">
+        <div class="ch-indicator">
+          <span class="ch-indicator-label">03 / 05 — The Method</span>
+          <div class="ch-indicator-dots">
+            <button class="ch-dot" data-chapter="0"></button>
+            <button class="ch-dot" data-chapter="1"></button>
+            <button class="ch-dot active" data-chapter="2"></button>
+            <button class="ch-dot" data-chapter="3"></button>
+            <button class="ch-dot" data-chapter="4"></button>
+          </div>
+        </div>
 
         <div class="card-lime">
           <div class="card-lime-text">This is what separates a thinking partner from a production shop.</div>
@@ -684,6 +702,16 @@ html, body {
       </div>
 
       <div class="col-right">
+        <div class="ch-indicator">
+          <span class="ch-indicator-label">04 / 05 — The Formats</span>
+          <div class="ch-indicator-dots">
+            <button class="ch-dot" data-chapter="0"></button>
+            <button class="ch-dot" data-chapter="1"></button>
+            <button class="ch-dot" data-chapter="2"></button>
+            <button class="ch-dot active" data-chapter="3"></button>
+            <button class="ch-dot" data-chapter="4"></button>
+          </div>
+        </div>
 
         <div class="format-grid">
 
@@ -746,6 +774,16 @@ html, body {
       </div>
 
       <div class="col-right">
+        <div class="ch-indicator">
+          <span class="ch-indicator-label">05 / 05 — Let's talk</span>
+          <div class="ch-indicator-dots">
+            <button class="ch-dot" data-chapter="0"></button>
+            <button class="ch-dot" data-chapter="1"></button>
+            <button class="ch-dot" data-chapter="2"></button>
+            <button class="ch-dot" data-chapter="3"></button>
+            <button class="ch-dot active" data-chapter="4"></button>
+          </div>
+        </div>
 
         <div class="form-card">
 
@@ -800,8 +838,6 @@ html, body {
    CHAPTER NAVIGATION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 const chapters = document.querySelectorAll('.chapter');
-const navDots  = document.querySelectorAll('.nav-dot');
-const tagText  = null;
 const progress = document.querySelector('.nav-progress');
 const wrapper  = document.getElementById('site-wrapper');
 
@@ -811,23 +847,27 @@ function scrollToChapter(index) {
   }
 }
 
-navDots.forEach((dot, i) => {
-  dot.addEventListener('click', () => scrollToChapter(i));
+/* Ch-dot clicks */
+document.querySelectorAll('.ch-dot').forEach(dot => {
+  dot.addEventListener('click', () => {
+    const idx = parseInt(dot.dataset.chapter);
+    scrollToChapter(idx);
+  });
 });
 
-/* Update nav on scroll */
+/* Update active dots and progress on scroll */
 wrapper.addEventListener('scroll', () => {
-  const scrollTop  = wrapper.scrollTop;
-  const scrollH    = wrapper.scrollHeight - wrapper.clientHeight;
-  const pct        = scrollH > 0 ? (scrollTop / scrollH) * 100 : 0;
+  const scrollTop = wrapper.scrollTop;
+  const scrollH   = wrapper.scrollHeight - wrapper.clientHeight;
+  const pct       = scrollH > 0 ? (scrollTop / scrollH) * 100 : 0;
   progress.style.width = pct + '%';
 
-  /* Active dot */
   chapters.forEach((ch, i) => {
     const rect = ch.getBoundingClientRect();
     if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-      navDots.forEach((d, j) => d.classList.toggle('active', i === j));
-      if (tagText) tagText.textContent = ch.dataset.chapter || '';
+      document.querySelectorAll('.ch-dot').forEach(d => {
+        d.classList.toggle('active', parseInt(d.dataset.chapter) === i);
+      });
     }
   });
 }, { passive: true });
