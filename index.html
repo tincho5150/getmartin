@@ -294,17 +294,10 @@ html, body {
 .card-reveal {
   background: #1e2c3a;
   border: 1px solid #1e2c3a;
-  border-left: 3px solid transparent;
   padding: 1.2rem 1.4rem; position: relative; overflow: hidden; cursor: pointer;
-  transition: background var(--dur-base), transform var(--dur-base) var(--ease-out), border-left-color 0.6s var(--ease-out);
+  transition: background var(--dur-base), transform var(--dur-base) var(--ease-out);
 }
 .card-reveal:hover { background: #2a3a4a; transform: translateY(-2px); }
-.card-reveal.bar-lime.bar-active,
-.card-reveal.bar-purple.bar-active,
-.card-reveal.bar-orange.bar-active { border-left-color: rgba(240,239,240,0.3); }
-.card-reveal.bar-lime.bar-active:hover,
-.card-reveal.bar-purple.bar-active:hover,
-.card-reveal.bar-orange.bar-active:hover { border-left-color: rgba(240,239,240,0.5); }
 
 .card-reveal-title { font-family: var(--font-display); font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; color: #f0eff0; padding-right: 1.5rem; }
 .card-reveal-body  { font-size: 1rem; font-weight: 300; color: rgba(240,239,240,0.6); line-height: 1.6; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.5s var(--ease-out), opacity 0.4s var(--ease-out), margin-top var(--dur-base); }
@@ -324,11 +317,10 @@ html, body {
 .step-card {
   background: #1e2c3a;
   border: 1px solid #1e2c3a;
-  border-left: 3px solid rgba(240,239,240,0.2);
   padding: 1.1rem 1.3rem; display: grid; grid-template-columns: 2rem 1fr; gap: 0 1rem; align-items: start;
-  transition: background var(--dur-base), transform var(--dur-base) var(--ease-out), border-left-color var(--dur-base);
+  transition: background var(--dur-base), transform var(--dur-base) var(--ease-out);
 }
-.step-card:hover { background: #2a3a4a; border-left-color: var(--lime); transform: translateY(-2px); }
+.step-card:hover { background: #2a3a4a; transform: translateY(-2px); }
 .step-num     { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--lime); letter-spacing: 0.04em; padding-top: 0.1rem; }
 .step-content { display: flex; flex-direction: column; gap: 0.25rem; }
 .step-title   { font-family: var(--font-display); font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; color: #f0eff0; }
@@ -339,7 +331,7 @@ html, body {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .format-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto; gap: var(--col-gap); }
 
-.format-card-featured { grid-column: 1 / -1; background: #1e2c3a; border: 1px solid #1e2c3a; border-left: 3px solid var(--lime); padding: 1.6rem 1.8rem; position: relative; transition: background var(--dur-base), transform var(--dur-base) var(--ease-out); }
+.format-card-featured { grid-column: 1 / -1; background: #1e2c3a; border: 1px solid #1e2c3a; padding: 1.6rem 1.8rem; position: relative; transition: background var(--dur-base), transform var(--dur-base) var(--ease-out); }
 .format-card-featured:hover { background: #2a3a4a; transform: translateY(-2px); }
 
 .format-featured-lime { background: #1e2c3a !important; border: 1px solid #1e2c3a !important; display: flex; flex-direction: column; gap: 0.8rem; transition: background var(--dur-base), transform var(--dur-base) var(--ease-out); }
@@ -347,15 +339,13 @@ html, body {
 .format-featured-body { font-family: var(--font-body); font-size: 1rem; font-weight: 300; line-height: 1.6; color: rgba(240,239,240,0.6); }
 .format-card-lime-text { font-family: var(--font-display); font-size: clamp(1.3rem, 2.2vw, 2rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: #f0eff0; }
 
-.format-card { background: var(--lime); border: 1px solid var(--lime); border-left: 3px solid transparent; padding: 1.3rem 1.4rem 1.5rem; position: relative; overflow: hidden; transition: background var(--dur-base), transform var(--dur-base) var(--ease-out), border-left-color 0.6s var(--ease-out); }
+.format-card { background: var(--lime); border: 1px solid var(--lime); padding: 1.3rem 1.4rem 1.5rem; position: relative; overflow: hidden; transition: background var(--dur-base), transform var(--dur-base) var(--ease-out); }
 .format-card:hover { background: var(--lime-hover); transform: translateY(-2px); }
-.format-card:not(.format-card-lime).bar-active { border-left-color: rgba(30,44,58,0.25); }
-.format-card:not(.format-card-lime).bar-active:hover { border-left-color: rgba(30,44,58,0.4); }
-.format-card-lime { background: #1e2c3a !important; border: 1px solid #1e2c3a !important; border-left: 3px solid rgba(240,239,240,0.1) !important; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 0.5rem; transition: background var(--dur-base), transform var(--dur-base) var(--ease-out); }
+.format-card-lime { background: #1e2c3a !important; border: 1px solid #1e2c3a !important; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 0.5rem; transition: background var(--dur-base), transform var(--dur-base) var(--ease-out); }
 .format-card-lime:hover { background: #2a3a4a !important; transform: translateY(-2px); }
 .format-card-lime-sub { font-family: var(--font-body); font-size: 1rem; font-weight: 300; line-height: 1.55; color: rgba(240,239,240,0.5); }
 
-.format-tag   { font-family: var(--font-body); font-size: 0.85rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(30,44,58,0.5); margin-bottom: 0.4rem; }
+.format-tag   { font-family: var(--font-body); font-size: 0.85rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(30,44,58,0.45); margin-bottom: 0.4rem; }
 .format-title { font-family: var(--font-display); font-size: clamp(1rem, 1.3vw, 1.1rem); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; color: #1e2c3a; margin-bottom: 0.3rem; }
 .format-desc  { font-size: 1rem; font-weight: 300; color: rgba(30,44,58,0.65); line-height: 1.5; }
 
@@ -685,19 +675,19 @@ html, body {
           </div>
 
           <div class="format-card">
-            <div class="format-tag" style="color:var(--lime)">Unrecognised pain</div>
+            <div class="format-tag">Unrecognised pain</div>
             <div class="format-title">A prospect who qualifies themselves</div>
             <div class="format-desc">They surface their own tension. You arrive knowing exactly what they need to hear.</div>
           </div>
 
           <div class="format-card">
-            <div class="format-tag" style="color:var(--orange)">Finance sign-off</div>
+            <div class="format-tag">Finance sign-off</div>
             <div class="format-title">A number they built themselves</div>
             <div class="format-desc">They model their own ROI before the call. Finance arrives with their own case already made.</div>
           </div>
 
           <div class="format-card">
-            <div class="format-tag" style="color:var(--purple-muted)">Committee alignment</div>
+            <div class="format-tag">Committee alignment</div>
             <div class="format-title">A story that travels without you</div>
             <div class="format-desc">A guided experience that explains itself to whoever receives it — without you having to be there.</div>
           </div>
