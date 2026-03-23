@@ -175,11 +175,16 @@ html, body {
 }
 
 .col-right {
-  display: flex; flex-direction: column; justify-content: center;
-  gap: var(--col-gap);
-  padding: 4vw 5vw 4vw 3.5vw;
+  display: flex; flex-direction: column;
   position: relative; z-index: 1;
   background: #ffffff;
+}
+.col-right > *:not(.ch-indicator) {
+  padding: 3vw 5vw 3vw 3.5vw;
+  flex: 1;
+  display: flex; flex-direction: column; justify-content: center;
+  gap: var(--col-gap);
+  position: relative; z-index: 1;
 }
 .col-right::before {
   content: '';
@@ -370,29 +375,39 @@ html, body {
 .num-val.slam  { animation: numSlam 0.65s var(--ease-out) forwards; }
 .num-val.pulse { animation: breathe 3.5s var(--ease-inout) infinite; }
 
-/* Chapter indicator — top of right column */
+/* Chapter nav bar — top of right column */
 .ch-indicator {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 1.5rem;
-  position: relative; z-index: 2;
+  display: flex; align-items: center;
+  padding: 0 2rem;
+  height: 44px;
+  border-bottom: 1px solid rgba(30,44,58,0.1);
+  background: #ffffff;
+  position: relative; z-index: 2; flex-shrink: 0;
 }
 .ch-indicator-label {
   font-family: var(--font-body);
-  font-size: 0.72rem; font-weight: 400;
+  font-size: 0.72rem; font-weight: 500;
   letter-spacing: 0.12em; text-transform: uppercase;
-  color: rgba(30,44,58,0.35);
+  color: #1e2c3a; flex: 1;
+}
+.ch-indicator-sep {
+  width: 1px; height: 16px;
+  background: rgba(30,44,58,0.15);
+  margin: 0 1.5rem; flex-shrink: 0;
 }
 .ch-indicator-dots {
-  display: flex; gap: 5px; align-items: center;
+  display: flex; gap: 1.2rem; align-items: center; flex-shrink: 0;
 }
 .ch-dot {
-  height: 4px; width: 4px;
-  background: rgba(30,44,58,0.2);
-  border: none; cursor: pointer; padding: 0;
-  transition: all var(--dur-base) var(--ease-out);
+  font-family: var(--font-body);
+  font-size: 0.72rem; font-weight: 400;
+  letter-spacing: 0.08em;
+  color: rgba(30,44,58,0.25);
+  border: none; background: none; cursor: pointer; padding: 0;
+  transition: color var(--dur-base);
 }
-.ch-dot:hover  { background: rgba(30,44,58,0.4); width: 12px; }
-.ch-dot.active { background: #1e2c3a; width: 20px; }
+.ch-dot:hover  { color: rgba(30,44,58,0.5); }
+.ch-dot.active { color: #1e2c3a; font-weight: 700; }
 
 /* Col-right fade in */
 .col-right { opacity: 0; animation: fadeIn 0.7s var(--ease-out) 0.4s forwards; }
@@ -406,7 +421,7 @@ html, body {
   .chapter { height: auto; scroll-snap-align: none; padding-top: var(--nav-height); }
   .columns { grid-template-columns: 1fr; height: auto; }
   .col-left  { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--white-faint); }
-  .col-right { padding: 2rem 1.5rem 4rem; opacity: 1; animation: none; }
+  .col-right > *:not(.ch-indicator) { padding: 2rem 1.5rem 4rem; }
   .col-left * { opacity: 1 !important; animation: none !important; }
   .format-grid { grid-template-columns: 1fr; }
   .format-card-featured { grid-column: 1; }
@@ -458,13 +473,14 @@ html, body {
 
       <div class="col-right">
         <div class="ch-indicator">
-          <span class="ch-indicator-label">01 / 05 — The Problem</span>
+          <span class="ch-indicator-label">The Problem</span>
+          <div class="ch-indicator-sep"></div>
           <div class="ch-indicator-dots">
-            <button class="ch-dot active" data-chapter="0"></button>
-            <button class="ch-dot" data-chapter="1"></button>
-            <button class="ch-dot" data-chapter="2"></button>
-            <button class="ch-dot" data-chapter="3"></button>
-            <button class="ch-dot" data-chapter="4"></button>
+            <button class="ch-dot active" data-chapter="0">01</button>
+            <button class="ch-dot" data-chapter="1">02</button>
+            <button class="ch-dot" data-chapter="2">03</button>
+            <button class="ch-dot" data-chapter="3">04</button>
+            <button class="ch-dot" data-chapter="4">05</button>
           </div>
         </div>
         <div class="stats-grid">
@@ -548,13 +564,14 @@ html, body {
 
       <div class="col-right">
         <div class="ch-indicator">
-          <span class="ch-indicator-label">02 / 05 — The Contrast</span>
+          <span class="ch-indicator-label">The Contrast</span>
+          <div class="ch-indicator-sep"></div>
           <div class="ch-indicator-dots">
-            <button class="ch-dot" data-chapter="0"></button>
-            <button class="ch-dot active" data-chapter="1"></button>
-            <button class="ch-dot" data-chapter="2"></button>
-            <button class="ch-dot" data-chapter="3"></button>
-            <button class="ch-dot" data-chapter="4"></button>
+            <button class="ch-dot" data-chapter="0">01</button>
+            <button class="ch-dot active" data-chapter="1">02</button>
+            <button class="ch-dot" data-chapter="2">03</button>
+            <button class="ch-dot" data-chapter="3">04</button>
+            <button class="ch-dot" data-chapter="4">05</button>
           </div>
         </div>
 
@@ -620,13 +637,14 @@ html, body {
 
       <div class="col-right">
         <div class="ch-indicator">
-          <span class="ch-indicator-label">03 / 05 — The Method</span>
+          <span class="ch-indicator-label">The Method</span>
+          <div class="ch-indicator-sep"></div>
           <div class="ch-indicator-dots">
-            <button class="ch-dot" data-chapter="0"></button>
-            <button class="ch-dot" data-chapter="1"></button>
-            <button class="ch-dot active" data-chapter="2"></button>
-            <button class="ch-dot" data-chapter="3"></button>
-            <button class="ch-dot" data-chapter="4"></button>
+            <button class="ch-dot" data-chapter="0">01</button>
+            <button class="ch-dot" data-chapter="1">02</button>
+            <button class="ch-dot active" data-chapter="2">03</button>
+            <button class="ch-dot" data-chapter="3">04</button>
+            <button class="ch-dot" data-chapter="4">05</button>
           </div>
         </div>
 
@@ -703,13 +721,14 @@ html, body {
 
       <div class="col-right">
         <div class="ch-indicator">
-          <span class="ch-indicator-label">04 / 05 — The Formats</span>
+          <span class="ch-indicator-label">The Formats</span>
+          <div class="ch-indicator-sep"></div>
           <div class="ch-indicator-dots">
-            <button class="ch-dot" data-chapter="0"></button>
-            <button class="ch-dot" data-chapter="1"></button>
-            <button class="ch-dot" data-chapter="2"></button>
-            <button class="ch-dot active" data-chapter="3"></button>
-            <button class="ch-dot" data-chapter="4"></button>
+            <button class="ch-dot" data-chapter="0">01</button>
+            <button class="ch-dot" data-chapter="1">02</button>
+            <button class="ch-dot" data-chapter="2">03</button>
+            <button class="ch-dot active" data-chapter="3">04</button>
+            <button class="ch-dot" data-chapter="4">05</button>
           </div>
         </div>
 
@@ -775,13 +794,14 @@ html, body {
 
       <div class="col-right">
         <div class="ch-indicator">
-          <span class="ch-indicator-label">05 / 05 — Let's talk</span>
+          <span class="ch-indicator-label">Let's talk</span>
+          <div class="ch-indicator-sep"></div>
           <div class="ch-indicator-dots">
-            <button class="ch-dot" data-chapter="0"></button>
-            <button class="ch-dot" data-chapter="1"></button>
-            <button class="ch-dot" data-chapter="2"></button>
-            <button class="ch-dot" data-chapter="3"></button>
-            <button class="ch-dot active" data-chapter="4"></button>
+            <button class="ch-dot" data-chapter="0">01</button>
+            <button class="ch-dot" data-chapter="1">02</button>
+            <button class="ch-dot" data-chapter="2">03</button>
+            <button class="ch-dot" data-chapter="3">04</button>
+            <button class="ch-dot active" data-chapter="4">05</button>
           </div>
         </div>
 
