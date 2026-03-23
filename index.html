@@ -44,6 +44,7 @@ html, body {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   height: 100vh;
+  padding-top: var(--nav-height);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -113,18 +114,43 @@ html, body {
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 2.5rem;
   border-bottom: 1px solid var(--white-faint);
-  background: rgba(30,44,58,0.8);
+  background: rgba(30,44,58,0.92);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
 
 .nav-wordmark {
   font-family: var(--font-display);
   font-size: 1rem; font-weight: 700; letter-spacing: 0.04em; color: var(--white);
+  text-decoration: none; cursor: pointer; flex-shrink: 0;
 }
 .nav-wordmark span { color: var(--lime); }
 
-.nav-dots { display: flex; gap: 6px; align-items: center; position: relative; }
+/* Page links */
+.nav-links {
+  display: flex; align-items: center; gap: 2rem;
+}
+.nav-link {
+  font-family: var(--font-body);
+  font-size: 0.85rem; font-weight: 400;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--white-dim); text-decoration: none;
+  transition: color var(--dur-base);
+  white-space: nowrap;
+}
+.nav-link:hover { color: var(--white); }
+.nav-link-cta {
+  font-family: var(--font-body);
+  font-size: 0.85rem; font-weight: 400;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--navy-dark); background: var(--lime);
+  padding: 0.4rem 1rem; text-decoration: none;
+  transition: background var(--dur-base);
+  white-space: nowrap;
+}
+.nav-link-cta:hover { background: var(--lime-hover); }
 
+/* Dot navigation */
+.nav-dots { display: flex; gap: 6px; align-items: center; position: relative; }
 .nav-dot {
   height: 5px; width: 5px;
   background: var(--white-faint);
@@ -142,7 +168,7 @@ html, body {
   bottom: calc(100% + 10px);
   left: 50%; transform: translateX(-50%);
   font-family: var(--font-body);
-  font-size: 1rem; font-weight: 300;
+  font-size: 0.75rem; font-weight: 300;
   letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--white); background: var(--navy);
   border: 1px solid var(--white-faint);
@@ -152,15 +178,6 @@ html, body {
   transition: opacity var(--dur-base);
 }
 .nav-dot:hover::after { opacity: 1; }
-
-.chapter-tag {
-  font-family: var(--font-body);
-  font-size: 1rem; font-weight: 300; letter-spacing: 0.06em;
-  text-transform: uppercase; color: var(--white-dim);
-  display: flex; align-items: center; gap: 6px;
-  transition: opacity var(--dur-base);
-}
-.chapter-tag .dot { width: 6px; height: 6px; background: var(--lime); display: inline-block; }
 
 .nav-progress {
   position: absolute; bottom: 0; left: 0;
@@ -176,7 +193,7 @@ html, body {
   flex: 1;
   display: grid; grid-template-columns: 1fr 1fr;
   overflow: hidden;
-  margin-top: var(--nav-height);
+  height: 100%;
 }
 
 .col-left {
@@ -390,8 +407,8 @@ html, body {
 @media (max-width: 768px) {
   html, body { overflow: auto; height: auto; }
   .site-wrapper { overflow: visible; scroll-snap-type: none; height: auto; }
-  .chapter { height: auto; scroll-snap-align: none; }
-  .columns { grid-template-columns: 1fr; margin-top: var(--nav-height); }
+  .chapter { height: auto; scroll-snap-align: none; padding-top: var(--nav-height); }
+  .columns { grid-template-columns: 1fr; height: auto; }
   .col-left  { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--white-faint); }
   .col-right { padding: 2rem 1.5rem 4rem; opacity: 1; animation: none; }
   .col-left * { opacity: 1 !important; animation: none !important; }
@@ -399,8 +416,10 @@ html, body {
   .format-card-featured { grid-column: 1; }
   .form-row { grid-template-columns: 1fr; }
   .card-reveal-body { max-height: none !important; opacity: 1 !important; margin-top: 0.6rem !important; }
-  .site-nav { position: fixed; }
   .nav-dots { display: none; }
+  .nav-links { gap: 1rem; }
+  .nav-link { display: none; }
+  .nav-link-cta { display: block; }
 }
 
 </style>
@@ -417,8 +436,10 @@ html, body {
     <button class="nav-dot" data-label="The Formats" data-index="3"></button>
     <button class="nav-dot" data-label="Let's talk" data-index="4"></button>
   </div>
-  <div class="chapter-tag">
-    <span class="dot"></span><span class="chapter-tag-text">01 / 05 — The Problem</span>
+  <div class="nav-links">
+    <a class="nav-link" href="/work">Work</a>
+    <a class="nav-link" href="/resources">Resources</a>
+    <a class="nav-link-cta" href="#ch5">Let's talk</a>
   </div>
   <div class="nav-progress"></div>
 </nav>
@@ -779,7 +800,7 @@ html, body {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 const chapters = document.querySelectorAll('.chapter');
 const navDots  = document.querySelectorAll('.nav-dot');
-const tagText  = document.querySelector('.chapter-tag-text');
+const tagText  = null;
 const progress = document.querySelector('.nav-progress');
 const wrapper  = document.getElementById('site-wrapper');
 
