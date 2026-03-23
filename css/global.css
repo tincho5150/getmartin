@@ -47,8 +47,8 @@
   --grid-light:    rgba(30,44,58,0.06);
 
   /* Typography */
-  --font-display: 'Clash Display', sans-serif;
-  --font-body:    'Satoshi', sans-serif;
+  --font-display: 'Roboto', sans-serif;
+  --font-body:    'Roboto', sans-serif;
 
   /* Type scale — minimum 16px */
   --text-base: 1rem;
@@ -340,15 +340,12 @@ a.link-subtle:hover { color: var(--white); border-color: var(--white-dim); }
 .stat-desc strong { color: var(--white); font-weight: 500; }
 
 /* Stat color — number only */
-.stat-lime   .stat-number { color: var(--lime); }
-.stat-orange .stat-number { color: var(--orange); }
-.stat-purple .stat-number { color: var(--purple-muted); }
+.stat-lime   .stat-number { color: var(--navy-dark); }
+.stat-orange .stat-number { color: var(--navy-dark); }
+.stat-purple .stat-number { color: var(--navy-dark); }
 
 /* Top bar — sweeps on reveal */
-.stat-bar { position: absolute; top: 0; left: 0; height: 2px; width: 0%; transition: width 0.8s var(--ease-out); }
-.stat-lime   .stat-bar { background: var(--lime); }
-.stat-orange .stat-bar { background: var(--orange); }
-.stat-purple .stat-bar { background: var(--purple); }
+.stat-bar { position: absolute; top: 0; left: 0; height: 2px; width: 0%; transition: width 0.8s var(--ease-out); background: rgba(30,44,58,0.15); }
 
 /* Lime card — CTA or thesis statement */
 .card-lime {
