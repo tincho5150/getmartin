@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="getmartin — Page not found.">
+<title>404 — getmartin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/global.css">
+<style>
+
+:root {
+  --font-display: 'Roboto', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+}
+
+html, body { height: 100%; overflow: hidden; }
+
+/* NAV */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-height); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--white-faint);
+  background: rgba(30,44,58,0.92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--white); text-decoration: none;
+}
+.nav-wordmark span { color: var(--lime); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-link {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white-dim); text-decoration: none;
+  transition: color var(--dur-base);
+}
+.nav-link:hover { color: var(--white); }
+.nav-link-cta {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
+  padding: 0.4rem 1rem; text-decoration: none; transition: background var(--dur-base);
+}
+.nav-link-cta:hover { background: var(--lime-hover); }
+
+/* PAGE */
+.page {
+  height: 100vh;
+  padding-top: var(--nav-height);
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+}
+.page::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none; z-index: 0;
+}
+.page::after {
+  content: ''; position: absolute;
+  top: -160px; left: -80px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(184,212,0,0.05) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+
+/* COLUMNS */
+.columns {
+  position: relative; z-index: 1; flex: 1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  overflow: hidden; height: 100%;
+}
+
+.col-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 4vw 3.5vw 4vw 5vw;
+  border-right: 1px solid rgba(30,44,58,0.15);
+}
+
+.col-right {
+  display: flex; flex-direction: column;
+  background: #ffffff;
+  position: relative; z-index: 1;
+  opacity: 0; animation: fadeIn 0.7s var(--ease-out) 0.4s forwards;
+}
+.col-right::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(30,44,58,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,44,58,0.05) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none; z-index: 0;
+}
+.col-right > * { position: relative; z-index: 1; }
+
+/* INDICATOR BAR */
+.ch-indicator {
+  display: flex; align-items: center;
+  padding: 0 2rem; height: 44px;
+  border-bottom: 1px solid rgba(30,44,58,0.1);
+  background: #ffffff; flex-shrink: 0;
+}
+.ch-indicator-label {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #1e2c3a;
+}
+
+/* RIGHT CONTENT */
+.col-right-content {
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+  gap: var(--col-gap); padding: 3vw 3.5vw 3vw 3vw;
+}
+
+/* LEFT CONTENT */
+.error-code {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 12vw, 12rem);
+  font-weight: 700; line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgba(240,239,240,0.06);
+  margin-bottom: -1rem;
+  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.1s forwards;
+}
+.ch-eyebrow {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
+  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.25s forwards;
+}
+.ch-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.2vw, 3.4rem);
+  font-weight: 700; line-height: 1.05; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 1.4rem;
+  opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards;
+}
+.ch-headline .dim { color: var(--white-dim); }
+.ch-body {
+  font-size: 1rem; font-weight: 300; line-height: 1.8;
+  color: var(--white-dim); max-width: 38ch;
+  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.4s forwards;
+}
+
+/* CARDS */
+.card-navy {
+  background: #1e2c3a; border: 1px solid #1e2c3a; padding: 1.4rem;
+}
+.card-navy-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.35); margin-bottom: 0.6rem;
+}
+.card-navy-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.75);
+}
+.card-navy-text strong { color: #f0eff0; font-weight: 500; }
+
+.nav-cards { display: flex; flex-direction: column; gap: var(--col-gap); }
+.nav-card {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid rgba(30,44,58,0.1);
+  text-decoration: none;
+  transition: border-color var(--dur-base), background var(--dur-base);
+  background: transparent;
+}
+.nav-card:hover {
+  border-color: rgba(30,44,58,0.25);
+  background: rgba(30,44,58,0.03);
+}
+.nav-card-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(30,44,58,0.4); margin-bottom: 0.3rem;
+}
+.nav-card-title {
+  font-size: 1rem; font-weight: 400; color: #1e2c3a;
+}
+.nav-card-arrow {
+  font-size: 1rem; color: rgba(30,44,58,0.3);
+  transition: transform var(--dur-base), color var(--dur-base);
+}
+.nav-card:hover .nav-card-arrow {
+  transform: translateX(4px);
+  color: #1e2c3a;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  html, body { overflow: auto; height: auto; }
+  .page { height: auto; }
+  .columns { grid-template-columns: 1fr; height: auto; }
+  .col-left { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--white-faint); }
+  .col-right-content { padding: 2rem 1.5rem 3rem; }
+  .nav-link { display: none; }
+  .nav-link-cta { display: block; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="nav-wordmark" href="/">get<span>martin</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="/">This First</a>
+    <a class="nav-link" href="/proof">Proof</a>
+    <a class="nav-link" href="/thinking">Thinking</a>
+    <a class="nav-link-cta" href="/#ch5">Let's talk</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="columns">
+
+    <div class="col-left">
+      <div class="error-code">404</div>
+      <p class="ch-eyebrow">Wrong turn</p>
+      <h1 class="ch-headline">
+        This page<br>
+        <span class="dim">doesn't exist.</span>
+      </h1>
+      <p class="ch-body">
+        The link is broken, the page was moved, or it hasn't been built yet.
+        Either way — nothing useful here.
+      </p>
+    </div>
+
+    <div class="col-right">
+      <div class="ch-indicator">
+        <span class="ch-indicator-label">Where to go instead</span>
+      </div>
+      <div class="col-right-content">
+
+        <div class="card-navy">
+          <div class="card-navy-label">You were probably looking for</div>
+          <div class="card-navy-text">
+            The argument, the proof, or the contact form.
+            <strong>All three are one click away.</strong>
+          </div>
+        </div>
+
+        <div class="nav-cards">
+          <a class="nav-card" href="/">
+            <div>
+              <div class="nav-card-label">Start here</div>
+              <div class="nav-card-title">This First — the argument</div>
+            </div>
+            <span class="nav-card-arrow">→</span>
+          </a>
+          <a class="nav-card" href="/proof">
+            <div>
+              <div class="nav-card-label">The work</div>
+              <div class="nav-card-title">Proof — what we've built</div>
+            </div>
+            <span class="nav-card-arrow">→</span>
+          </a>
+          <a class="nav-card" href="/#ch5">
+            <div>
+              <div class="nav-card-label">Get in touch</div>
+              <div class="nav-card-title">Let's talk — tell me your problem</div>
+            </div>
+            <span class="nav-card-arrow">→</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
