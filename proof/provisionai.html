@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="getmartin — The Netflix of supply chain content. A GEO-optimised full site and resource hub for ProvisionAI.">
+<title>ProvisionAI — getmartin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/global.css">
+<style>
+
+:root {
+  --font-display: 'Roboto', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+}
+
+html, body { height: 100%; overflow: hidden; }
+
+.site-wrapper {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* NAV */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-height); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--white-faint);
+  background: rgba(30,44,58,0.92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--white); text-decoration: none; flex-shrink: 0;
+}
+.nav-wordmark span { color: var(--lime); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-link {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white-dim); text-decoration: none;
+  transition: color var(--dur-base);
+}
+.nav-link:hover { color: var(--white); }
+.nav-link.active { color: var(--white); }
+.nav-link-cta {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
+  padding: 0.4rem 1rem; text-decoration: none; transition: background var(--dur-base);
+}
+.nav-link-cta:hover { background: var(--lime-hover); }
+.nav-progress {
+  position: absolute; bottom: 0; left: 0;
+  height: 1px; background: var(--lime); width: 0%;
+  transition: width 0.3s var(--ease-out);
+}
+
+/* CHAPTER */
+.chapter {
+  scroll-snap-align: start; scroll-snap-stop: always;
+  height: 100vh; padding-top: var(--nav-height);
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+}
+.chapter::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none; z-index: 0;
+}
+#ch0::after { content: ''; position: absolute; top: -160px; left: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(184,212,0,0.06) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+#ch1::after { content: ''; position: absolute; bottom: -120px; right: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+#ch2::after { content: ''; position: absolute; top: -120px; left: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+#ch3::after { content: ''; position: absolute; bottom: -120px; right: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+#ch4::after { content: ''; position: absolute; top: -120px; left: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+#ch5::after { content: ''; position: absolute; bottom: -120px; right: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+#ch6::after { content: ''; position: absolute; top: -120px; left: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+
+/* COLUMNS */
+.columns {
+  position: relative; z-index: 1; flex: 1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  overflow: hidden; height: 100%;
+}
+.col-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 4vw 3.5vw 4vw 5vw;
+  border-right: 1px solid rgba(30,44,58,0.15);
+}
+.col-right {
+  display: flex; flex-direction: column;
+  position: relative; z-index: 1; background: #ffffff;
+}
+.col-right::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(30,44,58,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,44,58,0.05) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none; z-index: 0;
+}
+.col-right > * { position: relative; z-index: 1; }
+.col-right { opacity: 0; animation: fadeIn 0.7s var(--ease-out) 0.4s forwards; }
+
+/* CHAPTER INDICATOR */
+.ch-indicator {
+  display: flex; align-items: center;
+  padding: 0 2rem; height: 44px;
+  border-bottom: 1px solid rgba(30,44,58,0.1);
+  background: #ffffff; flex-shrink: 0;
+}
+.ch-indicator-label {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #1e2c3a; flex: 1;
+}
+.ch-indicator-sep {
+  width: 1px; height: 16px; background: rgba(30,44,58,0.15);
+  margin: 0 1.5rem; flex-shrink: 0;
+}
+.ch-indicator-dots { display: flex; gap: 1.2rem; align-items: center; flex-shrink: 0; }
+.ch-dot {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.08em;
+  color: rgba(30,44,58,0.25); border: none; background: none;
+  cursor: pointer; padding: 0; transition: color var(--dur-base);
+}
+.ch-dot:hover { color: rgba(30,44,58,0.5); }
+.ch-dot.active { color: #1e2c3a; font-weight: 700; }
+
+/* RIGHT CONTENT */
+.col-right-content {
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+  gap: var(--col-gap); padding: 3vw 3.5vw 3vw 3vw;
+}
+
+/* MOCKUP */
+.mockup-img { width: 100%; }
+.mockup-img img { width: 100%; height: auto; display: block; }
+
+/* LEFT TYPOGRAPHY */
+.ch-eyebrow {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
+  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.2s forwards;
+}
+.ch-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.2vw, 3.4rem);
+  font-weight: 700; line-height: 1.05; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 1.6rem;
+  opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards;
+}
+.ch-headline .dim { color: var(--white-dim); }
+.ch-section {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime);
+  margin-bottom: 0.4rem; margin-top: 1.1rem;
+  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.4s forwards;
+}
+.ch-body {
+  font-size: 1rem; font-weight: 300; line-height: 1.8;
+  color: var(--white-dim); max-width: 42ch;
+  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.45s forwards;
+}
+.ch-body strong { color: var(--white); font-weight: 400; }
+.ch-next {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
+  border: none; padding: 0.9rem 1.8rem; cursor: pointer;
+  text-decoration: none; width: fit-content; margin-top: 2rem;
+  transition: background var(--dur-base), gap var(--dur-base) var(--ease-out);
+  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.6s forwards;
+}
+.ch-next:hover { background: var(--lime-hover); gap: 14px; }
+.ch-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--white-dim);
+  text-decoration: none; margin-bottom: 1.5rem;
+  transition: color var(--dur-base);
+  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.1s forwards;
+}
+.ch-back:hover { color: var(--white); }
+
+/* CARDS */
+.card-navy {
+  background: #1e2c3a; border: 1px solid #1e2c3a; padding: 1.4rem;
+}
+.card-navy-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.35); margin-bottom: 0.6rem;
+}
+.card-navy-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.75);
+}
+.card-navy-text strong { color: #f0eff0; font-weight: 500; }
+
+.metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); }
+.metric-card { background: var(--lime); border: 1px solid var(--lime); padding: 1.2rem 1.3rem; }
+.metric-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 700; line-height: 1; letter-spacing: -0.03em;
+  color: #1e2c3a; margin-bottom: 0.4rem;
+}
+.metric-label { font-size: 0.82rem; font-weight: 300; color: rgba(30,44,58,0.65); line-height: 1.4; }
+.metric-label strong { color: #1e2c3a; font-weight: 500; }
+
+.tag-card {
+  background: #1e2c3a; border: 1px solid #1e2c3a;
+  padding: 1rem 1.4rem; display: flex; flex-wrap: wrap; gap: 6px;
+}
+.tag {
+  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 0.25rem 0.6rem;
+  border: 1px solid rgba(240,239,240,0.15); color: rgba(240,239,240,0.5);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  html, body { overflow: auto; height: auto; }
+  .site-wrapper { overflow: visible; scroll-snap-type: none; height: auto; }
+  .chapter { height: auto; scroll-snap-align: none; }
+  .columns { grid-template-columns: 1fr; height: auto; }
+  .col-left { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--white-faint); }
+  .col-right-content { padding: 2rem 1.5rem 3rem; }
+  .metric-grid { grid-template-columns: 1fr 1fr; }
+  .nav-link { display: none; }
+  .nav-link-cta { display: block; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="nav-wordmark" href="/">get<span>martin</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="/">This First</a>
+    <a class="nav-link active" href="/proof">Proof</a>
+    <a class="nav-link" href="/thinking">Thinking</a>
+    <a class="nav-link-cta" href="/#ch5">Let's talk</a>
+  </div>
+  <div class="nav-progress"></div>
+</nav>
+
+<div class="site-wrapper" id="site-wrapper">
+
+  <!-- CH0 — INTRO -->
+  <section class="chapter" id="ch0">
+    <div class="columns">
+      <div class="col-left">
+        <a class="ch-back" href="/proof">← Back to Proof</a>
+        <p class="ch-eyebrow">Supply chain · Full site + resource hub</p>
+        <h1 class="ch-headline">The Netflix of<br><span class="dim">supply chain content.</span></h1>
+        <p class="ch-body">
+          ProvisionAI needed to own the supply chain optimisation conversation online —
+          not just rank for it.
+          <strong>Competitors had more brand recognition. The product had more depth.</strong>
+          The site needed to close that gap before a prospect ever picked up the phone.
+        </p>
+      </div>
+      <div class="col-right">
+        <div class="ch-indicator">
+          <span class="ch-indicator-label">ProvisionAI — Full Site</span>
+          <div class="ch-indicator-sep"></div>
+          <div class="ch-indicator-dots">
+            <button class="ch-dot active" data-chapter="0">01</button>
+            <button class="ch-dot" data-chapter="1">02</button>
+            <button class="ch-dot" data-chapter="2">03</button>
+            <button class="ch-dot" data-chapter="3">04</button>
+            <button class="ch-dot" data-chapter="4">05</button>
+            <button class="ch-dot" data-chapter="5">06</button>
+            <button class="ch-dot" data-chapter="6">07</button>
+          </div>
+        </div>
+        <div class="col-right-content">
+          <div class="mockup-img">
+            <img src="/assets/provisionai-hub.png" alt="ProvisionAI — Supply Chain, On Demand">
+          </div>
+          <div class="card-navy">
+            <div class="card-navy-label">The core insight</div>
+            <div class="card-navy-text">
+              GEO isn't just SEO for AI — it's writing so clearly that any system, human or machine, immediately understands what you do and who you do it for.
+              <strong>Clarity at that level is a competitive advantage most B2B sites don't have.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH1 — HOW IT WORKS -->
+  <section class="chapter" id="ch1">
+    <div class="columns">
+      <div class="col-left">
+        <p class="ch-eyebrow">The product — AutoO2</p>
+        <h2 class="ch-headline">Four steps.<br><span class="dim">One platform.</span></h2>
+        <p class="ch-section">What the site needed to explain</p>
+        <p class="ch-body">
+          AutoO2 is an AI-driven load-building solution. The challenge: most supply chain software
+          is sold to people who already understand the category.
+          <strong>ProvisionAI needed to sell to people who didn't know what load optimisation was —
+          or why they needed it.</strong>
+        </p>
+        <p class="ch-section">How we solved it</p>
+        <p class="ch-body">
+          Four steps shown in plain language — data gathering, load optimisation, STO creation,
+          picking and loading guidance. Each one a job a human currently does badly.
+          <strong>The site shows the system doing each job better, step by step, without jargon.</strong>
+          Kimberly-Clark, Campbell's, P&G, Nestlé, Unilever — the logos do the rest.
+        </p>
+      </div>
+      <div class="col-right">
+        <div class="ch-indicator">
+          <span class="ch-indicator-label">How AutoO2 works</span>
+          <div class="ch-indicator-sep"></div>
+          <div class="ch-indicator-dots">
+            <button class="ch-dot" data-chapter="0">01</button>
+            <button class="ch-dot active" data-chapter="1">02</button>
+            <button class="ch-dot" data-chapter="2">03</button>
+            <button class="ch-dot" data-chapter="3">04</button>
+            <button class="ch-dot" data-chapter="4">05</button>
+            <button class="ch-dot" data-chapter="5">06</button>
+            <button class="ch-dot" data-chapter="6">07</button>
+          </div>
+        </div>
+        <div class="col-right-content">
+          <div class="mockup-img">
+            <img src="/assets/provisionai-how.png" alt="How AutoO2 works — four steps">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH2 — TWO PRODUCTS -->
+  <section class="chapter" id="ch2">
+    <div class="columns">
+      <div class="col-left">
+        <p class="ch-eyebrow">The platform — AutoO2 + LevelLoad</p>
+        <h2 class="ch-headline">Two problems.<br><span class="dim">Two solutions. One platform.</span></h2>
+        <p class="ch-section">The product architecture challenge</p>
+        <p class="ch-body">
+          ProvisionAI has two products — AutoO2 for load optimisation and LevelLoad for
+          network flow. The risk: a site that tries to explain both ends up explaining neither.
+          <strong>The page needed to show each product's specific value
+          without the two bleeding into each other.</strong>
+        </p>
+        <p class="ch-section">The solution</p>
+        <p class="ch-body">
+          Side-by-side cards with distinct positioning — AutoO2 maximises payload on every truck,
+          LevelLoad smooths shipment volatility across the network.
+          <strong>Different buyers, different problems, different proof points. Same platform.</strong>
+          5–10% freight cost reduction for AutoO2. ~4% replenishment freight savings for LevelLoad.
+        </p>
+      </div>
+      <div class="col-right">
+        <div class="ch-indicator">
+          <span class="ch-indicator-label">AutoO2 + LevelLoad — side by side</span>
+          <div class="ch-indicator-sep"></div>
+          <div class="ch-indicator-dots">
+            <button class="ch-dot" data-chapter="0">01</button>
+            <button class="ch-dot" data-chapter="1">02</button>
+            <button class="ch-dot active" data-chapter="2">03</button>
+            <button class="ch-dot" data-chapter="3">04</button>
+            <button class="ch-dot" data-chapter="4">05</button>
+            <button class="ch-dot" data-chapter="5">06</button>
+            <button class="ch-dot" data-chapter="6">07</button>
+          </div>
+        </div>
+        <div class="col-right-content">
+          <div class="mockup-img">
+            <img src="/assets/provisionai-products.png" alt="Two products — AutoO2 and LevelLoad">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH3 — SCOPE 3 -->
+  <section class="chapter" id="ch3">
+    <div class="columns">
+      <div class="col-left">
+        <p class="ch-eyebrow">GEO content — Scope 3 emissions hub</p>
+        <h2 class="ch-headline">Scope 3 is<br><span class="dim">where the carbon is.</span></h2>
+        <p class="ch-section">The content opportunity</p>
+        <p class="ch-body">
+          70–90% of a CPG company's carbon footprint sits in Scope 3.
+          Transportation is the single largest category within it.
+          <strong>Every CFO, sustainability officer, and ops VP with a 2030 net-zero commitment
+          is searching for this connection — and most sites don't make it.</strong>
+        </p>
+        <p class="ch-section">What we built</p>
+        <p class="ch-body">
+          A dedicated Scope 3 content hub — regulatory context, investor pressure,
+          customer demand, internal targets. Written clearly enough to be found and cited
+          by AI search engines, not just indexed by Google.
+          <strong>The page positions ProvisionAI as the answer to a question
+          every enterprise buyer is already asking.</strong>
+        </p>
+      </div>
+      <div class="col-right">
+        <div class="ch-indicator">
+          <span class="ch-indicator-label">Scope 3 emissions hub</span>
+          <div class="ch-indicator-sep"></div>
+          <div class="ch-indicator-dots">
+            <button class="ch-dot" data-chapter="0">01</button>
+            <button class="ch-dot" data-chapter="1">02</button>
+            <button class="ch-dot" data-chapter="2">03</button>
+            <button class="ch-dot active" data-chapter="3">04</button>
+            <button class="ch-dot" data-chapter="4">05</button>
+            <button class="ch-dot" data-chapter="5">06</button>
+            <button class="ch-dot" data-chapter="6">07</button>
+          </div>
+        </div>
+        <div class="col-right-content">
+          <div class="mockup-img">
+            <img src="/assets/provisionai-scope3.png" alt="Scope 3 — where the carbon is">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH4 — CASE STUDY -->
+  <section class="chapter" id="ch4">
+    <div class="columns">
+      <div class="col-left">
+        <p class="ch-eyebrow">Case study — CPG leader</p>
+        <h2 class="ch-headline">98% utilisation.<br><span class="dim">Costs and carbon cut simultaneously.</span></h2>
+        <p class="ch-section">The client situation</p>
+        <p class="ch-body">
+          Rising fuel costs, a global driver shortage, and trucks running below capacity.
+          90–95% utilisation sounds efficient — until you're shipping hundreds of loads daily
+          across a global network.
+          <strong>That 3–8% gap compounds into extra trucks, extra miles, extra emissions,
+          and extra cost — every single day.</strong>
+        </p>
+        <p class="ch-section">The outcome</p>
+        <p class="ch-body">
+          AutoO2 pushed utilisation to 98%. Transport costs down 4–8%.
+          Carbon emissions cut 4–8%. Net-zero target supported through 2039.
+          <strong>Efficiency and sustainability turned out not to be in conflict.</strong>
+        </p>
+      </div>
+      <div class="col-right">
+        <div class="ch-indicator">
+          <span class="ch-indicator-label">CPG Leader — case study</span>
+          <div class="ch-indicator-sep"></div>
+          <div class="ch-indicator-dots">
+            <button class="ch-dot" data-chapter="0">01</button>
+            <button class="ch-dot" data-chapter="1">02</button>
+            <button class="ch-dot" data-chapter="2">03</button>
+            <button class="ch-dot" data-chapter="3">04</button>
+            <button class="ch-dot active" data-chapter="4">05</button>
+            <button class="ch-dot" data-chapter="5">06</button>
+            <button class="ch-dot" data-chapter="6">07</button>
+          </div>
+        </div>
+        <div class="col-right-content">
+          <div class="mockup-img">
+            <img src="/assets/provisionai-case.png" alt="CPG Leader — 98% utilisation case study">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH5 — IMPACT -->
+  <section class="chapter" id="ch5">
+    <div class="columns">
+      <div class="col-left">
+        <p class="ch-eyebrow">Real impact — Unilever scale</p>
+        <h2 class="ch-headline">4,675 acres<br><span class="dim">of forest. Every year.</span></h2>
+        <p class="ch-section">Why this number matters</p>
+        <p class="ch-body">
+          285,000 tons of CO₂ reduced. 88,000 trucks eliminated per year.
+          The carbon sequestered by 4,675 acres of US forest — eliminated by AutoO2 across
+          the network. <strong>This is what happens when you close the utilisation gap
+          at Unilever scale.</strong>
+        </p>
+        <p class="ch-section">How to show impact without a case study NDA</p>
+        <p class="ch-body">
+          The numbers are modelled from 21-day client impact data, annualised.
+          <strong>Specific enough to be credible. Structured so the buyer can
+          translate it directly to their own operation.</strong>
+          Every metric on the page is answerable with a single question:
+          "what would this look like for us?"
+        </p>
+      </div>
+      <div class="col-right">
+        <div class="ch-indicator">
+          <span class="ch-indicator-label">Real impact — 4,675 acres</span>
+          <div class="ch-indicator-sep"></div>
+          <div class="ch-indicator-dots">
+            <button class="ch-dot" data-chapter="0">01</button>
+            <button class="ch-dot" data-chapter="1">02</button>
+            <button class="ch-dot" data-chapter="2">03</button>
+            <button class="ch-dot" data-chapter="3">04</button>
+            <button class="ch-dot" data-chapter="4">05</button>
+            <button class="ch-dot active" data-chapter="5">06</button>
+            <button class="ch-dot" data-chapter="6">07</button>
+          </div>
+        </div>
+        <div class="col-right-content">
+          <div class="mockup-img">
+            <img src="/assets/provisionai-impact.png" alt="Real impact — 4,675 acres of forest">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH6 — RESOURCE HUB + CTA -->
+  <section class="chapter" id="ch6">
+    <div class="columns">
+      <div class="col-left">
+        <p class="ch-eyebrow">The resource hub</p>
+        <h2 class="ch-headline">23 resources.<br><span class="dim">No gatekeeping.</span></h2>
+        <p class="ch-section">What the hub is</p>
+        <p class="ch-body">
+          Webinars, ebooks, case studies, supply chain challenges — everything ProvisionAI
+          has published, in one searchable place. Filterable by format and topic.
+          <strong>Available whenever the buyer needs it, without a form to fill
+          or a sales rep to go through.</strong>
+        </p>
+        <p class="ch-section">Why no gatekeeping is a strategic decision</p>
+        <p class="ch-body">
+          Gated content optimises for leads. Ungated content optimises for trust.
+          A buyer who has read three ProvisionAI ebooks before the first call
+          is a fundamentally different conversation from one who hasn't.
+          <strong>The hub turns a single visit into a recurring relationship.</strong>
+        </p>
+        <a class="ch-next" href="https://provisionai.com" target="_blank">
+          See it live →
+        </a>
+      </div>
+      <div class="col-right">
+        <div class="ch-indicator">
+          <span class="ch-indicator-label">Resource hub — 23 resources</span>
+          <div class="ch-indicator-sep"></div>
+          <div class="ch-indicator-dots">
+            <button class="ch-dot" data-chapter="0">01</button>
+            <button class="ch-dot" data-chapter="1">02</button>
+            <button class="ch-dot" data-chapter="2">03</button>
+            <button class="ch-dot" data-chapter="3">04</button>
+            <button class="ch-dot" data-chapter="4">05</button>
+            <button class="ch-dot" data-chapter="5">06</button>
+            <button class="ch-dot active" data-chapter="6">07</button>
+          </div>
+        </div>
+        <div class="col-right-content">
+          <div class="metric-grid">
+            <div class="metric-card">
+              <div class="metric-num">23</div>
+              <div class="metric-label">Resources published — <strong>ebooks, webinars, case studies</strong></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-num">GEO</div>
+              <div class="metric-label">Optimised for AI search — <strong>found by humans and LLMs equally</strong></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-num">0</div>
+              <div class="metric-label">Gated resources — <strong>no forms, no friction</strong></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-num">Full</div>
+              <div class="metric-label">End-to-end — <strong>strategy, copy, design, deploy</strong></div>
+            </div>
+          </div>
+          <div class="card-navy">
+            <div class="card-navy-label">What it changes in the room</div>
+            <div class="card-navy-text">
+              Prospects arrive from organic search already educated.
+              <strong>The site does the selling before the SDR sends the first email.</strong>
+            </div>
+          </div>
+          <div class="tag-card">
+            <span class="tag">Full site</span>
+            <span class="tag">GEO optimisation</span>
+            <span class="tag">Resource hub</span>
+            <span class="tag">Case studies</span>
+            <span class="tag">Webinars</span>
+            <span class="tag">Multi-persona</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const chapters = document.querySelectorAll('.chapter');
+const progress = document.querySelector('.nav-progress');
+const wrapper  = document.getElementById('site-wrapper');
+
+function scrollToChapter(index) {
+  if (chapters[index]) chapters[index].scrollIntoView({ behavior: 'smooth' });
+}
+
+document.querySelectorAll('.ch-dot').forEach(dot => {
+  dot.addEventListener('click', () => scrollToChapter(parseInt(dot.dataset.chapter)));
+});
+
+wrapper.addEventListener('scroll', () => {
+  const scrollTop = wrapper.scrollTop;
+  const scrollH   = wrapper.scrollHeight - wrapper.clientHeight;
+  const pct       = scrollH > 0 ? (scrollTop / scrollH) * 100 : 0;
+  if (progress) progress.style.width = pct + '%';
+  chapters.forEach((ch, i) => {
+    const rect = ch.getBoundingClientRect();
+    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+      document.querySelectorAll('.ch-dot').forEach(d => {
+        d.classList.toggle('active', parseInt(d.dataset.chapter) === i);
+      });
+    }
+  });
+}, { passive: true });
+</script>
+
+</body>
+</html>
