@@ -14,25 +14,18 @@
 :root {
   --font-display: 'Roboto', sans-serif;
   --font-body:    'Roboto', sans-serif;
+  --max-w: 820px;
 }
 
-html, body { height: 100%; overflow: hidden; }
+html, body { height: auto; overflow-x: hidden; }
 
-.site-wrapper {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
-/* NAV */
 .site-nav {
   position: fixed; top: 0; left: 0; right: 0;
   height: var(--nav-height); z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 2.5rem;
   border-bottom: 1px solid var(--white-faint);
-  background: rgba(30,44,58,0.92);
+  background: rgba(30,44,58,0.95);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
 .nav-wordmark {
@@ -58,184 +51,178 @@ html, body { height: 100%; overflow: hidden; }
 .nav-progress {
   position: absolute; bottom: 0; left: 0;
   height: 1px; background: var(--lime); width: 0%;
-  transition: width 0.3s var(--ease-out);
+  transition: width 0.2s linear;
 }
 
-/* CHAPTER */
-.chapter {
-  scroll-snap-align: start; scroll-snap-stop: always;
-  height: 100vh; padding-top: var(--nav-height);
-  display: flex; flex-direction: column;
-  position: relative; overflow: hidden;
-}
-.chapter::before {
-  content: ''; position: absolute; inset: 0;
+.page { min-height: 100vh; padding-top: var(--nav-height); position: relative; }
+.page::before {
+  content: ''; position: fixed; inset: 0;
   background-image:
     linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 72px 72px; pointer-events: none; z-index: 0;
 }
-#ch0::after { content: ''; position: absolute; top: -160px; left: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(184,212,0,0.06) 0%, transparent 70%); pointer-events: none; z-index: 0; }
-#ch1::after { content: ''; position: absolute; bottom: -120px; right: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
-#ch2::after { content: ''; position: absolute; top: -120px; left: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
-#ch3::after { content: ''; position: absolute; bottom: -120px; right: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
-#ch4::after { content: ''; position: absolute; top: -120px; left: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
-#ch5::after { content: ''; position: absolute; bottom: -120px; right: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
 
-/* COLUMNS */
-.columns {
-  position: relative; z-index: 1; flex: 1;
-  display: grid; grid-template-columns: 1fr 1fr;
-  overflow: hidden; height: 100%;
-}
-.col-left {
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 4vw 3.5vw 4vw 5vw;
-  border-right: 1px solid rgba(30,44,58,0.15);
-}
-.col-right {
-  display: flex; flex-direction: column;
-  position: relative; z-index: 1; background: #ffffff;
-}
-.col-right::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(30,44,58,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(30,44,58,0.05) 1px, transparent 1px);
-  background-size: 72px 72px; pointer-events: none; z-index: 0;
-}
-.col-right > * { position: relative; z-index: 1; }
-.col-right { opacity: 0; animation: fadeIn 0.7s var(--ease-out) 0.4s forwards; }
-
-/* CHAPTER INDICATOR */
-.ch-indicator {
-  display: flex; align-items: center;
-  padding: 0 2rem; height: 44px;
-  border-bottom: 1px solid rgba(30,44,58,0.1);
-  background: #ffffff; flex-shrink: 0;
-}
-.ch-indicator-label {
-  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; color: #1e2c3a; flex: 1;
-}
-.ch-indicator-sep {
-  width: 1px; height: 16px; background: rgba(30,44,58,0.15);
-  margin: 0 1.5rem; flex-shrink: 0;
-}
-.ch-indicator-dots { display: flex; gap: 1.2rem; align-items: center; flex-shrink: 0; }
-.ch-dot {
-  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.08em;
-  color: rgba(30,44,58,0.25); border: none; background: none;
-  cursor: pointer; padding: 0; transition: color var(--dur-base);
-}
-.ch-dot:hover { color: rgba(30,44,58,0.5); }
-.ch-dot.active { color: #1e2c3a; font-weight: 700; }
-
-/* RIGHT CONTENT */
-.col-right-content {
-  flex: 1; display: flex; flex-direction: column; justify-content: center;
-  gap: var(--col-gap); padding: 3vw 3.5vw 3vw 3vw;
+.article {
+  position: relative; z-index: 1;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 5vw 2rem 8rem;
 }
 
-/* MOCKUP */
-.mockup-img { width: 100%; }
-.mockup-img img { width: 100%; height: auto; display: block; }
+.back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--white-dim);
+  text-decoration: none; margin-bottom: 3rem;
+  transition: color var(--dur-base);
+}
+.back:hover { color: var(--white); }
 
-/* LEFT TYPOGRAPHY */
-.ch-eyebrow {
+.article-header { margin-bottom: 3.5rem; }
+.article-eyebrow {
   font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
-  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.2s forwards;
 }
-.ch-headline {
+.article-headline {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.2vw, 3.4rem);
-  font-weight: 700; line-height: 1.05; letter-spacing: -0.02em;
-  color: var(--white); margin-bottom: 1.6rem;
-  opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
+  color: var(--white); margin-bottom: 1.4rem;
 }
-.ch-headline .dim { color: var(--white-dim); }
-.ch-section {
+.article-headline .dim { color: var(--white-dim); }
+.article-intro {
+  font-size: 1.1rem; font-weight: 300; line-height: 1.8;
+  color: var(--white-dim); max-width: 58ch;
+  border-left: 2px solid var(--lime);
+  padding-left: 1.2rem;
+}
+.article-intro strong { color: var(--white); font-weight: 400; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1.6rem; }
+.tag {
+  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 0.25rem 0.7rem;
+  border: 1px solid var(--white-faint); color: var(--white-dim);
+}
+
+.section { margin-bottom: 4rem; }
+.section-label {
   font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--lime);
-  margin-bottom: 0.4rem; margin-top: 1.1rem;
-  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.4s forwards;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.8rem;
 }
-.ch-body {
+.section-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 1rem;
+}
+.section-headline .dim { color: var(--white-dim); }
+.section-body {
+  font-size: 1rem; font-weight: 300; line-height: 1.85;
+  color: var(--white-dim); max-width: 62ch;
+}
+.section-body strong { color: var(--white); font-weight: 400; }
+.section-body + .section-body { margin-top: 1rem; }
+
+.divider { border: none; border-top: 1px solid var(--white-faint); margin: 3.5rem 0; }
+
+.screenshot-wrap { margin: 2.5rem 0; }
+.screenshot-browser {
+  border-radius: 10px; overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 12px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06);
+}
+.screenshot-bar {
+  height: 40px; background: #0c1520;
+  display: flex; align-items: center;
+  padding: 0 12px; gap: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.s-dots { display: flex; gap: 6px; }
+.s-dot { width: 10px; height: 10px; border-radius: 50%; }
+.s-dot-r { background: #ff5f56; }
+.s-dot-a { background: #ffbd2e; }
+.s-dot-g { background: #27c93f; }
+.s-url {
+  flex: 1; height: 24px; background: #080e16; border-radius: 4px;
+  display: flex; align-items: center; padding: 0 10px;
+  font-size: 11px; color: rgba(255,255,255,0.25);
+}
+.screenshot-browser img { width: 100%; height: auto; display: block; }
+.screenshot-caption {
+  font-size: 0.78rem; font-weight: 300; letter-spacing: 0.04em;
+  color: rgba(240,239,240,0.35);
+  margin-top: 0.8rem; text-align: center;
+}
+
+.metrics {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--white-faint);
+  border: 1px solid var(--white-faint);
+  margin: 2.5rem 0;
+}
+.metric { background: #1e2c3a; padding: 1.4rem 1.2rem; }
+.metric-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700; line-height: 1;
+  letter-spacing: -0.03em; color: var(--lime); margin-bottom: 0.4rem;
+}
+.metric-label { font-size: 0.82rem; font-weight: 300; color: var(--white-dim); line-height: 1.4; }
+
+.insight {
+  background: rgba(184,212,0,0.06);
+  border-left: 2px solid var(--lime);
+  padding: 1.2rem 1.4rem; margin: 2rem 0;
+}
+.insight-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.5rem;
+}
+.insight-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--white-dim);
+}
+.insight-text strong { color: var(--white); font-weight: 400; }
+
+.cta-block {
+  margin-top: 4rem; padding-top: 3rem;
+  border-top: 1px solid var(--white-faint);
+}
+.cta-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 700; line-height: 1.1;
+  color: var(--white); margin-bottom: 0.8rem;
+}
+.cta-body {
   font-size: 1rem; font-weight: 300; line-height: 1.8;
-  color: var(--white-dim); max-width: 42ch;
-  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.45s forwards;
+  color: var(--white-dim); max-width: 52ch; margin-bottom: 1.8rem;
 }
-.ch-body strong { color: var(--white); font-weight: 400; }
-.ch-next {
+.cta-body strong { color: var(--white); font-weight: 400; }
+.cta-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+.cta-primary {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 0.85rem; font-weight: 400; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
-  border: none; padding: 0.9rem 1.8rem; cursor: pointer;
-  text-decoration: none; width: fit-content; margin-top: 2rem;
-  transition: background var(--dur-base), gap var(--dur-base) var(--ease-out);
-  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.6s forwards;
+  padding: 0.9rem 1.8rem; text-decoration: none;
+  transition: background var(--dur-base), gap var(--dur-base);
 }
-.ch-next:hover { background: var(--lime-hover); gap: 14px; }
-.ch-back {
+.cta-primary:hover { background: var(--lime-hover); gap: 14px; }
+.cta-secondary {
   display: inline-flex; align-items: center; gap: 8px;
-  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em;
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--white-dim);
-  text-decoration: none; margin-bottom: 1.5rem;
-  transition: color var(--dur-base);
-  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.1s forwards;
+  border: 1px solid var(--white-faint);
+  padding: 0.9rem 1.8rem; text-decoration: none;
+  transition: color var(--dur-base), border-color var(--dur-base);
 }
-.ch-back:hover { color: var(--white); }
+.cta-secondary:hover { color: var(--white); border-color: var(--white-dim); }
 
-/* CARDS */
-.card-navy {
-  background: #1e2c3a; border: 1px solid #1e2c3a; padding: 1.4rem;
-}
-.card-navy-label {
-  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; color: rgba(240,239,240,0.35); margin-bottom: 0.6rem;
-}
-.card-navy-text {
-  font-size: 1rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.75);
-}
-.card-navy-text strong { color: #f0eff0; font-weight: 500; }
-
-.metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); }
-.metric-card { background: var(--lime); border: 1px solid var(--lime); padding: 1.2rem 1.3rem; }
-.metric-num {
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
-  font-weight: 700; line-height: 1; letter-spacing: -0.03em;
-  color: #1e2c3a; margin-bottom: 0.4rem;
-}
-.metric-label { font-size: 0.82rem; font-weight: 300; color: rgba(30,44,58,0.65); line-height: 1.4; }
-.metric-label strong { color: #1e2c3a; font-weight: 500; }
-
-.tag-card {
-  background: #1e2c3a; border: 1px solid #1e2c3a;
-  padding: 1rem 1.4rem; display: flex; flex-wrap: wrap; gap: 6px;
-}
-.tag {
-  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em;
-  text-transform: uppercase; padding: 0.25rem 0.6rem;
-  border: 1px solid rgba(240,239,240,0.15); color: rgba(240,239,240,0.5);
-}
-
-/* ANIMATIONS */
-@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-/* MOBILE */
 @media (max-width: 768px) {
-  html, body { overflow: auto; height: auto; }
-  .site-wrapper { overflow: visible; scroll-snap-type: none; height: auto; }
-  .chapter { height: auto; scroll-snap-align: none; }
-  .columns { grid-template-columns: 1fr; height: auto; }
-  .col-left { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--white-faint); }
-  .col-right-content { padding: 2rem 1.5rem 3rem; }
-  .metric-grid { grid-template-columns: 1fr 1fr; }
   .nav-link { display: none; }
   .nav-link-cta { display: block; }
+  .metrics { grid-template-columns: repeat(2, 1fr); }
+  .article { padding: 3rem 1.2rem 5rem; }
 }
 
 </style>
@@ -253,324 +240,227 @@ html, body { height: 100%; overflow: hidden; }
   <div class="nav-progress"></div>
 </nav>
 
-<div class="site-wrapper" id="site-wrapper">
+<div class="page">
+  <div class="article">
 
-  <!-- CH0 — INTRO -->
-  <section class="chapter" id="ch0">
-    <div class="columns">
-      <div class="col-left">
-        <a class="ch-back" href="/proof">← Back to Proof</a>
-        <p class="ch-eyebrow">Supply chain · Diagnostic tool</p>
-        <h1 class="ch-headline">Make them feel<br><span class="dim">the cost they didn't know they had.</span></h1>
-        <p class="ch-body">
-          ProvisionAI's buyers were convinced their supply chains were fine.
-          No pain, no urgency, no reason to change.
-          <strong>The product was excellent. The prospect couldn't feel why they needed it.</strong>
-          So we built a tool that made them feel it — before a single sales call.
-        </p>
-      </div>
-      <div class="col-right">
-        <div class="ch-indicator">
-          <span class="ch-indicator-label">Supply Chain Loss Analysis</span>
-          <div class="ch-indicator-sep"></div>
-          <div class="ch-indicator-dots">
-            <button class="ch-dot active" data-chapter="0">01</button>
-            <button class="ch-dot" data-chapter="1">02</button>
-            <button class="ch-dot" data-chapter="2">03</button>
-            <button class="ch-dot" data-chapter="3">04</button>
-            <button class="ch-dot" data-chapter="4">05</button>
-            <button class="ch-dot" data-chapter="5">06</button>
-          </div>
-        </div>
-        <div class="col-right-content">
-          <div class="mockup-img">
-            <img src="/assets/loss-intro.png" alt="Supply Chain Loss Analysis — intro screen">
-          </div>
-          <div class="card-navy">
-            <div class="card-navy-label">The core insight</div>
-            <div class="card-navy-text">
-              Buyers don't resist buying — they resist feeling the problem.
-              <strong>A tool that surfaces hidden cost in their own words removes the resistance before the sales conversation begins.</strong>
-            </div>
-          </div>
-        </div>
+    <a class="back" href="/proof">← Back to Proof</a>
+
+    <div class="article-header">
+      <p class="article-eyebrow">Supply chain · Diagnostic tool</p>
+      <h1 class="article-headline">Make them feel<br><span class="dim">the cost they didn't know they had.</span></h1>
+      <p class="article-intro">
+        ProvisionAI's buyers were convinced their supply chains were fine. No pain, no urgency, no reason to change.
+        <strong>The product was excellent. The prospect couldn't feel why they needed it.</strong>
+        So we built a tool that made them feel it — before a single sales call.
+      </p>
+      <div class="tags">
+        <span class="tag">Self-diagnostic</span>
+        <span class="tag">Scoring system</span>
+        <span class="tag">Personalised roadmap</span>
+        <span class="tag">AI assistant</span>
+        <span class="tag">Pre-call qualifier</span>
       </div>
     </div>
-  </section>
 
-  <!-- CH1 — THE DIAGNOSTIC -->
-  <section class="chapter" id="ch1">
-    <div class="columns">
-      <div class="col-left">
-        <p class="ch-eyebrow">Module 1 — Load optimisation</p>
-        <h2 class="ch-headline">Score yourself.<br><span class="dim">Honestly.</span></h2>
-        <p class="ch-section">How the diagnostic works</p>
-        <p class="ch-body">
-          Four modules. Each one a domain where supply chains lose money invisibly —
-          load optimisation, network flow, OTIF performance, system synchronisation.
-          <strong>The prospect rates themselves 1, 2, or 3 on each statement.</strong>
-          No benchmarks shown until they've scored themselves.
-        </p>
-        <p class="ch-section">Why this order matters</p>
-        <p class="ch-body">
-          The tool shows the standard first — what good looks like.
-          Then the prospect assesses their own gap against it.
-          <strong>They define the problem themselves. The tool just holds the mirror.</strong>
-        </p>
+    <hr class="divider">
+
+    <!-- THE PROBLEM -->
+    <div class="section">
+      <p class="section-label">The problem</p>
+      <h2 class="section-headline">Buyers don't resist buying.<br><span class="dim">They resist feeling the problem.</span></h2>
+      <p class="section-body">
+        ProvisionAI's prospects were running supply chains at 87% payload utilisation and calling it fine. At their scale — hundreds of loads daily across a global network — that 13% gap compounded into extra trucks, extra miles, extra emissions, and extra cost every single day.
+      </p>
+      <p class="section-body">
+        <strong>But they couldn't feel it. No benchmark. No reference point. No urgency.</strong> Every discovery call started with the rep trying to convince the prospect they had a problem that the prospect was certain they didn't have.
+      </p>
+    </div>
+
+    <!-- SCREENSHOT: INTRO -->
+    <div class="screenshot-wrap">
+      <div class="screenshot-browser">
+        <div class="screenshot-bar">
+          <div class="s-dots">
+            <div class="s-dot s-dot-r"></div>
+            <div class="s-dot s-dot-a"></div>
+            <div class="s-dot s-dot-g"></div>
+          </div>
+          <div class="s-url">provision-loss-analysis.vercel.app</div>
+        </div>
+        <img src="/assets/loss-intro.png" alt="Supply Chain Loss Analysis — intro screen">
       </div>
-      <div class="col-right">
-        <div class="ch-indicator">
-          <span class="ch-indicator-label">Diagnostic complete — 67% gap</span>
-          <div class="ch-indicator-sep"></div>
-          <div class="ch-indicator-dots">
-            <button class="ch-dot" data-chapter="0">01</button>
-            <button class="ch-dot active" data-chapter="1">02</button>
-            <button class="ch-dot" data-chapter="2">03</button>
-            <button class="ch-dot" data-chapter="3">04</button>
-            <button class="ch-dot" data-chapter="4">05</button>
-            <button class="ch-dot" data-chapter="5">06</button>
+      <p class="screenshot-caption">The entry point — four modules, one picture. Score yourself to get your action plan.</p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">The core insight</p>
+      <p class="insight-text">A tool that surfaces hidden cost in the prospect's own words removes the resistance before the sales conversation begins. <strong>They don't need to be convinced of a problem they just discovered themselves.</strong></p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- THE DIAGNOSTIC -->
+    <div class="section">
+      <p class="section-label">How it works — the diagnostic</p>
+      <h2 class="section-headline">Score yourself.<br><span class="dim">The lowest score becomes priority #1.</span></h2>
+      <p class="section-body">
+        Four modules — load optimisation, network flow, OTIF performance, system synchronisation. Each one covers a domain where supply chains lose money invisibly. The prospect rates themselves 1, 2, or 3 on each statement.
+      </p>
+      <p class="section-body">
+        <strong>The tool shows the standard first — what good looks like. Then the prospect assesses their own gap against it.</strong> No benchmarks shown until they've scored themselves. They define the problem. The tool just holds the mirror.
+      </p>
+    </div>
+
+    <!-- SCREENSHOT: DIAGNOSTIC -->
+    <div class="screenshot-wrap">
+      <div class="screenshot-browser">
+        <div class="screenshot-bar">
+          <div class="s-dots">
+            <div class="s-dot s-dot-r"></div>
+            <div class="s-dot s-dot-a"></div>
+            <div class="s-dot s-dot-g"></div>
           </div>
+          <div class="s-url">provision-loss-analysis.vercel.app</div>
         </div>
-        <div class="col-right-content">
-          <div class="mockup-img">
-            <img src="/assets/loss-analysis.png" alt="Diagnostic complete — 67% gap vs standard">
+        <img src="/assets/loss-analysis.png" alt="Diagnostic complete — 67% gap vs best practice standard">
+      </div>
+      <p class="screenshot-caption">Diagnostic complete — 67% vs the 100% standard. Significant gap, high leverage.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- THE ROADMAP -->
+    <div class="section">
+      <p class="section-label">The output — personalised roadmap</p>
+      <h2 class="section-headline">Their roadmap,<br><span class="dim">built from their own scores.</span></h2>
+      <p class="section-body">
+        Once all four modules are complete, the tool ranks the gaps. The lowest score becomes priority #1 automatically. The prospect sees a five-step fix for their most critical gap — generated from the answers they just gave, not from a generic playbook.
+      </p>
+      <p class="section-body">
+        <strong>A generic recommendation is easy to dismiss. A recommendation that traces directly back to their own scores is much harder to argue with.</strong> They built the brief. The tool built the plan.
+      </p>
+    </div>
+
+    <!-- SCREENSHOT: ROADMAP -->
+    <div class="screenshot-wrap">
+      <div class="screenshot-browser">
+        <div class="screenshot-bar">
+          <div class="s-dots">
+            <div class="s-dot s-dot-r"></div>
+            <div class="s-dot s-dot-a"></div>
+            <div class="s-dot s-dot-g"></div>
           </div>
+          <div class="s-url">provision-loss-analysis.vercel.app</div>
         </div>
+        <img src="/assets/loss-roadmap.png" alt="Prioritised action plan — fix load fill first">
+      </div>
+      <p class="screenshot-caption">The prioritised action plan — lowest score becomes #1 priority automatically</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- OTIF -->
+    <div class="section">
+      <p class="section-label">Module 3 — OTIF performance</p>
+      <h2 class="section-headline">Eight levers.<br><span class="dim">Most teams pull two.</span></h2>
+      <p class="section-body">
+        OTIF failures start upstream in planning — not on the dock or the road. The tool shows all eight levers that control on-time delivery. Most operations are using two or three. <strong>The other five are active sources of failure hiding in plain sight.</strong>
+      </p>
+      <p class="section-body">
+        An AI assistant — Ask Provision — is embedded directly in the tool. The prospect can ask in plain language: "what is OTIF?" or "where do I start?" and get a direct answer without leaving the diagnostic. <strong>The tool answers questions the rep would normally field on the discovery call.</strong>
+      </p>
+    </div>
+
+    <!-- SCREENSHOT: OTIF -->
+    <div class="screenshot-wrap">
+      <div class="screenshot-browser">
+        <div class="screenshot-bar">
+          <div class="s-dots">
+            <div class="s-dot s-dot-r"></div>
+            <div class="s-dot s-dot-a"></div>
+            <div class="s-dot s-dot-g"></div>
+          </div>
+          <div class="s-url">provision-loss-analysis.vercel.app</div>
+        </div>
+        <img src="/assets/loss-otif.png" alt="OTIF performance — 8 levers with Ask Provision AI assistant">
+      </div>
+      <p class="screenshot-caption">OTIF performance module — 8 levers, with the Ask Provision AI assistant open</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- THE PLAYBOOK -->
+    <div class="section">
+      <p class="section-label">The depth — the playbook</p>
+      <h2 class="section-headline">Not just the gap.<br><span class="dim">The five-step fix.</span></h2>
+      <p class="section-body">
+        Each module has three tabs — the standard, the self-assessment, and the playbook. The playbook isn't generic advice. It's a sequenced five-step fix for the specific gap the prospect just identified. <strong>Item master accuracy. Maths-based load building. Dock-level loading diagrams. Each step closes a defined percentage of the gap.</strong>
+      </p>
+    </div>
+
+    <!-- SCREENSHOT: PLAYBOOK -->
+    <div class="screenshot-wrap">
+      <div class="screenshot-browser">
+        <div class="screenshot-bar">
+          <div class="s-dots">
+            <div class="s-dot s-dot-r"></div>
+            <div class="s-dot s-dot-a"></div>
+            <div class="s-dot s-dot-g"></div>
+          </div>
+          <div class="s-url">provision-loss-analysis.vercel.app</div>
+        </div>
+        <img src="/assets/loss-playbook.png" alt="The playbook — step by step fixes for each gap">
+      </div>
+      <p class="screenshot-caption">The playbook — dock-level loading diagrams, maths-based load building, dynamic substitution</p>
+    </div>
+
+    <!-- METRICS -->
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-num">4</div>
+        <div class="metric-label">Diagnostic modules</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">7–10%</div>
+        <div class="metric-label">Hidden freight value surfaced</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">1</div>
+        <div class="metric-label">Personalised roadmap per prospect</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">0</div>
+        <div class="metric-label">Cold starts — they arrive knowing their gap</div>
       </div>
     </div>
-  </section>
 
-  <!-- CH2 — THE ROADMAP -->
-  <section class="chapter" id="ch2">
-    <div class="columns">
-      <div class="col-left">
-        <p class="ch-eyebrow">Synthesis — personalised output</p>
-        <h2 class="ch-headline">Their roadmap,<br><span class="dim">built from their own scores.</span></h2>
-        <p class="ch-section">What the roadmap does</p>
-        <p class="ch-body">
-          Once all four modules are complete, the tool ranks the gaps.
-          <strong>The lowest score becomes priority #1 automatically.</strong>
-          The prospect sees a five-step fix for their most critical gap —
-          generated from the answers they just gave, not from a generic playbook.
-        </p>
-        <p class="ch-section">Why personalisation changes the conversation</p>
-        <p class="ch-body">
-          A generic recommendation is easy to dismiss.
-          A recommendation that traces directly back to their own scores
-          is much harder to argue with.
-          <strong>They built the brief. The tool built the plan.</strong>
-        </p>
-      </div>
-      <div class="col-right">
-        <div class="ch-indicator">
-          <span class="ch-indicator-label">Prioritised action plan</span>
-          <div class="ch-indicator-sep"></div>
-          <div class="ch-indicator-dots">
-            <button class="ch-dot" data-chapter="0">01</button>
-            <button class="ch-dot" data-chapter="1">02</button>
-            <button class="ch-dot active" data-chapter="2">03</button>
-            <button class="ch-dot" data-chapter="3">04</button>
-            <button class="ch-dot" data-chapter="4">05</button>
-            <button class="ch-dot" data-chapter="5">06</button>
-          </div>
-        </div>
-        <div class="col-right-content">
-          <div class="mockup-img">
-            <img src="/assets/loss-roadmap.png" alt="Prioritised action plan — fix load fill first">
-          </div>
-        </div>
+    <div class="insight">
+      <p class="insight-label">What it changes in the room</p>
+      <p class="insight-text">The discovery call becomes a confirmation call. <strong>The prospect arrives with a gap score, a ranked priority list, and a five-step fix. The rep's job is to show how the product executes the playbook — not to convince the prospect they have a problem.</strong></p>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <h2 class="cta-headline">See it for yourself.</h2>
+      <p class="cta-body">
+        The diagnostic is live. Four modules, about eight minutes.
+        <strong>Score yourself honestly — the roadmap is worth it.</strong>
+      </p>
+      <div class="cta-links">
+        <a class="cta-primary" href="https://provision-loss-analysis.vercel.app/" target="_blank">See it live →</a>
+        <a class="cta-secondary" href="/proof">← Back to Proof</a>
       </div>
     </div>
-  </section>
 
-  <!-- CH3 — OTIF LEVERS -->
-  <section class="chapter" id="ch3">
-    <div class="columns">
-      <div class="col-left">
-        <p class="ch-eyebrow">Module 3 — OTIF performance</p>
-        <h2 class="ch-headline">Eight levers.<br><span class="dim">Most teams pull two.</span></h2>
-        <p class="ch-section">What this module reveals</p>
-        <p class="ch-body">
-          OTIF failures start upstream in planning — not on the dock or the road.
-          The tool shows all eight levers that control on-time delivery.
-          <strong>Most operations are using two or three.</strong>
-          The other five are active sources of failure hiding in plain sight.
-        </p>
-        <p class="ch-section">The Ask Provision feature</p>
-        <p class="ch-body">
-          An AI assistant embedded in the tool answers questions about scores, levers,
-          and where to start. The prospect can ask in plain language —
-          <strong>"what is OTIF?" or "where do I start?" — and get a direct answer</strong>
-          without leaving the diagnostic.
-        </p>
-      </div>
-      <div class="col-right">
-        <div class="ch-indicator">
-          <span class="ch-indicator-label">OTIF performance — 8 levers</span>
-          <div class="ch-indicator-sep"></div>
-          <div class="ch-indicator-dots">
-            <button class="ch-dot" data-chapter="0">01</button>
-            <button class="ch-dot" data-chapter="1">02</button>
-            <button class="ch-dot" data-chapter="2">03</button>
-            <button class="ch-dot active" data-chapter="3">04</button>
-            <button class="ch-dot" data-chapter="4">05</button>
-            <button class="ch-dot" data-chapter="5">06</button>
-          </div>
-        </div>
-        <div class="col-right-content">
-          <div class="mockup-img">
-            <img src="/assets/loss-otif.png" alt="OTIF performance — 8 levers with Ask Provision">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CH4 — THE PLAYBOOK -->
-  <section class="chapter" id="ch4">
-    <div class="columns">
-      <div class="col-left">
-        <p class="ch-eyebrow">Module 1 — The playbook</p>
-        <h2 class="ch-headline">Not just the gap.<br><span class="dim">The five-step fix.</span></h2>
-        <p class="ch-section">What the playbook delivers</p>
-        <p class="ch-body">
-          Each module has three tabs — the standard, the self-assessment, and the playbook.
-          The playbook isn't generic advice.
-          <strong>It's a sequenced five-step fix for the specific gap the prospect just identified.</strong>
-          Item master accuracy. Math-based load building. Dock-level loading diagrams.
-          Each step closes a defined percentage of the gap.
-        </p>
-        <p class="ch-section">What this means for the sales call</p>
-        <p class="ch-body">
-          The prospect arrives with a gap score, a ranked priority list, and a five-step fix.
-          <strong>The rep's job is to show how the product executes the playbook —
-          not to convince the prospect they have a problem.</strong>
-        </p>
-      </div>
-      <div class="col-right">
-        <div class="ch-indicator">
-          <span class="ch-indicator-label">The playbook — step by step</span>
-          <div class="ch-indicator-sep"></div>
-          <div class="ch-indicator-dots">
-            <button class="ch-dot" data-chapter="0">01</button>
-            <button class="ch-dot" data-chapter="1">02</button>
-            <button class="ch-dot" data-chapter="2">03</button>
-            <button class="ch-dot" data-chapter="3">04</button>
-            <button class="ch-dot active" data-chapter="4">05</button>
-            <button class="ch-dot" data-chapter="5">06</button>
-          </div>
-        </div>
-        <div class="col-right-content">
-          <div class="mockup-img">
-            <img src="/assets/loss-playbook.png" alt="The playbook — dock-level loading diagrams">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CH5 — WHAT IT CHANGES + CTA -->
-  <section class="chapter" id="ch5">
-    <div class="columns">
-      <div class="col-left">
-        <p class="ch-eyebrow">The outcome</p>
-        <h2 class="ch-headline">The rep arrives<br><span class="dim">to confirm, not convince.</span></h2>
-        <p class="ch-section">What changes in the room</p>
-        <p class="ch-body">
-          Before this tool, every discovery call started cold —
-          the rep had to establish that a problem existed before they could talk about the solution.
-          <strong>Now the prospect arrives knowing their gap score, their #1 priority,
-          and the five steps to fix it.</strong>
-          The call starts at step three of a conversation that used to take three calls to reach.
-        </p>
-        <p class="ch-section">Want something like this for your sales problem?</p>
-        <p class="ch-body">
-          Tell me about the product, the buyer, and where deals usually stall.
-          <strong>I'll come back with a point of view on what would move it.</strong>
-        </p>
-        <a class="ch-next" href="https://provision-loss-analysis.vercel.app/" target="_blank">
-          See it live →
-        </a>
-      </div>
-      <div class="col-right">
-        <div class="ch-indicator">
-          <span class="ch-indicator-label">Supply Chain Loss Analysis</span>
-          <div class="ch-indicator-sep"></div>
-          <div class="ch-indicator-dots">
-            <button class="ch-dot" data-chapter="0">01</button>
-            <button class="ch-dot" data-chapter="1">02</button>
-            <button class="ch-dot" data-chapter="2">03</button>
-            <button class="ch-dot" data-chapter="3">04</button>
-            <button class="ch-dot" data-chapter="4">05</button>
-            <button class="ch-dot active" data-chapter="5">06</button>
-          </div>
-        </div>
-        <div class="col-right-content">
-          <div class="metric-grid">
-            <div class="metric-card">
-              <div class="metric-num">4</div>
-              <div class="metric-label">Diagnostic modules — <strong>load, network, OTIF, systems</strong></div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-num">7–10%</div>
-              <div class="metric-label">Of freight value — <strong>the hidden cost they surface</strong></div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-num">1</div>
-              <div class="metric-label">Personalised roadmap — <strong>built from their own scores</strong></div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-num">0</div>
-              <div class="metric-label">Cold starts needed — <strong>they arrive knowing their gap</strong></div>
-            </div>
-          </div>
-          <div class="card-navy">
-            <div class="card-navy-label">What it changes in the room</div>
-            <div class="card-navy-text">
-              The discovery call becomes a confirmation call.
-              <strong>The prospect has already done the work. The rep shows up to execute.</strong>
-            </div>
-          </div>
-          <div class="tag-card">
-            <span class="tag">Self-diagnostic</span>
-            <span class="tag">Scoring system</span>
-            <span class="tag">Personalised roadmap</span>
-            <span class="tag">AI assistant</span>
-            <span class="tag">Pre-call qualifier</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  </div>
 </div>
 
 <script>
-const chapters = document.querySelectorAll('.chapter');
 const progress = document.querySelector('.nav-progress');
-const wrapper  = document.getElementById('site-wrapper');
-
-function scrollToChapter(index) {
-  if (chapters[index]) chapters[index].scrollIntoView({ behavior: 'smooth' });
-}
-
-document.querySelectorAll('.ch-dot').forEach(dot => {
-  dot.addEventListener('click', () => scrollToChapter(parseInt(dot.dataset.chapter)));
-});
-
-wrapper.addEventListener('scroll', () => {
-  const scrollTop = wrapper.scrollTop;
-  const scrollH   = wrapper.scrollHeight - wrapper.clientHeight;
-  const pct       = scrollH > 0 ? (scrollTop / scrollH) * 100 : 0;
+window.addEventListener('scroll', () => {
+  const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
   if (progress) progress.style.width = pct + '%';
-  chapters.forEach((ch, i) => {
-    const rect = ch.getBoundingClientRect();
-    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-      document.querySelectorAll('.ch-dot').forEach(d => {
-        d.classList.toggle('active', parseInt(d.dataset.chapter) === i);
-      });
-    }
-  });
 }, { passive: true });
 </script>
 
