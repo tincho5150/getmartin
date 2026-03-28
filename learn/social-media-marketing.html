@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Social media marketing for B2B — what it actually does in a sales cycle, which platforms matter, and how to stop posting and hoping.">
+<title>Social Media Marketing — Beyond Posting and Hoping — getmartin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/global.css">
+<style>
+
+:root {
+  --font-display: 'Roboto', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+  --max-w: 820px;
+}
+
+html, body { height: auto; overflow-x: hidden; }
+
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-height); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--white-faint);
+  background: rgba(30,44,58,0.95);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--white); text-decoration: none; flex-shrink: 0;
+}
+.nav-wordmark span { color: var(--lime); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-link {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white-dim); text-decoration: none;
+  transition: color var(--dur-base);
+}
+.nav-link:hover { color: var(--white); }
+.nav-link.active { color: var(--white); }
+.nav-link-cta {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
+  padding: 0.4rem 1rem; text-decoration: none; transition: background var(--dur-base);
+}
+.nav-link-cta:hover { background: var(--lime-hover); }
+.nav-progress {
+  position: absolute; bottom: 0; left: 0;
+  height: 1px; background: var(--lime); width: 0%;
+  transition: width 0.2s linear;
+}
+
+.page { min-height: 100vh; padding-top: var(--nav-height); position: relative; }
+.page::before {
+  content: ''; position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none; z-index: 0;
+}
+
+.article {
+  position: relative; z-index: 1;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 5vw 2rem 8rem;
+}
+
+.back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--white-dim);
+  text-decoration: none; margin-bottom: 3rem;
+  transition: color var(--dur-base);
+}
+.back:hover { color: var(--white); }
+
+.article-header { margin-bottom: 3.5rem; }
+.article-eyebrow {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
+}
+.article-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
+  color: var(--white); margin-bottom: 1.4rem;
+}
+.article-intro {
+  font-size: 1.1rem; font-weight: 300; line-height: 1.8;
+  color: var(--white-dim); max-width: 58ch;
+  border-left: 2px solid var(--lime);
+  padding-left: 1.2rem;
+}
+.article-intro strong { color: var(--white); font-weight: 400; }
+.article-meta {
+  display: flex; gap: 1.5rem; margin-top: 1.4rem;
+  font-size: 0.72rem; font-weight: 300; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+
+.divider { border: none; border-top: 1px solid var(--white-faint); margin: 3rem 0; }
+
+.section { margin-bottom: 3.5rem; }
+.section-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.8rem;
+}
+.section-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 1rem;
+}
+.section-headline .dim { color: var(--white-dim); }
+
+.body {
+  font-size: 1rem; font-weight: 300; line-height: 1.9;
+  color: var(--white-dim); max-width: 64ch;
+}
+.body + .body { margin-top: 1rem; }
+.body strong { color: var(--white); font-weight: 400; }
+
+.insight {
+  background: rgba(184,212,0,0.06);
+  border-left: 2px solid var(--lime);
+  padding: 1.2rem 1.4rem; margin: 2rem 0;
+}
+.insight-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.5rem;
+}
+.insight-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--white-dim);
+}
+.insight-text strong { color: var(--white); font-weight: 400; }
+
+.stat-block {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--white-faint);
+  border: 1px solid var(--white-faint); margin: 2.5rem 0;
+}
+.stat { background: #1e2c3a; padding: 1.4rem 1.2rem; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700; line-height: 1;
+  letter-spacing: -0.03em; color: var(--lime); margin-bottom: 0.4rem;
+}
+.stat-label { font-size: 0.82rem; font-weight: 300; color: var(--white-dim); line-height: 1.5; }
+.stat-source { font-size: 0.68rem; color: rgba(240,239,240,0.25); margin-top: 0.3rem; }
+
+.callout {
+  background: #1e2c3a; border: 1px solid rgba(240,239,240,0.06);
+  padding: 1.4rem; margin: 2rem 0;
+}
+.callout-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.35); margin-bottom: 0.6rem;
+}
+.callout-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.75);
+}
+.callout-text strong { color: #f0eff0; font-weight: 500; }
+
+.nav-next {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  margin-top: 4rem; padding-top: 3rem;
+  border-top: 1px solid var(--white-faint);
+}
+.nav-next-label {
+  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+.nav-next-link {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); text-decoration: none;
+  transition: color var(--dur-base);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.nav-next-link:hover { color: var(--lime); }
+
+@media (max-width: 768px) {
+  .nav-link { display: none; }
+  .nav-link-cta { display: block; }
+  .stat-block { grid-template-columns: repeat(2, 1fr); }
+  .article { padding: 3rem 1.2rem 5rem; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="nav-wordmark" href="/">get<span>martin</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="/">This First</a>
+    <a class="nav-link" href="/proof">Proof</a>
+    <a class="nav-link active" href="/learn">Learn</a>
+    <a class="nav-link-cta" href="/#ch5">Let's talk</a>
+  </div>
+  <div class="nav-progress"></div>
+</nav>
+
+<div class="page">
+  <div class="article">
+
+    <a class="back" href="/learn">← Back to Learn</a>
+
+    <div class="article-header">
+      <p class="article-eyebrow">The Basics</p>
+      <h1 class="article-headline">Social Media Marketing —<br>Beyond Posting and Hoping</h1>
+      <p class="article-intro">
+        Most companies treat social media marketing as a presence problem — they need to be on the platforms, so they post. Something. Regularly enough to feel like they're doing something.
+        <strong>That is not social media marketing. That is social media activity. The distinction matters enormously, and most companies never make it.</strong>
+      </p>
+      <div class="article-meta">
+        <span>The Basics</span>
+        <span>7 min read</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT IT ACTUALLY IS -->
+    <div class="section">
+      <p class="section-label">The definition</p>
+      <h2 class="section-headline">What social media marketing<br><span class="dim">actually is</span></h2>
+      <p class="body">Social media marketing is the use of social platforms to build an audience, establish credibility, distribute content, generate leads, and support the sales process. It is not any one of those things in isolation — it is all of them, in sequence, with a clear understanding of what each platform does and does not do well.</p>
+      <p class="body">The confusion comes from treating social media as a broadcast channel — a place to publish announcements, product updates, and company news, and measure success by follower count. <strong>Social media is not a broadcast channel. It is a trust-building channel.</strong> The content that works is not content that talks about you. It is content that is useful, interesting, or provokes a reaction — for the specific person you are trying to reach.</p>
+      <p class="body">In B2B, that means understanding who your buyer is, where they spend time online, what questions they are already asking, and what kind of content they share with their colleagues. Every other decision — platform, format, cadence, tone — follows from that.</p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">The honest framing</p>
+      <p class="insight-text">Social media marketing is not about being present. It is about being useful, credible, and memorable to the specific people who will eventually buy from you — or refer someone who will. <strong>Presence without purpose is noise. Most company social media accounts are noise.</strong></p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT IT DOES IN A B2B SALES CYCLE -->
+    <div class="section">
+      <p class="section-label">Where it fits</p>
+      <h2 class="section-headline">What social media actually does<br><span class="dim">in a B2B sales cycle</span></h2>
+      <p class="body">According to research published by Marketing LTB, 75% of B2B buyers use social media to research vendors before engaging with them. And 84% of C-suite and VP-level executives report using social media as a key source of information during the purchase decision process, according to Lead Forensics.</p>
+      <p class="body">That research happens silently. The prospect is not commenting on your posts or sending you a message. They are reading what you have published, forming an impression, and making a judgment about whether you know what you are talking about. <strong>By the time they reach out, the social media work is already done — either for you or against you.</strong></p>
+      <p class="body">Social media also plays a specific role in the sales process itself. Research from HubSpot's 2025 State of Sales Report found that 42% of salespeople say social media delivers the highest cold outreach response rate — higher than email or phone. The rep who has been consistently visible on LinkedIn — sharing useful content, commenting thoughtfully on industry conversations — gets replied to more than the one who appears only when they have something to sell.</p>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat">
+        <div class="stat-num">75%</div>
+        <div class="stat-label">Of B2B buyers use social media to research vendors before engaging</div>
+        <div class="stat-source">Marketing LTB, 2025</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">80%</div>
+        <div class="stat-label">Of B2B social media leads come from LinkedIn</div>
+        <div class="stat-source">Multiple sources, 2024–2025</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">42%</div>
+        <div class="stat-label">Of salespeople say social media delivers their highest cold outreach response rate</div>
+        <div class="stat-source">HubSpot State of Sales, 2025</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- THE PLATFORM QUESTION -->
+    <div class="section">
+      <p class="section-label">The platform question</p>
+      <h2 class="section-headline">Which platforms matter<br><span class="dim">and which ones are a distraction</span></h2>
+      <p class="body">The instinct is to be everywhere. The reality is that spreading thin across every platform produces mediocre content on all of them and meaningful results on none. The better question is: where does your specific buyer already spend time — and what are they looking for when they are there?</p>
+      <p class="body"><strong>LinkedIn is the non-negotiable for B2B.</strong> According to data compiled from multiple sources, LinkedIn generates around 80% of B2B social media leads. 96% of B2B content marketers use it for organic social marketing. 4 out of 5 LinkedIn members drive business decisions. The platform is not optional for B2B — it is the primary arena. The question is not whether to be on LinkedIn but how to use it effectively.</p>
+      <p class="body"><strong>YouTube is worth considering for complex products.</strong> If your product requires explanation — if a two-minute video can do what ten paragraphs cannot — YouTube compounds over time in ways that other platforms do not. Videos rank in Google search, get cited in AI responses, and work indefinitely after they are published. The investment is higher, but so is the shelf life.</p>
+      <p class="body"><strong>Everything else is audience-dependent.</strong> Some B2B audiences are active on Instagram or even TikTok. Some industries have strong communities on Reddit or niche forums that deliver more qualified attention than any mainstream platform. The decision should follow the audience — not the assumption that certain platforms are inherently B2B or B2C.</p>
+    </div>
+
+    <div class="callout">
+      <p class="callout-label">The platform mistake most B2B companies make</p>
+      <p class="callout-text">They maintain a company page on every platform — LinkedIn, X, Instagram, Facebook — and post the same content to all of them on a rotation. The reach is low, the engagement is lower, and the effort produces no measurable result. <strong>One platform done well beats five platforms done poorly. Pick the one where your buyer is most active. Build there first. Expand only when that channel is genuinely working.</strong></p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- COMPANY VS PERSONAL -->
+    <div class="section">
+      <p class="section-label">The biggest misconception</p>
+      <h2 class="section-headline">Company pages vs.<br><span class="dim">personal presence</span></h2>
+      <p class="body">Most B2B companies invest their social media effort in the company page. This is usually a mistake — or at least an incomplete strategy.</p>
+      <p class="body">Company pages on LinkedIn have limited organic reach. The algorithm consistently favours content from individuals over content from company accounts. A post from the founder, the sales director, or the subject matter expert will reach more people — and earn more trust — than the same content published on the company page.</p>
+      <p class="body">This is not a recent observation. Research published by Sprout Social found that nearly 70% of LinkedIn users engage with brand content regularly, but the formats that drive most engagement are text posts from individuals sharing genuine points of view — not polished corporate content.</p>
+      <p class="body"><strong>The most effective B2B social media strategy is usually personal brand first, company page second.</strong> The founders, the sales team, and the subject matter experts build visible, credible personal presences. The company page amplifies, archives, and provides a home base. The human faces do the trust-building work.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT WORKS -->
+    <div class="section">
+      <p class="section-label">What actually works</p>
+      <h2 class="section-headline">The content that moves people<br><span class="dim">and the content that doesn't</span></h2>
+      <p class="body">The content that performs on LinkedIn — and in B2B social more broadly — shares a few consistent characteristics. It has a clear point of view. It is specific rather than generic. It teaches something or challenges something the reader thought they knew. It sounds like a person, not a committee.</p>
+      <p class="body">The content that consistently underperforms is content about the company — product announcements, award wins, press releases, and "we're excited to announce" posts. This content is relevant to the company. It is rarely relevant to the reader.</p>
+      <p class="body"><strong>The shift that changes everything</strong> is moving from "what do we want to say?" to "what does our buyer want to know?" The first question produces company-centric content that generates likes from colleagues. The second produces buyer-centric content that generates leads from strangers.</p>
+      <p class="body">Video is growing rapidly. Sprout Social's 2026 data found that short-form social video drives the highest ROI among video formats for B2B marketers, with 41% citing it as their top performer. But video without a clear audience and purpose is just more noise at higher production cost. The format question comes after the audience and message questions — not before.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT IT DOESN'T DO -->
+    <div class="section">
+      <p class="section-label">The limits</p>
+      <h2 class="section-headline">What social media marketing<br><span class="dim">cannot do on its own</span></h2>
+      <p class="body">Social media builds awareness and credibility. It does not, in isolation, close deals. A prospect who has followed you on LinkedIn for six months still needs to go through a sales process. The social presence improves the conditions of that process — they arrive warmer, more trusting, more familiar with your thinking — but it does not replace it.</p>
+      <p class="body">Social media is also increasingly difficult to measure accurately. The buyer who saw thirty of your posts before booking a call will show up in your CRM as coming from "direct" or "email" — because the final touchpoint, not the accumulated influence of the social presence, is what most attribution models capture. This makes social media look less valuable than it is in the data, which leads to underinvestment, which produces worse results.</p>
+      <p class="body"><strong>The honest position is that social media marketing is a long game that is difficult to attribute and easy to abandon too early.</strong> The companies that build consistent, credible social presences over years — and resist the pressure to justify them quarter by quarter — tend to be the ones who find themselves with an unfair advantage in their market when it matters.</p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">Where to start</p>
+      <p class="insight-text">Pick one person in your company — ideally the founder or the person most credible on the core problem you solve — and commit to one genuine, useful, point-of-view post per week on LinkedIn for three months. Not company news. Not product updates. <strong>Something your ideal buyer would find genuinely useful or interesting — written in their language, about their problem, with a clear perspective behind it.</strong> Measure reach and engagement at three months. Then decide what to do next.</p>
+    </div>
+
+    <div class="nav-next">
+      <span class="nav-next-label">Read next</span>
+      <a class="nav-next-link" href="/learn/content-marketing">
+        Content Marketing — What It Actually Means →
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const progress = document.querySelector('.nav-progress');
+window.addEventListener('scroll', () => {
+  const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
+  if (progress) progress.style.width = pct + '%';
+}, { passive: true });
+</script>
+
+</body>
+</html>
