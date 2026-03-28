@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TOFU, MOFU, BOFU explained — the three stages of the marketing funnel, what happens at each one, and why most companies get the balance wrong.">
+<title>TOFU, MOFU, BOFU — The Acronyms Nobody Explains and Everyone Uses — getmartin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/global.css">
+<style>
+
+:root {
+  --font-display: 'Roboto', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+  --max-w: 820px;
+}
+
+html, body { height: auto; overflow-x: hidden; }
+
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-height); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--white-faint);
+  background: rgba(30,44,58,0.95);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--white); text-decoration: none; flex-shrink: 0;
+}
+.nav-wordmark span { color: var(--lime); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-link {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white-dim); text-decoration: none;
+  transition: color var(--dur-base);
+}
+.nav-link:hover { color: var(--white); }
+.nav-link.active { color: var(--white); }
+.nav-link-cta {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
+  padding: 0.4rem 1rem; text-decoration: none; transition: background var(--dur-base);
+}
+.nav-link-cta:hover { background: var(--lime-hover); }
+.nav-progress {
+  position: absolute; bottom: 0; left: 0;
+  height: 1px; background: var(--lime); width: 0%;
+  transition: width 0.2s linear;
+}
+
+.page { min-height: 100vh; padding-top: var(--nav-height); position: relative; }
+.page::before {
+  content: ''; position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none; z-index: 0;
+}
+
+.article {
+  position: relative; z-index: 1;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 5vw 2rem 8rem;
+}
+
+.back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--white-dim);
+  text-decoration: none; margin-bottom: 3rem;
+  transition: color var(--dur-base);
+}
+.back:hover { color: var(--white); }
+
+.article-header { margin-bottom: 3.5rem; }
+.article-eyebrow {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
+}
+.article-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.6rem);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
+  color: var(--white); margin-bottom: 1.4rem;
+}
+.article-intro {
+  font-size: 1.1rem; font-weight: 300; line-height: 1.8;
+  color: var(--white-dim); max-width: 58ch;
+  border-left: 2px solid var(--lime);
+  padding-left: 1.2rem;
+}
+.article-intro strong { color: var(--white); font-weight: 400; }
+.article-meta {
+  display: flex; gap: 1.5rem; margin-top: 1.4rem;
+  font-size: 0.72rem; font-weight: 300; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+
+.divider { border: none; border-top: 1px solid var(--white-faint); margin: 3rem 0; }
+
+.section { margin-bottom: 3.5rem; }
+.section-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.8rem;
+}
+.section-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 1rem;
+}
+.section-headline .dim { color: var(--white-dim); }
+
+.body {
+  font-size: 1rem; font-weight: 300; line-height: 1.9;
+  color: var(--white-dim); max-width: 64ch;
+}
+.body + .body { margin-top: 1rem; }
+.body strong { color: var(--white); font-weight: 400; }
+
+.insight {
+  background: rgba(184,212,0,0.06);
+  border-left: 2px solid var(--lime);
+  padding: 1.2rem 1.4rem; margin: 2rem 0;
+}
+.insight-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.5rem;
+}
+.insight-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--white-dim);
+}
+.insight-text strong { color: var(--white); font-weight: 400; }
+
+.stat-block {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--white-faint);
+  border: 1px solid var(--white-faint); margin: 2.5rem 0;
+}
+.stat { background: #1e2c3a; padding: 1.4rem 1.2rem; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700; line-height: 1;
+  letter-spacing: -0.03em; color: var(--lime); margin-bottom: 0.4rem;
+}
+.stat-label { font-size: 0.82rem; font-weight: 300; color: var(--white-dim); line-height: 1.5; }
+.stat-source { font-size: 0.68rem; color: rgba(240,239,240,0.25); margin-top: 0.3rem; }
+
+.callout {
+  background: #1e2c3a; border: 1px solid rgba(240,239,240,0.06);
+  padding: 1.4rem; margin: 2rem 0;
+}
+.callout-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.35); margin-bottom: 0.6rem;
+}
+.callout-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.75);
+}
+.callout-text strong { color: #f0eff0; font-weight: 500; }
+
+/* ── INTERACTIVE FUNNEL ── */
+.funnel-wrap {
+  margin: 3rem 0;
+  display: flex;
+  gap: 0;
+  align-items: stretch;
+  min-height: 340px;
+  border: 1px solid var(--white-faint);
+}
+
+.funnel-visual {
+  width: 220px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--white-faint);
+}
+
+.funnel-stage-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.4rem;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  text-align: left;
+  transition: background 0.2s;
+  border-bottom: 1px solid var(--white-faint);
+  position: relative;
+}
+.funnel-stage-btn:last-child { border-bottom: none; }
+.funnel-stage-btn:hover { background: rgba(255,255,255,0.03); }
+.funnel-stage-btn.active { background: rgba(184,212,0,0.07); }
+
+.funnel-stage-left { display: flex; flex-direction: column; gap: 3px; }
+.funnel-acronym {
+  font-family: var(--font-display);
+  font-size: 1.2rem; font-weight: 700; letter-spacing: -0.01em;
+  color: var(--white);
+  transition: color 0.2s;
+}
+.funnel-stage-btn.active .funnel-acronym { color: var(--lime); }
+.funnel-name {
+  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white-dim);
+}
+.funnel-indicator {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba(240,239,240,0.2);
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+.funnel-stage-btn.active .funnel-indicator {
+  background: var(--lime);
+  border-color: var(--lime);
+}
+
+/* Width bars showing funnel shape */
+.funnel-stage-btn::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  background: rgba(184,212,0,0.04);
+  transition: width 0.2s;
+}
+.funnel-stage-btn[data-stage="tofu"]::before { width: 100%; }
+.funnel-stage-btn[data-stage="mofu"]::before { width: 70%; }
+.funnel-stage-btn[data-stage="bofu"]::before { width: 40%; }
+.funnel-stage-btn.active[data-stage="tofu"]::before { background: rgba(184,212,0,0.08); }
+.funnel-stage-btn.active[data-stage="mofu"]::before { background: rgba(184,212,0,0.08); }
+.funnel-stage-btn.active[data-stage="bofu"]::before { background: rgba(184,212,0,0.08); }
+
+.funnel-detail {
+  flex: 1;
+  padding: 2rem;
+  display: none;
+}
+.funnel-detail.active { display: block; }
+
+.funnel-detail-eyebrow {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.6rem;
+}
+.funnel-detail-headline {
+  font-family: var(--font-display);
+  font-size: 1.4rem; font-weight: 700; line-height: 1.1;
+  letter-spacing: -0.02em; color: var(--white); margin-bottom: 0.8rem;
+}
+.funnel-detail-body {
+  font-size: 0.95rem; font-weight: 300; line-height: 1.8;
+  color: var(--white-dim); margin-bottom: 1.2rem;
+}
+.funnel-detail-body strong { color: var(--white); font-weight: 400; }
+
+.funnel-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+.funnel-col-label {
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.4); margin-bottom: 0.5rem;
+}
+.funnel-col-items { display: flex; flex-direction: column; gap: 4px; }
+.funnel-col-item {
+  font-size: 0.82rem; font-weight: 300; color: var(--white-dim);
+  padding: 0.3rem 0;
+  border-bottom: 1px solid rgba(240,239,240,0.04);
+  line-height: 1.5;
+}
+.funnel-col-item:last-child { border-bottom: none; }
+
+.funnel-hint {
+  font-size: 0.72rem; font-weight: 300; letter-spacing: 0.06em;
+  color: rgba(240,239,240,0.25); text-align: center; margin-top: 0.8rem;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+
+.nav-next {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  margin-top: 4rem; padding-top: 3rem;
+  border-top: 1px solid var(--white-faint);
+}
+.nav-next-label {
+  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+.nav-next-link {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); text-decoration: none;
+  transition: color var(--dur-base);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.nav-next-link:hover { color: var(--lime); }
+
+@media (max-width: 768px) {
+  .nav-link { display: none; }
+  .nav-link-cta { display: block; }
+  .stat-block { grid-template-columns: repeat(2, 1fr); }
+  .article { padding: 3rem 1.2rem 5rem; }
+  .funnel-wrap { flex-direction: column; min-height: auto; }
+  .funnel-visual { width: 100%; flex-direction: row; border-right: none; border-bottom: 1px solid var(--white-faint); }
+  .funnel-stage-btn { border-bottom: none; border-right: 1px solid var(--white-faint); }
+  .funnel-stage-btn:last-child { border-right: none; }
+  .funnel-stage-btn::before { display: none; }
+  .funnel-cols { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="nav-wordmark" href="/">get<span>martin</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="/">This First</a>
+    <a class="nav-link" href="/proof">Proof</a>
+    <a class="nav-link active" href="/learn">Learn</a>
+    <a class="nav-link-cta" href="/#ch5">Let's talk</a>
+  </div>
+  <div class="nav-progress"></div>
+</nav>
+
+<div class="page">
+  <div class="article">
+
+    <a class="back" href="/learn">← Back to Learn</a>
+
+    <div class="article-header">
+      <p class="article-eyebrow">The Basics</p>
+      <h1 class="article-headline">TOFU, MOFU, BOFU —<br>The Acronyms Nobody Explains<br>and Everyone Uses</h1>
+      <p class="article-intro">
+        You will hear these three terms in almost every marketing conversation. They describe the three stages of the marketing funnel — the journey a complete stranger takes to become a paying customer.
+        <strong>Understanding what happens at each stage, and what your job is at each stage, changes how you spend your time, your budget, and your creative energy.</strong>
+      </p>
+      <div class="article-meta">
+        <span>The Basics</span>
+        <span>8 min read</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT THE FUNNEL IS -->
+    <div class="section">
+      <p class="section-label">The concept</p>
+      <h2 class="section-headline">What the funnel is<br><span class="dim">and why it is shaped like one</span></h2>
+      <p class="body">The marketing funnel is a model for understanding the journey a buyer takes from first awareness of a problem to making a purchase decision. It is called a funnel because it narrows — many people enter at the top with a vague interest in a topic, fewer become actively engaged prospects in the middle, and fewer still become ready-to-buy leads at the bottom.</p>
+      <p class="body">TOFU stands for Top of Funnel. MOFU for Middle of Funnel. BOFU for Bottom of Funnel. Each stage represents a different mindset in the buyer — a different level of awareness, intent, and readiness — and requires a fundamentally different type of content and communication in response.</p>
+      <p class="body"><strong>The funnel is not a perfect model.</strong> Real buyers do not move neatly from stage one to stage two to stage three. They loop back, skip ahead, come in at the middle having already done extensive research, or sit at the top for months before anything changes. But the framework is still useful — not as a literal description of how buying happens, but as a planning tool for ensuring you have the right content for every mindset your buyer might arrive with.</p>
+    </div>
+
+    <!-- INTERACTIVE FUNNEL -->
+    <div class="funnel-wrap">
+      <div class="funnel-visual">
+
+        <button class="funnel-stage-btn active" data-stage="tofu" data-target="detail-tofu">
+          <div class="funnel-stage-left">
+            <span class="funnel-acronym">TOFU</span>
+            <span class="funnel-name">Top of Funnel</span>
+          </div>
+          <span class="funnel-indicator"></span>
+        </button>
+
+        <button class="funnel-stage-btn" data-stage="mofu" data-target="detail-mofu">
+          <div class="funnel-stage-left">
+            <span class="funnel-acronym">MOFU</span>
+            <span class="funnel-name">Middle of Funnel</span>
+          </div>
+          <span class="funnel-indicator"></span>
+        </button>
+
+        <button class="funnel-stage-btn" data-stage="bofu" data-target="detail-bofu">
+          <div class="funnel-stage-left">
+            <span class="funnel-acronym">BOFU</span>
+            <span class="funnel-name">Bottom of Funnel</span>
+          </div>
+          <span class="funnel-indicator"></span>
+        </button>
+
+      </div>
+
+      <!-- TOFU DETAIL -->
+      <div class="funnel-detail active" id="detail-tofu">
+        <p class="funnel-detail-eyebrow">Awareness stage</p>
+        <h3 class="funnel-detail-headline">They have a problem.<br>They don't know you exist yet.</h3>
+        <p class="funnel-detail-body">
+          At the top of the funnel, the buyer is becoming aware of a problem or opportunity. They are not yet looking for a solution — they are still defining the problem itself. <strong>Your job at TOFU is to be useful before you are relevant.</strong> Teach them something. Help them understand the problem better. Earn their attention before you ask for anything.
+        </p>
+        <div class="funnel-cols">
+          <div>
+            <p class="funnel-col-label">What works</p>
+            <div class="funnel-col-items">
+              <p class="funnel-col-item">Educational blog posts and articles</p>
+              <p class="funnel-col-item">Explainer videos and social content</p>
+              <p class="funnel-col-item">Podcasts and webinars</p>
+              <p class="funnel-col-item">SEO-optimised guides</p>
+              <p class="funnel-col-item">Thought leadership on LinkedIn</p>
+            </div>
+          </div>
+          <div>
+            <p class="funnel-col-label">What the buyer is thinking</p>
+            <div class="funnel-col-items">
+              <p class="funnel-col-item">"Why is this happening in our operation?"</p>
+              <p class="funnel-col-item">"Is this a real problem or just us?"</p>
+              <p class="funnel-col-item">"What do other companies do about this?"</p>
+              <p class="funnel-col-item">"How big is this issue really?"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOFU DETAIL -->
+      <div class="funnel-detail" id="detail-mofu">
+        <p class="funnel-detail-eyebrow">Consideration stage</p>
+        <h3 class="funnel-detail-headline">They know the problem.<br>They're evaluating solutions.</h3>
+        <p class="funnel-detail-body">
+          In the middle of the funnel, the buyer has defined their problem and is now actively evaluating options. They are comparing vendors, reading case studies, attending demos, and building an internal case. <strong>Your job at MOFU is to become the most credible option — to show, not just tell, that you understand their specific situation and have solved it before.</strong>
+        </p>
+        <div class="funnel-cols">
+          <div>
+            <p class="funnel-col-label">What works</p>
+            <div class="funnel-col-items">
+              <p class="funnel-col-item">Case studies and proof of results</p>
+              <p class="funnel-col-item">Comparison guides and frameworks</p>
+              <p class="funnel-col-item">Product demo videos</p>
+              <p class="funnel-col-item">Webinars with depth and specificity</p>
+              <p class="funnel-col-item">Targeted email nurture sequences</p>
+            </div>
+          </div>
+          <div>
+            <p class="funnel-col-label">What the buyer is thinking</p>
+            <div class="funnel-col-items">
+              <p class="funnel-col-item">"Which approach is right for us?"</p>
+              <p class="funnel-col-item">"Has this worked for companies like ours?"</p>
+              <p class="funnel-col-item">"What does implementation actually look like?"</p>
+              <p class="funnel-col-item">"Can I trust these people?"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOFU DETAIL -->
+      <div class="funnel-detail" id="detail-bofu">
+        <p class="funnel-detail-eyebrow">Decision stage</p>
+        <h3 class="funnel-detail-headline">They're ready to buy.<br>They need a reason to choose you.</h3>
+        <p class="funnel-detail-body">
+          At the bottom of the funnel, the buyer has decided to solve the problem and is choosing between a shortlist of vendors. The decision is imminent. <strong>Your job at BOFU is to remove doubt and make the decision easy — specific proof, clear ROI, and reassurance that they will be supported after they sign.</strong> This is where the deal is won or lost.
+        </p>
+        <div class="funnel-cols">
+          <div>
+            <p class="funnel-col-label">What works</p>
+            <div class="funnel-col-items">
+              <p class="funnel-col-item">ROI calculators and business cases</p>
+              <p class="funnel-col-item">Free trials and product demos</p>
+              <p class="funnel-col-item">Client references and testimonials</p>
+              <p class="funnel-col-item">Detailed pricing and implementation guides</p>
+              <p class="funnel-col-item">Direct, personalised outreach</p>
+            </div>
+          </div>
+          <div>
+            <p class="funnel-col-label">What the buyer is thinking</p>
+            <div class="funnel-col-items">
+              <p class="funnel-col-item">"Can I justify this internally?"</p>
+              <p class="funnel-col-item">"What happens if this doesn't work?"</p>
+              <p class="funnel-col-item">"Who else has done this and what happened?"</p>
+              <p class="funnel-col-item">"What does onboarding actually look like?"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="funnel-hint">Click each stage to explore</p>
+
+    <hr class="divider">
+
+    <!-- WHY IT MATTERS -->
+    <div class="section">
+      <p class="section-label">Why it matters</p>
+      <h2 class="section-headline">The imbalance that kills<br><span class="dim">most content strategies</span></h2>
+      <p class="body">The most common failure in B2B content marketing is a lopsided funnel. Most companies produce a lot of TOFU — blog posts, social content, top-level explainers — because it is the easiest content to create and the most straightforward to justify. They produce almost no MOFU and BOFU.</p>
+      <p class="body">The result is a pattern that is easy to diagnose in hindsight: traffic grows but revenue does not. The site is attracting strangers and educating them — and then losing them the moment they are ready to evaluate, because there is nothing there to meet them at that stage. A company can write fifteen TOFU blog posts and have two BOFU case studies. That imbalance explains why the traffic graph goes up while the pipeline stays flat.</p>
+      <p class="body"><strong>Every piece of content you produce should be mapped to a funnel stage — and you should be able to answer the question: what does someone who reads this piece do next?</strong> If the answer is "nothing, because there is nothing to do next," the content is not part of a strategy. It is an island.</p>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat">
+        <div class="stat-num">5%</div>
+        <div class="stat-label">Of your target market is ready to buy at any given moment. The other 95% are not — yet.</div>
+        <div class="stat-source">PRLab / widely cited B2B benchmark</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">6–10</div>
+        <div class="stat-label">Stakeholders involved in a typical B2B purchase — each potentially at a different funnel stage simultaneously</div>
+        <div class="stat-source">Gartner / multiple B2B research sources</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4.5</div>
+        <div class="stat-label">Pieces of content a B2B buyer consumes on average before reaching out to a sales rep</div>
+        <div class="stat-source">Isoline / B2B content research</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- THE NON-LINEAR REALITY -->
+    <div class="section">
+      <p class="section-label">The honest caveat</p>
+      <h2 class="section-headline">The funnel is not linear.<br><span class="dim">Real buying journeys rarely are.</span></h2>
+      <p class="body">B2B buyers do not progress neatly from TOFU to MOFU to BOFU. They loop back. They arrive at the middle after doing extensive research you never saw. They land on a pricing page — pure BOFU — before they have read a single piece of your TOFU content. Multiple stakeholders in the same buying group can be at completely different stages simultaneously.</p>
+      <p class="body">The most useful way to think about TOFU, MOFU, and BOFU in 2025 is not as sequential stages the buyer passes through, but as <strong>modes the buyer can be in at any moment</strong> — different mindsets that require different messages. Your job is to have the right content available for each mode, connected so the buyer can move between them fluidly, not waiting for a neat handoff that may never come.</p>
+      <p class="body">Think of TOFU, MOFU, and BOFU as content categories, not a pipeline. Tag everything you produce with its stage. Audit what you have. Then look at the gaps. That audit — not any single piece of content — is where most companies find the real answer to why their marketing is not converting.</p>
+    </div>
+
+    <div class="callout">
+      <p class="callout-label">The content audit worth doing this week</p>
+      <p class="callout-text">List every piece of content your company has published. Tag each one as TOFU, MOFU, or BOFU. Then count. Most companies discover they have ten times more TOFU than anything else. <strong>That gap — not your writing quality, not your SEO, not your posting frequency — is usually the primary reason your content does not convert.</strong> Fix the balance before you produce another word of TOFU.</p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">Where to start</p>
+      <p class="insight-text">If you have existing content, do the audit first. If you are starting from scratch, build one piece per stage before you build more of any one stage. One TOFU article, one MOFU case study, one BOFU ROI argument. <strong>A thin but complete funnel converts better than a deep but one-sided one.</strong></p>
+    </div>
+
+    <div class="nav-next">
+      <span class="nav-next-label">Read next</span>
+      <a class="nav-next-link" href="/learn/personal-branding">
+        Personal Branding — People Buy From People, Not Logos →
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const progress = document.querySelector('.nav-progress');
+window.addEventListener('scroll', () => {
+  const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
+  if (progress) progress.style.width = pct + '%';
+}, { passive: true });
+
+// Interactive funnel
+const buttons = document.querySelectorAll('.funnel-stage-btn');
+const details = document.querySelectorAll('.funnel-detail');
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    buttons.forEach(b => b.classList.remove('active'));
+    details.forEach(d => d.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.target).classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
