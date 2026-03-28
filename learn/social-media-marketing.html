@@ -167,6 +167,68 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .callout-text strong { color: #f0eff0; font-weight: 500; }
 
+/* ── REACH COMPARISON ── */
+.reach-wrap {
+  margin: 2rem 0;
+  border: 1px solid var(--white-faint);
+  background: #151f29;
+  padding: 1.6rem;
+}
+.reach-title {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+  margin-bottom: 1.4rem;
+}
+.reach-cols {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--white-faint);
+  margin-bottom: 1rem;
+}
+.reach-col {
+  background: #1a2739; padding: 1.2rem;
+  display: flex; flex-direction: column; gap: 0.8rem;
+}
+.reach-col-personal { background: rgba(184,212,0,0.04); }
+.reach-header { display: flex; align-items: center; gap: 10px; }
+.reach-avatar {
+  width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem; font-weight: 700;
+}
+.reach-avatar-co { background: rgba(255,255,255,0.08); color: var(--white-dim); border: 1px solid rgba(255,255,255,0.1); }
+.reach-avatar-pers { background: rgba(184,212,0,0.2); color: var(--lime); border: 1px solid rgba(184,212,0,0.3); }
+.reach-name { font-size: 0.82rem; font-weight: 500; color: var(--white); line-height: 1.2; }
+.reach-handle { font-size: 0.7rem; font-weight: 300; color: var(--white-dim); }
+.reach-post {
+  font-size: 0.78rem; font-weight: 300; line-height: 1.6;
+  color: rgba(240,239,240,0.45); font-style: italic;
+  padding: 0.6rem; background: rgba(255,255,255,0.03);
+  border-left: 2px solid rgba(255,255,255,0.08);
+}
+.reach-col-personal .reach-post { border-left-color: rgba(184,212,0,0.3); }
+.reach-bar-wrap {
+  height: 6px; background: rgba(255,255,255,0.06); overflow: hidden;
+}
+.reach-bar {
+  height: 100%; width: 0%;
+  transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
+}
+.reach-bar-co { background: rgba(255,255,255,0.2); }
+.reach-bar-pers { background: var(--lime); }
+.reach-metrics { display: flex; align-items: center; justify-content: space-between; }
+.reach-metric { font-size: 0.85rem; font-weight: 500; color: var(--white-dim); }
+.reach-metric-high { color: var(--lime); }
+.reach-metric-low { color: rgba(240,239,240,0.4); }
+.reach-tag {
+  font-size: 0.62rem; font-weight: 400; letter-spacing: 0.06em;
+  text-transform: uppercase; color: rgba(240,239,240,0.25);
+}
+.reach-tag-high { color: rgba(184,212,0,0.6); }
+.reach-source {
+  font-size: 0.68rem; font-weight: 300; color: rgba(240,239,240,0.2);
+  line-height: 1.5;
+}
+
 .nav-next {
   display: flex; flex-direction: column; gap: 0.4rem;
   margin-top: 4rem; padding-top: 3rem;
@@ -298,6 +360,48 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="body">Company pages on LinkedIn have limited organic reach. The algorithm consistently favours content from individuals over content from company accounts. A post from the founder, the sales director, or the subject matter expert will reach more people — and earn more trust — than the same content published on the company page.</p>
       <p class="body">This is not a recent observation. Research published by Sprout Social found that nearly 70% of LinkedIn users engage with brand content regularly, but the formats that drive most engagement are text posts from individuals sharing genuine points of view — not polished corporate content.</p>
       <p class="body"><strong>The most effective B2B social media strategy is usually personal brand first, company page second.</strong> The founders, the sales team, and the subject matter experts build visible, credible personal presences. The company page amplifies, archives, and provides a home base. The human faces do the trust-building work.</p>
+
+      <!-- REACH COMPARISON VISUAL -->
+      <div class="reach-wrap">
+        <p class="reach-title">The same post — two different accounts</p>
+        <div class="reach-cols">
+          <div class="reach-col">
+            <div class="reach-header">
+              <div class="reach-avatar reach-avatar-co">Co</div>
+              <div>
+                <p class="reach-name">Company Page</p>
+                <p class="reach-handle">@YourCompany · 2,400 followers</p>
+              </div>
+            </div>
+            <div class="reach-post">"We're excited to share our latest thinking on supply chain optimisation..."</div>
+            <div class="reach-bar-wrap">
+              <div class="reach-bar reach-bar-co" id="barCo"></div>
+            </div>
+            <div class="reach-metrics">
+              <span class="reach-metric reach-metric-low" id="metCo">~120 impressions</span>
+              <span class="reach-tag">Limited organic reach</span>
+            </div>
+          </div>
+          <div class="reach-col reach-col-personal">
+            <div class="reach-header">
+              <div class="reach-avatar reach-avatar-pers">MC</div>
+              <div>
+                <p class="reach-name">Martin Casalini</p>
+                <p class="reach-handle">Founder · 2,400 connections</p>
+              </div>
+            </div>
+            <div class="reach-post">"We're excited to share our latest thinking on supply chain optimisation..."</div>
+            <div class="reach-bar-wrap">
+              <div class="reach-bar reach-bar-pers" id="barPers"></div>
+            </div>
+            <div class="reach-metrics">
+              <span class="reach-metric reach-metric-high" id="metPers">~3,300 impressions</span>
+              <span class="reach-tag reach-tag-high">2.75× more impressions</span>
+            </div>
+          </div>
+        </div>
+        <p class="reach-source">Based on Refine Labs research: personal profiles deliver 2.75× more impressions and 5× more engagement than company pages for identical content.</p>
+      </div>
     </div>
 
     <hr class="divider">
@@ -345,6 +449,24 @@ window.addEventListener('scroll', () => {
   const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
   if (progress) progress.style.width = pct + '%';
 }, { passive: true });
+
+// Reach bars
+let reachTriggered = false;
+const reachObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !reachTriggered) {
+      reachTriggered = true;
+      setTimeout(() => {
+        document.getElementById('barCo').style.width = '10%';
+        setTimeout(() => {
+          document.getElementById('barPers').style.width = '90%';
+        }, 300);
+      }, 200);
+    }
+  });
+}, { threshold: 0.3 });
+const reachWrap = document.querySelector('.reach-wrap');
+if (reachWrap) reachObs.observe(reachWrap);
 </script>
 
 </body>

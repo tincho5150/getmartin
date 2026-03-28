@@ -172,18 +172,27 @@ html, body { height: auto; overflow-x: hidden; }
   gap: 1px; background: var(--white-faint);
   border: 1px solid var(--white-faint); margin: 2.5rem 0;
 }
-.comparison-col { background: #1e2c3a; padding: 1.4rem; }
+.comparison-col { background: #1a2739; padding: 1.6rem; }
+.comparison-col-b { background: rgba(184,212,0,0.04); }
 .comparison-label {
   font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
+  text-transform: uppercase; color: rgba(240,239,240,0.4); margin-bottom: 1rem;
+  padding-bottom: 0.6rem; border-bottom: 1px solid rgba(240,239,240,0.06);
 }
+.comparison-label-b { color: rgba(184,212,0,0.6); }
 .comparison-item {
-  font-size: 0.9rem; font-weight: 300; color: var(--white-dim);
-  line-height: 1.7; padding: 0.4rem 0;
-  border-bottom: 1px solid rgba(240,239,240,0.06);
+  font-size: 0.88rem; font-weight: 300; color: var(--white-dim);
+  line-height: 1.7; padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(240,239,240,0.05);
+  display: flex; align-items: flex-start; gap: 8px;
 }
-.comparison-item:last-child { border-bottom: none; }
+.comparison-item:last-child { border-bottom: none; padding-bottom: 0; }
 .comparison-item strong { color: var(--white); font-weight: 400; }
+.ci-check {
+  color: rgba(255,255,255,0.2); font-size: 0.7rem;
+  flex-shrink: 0; margin-top: 3px;
+}
+.ci-check-b { color: rgba(184,212,0,0.5); }
 
 .nav-next {
   display: flex; flex-direction: column; gap: 0.4rem;
@@ -319,19 +328,19 @@ html, body { height: auto; overflow-x: hidden; }
     <div class="comparison">
       <div class="comparison-col">
         <p class="comparison-label">Buy attention when</p>
-        <p class="comparison-item">You need results on a <strong>fixed timeline</strong></p>
-        <p class="comparison-item">You are <strong>testing a message</strong> or audience quickly</p>
-        <p class="comparison-item">Intent is explicit — someone is <strong>actively searching</strong> for what you offer</p>
-        <p class="comparison-item">You are <strong>amplifying something proven</strong> — not hoping paid compensates for weak content</p>
-        <p class="comparison-item">You have budget for <strong>meaningful volume and proper testing</strong></p>
+        <p class="comparison-item"><span class="ci-check">✓</span>You need results on a <strong>fixed timeline</strong></p>
+        <p class="comparison-item"><span class="ci-check">✓</span>You are <strong>testing a message</strong> or audience quickly</p>
+        <p class="comparison-item"><span class="ci-check">✓</span>Intent is explicit — someone is <strong>actively searching</strong> for what you offer</p>
+        <p class="comparison-item"><span class="ci-check">✓</span>You are <strong>amplifying something proven</strong> — not hoping paid compensates for weak content</p>
+        <p class="comparison-item"><span class="ci-check">✓</span>You have budget for <strong>meaningful volume and proper testing</strong></p>
       </div>
-      <div class="comparison-col">
-        <p class="comparison-label">Earn attention when</p>
-        <p class="comparison-item">You are <strong>building long-term brand trust</strong> that survives budget cuts</p>
-        <p class="comparison-item">Your goal is <strong>compounding returns</strong> — assets that keep working after the investment</p>
-        <p class="comparison-item">You are trying to <strong>own a category or question</strong> in your buyers' minds</p>
-        <p class="comparison-item">You want an audience that <strong>comes to you</strong> rather than one you interrupt</p>
-        <p class="comparison-item">Your budget is limited and <strong>long-term ROI matters more than short-term speed</strong></p>
+      <div class="comparison-col comparison-col-b">
+        <p class="comparison-label comparison-label-b">Earn attention when</p>
+        <p class="comparison-item"><span class="ci-check ci-check-b">✓</span>You are <strong>building long-term brand trust</strong> that survives budget cuts</p>
+        <p class="comparison-item"><span class="ci-check ci-check-b">✓</span>Your goal is <strong>compounding returns</strong> — assets that keep working after the investment</p>
+        <p class="comparison-item"><span class="ci-check ci-check-b">✓</span>You are trying to <strong>own a category or question</strong> in your buyers' minds</p>
+        <p class="comparison-item"><span class="ci-check ci-check-b">✓</span>You want an audience that <strong>comes to you</strong> rather than one you interrupt</p>
+        <p class="comparison-item"><span class="ci-check ci-check-b">✓</span>Your budget is limited and <strong>long-term ROI matters more than short-term speed</strong></p>
       </div>
     </div>
 

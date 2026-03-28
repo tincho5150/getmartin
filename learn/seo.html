@@ -167,6 +167,92 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .callout-text strong { color: #f0eff0; font-weight: 500; }
 
+/* ── SEO VS GEO VISUAL ── */
+.seo-geo-wrap {
+  margin: 2.5rem 0;
+  border: 1px solid var(--white-faint);
+  background: #151f29;
+  padding: 1.6rem;
+}
+.seo-geo-title {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+  margin-bottom: 1.4rem;
+}
+.seo-geo-cols {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--white-faint);
+  margin-bottom: 1rem;
+}
+.seo-geo-col {
+  background: #1a2739; padding: 1.4rem;
+  display: flex; flex-direction: column; gap: 0.9rem;
+}
+.seo-geo-col-ai { background: rgba(184,212,0,0.04); }
+.seo-geo-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(240,239,240,0.4);
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(240,239,240,0.06);
+}
+.seo-geo-label-ai { color: rgba(184,212,0,0.55); }
+.seo-geo-query {
+  font-size: 0.8rem; font-weight: 300; color: var(--white-dim);
+  padding: 0.5rem 0.7rem;
+  background: rgba(255,255,255,0.04);
+  border-left: 2px solid rgba(255,255,255,0.1);
+  font-style: italic;
+}
+.seo-geo-col-ai .seo-geo-query { border-left-color: rgba(184,212,0,0.3); }
+.seo-geo-result-list { display: flex; flex-direction: column; gap: 4px; }
+.seo-result-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.8rem; font-weight: 300; color: var(--white-dim);
+  padding: 0.3rem 0;
+}
+.seo-result-dim { opacity: 0.35; }
+.seo-result-you { color: var(--white); }
+.seo-result-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.15); flex-shrink: 0;
+}
+.seo-result-dot-you { background: var(--lime); }
+.seo-result-text { flex: 1; }
+.seo-result-arrow { color: var(--lime); font-size: 0.75rem; }
+.seo-geo-answer {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 0.8rem;
+}
+.seo-geo-answer-label {
+  font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(240,239,240,0.25);
+  margin-bottom: 0.5rem;
+}
+.seo-geo-answer-text {
+  font-size: 0.8rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.6);
+}
+.seo-geo-cite {
+  display: inline-block;
+  font-size: 0.68rem; font-weight: 500; color: rgba(100,149,237,0.8);
+  background: rgba(100,149,237,0.08);
+  padding: 0 4px; border-radius: 2px;
+}
+.seo-geo-cite-you { color: rgba(184,212,0,0.9); background: rgba(184,212,0,0.1); }
+.seo-geo-outcome {
+  font-size: 0.8rem; font-weight: 300; line-height: 1.5;
+  padding: 0.5rem 0.7rem;
+}
+.seo-outcome-good { color: rgba(184,212,0,0.8); background: rgba(184,212,0,0.06); }
+.seo-outcome-warn { color: rgba(255,180,0,0.8); background: rgba(255,180,0,0.06); }
+.seo-geo-source {
+  font-size: 0.68rem; font-weight: 300; color: rgba(240,239,240,0.2);
+  line-height: 1.5;
+}
+@media (max-width: 600px) {
+  .seo-geo-cols { grid-template-columns: 1fr; }
+}
+
 .nav-next {
   display: flex; flex-direction: column; gap: 0.4rem;
   margin-top: 4rem; padding-top: 3rem;
@@ -293,6 +379,34 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="body">For the past two decades, the goal of SEO was to rank on a page of results. The user would see your link, click it, and visit your site. That model is being disrupted by a different kind of search — one where the engine doesn't show a list of links, but synthesises an answer and presents it directly.</p>
       <p class="body">ChatGPT, Perplexity, Google's AI Overviews, Gemini, and Microsoft Copilot all operate this way. They process a query, pull from multiple sources, generate a response, and sometimes — not always — cite where they got it. <strong>The user may never visit your website at all.</strong></p>
       <p class="body">This shift has given rise to a new discipline called Generative Engine Optimisation, or GEO — coined in a 2024 paper by researchers at Princeton and published at the ACM SIGKDD conference. The paper defined GEO as a framework for helping content creators improve their visibility in generative engine responses, and demonstrated that well-structured content optimised for AI citation could boost visibility in generative search by up to 40%.</p>
+    </div>
+
+    <!-- SEO VS GEO VISUAL -->
+    <div class="seo-geo-wrap">
+      <p class="seo-geo-title">Traditional search vs. AI search — what changes</p>
+      <div class="seo-geo-cols">
+        <div class="seo-geo-col">
+          <p class="seo-geo-label">Traditional SEO</p>
+          <div class="seo-geo-query">User types: "best supply chain software"</div>
+          <div class="seo-geo-result-list">
+            <div class="seo-result-item seo-result-you"><span class="seo-result-dot seo-result-dot-you"></span><span class="seo-result-text"><strong>Your site</strong> — ranked #1</span><span class="seo-result-arrow">↗</span></div>
+            <div class="seo-result-item"><span class="seo-result-dot"></span><span class="seo-result-text">Competitor A — ranked #2</span></div>
+            <div class="seo-result-item"><span class="seo-result-dot"></span><span class="seo-result-text">Competitor B — ranked #3</span></div>
+            <div class="seo-result-item seo-result-dim"><span class="seo-result-dot"></span><span class="seo-result-text">10 more results...</span></div>
+          </div>
+          <p class="seo-geo-outcome seo-outcome-good">✓ User clicks your link. You get the visit.</p>
+        </div>
+        <div class="seo-geo-col seo-geo-col-ai">
+          <p class="seo-geo-label seo-geo-label-ai">AI Search (GEO)</p>
+          <div class="seo-geo-query">User asks: "best supply chain software"</div>
+          <div class="seo-geo-answer">
+            <p class="seo-geo-answer-label">AI-generated answer</p>
+            <p class="seo-geo-answer-text">The leading supply chain optimisation platforms include... <span class="seo-geo-cite">[Source A]</span> <span class="seo-geo-cite">[Source B]</span> <span class="seo-geo-cite seo-geo-cite-you">[Your site]</span></p>
+          </div>
+          <p class="seo-geo-outcome seo-outcome-warn">⚠ User may not click through. You need to be cited — not just ranked.</p>
+        </div>
+      </div>
+      <p class="seo-geo-source">GEO is about earning citations in AI-generated responses. The goal shifts from ranking to being the source an AI trusts enough to quote.</p>
     </div>
 
     <div class="stat-block">

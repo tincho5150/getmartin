@@ -167,6 +167,50 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .callout-text strong { color: #f0eff0; font-weight: 500; }
 
+/* ── CONTENT GAP ── */
+.gap-wrap {
+  margin: 2rem 0;
+  border: 1px solid var(--white-faint);
+  background: #151f29;
+  padding: 1.6rem;
+}
+.gap-title {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+  margin-bottom: 1.4rem;
+}
+.gap-bars { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.2rem; }
+.gap-row { display: flex; align-items: center; gap: 1rem; }
+.gap-label {
+  font-size: 0.78rem; font-weight: 300; color: var(--white-dim);
+  width: 140px; flex-shrink: 0;
+}
+.gap-track {
+  flex: 1; height: 32px; background: rgba(255,255,255,0.04);
+  position: relative; display: flex; align-items: center;
+}
+.gap-bar {
+  height: 100%; width: 0%;
+  transition: width 1.6s cubic-bezier(0.4,0,0.2,1);
+  display: flex; align-items: center;
+}
+.gap-bar-create { background: var(--lime); }
+.gap-bar-consume { background: rgba(255,255,255,0.15); }
+.gap-pct {
+  font-size: 0.78rem; font-weight: 500;
+  position: absolute; right: 8px;
+}
+.gap-pct-create { color: #1e2c3a; }
+.gap-pct-consume { color: var(--white-dim); }
+.gap-insight {
+  font-size: 0.88rem; font-weight: 300; line-height: 1.6;
+  color: var(--white-dim); margin-bottom: 0.5rem;
+}
+.gap-insight strong { color: var(--white); font-weight: 500; }
+.gap-source {
+  font-size: 0.65rem; font-weight: 300; color: rgba(240,239,240,0.2);
+}
+
 .nav-next {
   display: flex; flex-direction: column; gap: 0.4rem;
   margin-top: 4rem; padding-top: 3rem;
@@ -280,6 +324,29 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="body">For B2B personal branding, LinkedIn is where the work happens. Not because it is the only platform — some industries have strong communities elsewhere — but because the audience is right. Over 1.1 billion members globally. 4 out of 5 LinkedIn members drive business decisions. 40 million members in decision-making positions. The people who buy B2B products are on LinkedIn, and they are actively engaging with content there.</p>
       <p class="body">The structural advantage of personal profiles over company pages on LinkedIn is significant and well-documented. Research from Refine Labs found that sharing posts through a personal LinkedIn profile results in 2.75 times more impressions and five times more engagement than the same content shared through a company profile. The algorithm consistently rewards individual voices over corporate ones — and the audience's trust patterns do the same.</p>
       <p class="body">The content gap is also striking. Only about 1% of LinkedIn's monthly users share content weekly, yet those users generate 9 billion impressions across the platform, according to data compiled by LiGo. <strong>The overwhelming majority of professionals on LinkedIn are consumers of content, not producers of it.</strong> Which means that consistent, quality content creation is still genuinely differentiated — not saturated, as many people assume.</p>
+
+      <!-- CONTENT GAP VISUAL -->
+      <div class="gap-wrap" id="gapWrap">
+        <p class="gap-title">LinkedIn's monthly users — who creates vs. who consumes</p>
+        <div class="gap-bars">
+          <div class="gap-row">
+            <p class="gap-label">Create content weekly</p>
+            <div class="gap-track">
+              <div class="gap-bar gap-bar-create" id="gapCreate"></div>
+              <span class="gap-pct gap-pct-create" id="gapPctCreate">1%</span>
+            </div>
+          </div>
+          <div class="gap-row">
+            <p class="gap-label">Only consume</p>
+            <div class="gap-track">
+              <div class="gap-bar gap-bar-consume" id="gapConsume"></div>
+              <span class="gap-pct gap-pct-consume" id="gapPctConsume">99%</span>
+            </div>
+          </div>
+        </div>
+        <p class="gap-insight">That 1% generates <strong>9 billion impressions</strong> — across 1.1 billion members. The gap is the opportunity.</p>
+        <p class="gap-source">Source: LiGo / LinkedIn data, 2025</p>
+      </div>
     </div>
 
     <div class="callout">
@@ -332,6 +399,26 @@ window.addEventListener('scroll', () => {
   const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
   if (progress) progress.style.width = pct + '%';
 }, { passive: true });
+
+let gapTriggered = false;
+const gapObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !gapTriggered) {
+      gapTriggered = true;
+      setTimeout(() => {
+        document.getElementById('gapCreate').style.width = '1%';
+        document.getElementById('gapPctCreate').style.left = '4px';
+        document.getElementById('gapPctCreate').style.right = 'auto';
+        document.getElementById('gapPctCreate').style.color = '#b8d400';
+        setTimeout(() => {
+          document.getElementById('gapConsume').style.width = '99%';
+        }, 400);
+      }, 200);
+    }
+  });
+}, { threshold: 0.3 });
+const gapWrap = document.getElementById('gapWrap');
+if (gapWrap) gapObs.observe(gapWrap);
 </script>
 
 </body>
