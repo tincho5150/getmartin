@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Email marketing explained — why it consistently outperforms every other channel, how it works in B2B, and what most companies get wrong about it.">
+<title>Email Marketing — Boring Name, Best Returns — getmartin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/global.css">
+<style>
+
+:root {
+  --font-display: 'Roboto', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+  --max-w: 820px;
+}
+
+html, body { height: auto; overflow-x: hidden; }
+
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-height); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--white-faint);
+  background: rgba(30,44,58,0.95);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--white); text-decoration: none; flex-shrink: 0;
+}
+.nav-wordmark span { color: var(--lime); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-link {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white-dim); text-decoration: none;
+  transition: color var(--dur-base);
+}
+.nav-link:hover { color: var(--white); }
+.nav-link.active { color: var(--white); }
+.nav-link-cta {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
+  padding: 0.4rem 1rem; text-decoration: none; transition: background var(--dur-base);
+}
+.nav-link-cta:hover { background: var(--lime-hover); }
+.nav-progress {
+  position: absolute; bottom: 0; left: 0;
+  height: 1px; background: var(--lime); width: 0%;
+  transition: width 0.2s linear;
+}
+
+.page { min-height: 100vh; padding-top: var(--nav-height); position: relative; }
+.page::before {
+  content: ''; position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none; z-index: 0;
+}
+
+.article {
+  position: relative; z-index: 1;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 5vw 2rem 8rem;
+}
+
+.back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--white-dim);
+  text-decoration: none; margin-bottom: 3rem;
+  transition: color var(--dur-base);
+}
+.back:hover { color: var(--white); }
+
+.article-header { margin-bottom: 3.5rem; }
+.article-eyebrow {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
+}
+.article-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
+  color: var(--white); margin-bottom: 1.4rem;
+}
+.article-intro {
+  font-size: 1.1rem; font-weight: 300; line-height: 1.8;
+  color: var(--white-dim); max-width: 58ch;
+  border-left: 2px solid var(--lime);
+  padding-left: 1.2rem;
+}
+.article-intro strong { color: var(--white); font-weight: 400; }
+.article-meta {
+  display: flex; gap: 1.5rem; margin-top: 1.4rem;
+  font-size: 0.72rem; font-weight: 300; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+
+.divider { border: none; border-top: 1px solid var(--white-faint); margin: 3rem 0; }
+
+.section { margin-bottom: 3.5rem; }
+.section-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.8rem;
+}
+.section-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 1rem;
+}
+.section-headline .dim { color: var(--white-dim); }
+
+.body {
+  font-size: 1rem; font-weight: 300; line-height: 1.9;
+  color: var(--white-dim); max-width: 64ch;
+}
+.body + .body { margin-top: 1rem; }
+.body strong { color: var(--white); font-weight: 400; }
+
+.insight {
+  background: rgba(184,212,0,0.06);
+  border-left: 2px solid var(--lime);
+  padding: 1.2rem 1.4rem; margin: 2rem 0;
+}
+.insight-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.5rem;
+}
+.insight-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--white-dim);
+}
+.insight-text strong { color: var(--white); font-weight: 400; }
+
+.stat-block {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--white-faint);
+  border: 1px solid var(--white-faint); margin: 2.5rem 0;
+}
+.stat { background: #1e2c3a; padding: 1.4rem 1.2rem; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700; line-height: 1;
+  letter-spacing: -0.03em; color: var(--lime); margin-bottom: 0.4rem;
+}
+.stat-label { font-size: 0.82rem; font-weight: 300; color: var(--white-dim); line-height: 1.5; }
+.stat-source { font-size: 0.68rem; color: rgba(240,239,240,0.25); margin-top: 0.3rem; }
+
+.callout {
+  background: #1e2c3a; border: 1px solid rgba(240,239,240,0.06);
+  padding: 1.4rem; margin: 2rem 0;
+}
+.callout-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.35); margin-bottom: 0.6rem;
+}
+.callout-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.75);
+}
+.callout-text strong { color: #f0eff0; font-weight: 500; }
+
+.nav-next {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  margin-top: 4rem; padding-top: 3rem;
+  border-top: 1px solid var(--white-faint);
+}
+.nav-next-label {
+  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+.nav-next-link {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); text-decoration: none;
+  transition: color var(--dur-base);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.nav-next-link:hover { color: var(--lime); }
+
+@media (max-width: 768px) {
+  .nav-link { display: none; }
+  .nav-link-cta { display: block; }
+  .stat-block { grid-template-columns: repeat(2, 1fr); }
+  .article { padding: 3rem 1.2rem 5rem; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="nav-wordmark" href="/">get<span>martin</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="/">This First</a>
+    <a class="nav-link" href="/proof">Proof</a>
+    <a class="nav-link active" href="/learn">Learn</a>
+    <a class="nav-link-cta" href="/#ch5">Let's talk</a>
+  </div>
+  <div class="nav-progress"></div>
+</nav>
+
+<div class="page">
+  <div class="article">
+
+    <a class="back" href="/learn">← Back to Learn</a>
+
+    <div class="article-header">
+      <p class="article-eyebrow">The Basics</p>
+      <h1 class="article-headline">Email Marketing —<br>Boring Name, Best Returns</h1>
+      <p class="article-intro">
+        Every few years someone declares email dead. Killed by social media. Then messaging apps. Then Slack. Then AI.
+        <strong>Email is still here. It still outperforms every other marketing channel by ROI. And most companies are still using it badly enough that the gap between what email could do and what it actually does for them is enormous.</strong>
+      </p>
+      <div class="article-meta">
+        <span>The Basics</span>
+        <span>7 min read</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT IT IS -->
+    <div class="section">
+      <p class="section-label">The definition</p>
+      <h2 class="section-headline">What email marketing is<br><span class="dim">and why the name undersells it</span></h2>
+      <p class="body">Email marketing is the use of email to build relationships, nurture prospects, convert leads, and retain customers. It covers a wide range of activities — newsletters, automated sequences, cold outreach, transactional emails, re-engagement campaigns — and each one serves a different purpose in the buyer journey.</p>
+      <p class="body">What makes email structurally different from every other marketing channel is ownership. When someone follows you on LinkedIn or subscribes to your YouTube channel, the platform owns that relationship. The algorithm decides whether your content reaches them. The platform can change its rules, reduce your reach, or disappear entirely.</p>
+      <p class="body"><strong>When someone gives you their email address, you own that relationship directly.</strong> No algorithm between you and your audience. No platform taking a cut of your reach. No rule change that makes your list worthless overnight. This is why marketers who have been doing this for a long time consistently say they would rather lose access to every social platform than lose their email list.</p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">The structural advantage</p>
+      <p class="insight-text">Social media is rented land. You build an audience on someone else's platform, subject to their rules and their algorithm. Email is owned land. <strong>A list of 5,000 people who have given you permission to reach them directly is a more durable asset than 50,000 social media followers.</strong></p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- THE ROI CASE -->
+    <div class="section">
+      <p class="section-label">The numbers</p>
+      <h2 class="section-headline">Why the ROI figures<br><span class="dim">keep coming back so high</span></h2>
+      <p class="body">The most cited figure in email marketing is $36 return for every $1 spent — sourced from Litmus and widely verified across multiple independent studies. Some studies put the average even higher. The reason the number holds up across so many different research sources is structural: email is cheap to send, the audience is self-selected, and the cost base does not scale with volume the way paid advertising does.</p>
+      <p class="body">The more interesting finding is what happens with automation. Research from Omnisend found that automated emails — welcome sequences, re-engagement flows, behaviour-triggered messages — account for just 2% of total email volume but drive 30% of email-generated revenue. They earn 16 times more per send than scheduled campaigns. <strong>The leverage in email is not in sending more — it is in sending the right message to the right person at the right moment, automatically.</strong></p>
+      <p class="body">For B2B specifically, 59% of B2B marketers rate email as their most effective channel for prospecting, according to research compiled by EmailMonday — more than rate PPC, SEO, and organic social combined. And 73% of B2B buyers say they prefer that sellers contact them via email, according to Omnisend's 2026 research. The inbox is where B2B buyers want to be reached. Most companies just are not reaching them there in a way that is worth reading.</p>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat">
+        <div class="stat-num">$36</div>
+        <div class="stat-label">Average return for every $1 spent on email marketing — the highest of any digital channel</div>
+        <div class="stat-source">Litmus, verified across multiple studies</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">30%</div>
+        <div class="stat-label">Of email revenue driven by automated emails — which account for just 2% of total send volume</div>
+        <div class="stat-source">Omnisend, 2025</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">73%</div>
+        <div class="stat-label">Of B2B buyers prefer to be contacted by sellers via email</div>
+        <div class="stat-source">Omnisend, 2026</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- HOW IT WORKS IN B2B -->
+    <div class="section">
+      <p class="section-label">How it works in B2B</p>
+      <h2 class="section-headline">The three jobs email does<br><span class="dim">in a B2B sales cycle</span></h2>
+      <p class="body">B2B email marketing is not one thing. It does three distinct jobs, and most companies only do one of them — usually badly.</p>
+      <p class="body"><strong>Outbound prospecting.</strong> Cold email — reaching people who do not know you yet. The average cold email reply rate is around 4%, according to data from Hunter. That sounds low until you compare it to the alternatives. Smaller, highly targeted campaigns consistently outperform mass sends — campaigns targeting fewer than 50 recipients average a 5.8% reply rate compared to 2.1% for campaigns above 1,000, according to research by Prospeo. The lesson: precision beats volume. A personalised, relevant email to 30 carefully chosen people outperforms a generic blast to 3,000.</p>
+      <p class="body"><strong>Lead nurturing.</strong> Once someone has shown interest — downloaded something, attended a webinar, visited your pricing page — email is what keeps the relationship warm until they are ready to buy. According to Sopro, email leads convert 11.3% faster than the blended average and move through the sales cycle 7% quicker than inbound leads overall. The inbox is where the relationship deepens between the first touch and the signed contract.</p>
+      <p class="body"><strong>Newsletter and thought leadership.</strong> A consistent email newsletter — not a company update, but a genuinely useful publication that your subscribers look forward to — is one of the most durable B2B marketing assets that exists. It compounds over time. It keeps you present with buyers who are not ready yet. <strong>And it is the one channel where you can build a genuine audience that no algorithm can take away from you.</strong></p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT MOST COMPANIES GET WRONG -->
+    <div class="section">
+      <p class="section-label">The failure modes</p>
+      <h2 class="section-headline">What most companies<br><span class="dim">get wrong about email</span></h2>
+      <p class="body">The most common mistake is treating email as a broadcast channel — sending the same message to everyone on the list, regardless of where they are in the buying journey, what they have expressed interest in, or how they have previously engaged. The result is a list that slowly disengages, open rates that decline, and a channel that stops working through misuse rather than obsolescence.</p>
+      <p class="body">Segmentation is what separates effective email marketing from noise. A prospect who downloaded a case study three months ago and has not been back deserves a different email than a prospect who visited your pricing page yesterday. The message that converts is the one that is relevant to the specific person's specific situation at the specific moment they receive it.</p>
+      <p class="body">The second most common mistake is measuring the wrong things. Open rates — for a long time the primary email metric — have become unreliable since Apple's Mail Privacy Protection began registering automatic opens regardless of whether the email was actually viewed. Sopro's research notes that open rates appeared to almost double between 2016 and 2024, but much of that increase is MPP inflation rather than genuine engagement improvement. <strong>The metrics that matter are replies, clicks, conversions, and revenue generated — not opens.</strong></p>
+    </div>
+
+    <div class="callout">
+      <p class="callout-label">The cold email mistake worth calling out specifically</p>
+      <p class="callout-text">Most cold email fails not because email is the wrong channel, but because the email is about the sender rather than the recipient. It opens with the company name, the product features, and a request for a meeting — before establishing any reason for the recipient to care. <strong>The cold email that gets a reply is the one that demonstrates, in the first sentence, that the sender understands the recipient's specific situation — and has something genuinely relevant to offer in response to it.</strong></p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT GOOD LOOKS LIKE -->
+    <div class="section">
+      <p class="section-label">What good looks like</p>
+      <h2 class="section-headline">The email practices<br><span class="dim">that consistently produce results</span></h2>
+      <p class="body">Across B2B email marketing research, a few practices consistently separate the companies getting strong results from those getting mediocre ones.</p>
+      <p class="body"><strong>Personalisation beyond first name.</strong> Using someone's name in a subject line helps — research consistently shows personalised subject lines improve open rates — but personalisation at the content level is what drives replies and conversions. Reference their industry, their specific challenge, or something they have previously engaged with. The email that feels like it was written for one person outperforms the email that was written for a segment.</p>
+      <p class="body"><strong>Sequences over single sends.</strong> Research from InboxAlly found that 55% of replies to cold email campaigns come from follow-up emails rather than the first message. Most people who will eventually reply do not reply to the first email — not because they are not interested, but because timing and attention are unpredictable. A single send is not a campaign. A sequenced series of emails, each adding value, is a campaign.</p>
+      <p class="body"><strong>Automation for the right moments.</strong> The highest-performing emails — welcome sequences, re-engagement flows, behaviour-triggered messages — are automated precisely because the moment they arrive matters more than any message a human could craft on the fly. <strong>An automated email that arrives the moment someone visits your pricing page is worth more than the best-written newsletter sent on a random Tuesday.</strong></p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">Where to start</p>
+      <p class="insight-text">Before you think about newsletters or campaigns, set up one automated email: a welcome sequence for anyone who signs up or shows interest. Three emails over two weeks. First email: deliver what you promised. Second email: one genuinely useful thing related to the problem you solve. Third email: a soft invitation to a conversation. <strong>That sequence, running automatically in the background, will outperform most companies' entire email marketing effort — because it arrives at the right moment, every time.</strong></p>
+    </div>
+
+    <div class="nav-next">
+      <span class="nav-next-label">Read next</span>
+      <a class="nav-next-link" href="/learn/social-media-marketing">
+        Social Media Marketing — Beyond Posting and Hoping →
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const progress = document.querySelector('.nav-progress');
+window.addEventListener('scroll', () => {
+  const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
+  if (progress) progress.style.width = pct + '%';
+}, { passive: true });
+</script>
+
+</body>
+</html>
