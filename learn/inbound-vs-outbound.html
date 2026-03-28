@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Inbound vs outbound marketing explained — what each approach does, when each works, and how the best B2B companies use both together.">
+<title>Inbound vs. Outbound — Two Different Games — getmartin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/global.css">
+<style>
+
+:root {
+  --font-display: 'Roboto', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+  --max-w: 820px;
+}
+
+html, body { height: auto; overflow-x: hidden; }
+
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-height); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--white-faint);
+  background: rgba(30,44,58,0.95);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--white); text-decoration: none; flex-shrink: 0;
+}
+.nav-wordmark span { color: var(--lime); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-link {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white-dim); text-decoration: none;
+  transition: color var(--dur-base);
+}
+.nav-link:hover { color: var(--white); }
+.nav-link.active { color: var(--white); }
+.nav-link-cta {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
+  padding: 0.4rem 1rem; text-decoration: none; transition: background var(--dur-base);
+}
+.nav-link-cta:hover { background: var(--lime-hover); }
+.nav-progress {
+  position: absolute; bottom: 0; left: 0;
+  height: 1px; background: var(--lime); width: 0%;
+  transition: width 0.2s linear;
+}
+
+.page { min-height: 100vh; padding-top: var(--nav-height); position: relative; }
+.page::before {
+  content: ''; position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none; z-index: 0;
+}
+
+.article {
+  position: relative; z-index: 1;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 5vw 2rem 8rem;
+}
+
+.back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--white-dim);
+  text-decoration: none; margin-bottom: 3rem;
+  transition: color var(--dur-base);
+}
+.back:hover { color: var(--white); }
+
+.article-header { margin-bottom: 3.5rem; }
+.article-eyebrow {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
+}
+.article-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
+  color: var(--white); margin-bottom: 1.4rem;
+}
+.article-intro {
+  font-size: 1.1rem; font-weight: 300; line-height: 1.8;
+  color: var(--white-dim); max-width: 58ch;
+  border-left: 2px solid var(--lime);
+  padding-left: 1.2rem;
+}
+.article-intro strong { color: var(--white); font-weight: 400; }
+.article-meta {
+  display: flex; gap: 1.5rem; margin-top: 1.4rem;
+  font-size: 0.72rem; font-weight: 300; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+
+.divider { border: none; border-top: 1px solid var(--white-faint); margin: 3rem 0; }
+
+.section { margin-bottom: 3.5rem; }
+.section-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.8rem;
+}
+.section-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 1rem;
+}
+.section-headline .dim { color: var(--white-dim); }
+
+.body {
+  font-size: 1rem; font-weight: 300; line-height: 1.9;
+  color: var(--white-dim); max-width: 64ch;
+}
+.body + .body { margin-top: 1rem; }
+.body strong { color: var(--white); font-weight: 400; }
+
+.insight {
+  background: rgba(184,212,0,0.06);
+  border-left: 2px solid var(--lime);
+  padding: 1.2rem 1.4rem; margin: 2rem 0;
+}
+.insight-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.5rem;
+}
+.insight-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--white-dim);
+}
+.insight-text strong { color: var(--white); font-weight: 400; }
+
+.stat-block {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--white-faint);
+  border: 1px solid var(--white-faint); margin: 2.5rem 0;
+}
+.stat { background: #1e2c3a; padding: 1.4rem 1.2rem; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700; line-height: 1;
+  letter-spacing: -0.03em; color: var(--lime); margin-bottom: 0.4rem;
+}
+.stat-label { font-size: 0.82rem; font-weight: 300; color: var(--white-dim); line-height: 1.5; }
+.stat-source { font-size: 0.68rem; color: rgba(240,239,240,0.25); margin-top: 0.3rem; }
+
+.callout {
+  background: #1e2c3a; border: 1px solid rgba(240,239,240,0.06);
+  padding: 1.4rem; margin: 2rem 0;
+}
+.callout-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.35); margin-bottom: 0.6rem;
+}
+.callout-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.75);
+}
+.callout-text strong { color: #f0eff0; font-weight: 500; }
+
+/* ── COMPARISON GRID ── */
+.compare-wrap {
+  margin: 3rem 0;
+  border: 1px solid var(--white-faint);
+  overflow: hidden;
+}
+.compare-header {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--white-faint);
+}
+.compare-header-col {
+  padding: 1.2rem 1.6rem;
+  display: flex; align-items: center; gap: 10px;
+}
+.compare-header-col:first-child {
+  border-right: 1px solid var(--white-faint);
+  background: rgba(184,212,0,0.05);
+}
+.compare-header-col:last-child {
+  background: rgba(255,255,255,0.02);
+}
+.compare-header-label {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700; letter-spacing: -0.01em;
+  color: var(--white);
+}
+.compare-header-sub {
+  font-size: 0.7rem; font-weight: 300; color: var(--white-dim);
+  letter-spacing: 0.04em;
+}
+.compare-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.compare-dot-in { background: #b8d400; }
+.compare-dot-out { background: rgba(255,255,255,0.4); }
+
+.compare-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid rgba(240,239,240,0.04);
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.compare-row.visible { opacity: 1; transform: translateY(0); }
+.compare-row:last-child { border-bottom: none; }
+
+.compare-cell {
+  padding: 1rem 1.6rem;
+  font-size: 0.88rem; font-weight: 300; line-height: 1.6;
+  color: var(--white-dim);
+}
+.compare-cell:first-child {
+  border-right: 1px solid rgba(240,239,240,0.04);
+  background: rgba(184,212,0,0.02);
+}
+.compare-cell strong { color: var(--white); font-weight: 400; }
+
+.compare-attr {
+  grid-column: 1 / -1;
+  padding: 0.5rem 1.6rem;
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.25);
+  background: rgba(255,255,255,0.01);
+  border-bottom: 1px solid rgba(240,239,240,0.04);
+}
+
+/* ── TIMELINE ANIMATION ── */
+.timeline-wrap {
+  margin: 3rem 0;
+  border: 1px solid var(--white-faint);
+  background: #151f29;
+  padding: 2rem;
+}
+.timeline-title {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.4);
+  margin-bottom: 2rem;
+}
+
+.timeline-track {
+  margin-bottom: 1.6rem;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+.timeline-label {
+  font-size: 0.78rem; font-weight: 400; color: var(--white-dim);
+  text-align: right;
+  display: flex; align-items: center; justify-content: flex-end; gap: 6px;
+}
+.tl-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.tl-dot-in { background: #b8d400; }
+.tl-dot-out { background: rgba(255,255,255,0.4); }
+
+.timeline-bar-bg {
+  height: 28px;
+  background: rgba(255,255,255,0.04);
+  position: relative;
+  overflow: hidden;
+}
+.timeline-bar {
+  height: 100%;
+  width: 0%;
+  display: flex; align-items: center; padding-left: 10px;
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.04em;
+  white-space: nowrap; overflow: hidden;
+  transition: width 1.6s cubic-bezier(0.4,0,0.2,1);
+}
+.timeline-bar-in {
+  background: linear-gradient(90deg, rgba(184,212,0,0.8), rgba(184,212,0,0.5));
+  color: #1e2c3a;
+}
+.timeline-bar-out {
+  background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.15));
+  color: rgba(240,239,240,0.8);
+}
+
+.timeline-phases {
+  grid-column: 2;
+  display: flex;
+  font-size: 0.62rem; color: rgba(240,239,240,0.2);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid rgba(240,239,240,0.04);
+}
+
+.nav-next {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  margin-top: 4rem; padding-top: 3rem;
+  border-top: 1px solid var(--white-faint);
+}
+.nav-next-label {
+  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+.nav-next-link {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); text-decoration: none;
+  transition: color var(--dur-base);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.nav-next-link:hover { color: var(--lime); }
+
+@media (max-width: 768px) {
+  .nav-link { display: none; }
+  .nav-link-cta { display: block; }
+  .stat-block { grid-template-columns: repeat(2, 1fr); }
+  .article { padding: 3rem 1.2rem 5rem; }
+  .compare-header { grid-template-columns: 1fr; }
+  .compare-header-col:first-child { border-right: none; border-bottom: 1px solid var(--white-faint); }
+  .compare-row { grid-template-columns: 1fr; }
+  .compare-cell:first-child { border-right: none; border-bottom: 1px solid rgba(240,239,240,0.04); }
+  .compare-attr { grid-column: 1; }
+  .timeline-track { grid-template-columns: 80px 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="nav-wordmark" href="/">get<span>martin</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="/">This First</a>
+    <a class="nav-link" href="/proof">Proof</a>
+    <a class="nav-link active" href="/learn">Learn</a>
+    <a class="nav-link-cta" href="/#ch5">Let's talk</a>
+  </div>
+  <div class="nav-progress"></div>
+</nav>
+
+<div class="page">
+  <div class="article">
+
+    <a class="back" href="/learn">← Back to Learn</a>
+
+    <div class="article-header">
+      <p class="article-eyebrow">The Basics</p>
+      <h1 class="article-headline">Inbound vs. Outbound —<br>Two Different Games</h1>
+      <p class="article-intro">
+        Inbound marketing attracts buyers to you. Outbound marketing goes out to find them. Both are legitimate, both are necessary in most B2B businesses, and most companies misunderstand at least one of them.
+        <strong>The question is never which one is better. It is which one is right for where you are right now — and how to run both without confusing what each one is actually for.</strong>
+      </p>
+      <div class="article-meta">
+        <span>The Basics</span>
+        <span>7 min read</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- DEFINITIONS -->
+    <div class="section">
+      <p class="section-label">The definitions</p>
+      <h2 class="section-headline">What each one actually means</h2>
+      <p class="body"><strong>Inbound marketing</strong> is the practice of creating content, building visibility, and establishing credibility so that buyers come to you — when they are ready, on their own terms. SEO, content, social media, thought leadership, podcasts, events — these are inbound channels. The buyer initiates. You attract rather than interrupt. The investment is front-loaded; the returns compound over time.</p>
+      <p class="body"><strong>Outbound marketing</strong> is the practice of going out to find buyers — proactively reaching people who have not expressed interest yet. Cold email, cold calling, LinkedIn outreach, paid advertising, direct mail — these are outbound tactics. You initiate. You interrupt rather than attract. The investment is ongoing; the results appear quickly but stop when the activity stops.</p>
+      <p class="body">The fundamental difference is direction. Inbound pulls. Outbound pushes. <strong>Neither is inherently superior — they serve different purposes at different stages of a business, and the best B2B marketing operations run both simultaneously, with a clear understanding of what job each one is doing.</strong></p>
+    </div>
+
+    <!-- COMPARISON GRID -->
+    <div class="compare-wrap" id="compareWrap">
+      <div class="compare-header">
+        <div class="compare-header-col">
+          <div class="compare-dot compare-dot-in"></div>
+          <div>
+            <p class="compare-header-label">Inbound</p>
+            <p class="compare-header-sub">They come to you</p>
+          </div>
+        </div>
+        <div class="compare-header-col">
+          <div class="compare-dot compare-dot-out"></div>
+          <div>
+            <p class="compare-header-label">Outbound</p>
+            <p class="compare-header-sub">You go to them</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare-attr">Lead source</div>
+      <div class="compare-row">
+        <div class="compare-cell">Buyer finds you through search, content, or referral. <strong>Intent already established.</strong></div>
+        <div class="compare-cell">You find the buyer through research and outreach. <strong>Intent unknown at first contact.</strong></div>
+      </div>
+
+      <div class="compare-attr">Time to results</div>
+      <div class="compare-row">
+        <div class="compare-cell"><strong>Slow to start</strong> — months before meaningful volume. Compounding over 12–24 months.</div>
+        <div class="compare-cell"><strong>Fast to start</strong> — results within days or weeks. Flat over time without constant effort.</div>
+      </div>
+
+      <div class="compare-attr">Cost structure</div>
+      <div class="compare-row">
+        <div class="compare-cell">High upfront investment. <strong>Cost per lead drops significantly over time</strong> — by up to 80% after 5 months.</div>
+        <div class="compare-cell">Ongoing cost per contact. <strong>Cost per lead stays relatively constant</strong> — or rises as lists saturate.</div>
+      </div>
+
+      <div class="compare-attr">Lead quality</div>
+      <div class="compare-row">
+        <div class="compare-cell">Higher intent, higher trust. <strong>59% of sales teams prefer inbound leads</strong> — they close faster and at higher rates.</div>
+        <div class="compare-cell">Variable intent. Requires qualification. <strong>Effective at opening new relationships</strong> that inbound never reaches.</div>
+      </div>
+
+      <div class="compare-attr">Best used for</div>
+      <div class="compare-row">
+        <div class="compare-cell">Building long-term pipeline. <strong>Owning a category or question</strong> in your buyer's mind over time.</div>
+        <div class="compare-cell">Opening new markets. <strong>Hitting near-term pipeline targets.</strong> Targeting specific accounts directly.</div>
+      </div>
+
+      <div class="compare-attr">Channels</div>
+      <div class="compare-row">
+        <div class="compare-cell">SEO, content, social, thought leadership, events, referrals, PR</div>
+        <div class="compare-cell">Cold email, cold calling, LinkedIn outreach, paid ads, direct mail</div>
+      </div>
+
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">The direction difference</p>
+      <p class="insight-text">Inbound marketing works on buyers who are actively looking. Outbound marketing works on buyers who are not looking yet. <strong>Only 5% of your target market is ready to buy at any given moment. Inbound catches that 5%. Outbound works on the other 95% — which is why you need both.</strong></p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- PIPELINE OVER TIME -->
+    <div class="section">
+      <p class="section-label">How each performs over time</p>
+      <h2 class="section-headline">The timeline that changes<br><span class="dim">how you think about both</span></h2>
+      <p class="body">The most important thing to understand about inbound and outbound is that they operate on completely different timelines. Outbound produces activity immediately but requires constant fuel. Inbound takes time to build but generates pipeline indefinitely after the investment is made.</p>
+      <p class="body">Research shows that inbound leads cost 63% less per lead than outbound leads. But that figure only holds after the content infrastructure is established — typically after 6 to 12 months of consistent investment. In the first few months, inbound costs more per lead, not less. <strong>Companies that abandon inbound early because it is not producing fast enough are making a decision that is rational in the short term and expensive in the long term.</strong></p>
+    </div>
+
+    <!-- TIMELINE BARS -->
+    <div class="timeline-wrap" id="timelineWrap">
+      <p class="timeline-title">Pipeline contribution over a 36-month horizon</p>
+
+      <div class="timeline-track">
+        <p class="timeline-label"><span class="tl-dot tl-dot-out"></span> Outbound</p>
+        <div>
+          <div class="timeline-bar-bg">
+            <div class="timeline-bar timeline-bar-out" id="barOut">Immediate results, consistent effort required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-track">
+        <p class="timeline-label"><span class="tl-dot tl-dot-in"></span> Inbound</p>
+        <div>
+          <div class="timeline-bar-bg">
+            <div class="timeline-bar timeline-bar-in" id="barIn">Slow start, compounding returns</div>
+          </div>
+          <div class="timeline-phases">
+            <span>Month 1–3: minimal</span>
+            <span>Month 6: building</span>
+            <span>Month 12+: compounding</span>
+            <span>Month 36: dominant</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHEN TO LEAD WITH WHICH -->
+    <div class="section">
+      <p class="section-label">The decision framework</p>
+      <h2 class="section-headline">When to lead with inbound.<br><span class="dim">When to lead with outbound.</span></h2>
+      <p class="body"><strong>Lead with outbound when:</strong> you are in the first 12 months of a business or product and need pipeline now. When you are entering a new market or targeting a specific set of accounts. When you have a short-term revenue target that cannot wait for inbound to mature. When your buyer is not yet searching for what you sell — because the category does not yet exist in their vocabulary.</p>
+      <p class="body"><strong>Lead with inbound when:</strong> you have 12 to 24 months of runway and can invest in the long game. When your buyers are actively searching for solutions in your category. When you want to build an audience that compounds and reduces your dependence on paid or manual outreach over time. When you want to own a topic or problem space in your industry rather than fight for attention in a crowded outbound landscape.</p>
+      <p class="body"><strong>Run both when:</strong> you are past early stage, have enough resources to invest in content without starving sales activity, and want to build a business that is not entirely dependent on either approach. The best B2B companies use outbound to generate near-term pipeline and inbound to reduce the cost of that pipeline over time — until inbound becomes the dominant source and outbound becomes a supplement rather than a lifeline.</p>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat">
+        <div class="stat-num">63%</div>
+        <div class="stat-label">Less per lead — inbound vs outbound, after the content infrastructure matures</div>
+        <div class="stat-source">Marketing LTB / multiple sources, 2025</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">59%</div>
+        <div class="stat-label">Of sales teams prefer inbound leads — they close faster and at higher rates than outbound</div>
+        <div class="stat-source">HubSpot / Sender.net, 2024–2025</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">31%</div>
+        <div class="stat-label">Of B2B companies get their best results from an equal mix of inbound and outbound — neither alone</div>
+        <div class="stat-source">Databox B2B survey, 2024</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT MOST GET WRONG -->
+    <div class="section">
+      <p class="section-label">The failure modes</p>
+      <h2 class="section-headline">What most B2B companies<br><span class="dim">get wrong about both</span></h2>
+      <p class="body"><strong>The inbound mistake</strong> is treating it as a content volume game — publishing regularly without a clear audience, a clear keyword strategy, or a clear answer to what a reader does next after consuming the content. Traffic without conversion architecture is not inbound marketing. It is blogging. They are different things.</p>
+      <p class="body"><strong>The outbound mistake</strong> is treating it as a numbers game — sending the same generic message to as many people as possible and hoping that volume compensates for relevance. Modern outbound works when it is specific: a specific person, a specific problem, a specific reason for reaching out. The spray-and-pray approach produces low reply rates, damages deliverability, and trains the market to ignore you.</p>
+      <p class="body">The mistake that cuts across both: treating them as separate strategies rather than complementary ones. <strong>Inbound without outbound builds an audience that may never convert to pipeline. Outbound without inbound burns through contacts without building anything that reduces the cost of future outreach.</strong> Together, each makes the other more effective.</p>
+    </div>
+
+    <div class="callout">
+      <p class="callout-label">The combination that works</p>
+      <p class="callout-text">The most effective B2B marketing operations use outbound to reach specific accounts directly — and inbound content as the thing they send when they reach out. A cold email that says "I wrote something on this problem you're likely dealing with" is a fundamentally different conversation than a cold email that says "we'd love to show you our product." <strong>Inbound gives outbound something worth sending. Outbound gets inbound content in front of people who would never have found it organically.</strong></p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">Where to start</p>
+      <p class="insight-text">If you have no inbound presence, start with three to five pieces of content that directly address the most common questions your buyers ask before they buy. Publish them. Then use outbound to send them to the people you most want to reach. <strong>You have just connected both approaches — outbound distribution, inbound credibility. That combination is more effective than either alone.</strong></p>
+    </div>
+
+    <div class="nav-next">
+      <span class="nav-next-label">Read next</span>
+      <a class="nav-next-link" href="/learn/brand-vs-performance">
+        Brand vs. Performance — One Makes the Phone Ring Today, One Makes It Ring Forever →
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const progress = document.querySelector('.nav-progress');
+window.addEventListener('scroll', () => {
+  const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
+  if (progress) progress.style.width = pct + '%';
+}, { passive: true });
+
+// Animate comparison rows on scroll
+const rows = document.querySelectorAll('.compare-row');
+const rowObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+rows.forEach(r => rowObserver.observe(r));
+
+// Animate timeline bars on scroll
+const timelineWrap = document.getElementById('timelineWrap');
+let timelineTriggered = false;
+const tlObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !timelineTriggered) {
+      timelineTriggered = true;
+      setTimeout(() => {
+        document.getElementById('barOut').style.width = '72%';
+        setTimeout(() => {
+          document.getElementById('barIn').style.width = '88%';
+        }, 400);
+      }, 200);
+    }
+  });
+}, { threshold: 0.3 });
+tlObserver.observe(timelineWrap);
+</script>
+
+</body>
+</html>
