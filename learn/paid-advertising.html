@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Paid advertising explained — when it makes sense, when it doesn't, and how to decide between buying attention and earning it in B2B.">
+<title>Paid Advertising — When to Buy Attention vs. Earn It — getmartin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/global.css">
+<style>
+
+:root {
+  --font-display: 'Roboto', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+  --max-w: 820px;
+}
+
+html, body { height: auto; overflow-x: hidden; }
+
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-height); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--white-faint);
+  background: rgba(30,44,58,0.95);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--white); text-decoration: none; flex-shrink: 0;
+}
+.nav-wordmark span { color: var(--lime); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-link {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white-dim); text-decoration: none;
+  transition: color var(--dur-base);
+}
+.nav-link:hover { color: var(--white); }
+.nav-link.active { color: var(--white); }
+.nav-link-cta {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
+  padding: 0.4rem 1rem; text-decoration: none; transition: background var(--dur-base);
+}
+.nav-link-cta:hover { background: var(--lime-hover); }
+.nav-progress {
+  position: absolute; bottom: 0; left: 0;
+  height: 1px; background: var(--lime); width: 0%;
+  transition: width 0.2s linear;
+}
+
+.page { min-height: 100vh; padding-top: var(--nav-height); position: relative; }
+.page::before {
+  content: ''; position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none; z-index: 0;
+}
+
+.article {
+  position: relative; z-index: 1;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 5vw 2rem 8rem;
+}
+
+.back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--white-dim);
+  text-decoration: none; margin-bottom: 3rem;
+  transition: color var(--dur-base);
+}
+.back:hover { color: var(--white); }
+
+.article-header { margin-bottom: 3.5rem; }
+.article-eyebrow {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
+}
+.article-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
+  color: var(--white); margin-bottom: 1.4rem;
+}
+.article-intro {
+  font-size: 1.1rem; font-weight: 300; line-height: 1.8;
+  color: var(--white-dim); max-width: 58ch;
+  border-left: 2px solid var(--lime);
+  padding-left: 1.2rem;
+}
+.article-intro strong { color: var(--white); font-weight: 400; }
+.article-meta {
+  display: flex; gap: 1.5rem; margin-top: 1.4rem;
+  font-size: 0.72rem; font-weight: 300; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+
+.divider { border: none; border-top: 1px solid var(--white-faint); margin: 3rem 0; }
+
+.section { margin-bottom: 3.5rem; }
+.section-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.8rem;
+}
+.section-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 1rem;
+}
+.section-headline .dim { color: var(--white-dim); }
+
+.body {
+  font-size: 1rem; font-weight: 300; line-height: 1.9;
+  color: var(--white-dim); max-width: 64ch;
+}
+.body + .body { margin-top: 1rem; }
+.body strong { color: var(--white); font-weight: 400; }
+
+.insight {
+  background: rgba(184,212,0,0.06);
+  border-left: 2px solid var(--lime);
+  padding: 1.2rem 1.4rem; margin: 2rem 0;
+}
+.insight-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.5rem;
+}
+.insight-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--white-dim);
+}
+.insight-text strong { color: var(--white); font-weight: 400; }
+
+.stat-block {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--white-faint);
+  border: 1px solid var(--white-faint); margin: 2.5rem 0;
+}
+.stat { background: #1e2c3a; padding: 1.4rem 1.2rem; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700; line-height: 1;
+  letter-spacing: -0.03em; color: var(--lime); margin-bottom: 0.4rem;
+}
+.stat-label { font-size: 0.82rem; font-weight: 300; color: var(--white-dim); line-height: 1.5; }
+.stat-source { font-size: 0.68rem; color: rgba(240,239,240,0.25); margin-top: 0.3rem; }
+
+.callout {
+  background: #1e2c3a; border: 1px solid rgba(240,239,240,0.06);
+  padding: 1.4rem; margin: 2rem 0;
+}
+.callout-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.35); margin-bottom: 0.6rem;
+}
+.callout-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.75);
+}
+.callout-text strong { color: #f0eff0; font-weight: 500; }
+
+.comparison {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--white-faint);
+  border: 1px solid var(--white-faint); margin: 2.5rem 0;
+}
+.comparison-col { background: #1e2c3a; padding: 1.4rem; }
+.comparison-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
+}
+.comparison-item {
+  font-size: 0.9rem; font-weight: 300; color: var(--white-dim);
+  line-height: 1.7; padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(240,239,240,0.06);
+}
+.comparison-item:last-child { border-bottom: none; }
+.comparison-item strong { color: var(--white); font-weight: 400; }
+
+.nav-next {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  margin-top: 4rem; padding-top: 3rem;
+  border-top: 1px solid var(--white-faint);
+}
+.nav-next-label {
+  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+.nav-next-link {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); text-decoration: none;
+  transition: color var(--dur-base);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.nav-next-link:hover { color: var(--lime); }
+
+@media (max-width: 768px) {
+  .nav-link { display: none; }
+  .nav-link-cta { display: block; }
+  .stat-block { grid-template-columns: repeat(2, 1fr); }
+  .comparison { grid-template-columns: 1fr; }
+  .article { padding: 3rem 1.2rem 5rem; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="nav-wordmark" href="/">get<span>martin</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="/">This First</a>
+    <a class="nav-link" href="/proof">Proof</a>
+    <a class="nav-link active" href="/learn">Learn</a>
+    <a class="nav-link-cta" href="/#ch5">Let's talk</a>
+  </div>
+  <div class="nav-progress"></div>
+</nav>
+
+<div class="page">
+  <div class="article">
+
+    <a class="back" href="/learn">← Back to Learn</a>
+
+    <div class="article-header">
+      <p class="article-eyebrow">The Basics</p>
+      <h1 class="article-headline">Paid Advertising —<br>When to Buy Attention vs. Earn It</h1>
+      <p class="article-intro">
+        Paid advertising is simple in concept: you pay a platform to show your message to people who would not otherwise see it. The platform gets money. You get attention. Whether that attention turns into anything useful depends almost entirely on decisions made before the first pound or dollar is spent.
+        <strong>Paid advertising is not a strategy. It is a mechanism. Used well, it accelerates growth. Used badly, it burns budget without trace.</strong>
+      </p>
+      <div class="article-meta">
+        <span>The Basics</span>
+        <span>8 min read</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT IT IS -->
+    <div class="section">
+      <p class="section-label">The definition</p>
+      <h2 class="section-headline">What paid advertising is<br><span class="dim">and how it differs from earned attention</span></h2>
+      <p class="body">Every marketing channel sits somewhere on a spectrum between bought and earned. At one end, paid advertising: you pay for placement, you get it immediately, you stop paying and it disappears. At the other end, organic channels — SEO, content, social, word of mouth — where attention is earned through quality and consistency, accrues over time, and keeps working after the initial investment.</p>
+      <p class="body">Neither end of the spectrum is universally better. They have fundamentally different characteristics — different time horizons, different cost structures, different relationships with the audience they reach — and the decision between them should follow from what you are trying to achieve, not from ideology or habit.</p>
+      <p class="body">Paid advertising comes in several main forms in B2B. <strong>Paid search</strong> — ads that appear when someone searches for specific terms on Google or Bing. <strong>Paid social</strong> — ads that appear in the feeds of targeted audiences on LinkedIn, Facebook, Instagram, or other platforms. <strong>Display advertising</strong> — banner or visual ads shown across websites in an advertising network. <strong>Sponsored content</strong> — paid placement in newsletters, podcasts, or media publications your audience reads.</p>
+      <p class="body">Each format reaches people at a different moment with a different level of intent. Understanding those differences is what separates effective paid advertising from wasted spend.</p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">The fundamental trade-off</p>
+      <p class="insight-text">Paid advertising buys time. Organic channels buy permanence. <strong>Paid gets you in front of the right person today. Organic gets you in front of the right person every day, indefinitely, at zero marginal cost per additional view.</strong> The right mix depends on how much time you have and how much budget you are willing to spend to compress it.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- THE ROI REALITY -->
+    <div class="section">
+      <p class="section-label">The numbers</p>
+      <h2 class="section-headline">What the ROI data<br><span class="dim">actually says</span></h2>
+      <p class="body">The honest picture on paid advertising ROI in B2B is more complicated than most channels. PPC campaigns offer a modest 36% ROI with a break-even period of around four months, according to research by First Page Sage — making them appealing for businesses that need faster results but significantly lower-returning than organic alternatives over time.</p>
+      <p class="body">For context: the same research puts SEO ROI at 748% for B2B companies over three years. Email delivers around $36 for every $1 spent. Content marketing returns roughly $3 per $1 invested, compared to $1.80 for paid advertising. On a pure return basis, <strong>paid advertising is one of the lower-performing channels in B2B — which makes the case for when to use it a case about speed and precision, not scale of return.</strong></p>
+      <p class="body">LinkedIn paid social is an exception worth noting. Research from First Page Sage found that LinkedIn paid campaigns deliver 229% ROI over three years — significantly higher than most paid channels, and higher even than LinkedIn's own organic social at 192%. For B2B specifically, LinkedIn's targeting precision — by job title, company size, industry, seniority — means the audience quality is genuinely different from most paid platforms.</p>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat">
+        <div class="stat-num">36%</div>
+        <div class="stat-label">ROI from PPC campaigns — fast break-even but significantly lower than organic channels long-term</div>
+        <div class="stat-source">First Page Sage, 2024–2025</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">229%</div>
+        <div class="stat-label">ROI from LinkedIn paid social over three years — the standout paid channel for B2B</div>
+        <div class="stat-source">First Page Sage, 2024–2025</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">94%</div>
+        <div class="stat-label">Of Google clicks go to organic results — only 6% go to paid ads, because most searches lack commercial intent</div>
+        <div class="stat-source">Digital Silk, 2024</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHEN TO BUY -->
+    <div class="section">
+      <p class="section-label">When it makes sense</p>
+      <h2 class="section-headline">When to buy attention</h2>
+      <p class="body">Paid advertising makes sense in specific situations. The mistake is using it as a substitute for organic — trying to buy your way past the time and effort that earning attention requires. Used in the right circumstances, it is genuinely valuable.</p>
+      <p class="body"><strong>When you need results now.</strong> Organic channels take months to produce meaningful results. If you have a product launching, a quarterly pipeline target to hit, or a campaign with a fixed end date, paid advertising is the only channel that can reach the right audience on your timeline. It is expensive to solve a time problem this way, but sometimes time is the binding constraint.</p>
+      <p class="body"><strong>When you are testing a message or audience.</strong> Paid advertising gives you real data, fast. Run three different versions of an ad to three different audience segments, and within a week you have evidence about which message resonates and which audience converts. That learning is genuinely valuable — and it is difficult to get it as quickly through any other channel.</p>
+      <p class="body"><strong>When you are targeting a very specific audience at a very specific moment.</strong> Search advertising reaches people at the moment they are actively searching for a solution to a specific problem. If someone searches "supply chain optimisation software" and you sell supply chain optimisation software, showing up at that moment — when intent is explicit — is worth paying for. The intent signal is the thing that makes paid search different from most other forms of paid advertising.</p>
+      <p class="body"><strong>When you are amplifying something that is already working.</strong> A piece of content that earns strong organic engagement is a good candidate for paid amplification — putting budget behind something proven, rather than hoping paid reach will compensate for a weak message.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHEN TO EARN -->
+    <div class="section">
+      <p class="section-label">When it doesn't</p>
+      <h2 class="section-headline">When to earn attention instead</h2>
+      <p class="body">Paid advertising is the wrong default in several common situations — and the fact that it produces immediate, measurable activity makes it easy to confuse with progress even when it is not working.</p>
+      <p class="body"><strong>When the underlying offer is not compelling.</strong> Paid advertising reaches more people, faster. If the thing you are promoting does not convert organically, paying to show it to more people produces the same non-conversion at higher cost. Paid amplifies what is already there — which is a problem when what is already there is not working. Fix the offer first. Then pay to distribute it.</p>
+      <p class="body"><strong>When you are trying to build long-term brand trust.</strong> Paid advertising is an interruption. The audience did not ask to see it. The implied relationship is transactional — you paid to be in front of them, and they know it. Organic channels — content, earned media, genuine social presence — build a different kind of trust, the kind that survives the absence of a budget. <strong>A company that goes dark the moment it stops paying for ads has no organic presence to fall back on. A company that has built a real audience owns something durable.</strong></p>
+      <p class="body"><strong>When the economics do not work at your scale.</strong> Paid advertising has a minimum viable budget below which results are statistically unreliable. In competitive B2B categories, LinkedIn CPCs can run to £50–£100 per click. Google search CPCs for commercial B2B terms can exceed that. If your budget does not allow for meaningful volume and proper testing over time, the spend is unlikely to produce useful signal — let alone useful revenue.</p>
+    </div>
+
+    <div class="comparison">
+      <div class="comparison-col">
+        <p class="comparison-label">Buy attention when</p>
+        <p class="comparison-item">You need results on a <strong>fixed timeline</strong></p>
+        <p class="comparison-item">You are <strong>testing a message</strong> or audience quickly</p>
+        <p class="comparison-item">Intent is explicit — someone is <strong>actively searching</strong> for what you offer</p>
+        <p class="comparison-item">You are <strong>amplifying something proven</strong> — not hoping paid compensates for weak content</p>
+        <p class="comparison-item">You have budget for <strong>meaningful volume and proper testing</strong></p>
+      </div>
+      <div class="comparison-col">
+        <p class="comparison-label">Earn attention when</p>
+        <p class="comparison-item">You are <strong>building long-term brand trust</strong> that survives budget cuts</p>
+        <p class="comparison-item">Your goal is <strong>compounding returns</strong> — assets that keep working after the investment</p>
+        <p class="comparison-item">You are trying to <strong>own a category or question</strong> in your buyers' minds</p>
+        <p class="comparison-item">You want an audience that <strong>comes to you</strong> rather than one you interrupt</p>
+        <p class="comparison-item">Your budget is limited and <strong>long-term ROI matters more than short-term speed</strong></p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- THE PLATFORMS -->
+    <div class="section">
+      <p class="section-label">The platforms</p>
+      <h2 class="section-headline">Where to spend<br><span class="dim">if you are going to spend</span></h2>
+      <p class="body"><strong>Google Search Ads</strong> are the highest-intent paid channel that exists. The person searching has defined their problem in their own words. If you can match your solution to that intent — and the economics of your business support the cost per click — search advertising is worth serious investment. The average CPC across all Google Ads categories was $4.66 in 2024, according to Digital Silk, but competitive B2B terms run significantly higher.</p>
+      <p class="body"><strong>LinkedIn Ads</strong> are the most precise B2B targeting tool available. You can reach specific job titles, at specific company sizes, in specific industries, with seniority filters applied. The targeting precision is unmatched. The cost reflects it — LinkedIn CPCs are among the highest of any platform. But the quality of the audience, when targeting is done properly, justifies it for many B2B companies. According to HubSpot's 2025 State of Marketing Report, paid social was the second highest ROI driver for B2B brands in 2024, behind website and SEO efforts.</p>
+      <p class="body"><strong>Everything else</strong> — display advertising, retargeting, programmatic — has a place in a mature paid strategy but is rarely where B2B companies should start. The exception is retargeting: showing ads specifically to people who have already visited your site or engaged with your content. The audience is warm, the cost is lower, and the relevance is higher. A well-constructed retargeting campaign is often the highest-performing paid investment a B2B company can make at a modest budget.</p>
+    </div>
+
+    <div class="callout">
+      <p class="callout-label">The mistake most B2B companies make with paid</p>
+      <p class="callout-text">They run ads to cold audiences with a direct call to action — "book a demo," "request a quote" — to people who have never heard of them and have no reason to trust them. The conversion rate is predictably low. They conclude that paid advertising does not work for their business. <strong>What failed was not the channel — it was asking strangers for commitment before establishing credibility. Use paid to offer value first. A useful piece of content, a relevant insight, a self-assessment. Then ask for the meeting.</strong></p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">Where to start</p>
+      <p class="insight-text">If you have budget to experiment, start with retargeting before prospecting. Set up a LinkedIn or Google retargeting campaign that reaches people who have visited your site in the last 30 days. The audience is small, the budget is low, and the conversion rate will be meaningfully higher than cold outreach. <strong>Use it to learn what messaging converts before scaling spend to cold audiences.</strong> Then, and only then, make the case for a larger prospecting budget.</p>
+    </div>
+
+    <div class="nav-next">
+      <span class="nav-next-label">Read next</span>
+      <a class="nav-next-link" href="/learn/email-marketing">
+        Email Marketing — Boring Name, Best Returns →
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const progress = document.querySelector('.nav-progress');
+window.addEventListener('scroll', () => {
+  const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
+  if (progress) progress.style.width = pct + '%';
+}, { passive: true });
+</script>
+
+</body>
+</html>
