@@ -244,7 +244,7 @@ html, body {
 .card-lime {
   background: #1e2c3a !important; border: 1px solid #1e2c3a !important;
   padding: 1.4rem; display: flex; flex-direction: column; justify-content: space-between;
-  transition: background var(--dur-base); cursor: pointer;
+  transition: background var(--dur-base); cursor: pointer; text-decoration: none;
 }
 .card-lime:hover { background: #2a3a4a !important; }
 .card-lime.no-hover:hover { background: #1e2c3a !important; transform: none; }
@@ -507,10 +507,10 @@ html, body {
             <div class="stat-desc">Prefer to decide without ever talking to a rep</div>
           </div>
 
-          <div class="card-lime" id="ch1-cta" onclick="scrollToChapter(1)">
-            <div class="card-lime-text">See what we build</div>
+          <a class="card-lime" id="ch1-cta" href="/proof">
+            <div class="card-lime-text">See what we've built</div>
             <svg class="card-lime-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
-          </div>
+          </a>
 
         </div>
       </div>
