@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SEO explained — what it is, how it works, and how generative AI is changing it. A plain-language guide for B2B companies.">
+<title>SEO — What It Is and How It Works — getmartin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/global.css">
+<style>
+
+:root {
+  --font-display: 'Roboto', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+  --max-w: 820px;
+}
+
+html, body { height: auto; overflow-x: hidden; }
+
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-height); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--white-faint);
+  background: rgba(30,44,58,0.95);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--white); text-decoration: none; flex-shrink: 0;
+}
+.nav-wordmark span { color: var(--lime); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-link {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white-dim); text-decoration: none;
+  transition: color var(--dur-base);
+}
+.nav-link:hover { color: var(--white); }
+.nav-link.active { color: var(--white); }
+.nav-link-cta {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
+  padding: 0.4rem 1rem; text-decoration: none; transition: background var(--dur-base);
+}
+.nav-link-cta:hover { background: var(--lime-hover); }
+.nav-progress {
+  position: absolute; bottom: 0; left: 0;
+  height: 1px; background: var(--lime); width: 0%;
+  transition: width 0.2s linear;
+}
+
+.page { min-height: 100vh; padding-top: var(--nav-height); position: relative; }
+.page::before {
+  content: ''; position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none; z-index: 0;
+}
+
+.article {
+  position: relative; z-index: 1;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 5vw 2rem 8rem;
+}
+
+.back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--white-dim);
+  text-decoration: none; margin-bottom: 3rem;
+  transition: color var(--dur-base);
+}
+.back:hover { color: var(--white); }
+
+.article-header { margin-bottom: 3.5rem; }
+.article-eyebrow {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
+}
+.article-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
+  color: var(--white); margin-bottom: 1.4rem;
+}
+.article-intro {
+  font-size: 1.1rem; font-weight: 300; line-height: 1.8;
+  color: var(--white-dim); max-width: 58ch;
+  border-left: 2px solid var(--lime);
+  padding-left: 1.2rem;
+}
+.article-intro strong { color: var(--white); font-weight: 400; }
+.article-meta {
+  display: flex; gap: 1.5rem; margin-top: 1.4rem;
+  font-size: 0.72rem; font-weight: 300; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+
+.divider { border: none; border-top: 1px solid var(--white-faint); margin: 3rem 0; }
+
+.section { margin-bottom: 3.5rem; }
+.section-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.8rem;
+}
+.section-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 1rem;
+}
+.section-headline .dim { color: var(--white-dim); }
+
+.body {
+  font-size: 1rem; font-weight: 300; line-height: 1.9;
+  color: var(--white-dim); max-width: 64ch;
+}
+.body + .body { margin-top: 1rem; }
+.body strong { color: var(--white); font-weight: 400; }
+
+.insight {
+  background: rgba(184,212,0,0.06);
+  border-left: 2px solid var(--lime);
+  padding: 1.2rem 1.4rem; margin: 2rem 0;
+}
+.insight-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.5rem;
+}
+.insight-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--white-dim);
+}
+.insight-text strong { color: var(--white); font-weight: 400; }
+
+.stat-block {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--white-faint);
+  border: 1px solid var(--white-faint); margin: 2.5rem 0;
+}
+.stat { background: #1e2c3a; padding: 1.4rem 1.2rem; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700; line-height: 1;
+  letter-spacing: -0.03em; color: var(--lime); margin-bottom: 0.4rem;
+}
+.stat-label { font-size: 0.82rem; font-weight: 300; color: var(--white-dim); line-height: 1.5; }
+.stat-source { font-size: 0.68rem; color: rgba(240,239,240,0.25); margin-top: 0.3rem; }
+
+.callout {
+  background: #1e2c3a; border: 1px solid rgba(240,239,240,0.06);
+  padding: 1.4rem; margin: 2rem 0;
+}
+.callout-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.35); margin-bottom: 0.6rem;
+}
+.callout-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.75);
+}
+.callout-text strong { color: #f0eff0; font-weight: 500; }
+
+.nav-next {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  margin-top: 4rem; padding-top: 3rem;
+  border-top: 1px solid var(--white-faint);
+}
+.nav-next-label {
+  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+.nav-next-link {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); text-decoration: none;
+  transition: color var(--dur-base);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.nav-next-link:hover { color: var(--lime); }
+
+@media (max-width: 768px) {
+  .nav-link { display: none; }
+  .nav-link-cta { display: block; }
+  .stat-block { grid-template-columns: repeat(2, 1fr); }
+  .article { padding: 3rem 1.2rem 5rem; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="nav-wordmark" href="/">get<span>martin</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="/">This First</a>
+    <a class="nav-link" href="/proof">Proof</a>
+    <a class="nav-link active" href="/learn">Learn</a>
+    <a class="nav-link-cta" href="/#ch5">Let's talk</a>
+  </div>
+  <div class="nav-progress"></div>
+</nav>
+
+<div class="page">
+  <div class="article">
+
+    <a class="back" href="/learn">← Back to Learn</a>
+
+    <div class="article-header">
+      <p class="article-eyebrow">The Basics</p>
+      <h1 class="article-headline">SEO — What It Is<br>and How It Works</h1>
+      <p class="article-intro">
+        SEO stands for Search Engine Optimisation. It is the practice of making your website easier for search engines to find, understand, and recommend to people searching for what you offer.
+        <strong>It is not a technical dark art. It is, at its core, the discipline of being genuinely useful and clear — online.</strong>
+      </p>
+      <div class="article-meta">
+        <span>The Basics</span>
+        <span>8 min read</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT IT IS -->
+    <div class="section">
+      <p class="section-label">The definition</p>
+      <h2 class="section-headline">What SEO actually means</h2>
+      <p class="body">When someone types a question into Google, Google sends automated programmes — called crawlers or spiders — to scan billions of web pages. Those crawlers read your content, follow your links, and report back. Google then uses hundreds of signals to decide which pages best answer the query, and ranks them accordingly. The pages at the top get the clicks.</p>
+      <p class="body">SEO is the work of making sure your pages are found, understood, and considered good enough to rank. That work falls into three broad areas:</p>
+      <p class="body"><strong>Technical SEO</strong> — making sure your site loads quickly, is structured clearly, and can be read by search engine crawlers without errors.</p>
+      <p class="body"><strong>On-page SEO</strong> — making sure each page is focused on a specific topic, uses clear language, and answers the question the searcher is actually asking.</p>
+      <p class="body"><strong>Off-page SEO</strong> — earning credibility through links from other reputable sites, mentions, and signals that tell Google other people find your content worth referencing.</p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">The honest one-liner</p>
+      <p class="insight-text">SEO is not about tricking Google. It never really was. <strong>Google's goal is to surface the most useful, trustworthy, clearly written answer to a query. Your goal is to be that answer.</strong> The closer those two goals align, the better your SEO.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHY IT MATTERS FOR B2B -->
+    <div class="section">
+      <p class="section-label">Why it matters</p>
+      <h2 class="section-headline">SEO for B2B is different<br><span class="dim">in ways most guides don't mention</span></h2>
+      <p class="body">Most SEO advice is written for e-commerce or media companies — businesses where traffic directly equals revenue. B2B is different. Your buyer is not going to find you on Google and immediately book a call. The journey is longer, involves more people, and happens mostly before anyone reaches out.</p>
+      <p class="body">What SEO does in B2B is create the conditions for trust before the conversation starts. A prospect searching "how to reduce freight costs" who finds a genuinely useful article on your site has already formed an impression of you — before your SDR has sent a single email. <strong>By the time they get on a call, they're not cold. They've already decided you might know what you're talking about.</strong></p>
+      <p class="body">This is why B2B SEO is less about keyword rankings and more about owning the questions your buyers are already asking — before they know they need you.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- HOW IT WORKS -->
+    <div class="section">
+      <p class="section-label">The mechanics</p>
+      <h2 class="section-headline">How search engines<br><span class="dim">actually decide what to show</span></h2>
+      <p class="body">Google uses a large number of signals to evaluate pages. The exact algorithm is not public, but the principles behind it are well understood and have been confirmed repeatedly by Google's own guidance.</p>
+      <p class="body"><strong>Relevance</strong> — does this page actually answer the query? Google matches the intent of the search (what the person wants) against the content of the page (what it provides). A page about the history of supply chain logistics will not rank for "how to reduce freight costs" even if those words appear on it.</p>
+      <p class="body"><strong>Authority</strong> — does this page come from a source that other credible sources link to and reference? Links from respected sites act as votes of confidence. A new site with no links will struggle to rank against established ones, even with better content.</p>
+      <p class="body"><strong>Experience</strong> — does the page load quickly, work on mobile, and give the user what they came for without friction? Google increasingly factors in signals about whether users actually found the page useful — how long they stayed, whether they went back to search for something else immediately.</p>
+      <p class="body">Google summarises what it's looking for with the acronym <strong>E-E-A-T: Experience, Expertise, Authoritativeness, Trustworthiness.</strong> Pages that demonstrate genuine knowledge, cite credible sources, and come from identifiable, credible authors consistently outperform those that don't.</p>
+    </div>
+
+    <div class="callout">
+      <p class="callout-label">What good SEO looks like in practice</p>
+      <p class="callout-text">A page focused on one specific question. Written in plain language. By someone who demonstrably knows the topic. Structured so the answer is easy to find — clear headings, short paragraphs, no unnecessary padding. <strong>Linked to from other credible sources. Loading in under two seconds on a phone.</strong> That is it. There is no shortcut that substitutes for those things long-term.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT IT DOESN'T DO -->
+    <div class="section">
+      <p class="section-label">The limits</p>
+      <h2 class="section-headline">What SEO doesn't do</h2>
+      <p class="body">SEO is slow. A new piece of content can take three to six months to rank meaningfully, sometimes longer in competitive categories. It is not a campaign you run for a quarter and evaluate. It is infrastructure — it compounds over time and pays returns long after the initial investment, but it requires patience most companies don't have.</p>
+      <p class="body">SEO is not guaranteed. You can do everything right and still be outranked by a competitor with more authority, more links, or simply more content on the topic. There is no lever that produces a predictable outcome on a predictable timeline.</p>
+      <p class="body">SEO does not replace sales. A prospect who finds you through search still needs to be convinced you can solve their specific problem. <strong>SEO gets them to the door. What happens at the door is still your job.</strong></p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- GEO -->
+    <div class="section">
+      <p class="section-label">The shift happening right now</p>
+      <h2 class="section-headline">How generative AI<br><span class="dim">is changing everything</span></h2>
+      <p class="body">For the past two decades, the goal of SEO was to rank on a page of results. The user would see your link, click it, and visit your site. That model is being disrupted by a different kind of search — one where the engine doesn't show a list of links, but synthesises an answer and presents it directly.</p>
+      <p class="body">ChatGPT, Perplexity, Google's AI Overviews, Gemini, and Microsoft Copilot all operate this way. They process a query, pull from multiple sources, generate a response, and sometimes — not always — cite where they got it. <strong>The user may never visit your website at all.</strong></p>
+      <p class="body">This shift has given rise to a new discipline called Generative Engine Optimisation, or GEO — coined in a 2024 paper by researchers at Princeton and published at the ACM SIGKDD conference. The paper defined GEO as a framework for helping content creators improve their visibility in generative engine responses, and demonstrated that well-structured content optimised for AI citation could boost visibility in generative search by up to 40%.</p>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat">
+        <div class="stat-num">527%</div>
+        <div class="stat-label">Year-over-year growth in AI-referred sessions in the first half of 2025</div>
+        <div class="stat-source">Previsible, 2025 AI Traffic Report</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">~16%</div>
+        <div class="stat-label">Of all Google queries now trigger an AI Overview — up from under 7% in January 2025</div>
+        <div class="stat-source">Semrush, November 2025</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">34.5%</div>
+        <div class="stat-label">Drop in click-through rate for position-one organic results when an AI Overview appears</div>
+        <div class="stat-source">Ahrefs, 2025, 300K keywords</div>
+      </div>
+    </div>
+
+    <p class="body">The picture these numbers paint is not that SEO is dead. Organic search still drives the majority of web traffic and converts better than most other channels. But the nature of visibility is changing. <strong>Ranking on page one is no longer sufficient if an AI answer appears above your result and the user never scrolls down.</strong></p>
+
+    <hr class="divider">
+
+    <!-- RESEARCH -->
+    <div class="section">
+      <p class="section-label">What the research shows</p>
+      <h2 class="section-headline">What we actually know<br><span class="dim">about how AI engines select sources</span></h2>
+      <p class="body">The research on GEO is still early — this is a rapidly moving field and much of what we know comes from studies published in 2024 and 2025. With that caveat clearly stated, a few findings are consistent enough to be useful:</p>
+      <p class="body"><strong>Structure matters more than rank.</strong> Semrush found that when ChatGPT cites webpages, nearly 90% of those pages rank outside the top 20 in traditional search for related queries. AI engines are not simply citing whoever ranks first. They are selecting content that is clear, well-structured, and directly answers the question — regardless of traditional ranking position.</p>
+      <p class="body"><strong>Recency is a significant factor for some platforms.</strong> Research by Seer Interactive found that 85% of AI Overview citations were published in the last two years, with 44% from 2025 alone. Perplexity skews even more recent — half of its citations are from 2025. ChatGPT draws more broadly from older content. The implication: keeping content updated matters, especially if you're optimising for platforms that weight recency.</p>
+      <p class="body"><strong>Format affects citability.</strong> Research published by Growth Memo found that Q&A format content and structured content with clear headings perform significantly better in AI citations than dense paragraphs. Content that loads fast is also more likely to be included. The practical translation: write in short paragraphs, use clear headings, structure answers so the key point appears early.</p>
+      <p class="body"><strong>Authority signals still apply — but differently across platforms.</strong> AI Overviews on Google show the strongest correlation with traditional search rankings. ChatGPT and AI Mode draw more broadly, sometimes citing pages that rank poorly in traditional search if they contain contextually relevant content. LinkedIn is currently the most-cited domain for professional queries across multiple AI platforms, according to research by Profound published in March 2026.</p>
+    </div>
+
+    <div class="callout">
+      <p class="callout-label">The honest summary of where GEO research stands</p>
+      <p class="callout-text">We know GEO matters. We know structure, clarity, recency, and authority all influence AI citation. We do not yet have a reliable formula for guaranteed AI visibility — the platforms are moving fast, their algorithms are opaque, and studies contradict each other on specifics. <strong>Anyone claiming certainty about GEO in 2025 is overstating what the research supports.</strong> The honest answer is: do the fundamentals well, write clearly, stay current, and pay attention as the field develops.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT'S COMING -->
+    <div class="section">
+      <p class="section-label">What's coming</p>
+      <h2 class="section-headline">Where this is heading<br><span class="dim">and what to do about it now</span></h2>
+      <p class="body">Google has begun rolling out AI Mode — a version of search that replaces the traditional results page entirely with a generative response. Semrush projects that AI search traffic could overtake traditional organic search traffic within the next two to four years for some industries. If AI Mode becomes the default Google experience, that timeline could compress significantly.</p>
+      <p class="body">The zero-click trend is real and accelerating. A Bain & Company study found that 60% of searches now end without the user clicking anything — up from much lower rates in previous years. The search experience increasingly answers the question in the interface, with no need to visit a website. <strong>For informational content, this is a structural challenge with no clean solution.</strong></p>
+      <p class="body">There is a counterintuitive finding worth holding onto: visitors who arrive from AI-referred traffic tend to be more engaged than traditional organic visitors. Adobe's 2025 analytics data found that AI-referred users had lower bounce rates, spent more time on site, and converted at nearly the same rate as traditional organic visitors. The volume may be smaller, but the quality appears higher. AI search may be acting as a pre-filter — the user has already received context, and arrives at your site with a clearer purpose.</p>
+      <p class="body">For B2B companies specifically, the picture is less dire than for content publishers. Commercial and transactional queries — the kind that precede a buying decision — are currently far less affected by AI Overviews than informational ones. The buyer researching "load optimisation software for CPG companies" is still more likely to click through than the person asking "what is the capital of France." <strong>B2B buyers want depth that a two-paragraph AI summary cannot provide.</strong></p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">Where to start</p>
+      <p class="insight-text">The foundational SEO work and the GEO work are largely the same: write clearly, structure content well, answer specific questions, stay current, build authority. <strong>If your content is clear enough for an AI to cite it accurately, it is probably clear enough for a human buyer to find it useful.</strong> Start there. The platforms will keep changing — the clarity requirement won't.</p>
+    </div>
+
+    <!-- NEXT -->
+    <div class="nav-next">
+      <span class="nav-next-label">Read next</span>
+      <a class="nav-next-link" href="/learn">
+        ← Back to all pieces
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const progress = document.querySelector('.nav-progress');
+window.addEventListener('scroll', () => {
+  const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
+  if (progress) progress.style.width = pct + '%';
+}, { passive: true });
+</script>
+
+</body>
+</html>
