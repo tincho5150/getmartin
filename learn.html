@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="getmartin — Learn. Frameworks you can use, decisions broken down.">
+<meta name="description" content="getmartin — Learn. Marketing and sales, properly explained.">
 <title>Learn — getmartin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,6 @@
 
 html, body { height: auto; overflow-x: hidden; }
 
-/* NAV */
 .site-nav {
   position: fixed; top: 0; left: 0; right: 0;
   height: var(--nav-height); z-index: 100;
@@ -54,12 +53,7 @@ html, body { height: auto; overflow-x: hidden; }
   transition: width 0.2s linear;
 }
 
-/* PAGE */
-.page {
-  min-height: 100vh;
-  padding-top: var(--nav-height);
-  position: relative;
-}
+.page { min-height: 100vh; padding-top: var(--nav-height); position: relative; }
 .page::before {
   content: ''; position: fixed; inset: 0;
   background-image:
@@ -82,9 +76,8 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .hero-right {
   padding: 6vw 5vw 6vw 3.5vw;
-  background: #ffffff;
+  background: #ffffff; position: relative;
   display: flex; flex-direction: column; justify-content: flex-end;
-  position: relative;
 }
 .hero-right::before {
   content: ''; position: absolute; inset: 0;
@@ -109,7 +102,7 @@ html, body { height: auto; overflow-x: hidden; }
 .hero-headline .dim { color: var(--white-dim); }
 .hero-sub {
   font-size: 1rem; font-weight: 300; line-height: 1.8;
-  color: rgba(30,44,58,0.55); max-width: 40ch;
+  color: rgba(30,44,58,0.55); max-width: 42ch;
   opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.4s forwards;
 }
 .hero-sub strong { color: #1e2c3a; font-weight: 400; }
@@ -120,88 +113,67 @@ html, body { height: auto; overflow-x: hidden; }
   display: flex; align-items: center;
   padding: 0 5vw; height: 56px;
   border-bottom: 1px solid var(--white-faint);
-  gap: 0.5rem;
+  gap: 0.5rem; overflow-x: auto;
 }
 .filter-btn {
   font-family: var(--font-body);
   font-size: 0.78rem; font-weight: 400; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--white-dim);
   background: transparent; border: 1px solid transparent;
-  padding: 0.35rem 0.9rem; cursor: pointer;
+  padding: 0.35rem 0.9rem; cursor: pointer; white-space: nowrap;
   transition: color var(--dur-base), border-color var(--dur-base);
 }
 .filter-btn:hover { color: var(--white); border-color: var(--white-faint); }
-.filter-btn.active {
-  color: var(--navy-dark); background: var(--lime);
-  border-color: var(--lime);
-}
+.filter-btn.active { color: var(--navy-dark); background: var(--lime); border-color: var(--lime); }
 .filter-count {
-  margin-left: auto;
+  margin-left: auto; flex-shrink: 0;
   font-size: 0.72rem; font-weight: 300; letter-spacing: 0.06em;
   color: rgba(240,239,240,0.25);
 }
 
 /* CONTENT */
-.content {
-  position: relative; z-index: 1;
-  padding: 4vw 5vw 8rem;
-}
+.content { position: relative; z-index: 1; padding: 4vw 5vw 8rem; }
 
 /* TRACK */
 .track { margin-bottom: 5rem; }
 .track-header {
-  display: flex; align-items: baseline;
-  gap: 1rem; margin-bottom: 2rem;
-  padding-bottom: 1rem;
+  display: flex; align-items: baseline; gap: 1rem;
+  margin-bottom: 2rem; padding-bottom: 1rem;
   border-bottom: 1px solid var(--white-faint);
 }
 .track-label {
   font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--lime);
 }
-.track-desc {
-  font-size: 0.85rem; font-weight: 300; color: var(--white-dim);
-}
+.track-desc { font-size: 0.85rem; font-weight: 300; color: var(--white-dim); }
 
 /* GRID */
 .card-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1px;
-  background: var(--white-faint);
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 1px; background: var(--white-faint);
   border: 1px solid var(--white-faint);
 }
 
 /* CARD */
 .resource-card {
-  background: #1e2c3a;
-  padding: 1.6rem 1.4rem;
-  display: flex; flex-direction: column;
-  gap: 0.8rem;
-  text-decoration: none;
-  transition: background var(--dur-base);
-  position: relative;
+  background: #1e2c3a; padding: 1.6rem 1.4rem;
+  display: flex; flex-direction: column; gap: 0.8rem;
+  text-decoration: none; transition: background var(--dur-base);
 }
-.resource-card:hover { background: #253748; }
-.resource-card.coming-soon {
-  opacity: 0.4;
-  cursor: default;
-  pointer-events: none;
-}
+.resource-card:not(.coming-soon):hover { background: #253748; }
+.resource-card.coming-soon { opacity: 0.38; cursor: default; pointer-events: none; }
 .card-track {
   font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em;
   text-transform: uppercase; color: var(--lime);
 }
-.coming-soon .card-track { color: var(--white-dim); }
+.coming-soon .card-track { color: rgba(240,239,240,0.4); }
 .card-title {
   font-family: var(--font-display);
   font-size: 1rem; font-weight: 700; line-height: 1.2;
-  letter-spacing: -0.01em; color: var(--white);
-  flex: 1;
+  letter-spacing: -0.01em; color: var(--white); flex: 1;
 }
 .card-desc {
-  font-size: 0.82rem; font-weight: 300; line-height: 1.6;
-  color: var(--white-dim);
+  font-size: 0.82rem; font-weight: 300; line-height: 1.6; color: var(--white-dim);
 }
 .card-footer {
   display: flex; align-items: center; justify-content: space-between;
@@ -212,31 +184,22 @@ html, body { height: auto; overflow-x: hidden; }
   font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em;
   text-transform: uppercase; color: rgba(240,239,240,0.3);
 }
-.card-status {
-  font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.card-status.live { color: var(--lime); }
-.card-status.soon { color: rgba(240,239,240,0.25); }
+.card-status.live { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lime); }
+.card-status.soon { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(240,239,240,0.2); }
 .card-arrow {
   color: var(--lime); width: 14px; height: 14px;
-  transition: transform var(--dur-base);
-  flex-shrink: 0;
+  transition: transform var(--dur-base); flex-shrink: 0;
 }
 .resource-card:hover .card-arrow { transform: translateX(4px); }
 
-/* ANIMATIONS */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
-/* MOBILE */
-@media (max-width: 1024px) {
-  .card-grid { grid-template-columns: repeat(3, 1fr); }
-}
+@media (max-width: 1200px) { .card-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) {
   .hero { grid-template-columns: 1fr; }
   .hero-left { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--white-faint); }
   .hero-right { padding: 2rem 1.5rem; }
-  .filter-bar { padding: 0 1.5rem; overflow-x: auto; }
   .content { padding: 2rem 1.5rem 5rem; }
   .card-grid { grid-template-columns: repeat(2, 1fr); }
   .nav-link { display: none; }
@@ -260,161 +223,299 @@ html, body { height: auto; overflow-x: hidden; }
 
 <div class="page">
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-left">
       <p class="hero-eyebrow">Learn</p>
-      <h1 class="hero-headline">
-        What works<br>
-        <span class="dim">in B2B sales.</span>
-      </h1>
+      <h1 class="hero-headline">Marketing and sales.<br><span class="dim">Properly explained.</span></h1>
     </div>
     <div class="hero-right">
       <div class="hero-right-inner">
-        <p class="hero-sub">
-          Frameworks you can use. Decisions broken down.
-          <strong>What the work taught us — written so you can apply it.</strong>
-        </p>
+        <p class="hero-sub">The vocabulary, the psychology, the process, and the frameworks.
+        <strong>Written for people who are excellent at their product and want to be excellent at selling it.</strong></p>
       </div>
     </div>
   </div>
 
-  <!-- FILTER BAR -->
   <div class="filter-bar">
     <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="basics">The Basics</button>
+    <button class="filter-btn" data-filter="psychology">Buyer Psychology</button>
+    <button class="filter-btn" data-filter="sales">Sales Process</button>
     <button class="filter-btn" data-filter="framework">Frameworks</button>
     <button class="filter-btn" data-filter="teardown">Teardowns</button>
     <button class="filter-btn" data-filter="video">Videos</button>
-    <span class="filter-count" id="filter-count">13 pieces</span>
+    <span class="filter-count" id="filter-count">43 pieces</span>
   </div>
 
-  <!-- CONTENT -->
   <div class="content">
 
+    <!-- THE BASICS -->
+    <div class="track" data-track="basics">
+      <div class="track-header">
+        <span class="track-label">The Basics</span>
+        <span class="track-desc">The foundational vocabulary — start here if marketing and sales are new territory</span>
+      </div>
+      <div class="card-grid">
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">The Basics</span>
+          <p class="card-title">SEO — What It Is and How It Works</p>
+          <p class="card-desc">Why some pages show up on Google and others don't — and what you can actually do about it.</p>
+          <div class="card-footer"><span class="card-tag">Search</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">The Basics</span>
+          <p class="card-title">Content Marketing — What It Actually Means</p>
+          <p class="card-desc">Not blogging for the sake of it. The logic behind creating content that brings the right people to you before you go looking for them.</p>
+          <div class="card-footer"><span class="card-tag">Content</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">The Basics</span>
+          <p class="card-title">Social Media Marketing — Beyond Posting and Hoping</p>
+          <p class="card-desc">The difference between presence and strategy. What social actually does in a B2B sales cycle and what it can't.</p>
+          <div class="card-footer"><span class="card-tag">Social</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">The Basics</span>
+          <p class="card-title">Email Marketing — Still the Highest ROI Channel</p>
+          <p class="card-desc">Why email outperforms every other channel in B2B — and how to use it without sounding like everyone else in the inbox.</p>
+          <div class="card-footer"><span class="card-tag">Email</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">The Basics</span>
+          <p class="card-title">Paid Advertising — When to Buy Attention vs. Earn It</p>
+          <p class="card-desc">Paid vs. organic — not which is better, but when each makes sense. The decision framework for where to spend your budget first.</p>
+          <div class="card-footer"><span class="card-tag">Paid</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">The Basics</span>
+          <p class="card-title">Personal Branding — Why It Matters in B2B</p>
+          <p class="card-desc">People buy from people. What personal brand actually means for a founder or sales leader — and how to build one without becoming a LinkedIn cliché.</p>
+          <div class="card-footer"><span class="card-tag">Brand</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">The Basics</span>
+          <p class="card-title">The Marketing Funnel — The Full Picture</p>
+          <p class="card-desc">Awareness, consideration, decision — what each stage actually means, what it takes to move buyers through it, and where most companies get stuck.</p>
+          <div class="card-footer"><span class="card-tag">Funnel</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">The Basics</span>
+          <p class="card-title">Brand vs. Performance Marketing</p>
+          <p class="card-desc">The eternal debate — building long-term trust vs. generating immediate pipeline. Why you need both and when to lean on each.</p>
+          <div class="card-footer"><span class="card-tag">Strategy</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">The Basics</span>
+          <p class="card-title">Inbound vs. Outbound — Two Different Games</p>
+          <p class="card-desc">Attracting buyers vs. going after them. The logic, the costs, and the right mix for a B2B company at different stages of growth.</p>
+          <div class="card-footer"><span class="card-tag">Strategy</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">The Basics</span>
+          <p class="card-title">Analytics and Attribution — Knowing What's Working</p>
+          <p class="card-desc">What to measure, what to ignore, and the honest truth about why attribution in B2B is harder than anyone admits.</p>
+          <div class="card-footer"><span class="card-tag">Analytics</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- BUYER PSYCHOLOGY -->
+    <div class="track" data-track="psychology">
+      <div class="track-header">
+        <span class="track-label">Buyer Psychology</span>
+        <span class="track-desc">How people actually make decisions — the mental models behind why deals win and lose</span>
+      </div>
+      <div class="card-grid">
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Buyer Psychology</span>
+          <p class="card-title">The Buying Journey</p>
+          <p class="card-desc">How B2B decisions actually get made — the research, the internal politics, and the moments that determine the outcome before anyone talks to a rep.</p>
+          <div class="card-footer"><span class="card-tag">Decision-making</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Buyer Psychology</span>
+          <p class="card-title">The Status Quo Bias</p>
+          <p class="card-desc">Why doing nothing always beats change in the buyer's mind — and what it actually takes to overcome the pull of "we'll sort it next quarter."</p>
+          <div class="card-footer"><span class="card-tag">Decision-making</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Buyer Psychology</span>
+          <p class="card-title">Loss Aversion</p>
+          <p class="card-desc">Why the cost of inaction lands harder than the promise of gain — and how to use this in positioning without being manipulative.</p>
+          <div class="card-footer"><span class="card-tag">Positioning</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Buyer Psychology</span>
+          <p class="card-title">The Champion Problem</p>
+          <p class="card-desc">Why your internal advocate keeps losing the internal battle — and what you can give them to win it without you in the room.</p>
+          <div class="card-footer"><span class="card-tag">Sales</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Buyer Psychology</span>
+          <p class="card-title">Social Proof in B2B</p>
+          <p class="card-desc">Why logos on a website work better than any claim you can make — and how to use social proof without it looking desperate.</p>
+          <div class="card-footer"><span class="card-tag">Trust</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- SALES PROCESS -->
+    <div class="track" data-track="sales">
+      <div class="track-header">
+        <span class="track-label">Sales Process</span>
+        <span class="track-desc">How the sales motion works — the stages, the traps, and the mechanics</span>
+      </div>
+      <div class="card-grid">
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Sales Process</span>
+          <p class="card-title">The Discovery Call</p>
+          <p class="card-desc">What it is, what it should be, and why most discovery calls are actually pitch calls in disguise — and what that costs you.</p>
+          <div class="card-footer"><span class="card-tag">Calls</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Sales Process</span>
+          <p class="card-title">The Demo Trap</p>
+          <p class="card-desc">Why showing the product too early kills deals — and what needs to happen before the demo for it to land the way you hope.</p>
+          <div class="card-footer"><span class="card-tag">Demos</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Sales Process</span>
+          <p class="card-title">The Multi-Stakeholder Sale</p>
+          <p class="card-desc">How to navigate 6 decision-makers with different priorities, different objections, and different definitions of success.</p>
+          <div class="card-footer"><span class="card-tag">Enterprise</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Sales Process</span>
+          <p class="card-title">The Three Stages Every Buyer Goes Through</p>
+          <p class="card-desc">Top, middle, and bottom of funnel — what buyers need at each stage and why sending the wrong content at the wrong time loses the deal quietly.</p>
+          <div class="card-footer"><span class="card-tag">Funnel</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Sales Process</span>
+          <p class="card-title">The Warm Lead vs. Cold Lead</p>
+          <p class="card-desc">What actually makes a lead warm — and why most "warm" leads are still cold in the ways that matter most.</p>
+          <div class="card-footer"><span class="card-tag">Pipeline</span><span class="card-status soon">Coming soon</span></div>
+        </a>
+
+      </div>
+    </div>
+
     <!-- FRAMEWORKS -->
-    <div class="track" id="track-frameworks" data-track="framework">
+    <div class="track" data-track="framework">
       <div class="track-header">
         <span class="track-label">Frameworks</span>
-        <span class="track-desc">Reusable thinking you can apply to your own sales problem</span>
+        <span class="track-desc">Applied thinking you can use — proprietary ideas built from the work</span>
       </div>
-      <div class="card-grid" id="grid-frameworks">
+      <div class="card-grid">
 
         <a class="resource-card coming-soon" href="#">
           <span class="card-track">Framework</span>
           <p class="card-title">The Hidden Cost Principle</p>
           <p class="card-desc">Why buyers can't act on pain they can't feel — and what it takes to make an invisible cost visible before the first call.</p>
-          <div class="card-footer">
-            <span class="card-tag">Buyer psychology</span>
-            <span class="card-status soon">Coming soon</span>
-          </div>
+          <div class="card-footer"><span class="card-tag">Buyer psychology</span><span class="card-status soon">Coming soon</span></div>
         </a>
 
         <a class="resource-card coming-soon" href="#">
           <span class="card-track">Framework</span>
           <p class="card-title">The Pre-Call Experience</p>
           <p class="card-desc">The buying decision happens before hello. What occurs in the 72 hours before a prospect agrees to a call — and how to own it.</p>
-          <div class="card-footer">
-            <span class="card-tag">Buyer journey</span>
-            <span class="card-status soon">Coming soon</span>
-          </div>
+          <div class="card-footer"><span class="card-tag">Buyer journey</span><span class="card-status soon">Coming soon</span></div>
         </a>
 
         <a class="resource-card coming-soon" href="#">
           <span class="card-track">Framework</span>
           <p class="card-title">How B2B Buyers Actually Decide</p>
           <p class="card-desc">6 of 10 decision-makers, 75% who'd rather never talk to a rep. The research behind why the sale is mostly over before it starts.</p>
-          <div class="card-footer">
-            <span class="card-tag">Buyer psychology</span>
-            <span class="card-status soon">Coming soon</span>
-          </div>
+          <div class="card-footer"><span class="card-tag">Buyer psychology</span><span class="card-status soon">Coming soon</span></div>
         </a>
 
         <a class="resource-card coming-soon" href="#">
           <span class="card-track">Framework</span>
           <p class="card-title">What GEO Means for B2B</p>
           <p class="card-desc">Generative Engine Optimisation isn't a technical trick — it's clarity. Writing so well that any system, human or machine, immediately understands what you do.</p>
-          <div class="card-footer">
-            <span class="card-tag">Content strategy</span>
-            <span class="card-status soon">Coming soon</span>
-          </div>
+          <div class="card-footer"><span class="card-tag">Content strategy</span><span class="card-status soon">Coming soon</span></div>
         </a>
 
         <a class="resource-card coming-soon" href="#">
           <span class="card-track">Framework</span>
           <p class="card-title">The Confirmation Call</p>
           <p class="card-desc">What it looks like when the rep arrives to confirm rather than convince — and how to engineer that shift before anyone picks up the phone.</p>
-          <div class="card-footer">
-            <span class="card-tag">Sales process</span>
-            <span class="card-status soon">Coming soon</span>
-          </div>
+          <div class="card-footer"><span class="card-tag">Sales process</span><span class="card-status soon">Coming soon</span></div>
         </a>
 
       </div>
     </div>
 
     <!-- TEARDOWNS -->
-    <div class="track" id="track-teardowns" data-track="teardown">
+    <div class="track" data-track="teardown">
       <div class="track-header">
         <span class="track-label">Teardowns</span>
-        <span class="track-desc">Specific decisions broken down — why we made them and what changed</span>
+        <span class="track-desc">How to actually implement the frameworks — step by step, decision by decision</span>
       </div>
-      <div class="card-grid" id="grid-teardowns">
+      <div class="card-grid">
 
         <a class="resource-card coming-soon" href="#">
           <span class="card-track">Teardown</span>
           <p class="card-title">How to Build a Self-Diagnostic Tool</p>
           <p class="card-desc">Step by step — from identifying the hidden gap to designing the scoring system, the roadmap output, and the pre-call workflow around it.</p>
-          <div class="card-footer">
-            <span class="card-tag">Implementation</span>
-            <span class="card-status soon">Coming soon</span>
-          </div>
+          <div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div>
         </a>
 
         <a class="resource-card coming-soon" href="#">
           <span class="card-track">Teardown</span>
           <p class="card-title">How to Make an Abstract Product Visible</p>
           <p class="card-desc">When the software works inside systems buyers can't see, the demo has to do the seeing for them. How to turn invisible value into a felt experience.</p>
-          <div class="card-footer">
-            <span class="card-tag">Implementation</span>
-            <span class="card-status soon">Coming soon</span>
-          </div>
+          <div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div>
         </a>
 
         <a class="resource-card coming-soon" href="#">
           <span class="card-track">Teardown</span>
           <p class="card-title">How to Build a Resource Hub That Earns Trust</p>
           <p class="card-desc">Architecture, content strategy, and the ungated decision — how to build a library that brings buyers back before they're ready to buy.</p>
-          <div class="card-footer">
-            <span class="card-tag">Implementation</span>
-            <span class="card-status soon">Coming soon</span>
-          </div>
+          <div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div>
         </a>
 
         <a class="resource-card coming-soon" href="#">
           <span class="card-track">Teardown</span>
           <p class="card-title">How to Write a Case Study That Closes</p>
           <p class="card-desc">The difference between a portfolio piece and a sales asset. Structure, copy, and the one thesis every case study needs to do its job.</p>
-          <div class="card-footer">
-            <span class="card-tag">Implementation</span>
-            <span class="card-status soon">Coming soon</span>
-          </div>
+          <div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div>
         </a>
 
         <a class="resource-card coming-soon" href="#">
           <span class="card-track">Teardown</span>
           <p class="card-title">How to Turn a Feature Into a Felt Cost</p>
           <p class="card-desc">The copy and design decisions that take a product capability and turn it into something the prospect can feel in their own operation — before the demo.</p>
-          <div class="card-footer">
-            <span class="card-tag">Implementation</span>
-            <span class="card-status soon">Coming soon</span>
-          </div>
+          <div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div>
         </a>
 
       </div>
     </div>
 
     <!-- VIDEOS -->
-    <div class="track" id="track-videos" data-track="video">
+    <div class="track" data-track="video">
       <div class="track-header">
         <span class="track-label">Videos</span>
         <span class="track-desc">See the concepts in action — walkthroughs, explainers, and builds</span>
@@ -425,30 +526,21 @@ html, body { height: auto; overflow-x: hidden; }
           <span class="card-track">Video</span>
           <p class="card-title">Walkthrough: The Loss Analysis Diagnostic</p>
           <p class="card-desc">A 4-minute screen walkthrough of the full diagnostic — from the intro screen to the personalised roadmap output.</p>
-          <div class="card-footer">
-            <span class="card-tag">Walkthrough</span>
-            <span class="card-status soon">Coming soon</span>
-          </div>
+          <div class="card-footer"><span class="card-tag">Walkthrough</span><span class="card-status soon">Coming soon</span></div>
         </a>
 
         <a class="resource-card coming-soon" href="#">
           <span class="card-track">Video</span>
           <p class="card-title">Walkthrough: The 3D Truck Loader</p>
           <p class="card-desc">Three load scenarios, the ROI calculator, and the network flow simulator — everything the buyer experiences before the demo.</p>
-          <div class="card-footer">
-            <span class="card-tag">Walkthrough</span>
-            <span class="card-status soon">Coming soon</span>
-          </div>
+          <div class="card-footer"><span class="card-tag">Walkthrough</span><span class="card-status soon">Coming soon</span></div>
         </a>
 
         <a class="resource-card coming-soon" href="#">
           <span class="card-track">Video</span>
           <p class="card-title">How I Build a Pre-Call Experience</p>
           <p class="card-desc">End to end — from the brief to the live tool. The decisions, the tradeoffs, and what changes when the prospect arrives already educated.</p>
-          <div class="card-footer">
-            <span class="card-tag">Behind the build</span>
-            <span class="card-status soon">Coming soon</span>
-          </div>
+          <div class="card-footer"><span class="card-tag">Behind the build</span><span class="card-status soon">Coming soon</span></div>
         </a>
 
       </div>
@@ -466,17 +558,15 @@ window.addEventListener('scroll', () => {
   if (progress) progress.style.width = pct + '%';
 }, { passive: true });
 
-/* Filter */
 const filterBtns = document.querySelectorAll('.filter-btn');
-const tracks = document.querySelectorAll('.track');
-const countEl = document.getElementById('filter-count');
+const tracks     = document.querySelectorAll('.track');
+const countEl    = document.getElementById('filter-count');
 
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     filterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const filter = btn.dataset.filter;
-
     let visible = 0;
     tracks.forEach(track => {
       if (filter === 'all' || track.dataset.track === filter) {
@@ -486,7 +576,6 @@ filterBtns.forEach(btn => {
         track.style.display = 'none';
       }
     });
-
     countEl.textContent = visible + ' piece' + (visible !== 1 ? 's' : '');
   });
 });
