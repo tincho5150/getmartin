@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Analytics and attribution explained — what the data shows, what it hides, and why last-click attribution systematically misleads B2B marketing decisions.">
+<title>Analytics and Attribution — The Last Click Gets the Credit, The First Click Did the Work — getmartin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/global.css">
+<style>
+
+:root {
+  --font-display: 'Roboto', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+  --max-w: 820px;
+}
+
+html, body { height: auto; overflow-x: hidden; }
+
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-height); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--white-faint);
+  background: rgba(30,44,58,0.95);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--white); text-decoration: none; flex-shrink: 0;
+}
+.nav-wordmark span { color: var(--lime); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-link {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white-dim); text-decoration: none;
+  transition: color var(--dur-base);
+}
+.nav-link:hover { color: var(--white); }
+.nav-link.active { color: var(--white); }
+.nav-link-cta {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
+  padding: 0.4rem 1rem; text-decoration: none; transition: background var(--dur-base);
+}
+.nav-link-cta:hover { background: var(--lime-hover); }
+.nav-progress {
+  position: absolute; bottom: 0; left: 0;
+  height: 1px; background: var(--lime); width: 0%;
+  transition: width 0.2s linear;
+}
+
+.page { min-height: 100vh; padding-top: var(--nav-height); position: relative; }
+.page::before {
+  content: ''; position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none; z-index: 0;
+}
+
+.article {
+  position: relative; z-index: 1;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 5vw 2rem 8rem;
+}
+
+.back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--white-dim);
+  text-decoration: none; margin-bottom: 3rem;
+  transition: color var(--dur-base);
+}
+.back:hover { color: var(--white); }
+
+.article-header { margin-bottom: 3.5rem; }
+.article-eyebrow {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
+}
+.article-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.8vw, 3.2rem);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
+  color: var(--white); margin-bottom: 1.4rem;
+}
+.article-intro {
+  font-size: 1.1rem; font-weight: 300; line-height: 1.8;
+  color: var(--white-dim); max-width: 58ch;
+  border-left: 2px solid var(--lime);
+  padding-left: 1.2rem;
+}
+.article-intro strong { color: var(--white); font-weight: 400; }
+.article-meta {
+  display: flex; gap: 1.5rem; margin-top: 1.4rem;
+  font-size: 0.72rem; font-weight: 300; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+
+.divider { border: none; border-top: 1px solid var(--white-faint); margin: 3rem 0; }
+
+.section { margin-bottom: 3.5rem; }
+.section-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.8rem;
+}
+.section-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 1rem;
+}
+.section-headline .dim { color: var(--white-dim); }
+
+.body {
+  font-size: 1rem; font-weight: 300; line-height: 1.9;
+  color: var(--white-dim); max-width: 64ch;
+}
+.body + .body { margin-top: 1rem; }
+.body strong { color: var(--white); font-weight: 400; }
+
+.insight {
+  background: rgba(184,212,0,0.06);
+  border-left: 2px solid var(--lime);
+  padding: 1.2rem 1.4rem; margin: 2rem 0;
+}
+.insight-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.5rem;
+}
+.insight-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--white-dim);
+}
+.insight-text strong { color: var(--white); font-weight: 400; }
+
+.stat-block {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--white-faint);
+  border: 1px solid var(--white-faint); margin: 2.5rem 0;
+}
+.stat { background: #1e2c3a; padding: 1.4rem 1.2rem; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700; line-height: 1;
+  letter-spacing: -0.03em; color: var(--lime); margin-bottom: 0.4rem;
+}
+.stat-label { font-size: 0.82rem; font-weight: 300; color: var(--white-dim); line-height: 1.5; }
+.stat-source { font-size: 0.68rem; color: rgba(240,239,240,0.25); margin-top: 0.3rem; }
+
+.callout {
+  background: #1e2c3a; border: 1px solid rgba(240,239,240,0.06);
+  padding: 1.4rem; margin: 2rem 0;
+}
+.callout-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.35); margin-bottom: 0.6rem;
+}
+.callout-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.75);
+}
+.callout-text strong { color: #f0eff0; font-weight: 500; }
+
+/* ── ATTRIBUTION MODEL VISUAL ── */
+.attr-wrap {
+  margin: 3rem 0;
+  border: 1px solid var(--white-faint);
+  background: #151f29;
+  overflow: hidden;
+}
+
+.attr-journey {
+  padding: 1.8rem 1.8rem 1.4rem;
+  border-bottom: 1px solid var(--white-faint);
+}
+.attr-journey-label {
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+  margin-bottom: 1.2rem;
+}
+.journey-steps {
+  display: flex; align-items: center; gap: 0;
+  overflow-x: auto; padding-bottom: 4px;
+}
+.journey-step {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px; flex-shrink: 0;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.journey-step.visible { opacity: 1; transform: translateY(0); }
+.step-node {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 2px solid rgba(240,239,240,0.12);
+  background: #1e2c3a;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.6rem; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--white-dim); text-align: center;
+  line-height: 1.2;
+  transition: border-color 0.3s, background 0.3s;
+  position: relative;
+}
+.step-node.highlighted {
+  border-color: var(--lime);
+  background: rgba(184,212,0,0.12);
+  color: var(--lime);
+}
+.step-node.faded {
+  opacity: 0.25;
+}
+.step-label {
+  font-size: 0.62rem; font-weight: 300; color: rgba(240,239,240,0.4);
+  text-align: center; max-width: 60px; line-height: 1.3;
+  white-space: nowrap;
+}
+.step-credit {
+  font-size: 0.7rem; font-weight: 500; color: var(--lime);
+  min-height: 16px;
+  opacity: 0; transition: opacity 0.3s;
+}
+.step-credit.visible { opacity: 1; }
+
+.journey-arrow {
+  width: 28px; height: 2px;
+  background: rgba(240,239,240,0.08);
+  flex-shrink: 0; margin: 0 2px; margin-bottom: 24px;
+  position: relative;
+}
+.journey-arrow::after {
+  content: '';
+  position: absolute; right: -4px; top: -3px;
+  border-left: 5px solid rgba(240,239,240,0.1);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+/* Model tabs */
+.attr-models {
+  display: flex; border-bottom: 1px solid var(--white-faint);
+}
+.attr-model-btn {
+  flex: 1; padding: 0.9rem 0.5rem;
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--white-dim);
+  background: transparent; border: none; cursor: pointer;
+  border-right: 1px solid var(--white-faint);
+  transition: background 0.2s, color 0.2s;
+  line-height: 1.3;
+}
+.attr-model-btn:last-child { border-right: none; }
+.attr-model-btn:hover { background: rgba(255,255,255,0.02); color: var(--white); }
+.attr-model-btn.active {
+  background: rgba(184,212,0,0.07);
+  color: var(--lime);
+}
+
+.attr-explanation {
+  padding: 1.4rem 1.8rem;
+  min-height: 60px;
+}
+.attr-explanation-text {
+  font-size: 0.88rem; font-weight: 300; line-height: 1.7;
+  color: var(--white-dim);
+}
+.attr-explanation-text strong { color: var(--white); font-weight: 400; }
+
+.nav-next {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  margin-top: 4rem; padding-top: 3rem;
+  border-top: 1px solid var(--white-faint);
+}
+.nav-next-label {
+  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+.nav-next-link {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); text-decoration: none;
+  transition: color var(--dur-base);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.nav-next-link:hover { color: var(--lime); }
+
+@media (max-width: 768px) {
+  .nav-link { display: none; }
+  .nav-link-cta { display: block; }
+  .stat-block { grid-template-columns: repeat(2, 1fr); }
+  .article { padding: 3rem 1.2rem 5rem; }
+  .attr-model-btn { font-size: 0.62rem; padding: 0.7rem 0.3rem; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="nav-wordmark" href="/">get<span>martin</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="/">This First</a>
+    <a class="nav-link" href="/proof">Proof</a>
+    <a class="nav-link active" href="/learn">Learn</a>
+    <a class="nav-link-cta" href="/#ch5">Let's talk</a>
+  </div>
+  <div class="nav-progress"></div>
+</nav>
+
+<div class="page">
+  <div class="article">
+
+    <a class="back" href="/learn">← Back to Learn</a>
+
+    <div class="article-header">
+      <p class="article-eyebrow">The Basics</p>
+      <h1 class="article-headline">Analytics and Attribution —<br>The Last Click Gets the Credit,<br>The First Click Did the Work</h1>
+      <p class="article-intro">
+        Analytics tells you what happened. Attribution tells you why — which marketing activities caused which outcomes. Both are essential. Both are harder than they look.
+        <strong>Most companies are measuring the wrong things, crediting the wrong channels, and making budget decisions based on a version of reality that their own data is actively misrepresenting.</strong>
+      </p>
+      <div class="article-meta">
+        <span>The Basics</span>
+        <span>8 min read</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT ANALYTICS IS -->
+    <div class="section">
+      <p class="section-label">The definitions</p>
+      <h2 class="section-headline">Analytics vs. attribution —<br><span class="dim">what each one actually does</span></h2>
+      <p class="body"><strong>Marketing analytics</strong> is the measurement and analysis of marketing data — traffic, engagement, conversions, leads, pipeline, revenue. It answers descriptive questions: how many people visited, how many clicked, how many converted. The tools are well-established. Google Analytics, your CRM, your email platform. The data is plentiful. The challenge is knowing which data matters.</p>
+      <p class="body"><strong>Attribution</strong> is the specific practice of assigning credit for outcomes — a lead, an opportunity, a closed deal — to the marketing activities that influenced it. It answers causal questions: which touchpoint, channel, or piece of content actually caused this conversion? Attribution is where the real difficulty lives. In B2B, where buying journeys are long, nonlinear, and involve multiple people across multiple channels over many months, answering that question accurately is genuinely hard.</p>
+      <p class="body"><strong>The gap between what attribution models report and what actually drove the sale is where most marketing budget decisions go wrong.</strong> Channels that look like they are producing nothing are often doing essential work earlier in the journey. Channels that appear to produce everything are often just the last thing the buyer clicked before converting.</p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">The B2B reality check</p>
+      <p class="insight-text">Research from Dreamdata found the average B2B buyer takes around 211 days from first touch to purchase. A 2024 Dentsu study puts it even longer — around 379 days for complex deals. <strong>Most attribution windows are 7 to 30 days. Most B2B journeys are 7 to 12 months. You are measuring a marathon with a stopwatch set to time a sprint.</strong></p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- THE ATTRIBUTION PROBLEM -->
+    <div class="section">
+      <p class="section-label">The attribution problem</p>
+      <h2 class="section-headline">Why the same journey<br><span class="dim">looks completely different in the data</span></h2>
+      <p class="body">Here is a real B2B buying journey, compressed. A prospect reads a LinkedIn article on Day 1. They search for a related term on Day 45 and find a blog post. They download a report on Day 90 via a Google ad. They attend a webinar on Day 150. They search directly for the company name on Day 200 and request a demo. Three weeks later they sign.</p>
+      <p class="body">Under last-touch attribution — the most common model — <strong>Google organic search for the brand name gets 100% of the credit.</strong> The LinkedIn article that started the whole journey gets nothing. The blog post, the report, the webinar — all invisible in the data. LinkedIn, which initiated the relationship, looks like it produces no revenue. Brand search, which just captured existing intent, looks like it produces all of it.</p>
+      <p class="body">The budget decision that follows from that data: cut LinkedIn, increase investment in branded search. Which is exactly backwards from what the evidence supports.</p>
+    </div>
+
+    <!-- ATTRIBUTION MODEL VISUAL -->
+    <div class="attr-wrap" id="attrWrap">
+
+      <div class="attr-journey">
+        <p class="attr-journey-label">The same journey — six touchpoints, one deal</p>
+        <div class="journey-steps" id="journeySteps">
+
+          <div class="journey-step" id="step0">
+            <div class="step-node" id="node0">LinkedIn article</div>
+            <p class="step-label">Day 1</p>
+            <p class="step-credit" id="credit0"></p>
+          </div>
+          <div class="journey-arrow"></div>
+
+          <div class="journey-step" id="step1">
+            <div class="step-node" id="node1">Blog post via search</div>
+            <p class="step-label">Day 45</p>
+            <p class="step-credit" id="credit1"></p>
+          </div>
+          <div class="journey-arrow"></div>
+
+          <div class="journey-step" id="step2">
+            <div class="step-node" id="node2">Google ad → report</div>
+            <p class="step-label">Day 90</p>
+            <p class="step-credit" id="credit2"></p>
+          </div>
+          <div class="journey-arrow"></div>
+
+          <div class="journey-step" id="step3">
+            <div class="step-node" id="node3">Webinar</div>
+            <p class="step-label">Day 150</p>
+            <p class="step-credit" id="credit3"></p>
+          </div>
+          <div class="journey-arrow"></div>
+
+          <div class="journey-step" id="step4">
+            <div class="step-node" id="node4">Brand search → demo</div>
+            <p class="step-label">Day 200</p>
+            <p class="step-credit" id="credit4"></p>
+          </div>
+          <div class="journey-arrow"></div>
+
+          <div class="journey-step" id="step5">
+            <div class="step-node" id="node5">✓ Deal signed</div>
+            <p class="step-label">Day 221</p>
+            <p class="step-credit" id="credit5"></p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="attr-models">
+        <button class="attr-model-btn active" data-model="last">Last Touch</button>
+        <button class="attr-model-btn" data-model="first">First Touch</button>
+        <button class="attr-model-btn" data-model="linear">Linear</button>
+        <button class="attr-model-btn" data-model="position">Position Based</button>
+      </div>
+
+      <div class="attr-explanation">
+        <p class="attr-explanation-text" id="attrExplanation">
+          <strong>Last-touch attribution</strong> gives 100% of the credit to the final touchpoint before conversion — in this case, the branded search that led to a demo request. Every earlier touchpoint gets zero credit. Most CRMs and ad platforms use this model by default.
+        </p>
+      </div>
+
+    </div>
+
+    <hr class="divider">
+
+    <!-- THE MODELS -->
+    <div class="section">
+      <p class="section-label">The models explained</p>
+      <h2 class="section-headline">Four attribution models.<br><span class="dim">Four different versions of the truth.</span></h2>
+      <p class="body"><strong>Last-touch attribution</strong> credits the final touchpoint entirely. Simple, widely used, consistently misleading. It systematically undervalues awareness and mid-funnel activity — precisely the content that creates the conditions for the final conversion to happen.</p>
+      <p class="body"><strong>First-touch attribution</strong> credits the first touchpoint entirely. Better for understanding what creates demand, but equally misleading — it ignores everything that happened between initial awareness and conversion, including the touchpoints that actually moved the deal forward.</p>
+      <p class="body"><strong>Linear attribution</strong> distributes credit equally across all touchpoints. Fairer than single-touch models, but treats a webinar on Day 150 as equally important as the demo request on Day 200 — which is probably not accurate either. It is an improvement, not a solution.</p>
+      <p class="body"><strong>Position-based attribution</strong> gives more credit to first and last touches, distributing the remainder across middle touchpoints. In B2B this is often implemented as 40% to first touch, 40% to last touch, 20% spread across everything in between. More nuanced, still imperfect. <strong>The honest conclusion is that no attribution model is fully accurate — each is a simplification of a reality that is genuinely complex.</strong></p>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat">
+        <div class="stat-num">211</div>
+        <div class="stat-label">Average days from first B2B touchpoint to purchase — most attribution windows are 7–30 days</div>
+        <div class="stat-source">Dreamdata B2B GTM Benchmarks, 2024</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">68%</div>
+        <div class="stat-label">Of B2B marketers cite cross-platform attribution discrepancies as their biggest analytics challenge</div>
+        <div class="stat-source">Heeet research, 2025</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">&lt;25%</div>
+        <div class="stat-label">Of B2B marketers rate their marketing measurement practices as fair or better</div>
+        <div class="stat-source">6sense B2B Attribution Benchmark, 2025</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT TO MEASURE -->
+    <div class="section">
+      <p class="section-label">What to actually measure</p>
+      <h2 class="section-headline">The metrics that matter.<br><span class="dim">And the ones that look good but don't.</span></h2>
+      <p class="body">The most commonly tracked marketing metrics — page views, social media followers, email open rates, impressions — are output metrics. They measure activity, not impact. A page that gets 50,000 views and converts no one is less valuable than a page that gets 500 views and converts 20 prospects into conversations. <strong>Volume without conversion is noise. The question is never "how many" — it is always "how many of the right people, doing the right things."</strong></p>
+      <p class="body">The metrics that actually connect marketing to business outcomes are: pipeline generated, pipeline influenced, conversion rate from lead to opportunity, sales cycle length, average deal size by channel, and customer acquisition cost by source. These are harder to measure — they require your CRM to be properly set up and for marketing and sales to agree on definitions — but they are the metrics that enable good decisions.</p>
+      <p class="body">For content specifically, the most useful metric is often the simplest: did reading this piece lead to a conversation? Track what content prospects have consumed before they book a call. Interview customers about what they read or watched before they reached out. <strong>That qualitative signal — "I found your article on X and it made me want to talk to you" — tells you more about what is working than most dashboards will.</strong></p>
+    </div>
+
+    <div class="callout">
+      <p class="callout-label">The vanity metric trap</p>
+      <p class="callout-text">LinkedIn impressions. Website traffic. Email open rates. These feel like evidence of marketing working because they are large numbers that go up and to the right. They are not evidence of marketing working — they are evidence of marketing activity. <strong>The question to ask about every metric you track: if this number went to zero tomorrow, would revenue be affected? If the honest answer is "probably not," you are measuring the wrong thing.</strong></p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT GOOD LOOKS LIKE -->
+    <div class="section">
+      <p class="section-label">What good looks like</p>
+      <h2 class="section-headline">A practical approach<br><span class="dim">for companies without a data science team</span></h2>
+      <p class="body">Most B2B companies do not have the resources to implement sophisticated multi-touch attribution modelling. That is fine. The practical alternative is a layered approach that combines imperfect quantitative data with deliberate qualitative research.</p>
+      <p class="body"><strong>Use your CRM as the source of truth.</strong> Every deal should have a source attached — where did this lead originally come from? This will not be perfectly accurate, but it gives you a directional view of which channels are opening relationships. Review it quarterly. Look for patterns over time rather than individual data points.</p>
+      <p class="body"><strong>Ask every customer how they found you.</strong> Not in a form — in the first conversation. "Before we go any further — how did you first hear about us?" The answer will surprise you regularly. You will discover that the channel you thought was producing nothing is where half your best customers first encountered you.</p>
+      <p class="body"><strong>Track pipeline contribution, not just lead volume.</strong> A channel that generates 100 leads that never become opportunities is less valuable than a channel that generates 10 leads that become 8 deals. Lead quality, measured by conversion rate to pipeline, is the metric that connects marketing activity to sales reality.</p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">Where to start</p>
+      <p class="insight-text">This week, add one question to your sales process: "Before we start — how did you first hear about us?" Record the answers in your CRM. Do this for 90 days. Then look at what you collected. <strong>That simple data point — gathered consistently over time — will tell you more about what is actually driving your business than any analytics dashboard you currently have access to.</strong></p>
+    </div>
+
+    <div class="nav-next">
+      <span class="nav-next-label">Read next</span>
+      <a class="nav-next-link" href="/learn/inbound-vs-outbound">
+        Inbound vs. Outbound — Two Different Games →
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const progress = document.querySelector('.nav-progress');
+window.addEventListener('scroll', () => {
+  const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
+  if (progress) progress.style.width = pct + '%';
+}, { passive: true });
+
+// Journey step animation on scroll
+const steps = document.querySelectorAll('.journey-step');
+let journeyTriggered = false;
+const journeyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !journeyTriggered) {
+      journeyTriggered = true;
+      steps.forEach((step, i) => {
+        setTimeout(() => step.classList.add('visible'), i * 120);
+      });
+    }
+  });
+}, { threshold: 0.2 });
+journeyObserver.observe(document.getElementById('attrWrap'));
+
+// Attribution model data
+const models = {
+  last: {
+    credits: ['0%', '0%', '0%', '0%', '100%', ''],
+    highlighted: [4],
+    faded: [0, 1, 2, 3],
+    explanation: '<strong>Last-touch attribution</strong> gives 100% of the credit to the final touchpoint — branded search to demo. Every earlier touchpoint gets zero. Most CRMs and ad platforms default to this model. The LinkedIn article that started everything is invisible in the data.'
+  },
+  first: {
+    credits: ['100%', '0%', '0%', '0%', '0%', ''],
+    highlighted: [0],
+    faded: [1, 2, 3, 4],
+    explanation: '<strong>First-touch attribution</strong> gives 100% of the credit to the very first touchpoint — the LinkedIn article. Everything that happened in between — including the webinar that convinced them — gets nothing. Better for understanding demand creation, but equally incomplete.'
+  },
+  linear: {
+    credits: ['20%', '20%', '20%', '20%', '20%', ''],
+    highlighted: [0, 1, 2, 3, 4],
+    faded: [],
+    explanation: '<strong>Linear attribution</strong> distributes credit equally across all five touchpoints — 20% each. Fairer than single-touch models, but treats the initial LinkedIn article and the demo request as equally important, which is probably not right either. An improvement, not a solution.'
+  },
+  position: {
+    credits: ['40%', '5%', '5%', '5%', '40%', ''],
+    highlighted: [0, 4],
+    faded: [],
+    explanation: '<strong>Position-based attribution</strong> weights the first and last touches most heavily — 40% each — with 20% split across the middle. More nuanced. Recognises that starting and closing the journey are the most important moments. Still imperfect, but closer to reality than last-touch alone.'
+  }
+};
+
+const modelBtns = document.querySelectorAll('.attr-model-btn');
+const explanation = document.getElementById('attrExplanation');
+
+function applyModel(modelKey) {
+  const m = models[modelKey];
+  for (let i = 0; i <= 4; i++) {
+    const node = document.getElementById(`node${i}`);
+    const credit = document.getElementById(`credit${i}`);
+    node.className = 'step-node';
+    if (m.highlighted.includes(i)) node.classList.add('highlighted');
+    if (m.faded.includes(i)) node.classList.add('faded');
+    credit.textContent = m.credits[i];
+    credit.classList.toggle('visible', m.credits[i] !== '');
+  }
+  explanation.innerHTML = m.explanation;
+}
+
+modelBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    modelBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyModel(btn.dataset.model);
+  });
+});
+
+// Apply default
+applyModel('last');
+</script>
+
+</body>
+</html>
