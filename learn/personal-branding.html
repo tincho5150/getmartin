@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Personal branding in B2B — why people buy from people, not logos, and how to build a visible, credible presence that earns business.">
+<title>Personal Branding — People Buy From People, Not Logos — getmartin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/global.css">
+<style>
+
+:root {
+  --font-display: 'Roboto', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+  --max-w: 820px;
+}
+
+html, body { height: auto; overflow-x: hidden; }
+
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-height); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--white-faint);
+  background: rgba(30,44,58,0.95);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--white); text-decoration: none; flex-shrink: 0;
+}
+.nav-wordmark span { color: var(--lime); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-link {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white-dim); text-decoration: none;
+  transition: color var(--dur-base);
+}
+.nav-link:hover { color: var(--white); }
+.nav-link.active { color: var(--white); }
+.nav-link-cta {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
+  padding: 0.4rem 1rem; text-decoration: none; transition: background var(--dur-base);
+}
+.nav-link-cta:hover { background: var(--lime-hover); }
+.nav-progress {
+  position: absolute; bottom: 0; left: 0;
+  height: 1px; background: var(--lime); width: 0%;
+  transition: width 0.2s linear;
+}
+
+.page { min-height: 100vh; padding-top: var(--nav-height); position: relative; }
+.page::before {
+  content: ''; position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none; z-index: 0;
+}
+
+.article {
+  position: relative; z-index: 1;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 5vw 2rem 8rem;
+}
+
+.back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--white-dim);
+  text-decoration: none; margin-bottom: 3rem;
+  transition: color var(--dur-base);
+}
+.back:hover { color: var(--white); }
+
+.article-header { margin-bottom: 3.5rem; }
+.article-eyebrow {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
+}
+.article-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
+  color: var(--white); margin-bottom: 1.4rem;
+}
+.article-intro {
+  font-size: 1.1rem; font-weight: 300; line-height: 1.8;
+  color: var(--white-dim); max-width: 58ch;
+  border-left: 2px solid var(--lime);
+  padding-left: 1.2rem;
+}
+.article-intro strong { color: var(--white); font-weight: 400; }
+.article-meta {
+  display: flex; gap: 1.5rem; margin-top: 1.4rem;
+  font-size: 0.72rem; font-weight: 300; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+
+.divider { border: none; border-top: 1px solid var(--white-faint); margin: 3rem 0; }
+
+.section { margin-bottom: 3.5rem; }
+.section-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.8rem;
+}
+.section-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 1rem;
+}
+.section-headline .dim { color: var(--white-dim); }
+
+.body {
+  font-size: 1rem; font-weight: 300; line-height: 1.9;
+  color: var(--white-dim); max-width: 64ch;
+}
+.body + .body { margin-top: 1rem; }
+.body strong { color: var(--white); font-weight: 400; }
+
+.insight {
+  background: rgba(184,212,0,0.06);
+  border-left: 2px solid var(--lime);
+  padding: 1.2rem 1.4rem; margin: 2rem 0;
+}
+.insight-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.5rem;
+}
+.insight-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--white-dim);
+}
+.insight-text strong { color: var(--white); font-weight: 400; }
+
+.stat-block {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--white-faint);
+  border: 1px solid var(--white-faint); margin: 2.5rem 0;
+}
+.stat { background: #1e2c3a; padding: 1.4rem 1.2rem; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700; line-height: 1;
+  letter-spacing: -0.03em; color: var(--lime); margin-bottom: 0.4rem;
+}
+.stat-label { font-size: 0.82rem; font-weight: 300; color: var(--white-dim); line-height: 1.5; }
+.stat-source { font-size: 0.68rem; color: rgba(240,239,240,0.25); margin-top: 0.3rem; }
+
+.callout {
+  background: #1e2c3a; border: 1px solid rgba(240,239,240,0.06);
+  padding: 1.4rem; margin: 2rem 0;
+}
+.callout-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.35); margin-bottom: 0.6rem;
+}
+.callout-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.75);
+}
+.callout-text strong { color: #f0eff0; font-weight: 500; }
+
+.nav-next {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  margin-top: 4rem; padding-top: 3rem;
+  border-top: 1px solid var(--white-faint);
+}
+.nav-next-label {
+  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+.nav-next-link {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); text-decoration: none;
+  transition: color var(--dur-base);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.nav-next-link:hover { color: var(--lime); }
+
+@media (max-width: 768px) {
+  .nav-link { display: none; }
+  .nav-link-cta { display: block; }
+  .stat-block { grid-template-columns: repeat(2, 1fr); }
+  .article { padding: 3rem 1.2rem 5rem; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="nav-wordmark" href="/">get<span>martin</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="/">This First</a>
+    <a class="nav-link" href="/proof">Proof</a>
+    <a class="nav-link active" href="/learn">Learn</a>
+    <a class="nav-link-cta" href="/#ch5">Let's talk</a>
+  </div>
+  <div class="nav-progress"></div>
+</nav>
+
+<div class="page">
+  <div class="article">
+
+    <a class="back" href="/learn">← Back to Learn</a>
+
+    <div class="article-header">
+      <p class="article-eyebrow">The Basics</p>
+      <h1 class="article-headline">Personal Branding —<br>People Buy From People, Not Logos</h1>
+      <p class="article-intro">
+        Personal branding is the practice of deliberately shaping how you are perceived professionally — what you are known for, what you stand for, and what kind of thinking you bring to the problems your buyers care about.
+        <strong>In B2B, it is one of the highest-leverage things a founder, sales leader, or subject matter expert can do. It is also one of the most consistently underestimated.</strong>
+      </p>
+      <div class="article-meta">
+        <span>The Basics</span>
+        <span>7 min read</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT IT IS -->
+    <div class="section">
+      <p class="section-label">The definition</p>
+      <h2 class="section-headline">What personal branding is<br><span class="dim">and what it is not</span></h2>
+      <p class="body">Personal branding is not self-promotion. It is not posting motivational quotes on LinkedIn or manufacturing a persona that does not reflect how you actually think. Those things exist — and they are why "personal brand" makes many serious people uncomfortable — but they are a failure mode of the practice, not the practice itself.</p>
+      <p class="body">At its core, personal branding is about being known for something specific by the people who matter to your work. It is the accumulation of how you show up — what you say, what you publish, what positions you take, what you refuse to oversimplify — across every professional touchpoint over time. <strong>A strong personal brand is not built through a campaign. It is built through consistent, genuine contribution to the conversations your buyers are already having.</strong></p>
+      <p class="body">In B2B specifically, personal branding matters because complex purchases are built on trust — and trust accrues to people, not companies. A buyer choosing between two vendors with comparable products will lean toward the one whose founder or sales contact has demonstrated genuine knowledge and a clear point of view. The company page did not build that trust. The person did.</p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">The fundamental truth</p>
+      <p class="insight-text">Your company's logo does not have opinions. It does not challenge assumptions, share hard-won lessons, or demonstrate that it understands the specific problems your buyers are sitting with. <strong>You do. And in B2B, where trust is the currency of every deal, the person who is most visible and most credible wins more often than the company with the best product.</strong></p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHY IT MATTERS IN B2B -->
+    <div class="section">
+      <p class="section-label">Why it matters</p>
+      <h2 class="section-headline">The research on thought leadership<br><span class="dim">is more compelling than most people realise</span></h2>
+      <p class="body">The 2024 Edelman-LinkedIn B2B Thought Leadership Impact Report is one of the most comprehensive studies on this topic and its findings are consistently striking. More than 75% of decision-makers and C-suite executives said that a piece of thought leadership content had led them to research a product or service they were not previously considering. That is new demand — created not by an ad or a cold email, but by a piece of content that made them think differently.</p>
+      <p class="body">The same research found that 73% of decision-makers say an organisation's thought leadership content is a more trustworthy source for assessing its capabilities than its marketing materials and product sheets. <strong>The founder's article is more convincing than the brochure.</strong> The subject matter expert's LinkedIn post carries more weight than the company announcement. People trust people — and they always have.</p>
+      <p class="body">Perhaps the most practically significant finding: 7 in 10 decision-makers reported thinking more positively about organisations that consistently produce high-quality thought leadership. Consistency is the operative word. A single strong post does nothing. A consistent presence over months and years builds something that is genuinely difficult for competitors to replicate — because they cannot copy your specific perspective, your specific experience, or the specific trust you have built with a specific audience.</p>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat">
+        <div class="stat-num">561%</div>
+        <div class="stat-label">Greater reach when brand messages are shared by employees vs. the brand's official channels</div>
+        <div class="stat-source">Entrepreneur / LinkedIn data</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">75%+</div>
+        <div class="stat-label">Of decision-makers say thought leadership has led them to research a product they weren't previously considering</div>
+        <div class="stat-source">Edelman-LinkedIn, 2024</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">1%</div>
+        <div class="stat-label">Of LinkedIn's monthly users share content weekly — yet they generate 9 billion impressions. The gap is the opportunity.</div>
+        <div class="stat-source">LiGo / LinkedIn data, 2025</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- THE PLATFORM REALITY -->
+    <div class="section">
+      <p class="section-label">Where it happens</p>
+      <h2 class="section-headline">Why LinkedIn is the arena<br><span class="dim">and what that means in practice</span></h2>
+      <p class="body">For B2B personal branding, LinkedIn is where the work happens. Not because it is the only platform — some industries have strong communities elsewhere — but because the audience is right. Over 1.1 billion members globally. 4 out of 5 LinkedIn members drive business decisions. 40 million members in decision-making positions. The people who buy B2B products are on LinkedIn, and they are actively engaging with content there.</p>
+      <p class="body">The structural advantage of personal profiles over company pages on LinkedIn is significant and well-documented. Research from Refine Labs found that sharing posts through a personal LinkedIn profile results in 2.75 times more impressions and five times more engagement than the same content shared through a company profile. The algorithm consistently rewards individual voices over corporate ones — and the audience's trust patterns do the same.</p>
+      <p class="body">The content gap is also striking. Only about 1% of LinkedIn's monthly users share content weekly, yet those users generate 9 billion impressions across the platform, according to data compiled by LiGo. <strong>The overwhelming majority of professionals on LinkedIn are consumers of content, not producers of it.</strong> Which means that consistent, quality content creation is still genuinely differentiated — not saturated, as many people assume.</p>
+    </div>
+
+    <div class="callout">
+      <p class="callout-label">The company page mistake</p>
+      <p class="callout-text">Most B2B companies invest the majority of their social media effort in the company page and treat personal profiles as an afterthought. This is backwards. The company page has a role — it provides a home base, it archives content, it handles job listings — but it does not build trust the way a person does. <strong>The most effective B2B social strategy puts people first and uses the company page to support them, not the other way around.</strong></p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT IT LOOKS LIKE -->
+    <div class="section">
+      <p class="section-label">What it looks like in practice</p>
+      <h2 class="section-headline">How to build a personal brand<br><span class="dim">without becoming a LinkedIn cliché</span></h2>
+      <p class="body">The fear most serious professionals have about personal branding is that it requires them to become someone they are not — performative, self-aggrandising, constant. That version exists and is easy to find on LinkedIn. It is also not what works for B2B buyers, who are sophisticated enough to recognise manufactured credibility immediately.</p>
+      <p class="body">What actually builds trust in a B2B context is simpler and more demanding: <strong>genuine expertise, shared consistently, with a clear point of view.</strong> Not a motivational take. Not a humble brag about a recent win. A perspective on a problem your buyers face — written in plain language, with something specific to say, that demonstrates you understand the problem in ways that general consensus does not.</p>
+      <p class="body">Research from the Edelman-LinkedIn report found that 64% of buyers favour thought leadership content over promotional material when assessing a company's capabilities. And 63% said thought leadership is important in providing proof that an organisation genuinely understands or can solve their specific business challenges. The bar, in other words, is not fame or virality. It is demonstrated competence, communicated clearly, over time.</p>
+      <p class="body">The cadence matters less than the consistency. One genuinely useful post per week, sustained over a year, produces more trust than a burst of daily posting for a month followed by silence. <strong>The audience needs to learn that you will still be there — that the perspective is a permanent feature of your professional presence, not a campaign.</strong></p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT IT DOESN'T DO -->
+    <div class="section">
+      <p class="section-label">The limits</p>
+      <h2 class="section-headline">What personal branding<br><span class="dim">cannot do on its own</span></h2>
+      <p class="body">Personal branding builds awareness and credibility. It does not, by itself, close deals. A prospect who has followed your LinkedIn posts for six months still needs to go through a sales process. What the personal brand does is change the conditions of that process — they arrive already trusting you, already believing you understand their problem, already predisposed to see you as a credible option.</p>
+      <p class="body">It also does not work without something real behind it. A personal brand built on recycled ideas and consensus opinions produces followers who see through it and buyers who are not moved by it. The content needs to reflect genuine experience, genuine knowledge, and a genuine point of view — something that could only come from someone who has actually done the work.</p>
+      <p class="body"><strong>This is why personal branding in B2B is such a durable advantage.</strong> It is hard to fake and hard to copy. A competitor can replicate your product features. They cannot replicate ten years of accumulated trust with an audience that has watched you think through hard problems in public.</p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">Where to start</p>
+      <p class="insight-text">Pick the one problem your buyers face most often — the one you understand better than almost anyone. Write one LinkedIn post about it per week for the next three months. Not about your product. About the problem. What causes it, what makes it harder to solve than people assume, what most attempts to fix it get wrong. <strong>Do not think about followers or likes. Think about whether the specific person you most want to reach would find it genuinely useful. If yes, publish it. That is the whole strategy.</strong></p>
+    </div>
+
+    <div class="nav-next">
+      <span class="nav-next-label">Read next</span>
+      <a class="nav-next-link" href="/learn/paid-advertising">
+        Paid Advertising — When to Buy Attention vs. Earn It →
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const progress = document.querySelector('.nav-progress');
+window.addEventListener('scroll', () => {
+  const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
+  if (progress) progress.style.width = pct + '%';
+}, { passive: true });
+</script>
+
+</body>
+</html>
