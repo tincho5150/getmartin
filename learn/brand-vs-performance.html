@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Brand vs performance marketing explained — what each does, when each works, and why the most effective marketers refuse to choose between them.">
+<title>Brand vs. Performance — One Makes the Phone Ring Today, One Makes It Ring Forever — getmartin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/global.css">
+<style>
+
+:root {
+  --font-display: 'Roboto', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+  --max-w: 820px;
+}
+
+html, body { height: auto; overflow-x: hidden; }
+
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-height); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--white-faint);
+  background: rgba(30,44,58,0.95);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--white); text-decoration: none; flex-shrink: 0;
+}
+.nav-wordmark span { color: var(--lime); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-link {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white-dim); text-decoration: none;
+  transition: color var(--dur-base);
+}
+.nav-link:hover { color: var(--white); }
+.nav-link.active { color: var(--white); }
+.nav-link-cta {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
+  padding: 0.4rem 1rem; text-decoration: none; transition: background var(--dur-base);
+}
+.nav-link-cta:hover { background: var(--lime-hover); }
+.nav-progress {
+  position: absolute; bottom: 0; left: 0;
+  height: 1px; background: var(--lime); width: 0%;
+  transition: width 0.2s linear;
+}
+
+.page { min-height: 100vh; padding-top: var(--nav-height); position: relative; }
+.page::before {
+  content: ''; position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none; z-index: 0;
+}
+
+.article {
+  position: relative; z-index: 1;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 5vw 2rem 8rem;
+}
+
+.back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--white-dim);
+  text-decoration: none; margin-bottom: 3rem;
+  transition: color var(--dur-base);
+}
+.back:hover { color: var(--white); }
+
+.article-header { margin-bottom: 3.5rem; }
+.article-eyebrow {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
+}
+.article-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
+  color: var(--white); margin-bottom: 1.4rem;
+}
+.article-intro {
+  font-size: 1.1rem; font-weight: 300; line-height: 1.8;
+  color: var(--white-dim); max-width: 58ch;
+  border-left: 2px solid var(--lime);
+  padding-left: 1.2rem;
+}
+.article-intro strong { color: var(--white); font-weight: 400; }
+.article-meta {
+  display: flex; gap: 1.5rem; margin-top: 1.4rem;
+  font-size: 0.72rem; font-weight: 300; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+
+.divider { border: none; border-top: 1px solid var(--white-faint); margin: 3rem 0; }
+
+.section { margin-bottom: 3.5rem; }
+.section-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.8rem;
+}
+.section-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 1rem;
+}
+.section-headline .dim { color: var(--white-dim); }
+
+.body {
+  font-size: 1rem; font-weight: 300; line-height: 1.9;
+  color: var(--white-dim); max-width: 64ch;
+}
+.body + .body { margin-top: 1rem; }
+.body strong { color: var(--white); font-weight: 400; }
+
+.insight {
+  background: rgba(184,212,0,0.06);
+  border-left: 2px solid var(--lime);
+  padding: 1.2rem 1.4rem; margin: 2rem 0;
+}
+.insight-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.5rem;
+}
+.insight-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--white-dim);
+}
+.insight-text strong { color: var(--white); font-weight: 400; }
+
+.stat-block {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--white-faint);
+  border: 1px solid var(--white-faint); margin: 2.5rem 0;
+}
+.stat { background: #1e2c3a; padding: 1.4rem 1.2rem; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700; line-height: 1;
+  letter-spacing: -0.03em; color: var(--lime); margin-bottom: 0.4rem;
+}
+.stat-label { font-size: 0.82rem; font-weight: 300; color: var(--white-dim); line-height: 1.5; }
+.stat-source { font-size: 0.68rem; color: rgba(240,239,240,0.25); margin-top: 0.3rem; }
+
+.callout {
+  background: #1e2c3a; border: 1px solid rgba(240,239,240,0.06);
+  padding: 1.4rem; margin: 2rem 0;
+}
+.callout-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.35); margin-bottom: 0.6rem;
+}
+.callout-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.75);
+}
+.callout-text strong { color: #f0eff0; font-weight: 500; }
+
+/* ── ANIMATED CHART ── */
+.chart-wrap {
+  margin: 3rem 0;
+  border: 1px solid var(--white-faint);
+  background: #151f29;
+  padding: 2rem 2rem 1.4rem;
+  position: relative;
+}
+.chart-title {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.4);
+  margin-bottom: 1.8rem;
+}
+.chart-legend {
+  display: flex; gap: 1.5rem; margin-bottom: 1.8rem;
+}
+.chart-legend-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.78rem; font-weight: 300; color: var(--white-dim);
+}
+.legend-dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+}
+.legend-dot-brand { background: #b8d400; }
+.legend-dot-perf { background: rgba(255,255,255,0.35); }
+
+.chart-svg-wrap {
+  width: 100%;
+  position: relative;
+}
+.chart-svg-wrap svg {
+  width: 100%; height: auto; display: block; overflow: visible;
+}
+
+/* Axes labels */
+.axis-label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px; font-weight: 300;
+  fill: rgba(240,239,240,0.25);
+  letter-spacing: 0.04em;
+}
+.axis-label-y {
+  font-size: 9px;
+  fill: rgba(240,239,240,0.2);
+}
+
+/* Animated paths */
+.line-brand, .line-perf {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.line-brand {
+  stroke: #b8d400;
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: drawLine 2.4s cubic-bezier(0.4,0,0.2,1) 0.4s forwards;
+}
+.line-perf {
+  stroke: rgba(255,255,255,0.4);
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: drawLine 2.4s cubic-bezier(0.4,0,0.2,1) 0.8s forwards;
+}
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Area fills */
+.area-brand {
+  fill: url(#gradBrand);
+  opacity: 0;
+  animation: fadeIn 0.8s ease 2s forwards;
+}
+.area-perf {
+  fill: url(#gradPerf);
+  opacity: 0;
+  animation: fadeIn 0.8s ease 2.2s forwards;
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Annotation dots */
+.chart-dot {
+  opacity: 0;
+  animation: popIn 0.3s cubic-bezier(0.34,1.56,0.64,1) 2.6s forwards;
+}
+@keyframes popIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Annotation labels */
+.chart-annotation {
+  opacity: 0;
+  animation: fadeIn 0.5s ease 2.8s forwards;
+}
+
+/* Split bar */
+.split-wrap {
+  margin: 3rem 0;
+  border: 1px solid var(--white-faint);
+  padding: 1.8rem;
+  background: #151f29;
+}
+.split-title {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.4);
+  margin-bottom: 1.2rem;
+}
+.split-bar-wrap {
+  display: flex; height: 48px; overflow: hidden;
+  border: 1px solid rgba(240,239,240,0.06); margin-bottom: 1rem;
+}
+.split-brand {
+  background: #b8d400;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.85rem; font-weight: 700;
+  color: #1e2c3a; letter-spacing: 0.04em;
+  width: 0%;
+  transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
+  white-space: nowrap; overflow: hidden;
+}
+.split-perf {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.85rem; font-weight: 400;
+  color: rgba(240,239,240,0.6); letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.split-labels {
+  display: flex; justify-content: space-between;
+}
+.split-label {
+  font-size: 0.72rem; font-weight: 300; color: var(--white-dim);
+}
+.split-label span { color: var(--lime); font-weight: 500; }
+.split-source {
+  font-size: 0.65rem; color: rgba(240,239,240,0.2);
+  margin-top: 0.8rem;
+}
+
+.nav-next {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  margin-top: 4rem; padding-top: 3rem;
+  border-top: 1px solid var(--white-faint);
+}
+.nav-next-label {
+  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+.nav-next-link {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); text-decoration: none;
+  transition: color var(--dur-base);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.nav-next-link:hover { color: var(--lime); }
+
+@media (max-width: 768px) {
+  .nav-link { display: none; }
+  .nav-link-cta { display: block; }
+  .stat-block { grid-template-columns: repeat(2, 1fr); }
+  .article { padding: 3rem 1.2rem 5rem; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="nav-wordmark" href="/">get<span>martin</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="/">This First</a>
+    <a class="nav-link" href="/proof">Proof</a>
+    <a class="nav-link active" href="/learn">Learn</a>
+    <a class="nav-link-cta" href="/#ch5">Let's talk</a>
+  </div>
+  <div class="nav-progress"></div>
+</nav>
+
+<div class="page">
+  <div class="article">
+
+    <a class="back" href="/learn">← Back to Learn</a>
+
+    <div class="article-header">
+      <p class="article-eyebrow">The Basics</p>
+      <h1 class="article-headline">Brand vs. Performance —<br>One Makes the Phone Ring Today,<br>One Makes It Ring Forever</h1>
+      <p class="article-intro">
+        Performance marketing produces results you can measure this week. Brand marketing produces results that compound for years. Both are necessary. Most companies do only one — usually the one that is easier to justify in a spreadsheet.
+        <strong>Understanding the difference, and why the tension between them is a feature rather than a problem, is one of the most important things a marketer can internalise.</strong>
+      </p>
+      <div class="article-meta">
+        <span>The Basics</span>
+        <span>8 min read</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- THE DEFINITIONS -->
+    <div class="section">
+      <p class="section-label">The definitions</p>
+      <h2 class="section-headline">What each one actually does</h2>
+      <p class="body"><strong>Performance marketing</strong> is marketing designed to produce a measurable, immediate response. A click, a form fill, a booked call, a purchase. You spend money, you get activity, you can trace the line between the two. Google Ads, LinkedIn lead generation campaigns, retargeting, cold email — these are all performance marketing. The feedback loop is short. The ROI is visible. The results stop the moment you stop spending.</p>
+      <p class="body"><strong>Brand marketing</strong> is marketing designed to build awareness, recognition, trust, and preference over time. Content, thought leadership, PR, sponsorships, creative advertising — these shape how people think and feel about your company before they are in a buying moment. The feedback loop is long. The ROI is harder to attribute. The results accumulate and compound — and they persist long after the last piece of content was published or the last campaign ran.</p>
+      <p class="body">The distinction that matters most: <strong>performance marketing captures existing demand. Brand marketing creates future demand.</strong> If no one has heard of you and no one is searching for what you sell, performance marketing has nothing to capture. Brand marketing is what fills that pipeline.</p>
+    </div>
+
+    <!-- ANIMATED CHART -->
+    <div class="chart-wrap" id="chartWrap">
+      <p class="chart-title">Effect on revenue over time</p>
+      <div class="chart-legend">
+        <div class="chart-legend-item">
+          <div class="legend-dot legend-dot-brand"></div>
+          Brand marketing
+        </div>
+        <div class="chart-legend-item">
+          <div class="legend-dot legend-dot-perf"></div>
+          Performance marketing
+        </div>
+      </div>
+      <div class="chart-svg-wrap">
+        <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" aria-label="Brand vs Performance effect over time">
+          <defs>
+            <linearGradient id="gradBrand" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#b8d400" stop-opacity="0.15"/>
+              <stop offset="100%" stop-color="#b8d400" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="gradPerf" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.4)" stop-opacity="0.1"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0)" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Grid lines -->
+          <line x1="60" y1="20" x2="580" y2="20" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          <line x1="60" y1="70" x2="580" y2="70" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          <line x1="60" y1="120" x2="580" y2="120" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          <line x1="60" y1="170" x2="580" y2="170" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+
+          <!-- Y axis labels -->
+          <text x="52" y="24" text-anchor="end" class="axis-label-y">High</text>
+          <text x="52" y="174" text-anchor="end" class="axis-label-y">Low</text>
+
+          <!-- X axis -->
+          <line x1="60" y1="190" x2="580" y2="190" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <text x="60" y="206" text-anchor="middle" class="axis-label">Month 1</text>
+          <text x="200" y="206" text-anchor="middle" class="axis-label">Month 6</text>
+          <text x="340" y="206" text-anchor="middle" class="axis-label">Month 12</text>
+          <text x="480" y="206" text-anchor="middle" class="axis-label">Month 24</text>
+          <text x="580" y="206" text-anchor="middle" class="axis-label">Month 36</text>
+
+          <!-- Y axis line -->
+          <line x1="60" y1="20" x2="60" y2="190" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+          <!-- Brand curve area (fill) -->
+          <path class="area-brand"
+            d="M60,180 C120,175 160,165 200,150 C250,132 300,110 340,88 C380,66 420,48 460,36 C500,26 540,22 580,20 L580,190 L60,190 Z"/>
+
+          <!-- Performance area (fill) -->
+          <path class="area-perf"
+            d="M60,170 C80,140 100,100 120,85 C140,72 160,70 180,72 C220,78 260,85 300,88 C340,90 380,90 420,90 C460,90 500,90 540,90 L580,90 L580,190 L60,190 Z"/>
+
+          <!-- Brand line -->
+          <path class="line-brand"
+            d="M60,180 C120,175 160,165 200,150 C250,132 300,110 340,88 C380,66 420,48 460,36 C500,26 540,22 580,20"/>
+
+          <!-- Performance line -->
+          <path class="line-perf"
+            d="M60,170 C80,140 100,100 120,85 C140,72 160,70 180,72 C220,78 260,85 300,88 C340,90 380,90 420,90 C460,90 500,90 540,90 L580,90"/>
+
+          <!-- Annotation: "Campaigns stop → results stop" -->
+          <g class="chart-annotation">
+            <line x1="180" y1="72" x2="180" y2="56" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="3,2"/>
+            <text x="184" y="52" class="axis-label" fill="rgba(255,255,255,0.35)" font-size="9">Results stop</text>
+            <text x="184" y="62" class="axis-label" fill="rgba(255,255,255,0.35)" font-size="9">when spend stops</text>
+          </g>
+
+          <!-- Annotation: brand keeps climbing -->
+          <g class="chart-annotation">
+            <text x="390" y="34" class="axis-label" fill="#b8d400" font-size="9">Compounds</text>
+            <text x="390" y="44" class="axis-label" fill="#b8d400" font-size="9">over time</text>
+          </g>
+
+          <!-- Dots -->
+          <circle class="chart-dot" cx="180" cy="72" r="4" fill="rgba(255,255,255,0.5)" transform-origin="180 72"/>
+          <circle class="chart-dot" cx="580" cy="20" r="4" fill="#b8d400" transform-origin="580 20"/>
+
+        </svg>
+      </div>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">The core asymmetry</p>
+      <p class="insight-text">Performance marketing effects appear quickly and disappear quickly. Brand marketing effects appear slowly and persist. <strong>Over-investing in performance at the expense of brand produces short-term results and long-term fragility. Over-investing in brand at the expense of performance produces long-term positioning and short-term starvation.</strong> Both extremes fail.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- THE RESEARCH -->
+    <div class="section">
+      <p class="section-label">The research</p>
+      <h2 class="section-headline">The most important study<br><span class="dim">in marketing effectiveness</span></h2>
+      <p class="body">In 2013, Les Binet and Peter Field published "The Long and the Short of It" — a landmark analysis drawing on nearly 1,000 advertising effectiveness case studies across 700 brands and 83 sectors, spanning more than 30 years of IPA Effectiveness data. It remains the most rigorous, large-scale study of how brand and performance marketing interact to drive business outcomes.</p>
+      <p class="body">The finding that changed how serious marketers think about budget allocation was stark: <strong>long-term brand effects and short-term performance effects are produced by fundamentally different mechanisms.</strong> Short-term performance produces some short-term sales. But short-term sales do not accumulate into long-term brand strength. The reverse is true — long-term brand investment consistently amplifies the effectiveness of short-term performance activity. A company with a strong brand gets more return from every pound spent on performance than a company without one.</p>
+      <p class="body">The paper's headline recommendation was the 60:40 rule — devoting roughly 60% of marketing budget to long-term brand building and 40% to short-term sales activation. Binet and Field were careful to frame this as a starting point rather than a fixed prescription: the ideal split varies by sector, company size, and competitive position. But the directional finding is robust: <strong>most companies, especially in B2B, are significantly underinvesting in brand relative to the optimal.</strong></p>
+    </div>
+
+    <!-- SPLIT BAR -->
+    <div class="split-wrap" id="splitWrap">
+      <p class="split-title">The Binet & Field recommended starting split</p>
+      <div class="split-bar-wrap">
+        <div class="split-brand" id="splitBrand">60% Brand</div>
+        <div class="split-perf">40% Performance</div>
+      </div>
+      <div class="split-labels">
+        <span class="split-label"><span>Brand</span> — long-term, awareness, trust, preference</span>
+        <span class="split-label"><span>Performance</span> — short-term, demand capture, conversion</span>
+      </div>
+      <p class="split-source">Source: Binet & Field, "The Long and the Short of It", IPA, 2013. Widely replicated and extended since.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- B2B SPECIFICALLY -->
+    <div class="section">
+      <p class="section-label">In B2B specifically</p>
+      <h2 class="section-headline">Why B2B companies<br><span class="dim">consistently underinvest in brand</span></h2>
+      <p class="body">B2B companies are disproportionately likely to favour performance marketing. The reasons are understandable: longer sales cycles make attribution harder, procurement decisions appear rational, and CFOs are more comfortable approving spend they can directly trace to revenue. Brand marketing requires patience and tolerance for ambiguity that quarterly reporting cycles rarely allow.</p>
+      <p class="body">Subsequent LinkedIn and Binet & Field research specifically on B2B markets found that a very similar principle applies — and that B2B marketers are, on average, even more skewed toward performance at the expense of brand than their B2C counterparts. The research found that B2B marketers who outperformed their competition over two years were twice as likely to think long-term — investing in awareness and trust-building before the buying moment arrives.</p>
+      <p class="body">A 2025 report from EMARKETER and StackAdapt found that 40% of B2B marketers are planning to increase brand-building budgets — a meaningful signal that the pendulum is beginning to shift back. <strong>The realisation is spreading that performance marketing captures demand that brand marketing created — and that when brand investment stops, performance efficiency degrades over time.</strong></p>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat">
+        <div class="stat-num">60/40</div>
+        <div class="stat-label">Brand to performance split recommended by Binet & Field across 996 effectiveness case studies</div>
+        <div class="stat-source">IPA / Binet & Field, "The Long and Short of It", 2013</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2×</div>
+        <div class="stat-label">B2B marketers who outperformed competition were twice as likely to think long-term vs. short-term</div>
+        <div class="stat-source">Marketing Week / The Marketing Practice, 600 B2B marketers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">40%</div>
+        <div class="stat-label">Of B2B marketers plan to increase brand-building budgets in 2025 — a significant strategic shift</div>
+        <div class="stat-source">EMARKETER / StackAdapt, 2025</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- THE ATTRIBUTION TRAP -->
+    <div class="section">
+      <p class="section-label">The attribution trap</p>
+      <h2 class="section-headline">Why performance looks better<br><span class="dim">than it is in the data</span></h2>
+      <p class="body">The most persistent reason companies over-invest in performance and under-invest in brand is attribution. Performance marketing produces clicks, forms, and pipeline that appear in your CRM with a source attached. Brand marketing produces the conditions that made those clicks more likely — the familiarity, trust, and preference that meant the prospect picked up the phone rather than ignoring the ad.</p>
+      <p class="body">Most attribution models capture the last touchpoint before conversion and credit it with the sale. The LinkedIn article someone read three months ago, the founder's post they shared with a colleague, the case study they bookmarked and returned to — these rarely appear in the attribution data. <strong>The result is that brand marketing looks like it does nothing, and performance marketing looks like it does everything. Neither is accurate.</strong></p>
+      <p class="body">Les Binet has been direct about this: short-term metrics do not predict long-term success. A company that optimises entirely for attributable, short-term ROI will systematically underinvest in brand — and over time, its performance campaigns will become less effective as the brand that amplified them erodes.</p>
+    </div>
+
+    <div class="callout">
+      <p class="callout-label">The practical test for over-indexing on performance</p>
+      <p class="callout-text">Stop all paid spend for 30 days. What happens? If organic traffic, direct visits, and inbound enquiries continue at a meaningful level — your brand is doing work. If everything goes quiet the moment you stop spending — you have built a pipeline that depends entirely on rented attention, with no owned audience and no brand momentum to fall back on. <strong>The goal is a business where the brand brings people in and performance closes them. Both legs need to be standing.</strong></p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">Where to start</p>
+      <p class="insight-text">If you have been running purely performance campaigns and are seeing diminishing returns or rising CPCs, the answer is rarely to spend more on performance. It is more often to invest in brand — content, thought leadership, consistent presence — so that your performance campaigns are amplified by familiarity rather than fighting against indifference. <strong>The most important word in Binet and Field's title is "and". The long AND the short. Not one or the other.</strong></p>
+    </div>
+
+    <div class="nav-next">
+      <span class="nav-next-label">Read next</span>
+      <a class="nav-next-link" href="/learn/marketing-funnel">
+        TOFU, MOFU, BOFU — The Acronyms Nobody Explains and Everyone Uses →
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const progress = document.querySelector('.nav-progress');
+window.addEventListener('scroll', () => {
+  const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
+  if (progress) progress.style.width = pct + '%';
+}, { passive: true });
+
+// Trigger split bar animation when in view
+const splitBrand = document.getElementById('splitBrand');
+const splitWrap = document.getElementById('splitWrap');
+let splitTriggered = false;
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !splitTriggered) {
+      splitTriggered = true;
+      setTimeout(() => {
+        splitBrand.style.width = '60%';
+      }, 200);
+    }
+  });
+}, { threshold: 0.3 });
+
+observer.observe(splitWrap);
+</script>
+
+</body>
+</html>
