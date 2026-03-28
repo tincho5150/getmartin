@@ -115,104 +115,91 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .hero-track-pill:hover { color: var(--white); border-color: rgba(240,239,240,0.3); }
 
-/* right column — scrolling feed */
+/* HERO */
+.hero {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--white-faint);
+  min-height: 44vh;
+}
+.hero-left {
+  padding: 6vw 3.5vw 5vw 5vw;
+  display: flex; flex-direction: column; justify-content: space-between;
+  border-right: 1px solid var(--white-faint);
+}
+.hero-left-top { display: flex; flex-direction: column; }
 .hero-right {
-  padding: 0;
-  background: #0c1520; position: relative;
-  display: flex; flex-direction: column;
-  overflow: hidden;
+  padding: 5vw 5vw 5vw 3.5vw;
+  background: #ffffff; position: relative;
+  display: flex; flex-direction: column; justify-content: space-between;
 }
 .hero-right::before {
   content: ''; position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 72px 72px; pointer-events: none; z-index: 0;
+    linear-gradient(rgba(30,44,58,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,44,58,0.05) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none;
 }
-/* top fade */
-.hero-right::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0;
-  height: 60px; z-index: 2;
-  background: linear-gradient(to bottom, #0c1520 0%, transparent 100%);
-  pointer-events: none;
-}
-.hero-feed-fade-bottom {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 80px; z-index: 2;
-  background: linear-gradient(to top, #0c1520 0%, transparent 100%);
-  pointer-events: none;
-}
-
-/* scrolling feed */
-.hero-feed {
+.hero-right-inner {
   position: relative; z-index: 1;
-  flex: 1;
-  overflow: hidden;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-}
-.hero-feed-inner {
   display: flex; flex-direction: column;
-  animation: feedScroll 28s linear infinite;
+  height: 100%; justify-content: space-between;
 }
-.hero-feed-inner:hover { animation-play-state: paused; }
-
-@keyframes feedScroll {
-  0%   { transform: translateY(0); }
-  100% { transform: translateY(-50%); }
+.hero-eyebrow {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1.4rem;
+  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.2s forwards;
 }
-
-.feed-item {
-  padding: 0.9rem 2rem;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  display: flex; align-items: center; gap: 12px;
-  transition: background 0.2s;
-}
-.feed-item:hover { background: rgba(255,255,255,0.03); }
-.feed-track {
-  font-size: 0.58rem; font-weight: 500; letter-spacing: 0.1em;
-  text-transform: uppercase; flex-shrink: 0; width: 68px;
-  line-height: 1.3;
-}
-.feed-track-basics   { color: rgba(184,212,0,0.7); }
-.feed-track-psych    { color: rgba(100,180,255,0.6); }
-.feed-track-sales    { color: rgba(255,160,80,0.6); }
-.feed-track-frame    { color: rgba(180,120,255,0.6); }
-.feed-track-tear     { color: rgba(255,100,100,0.6); }
-.feed-track-video    { color: rgba(100,220,180,0.6); }
-.feed-title {
-  font-size: 0.82rem; font-weight: 300; color: rgba(240,239,240,0.5);
-  line-height: 1.4; flex: 1;
-}
-.feed-item.feed-live .feed-title { color: rgba(240,239,240,0.85); font-weight: 400; }
-.feed-live-dot {
-  width: 5px; height: 5px; border-radius: 50%;
-  background: #b8d400; flex-shrink: 0;
-  box-shadow: 0 0 6px rgba(184,212,0,0.6);
-}
-
-/* bottom stat bar */
-.hero-stat-bar {
-  position: relative; z-index: 3;
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid rgba(255,255,255,0.06);
-  flex-shrink: 0;
-}
-.hero-stat {
-  padding: 0.9rem 1.4rem;
-  border-right: 1px solid rgba(255,255,255,0.06);
-  display: flex; flex-direction: column; gap: 2px;
-}
-.hero-stat:last-child { border-right: none; }
-.hero-stat-num {
+.hero-headline {
   font-family: var(--font-display);
-  font-size: 1.5rem; font-weight: 700; line-height: 1;
-  letter-spacing: -0.03em; color: var(--white);
+  font-size: clamp(2.4rem, 4.5vw, 4.5rem);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
+  color: var(--white); margin-bottom: 2rem;
+  opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards;
 }
-.hero-stat-num .accent { color: #b8d400; }
-.hero-stat-label {
-  font-size: 0.62rem; font-weight: 300; letter-spacing: 0.04em;
-  color: rgba(240,239,240,0.3); line-height: 1.3;
+.hero-headline .dim { color: var(--white-dim); }
+
+/* track pills */
+.hero-tracks {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.5s forwards;
+}
+.hero-track-pill {
+  font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 0.25rem 0.7rem;
+  border: 1px solid var(--white-faint); color: var(--white-dim);
+  cursor: pointer; background: transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.hero-track-pill:hover { color: var(--white); border-color: rgba(240,239,240,0.3); }
+
+/* right col */
+.hero-sub {
+  font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+  color: rgba(30,44,58,0.6);
+  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.4s forwards;
+}
+.hero-sub strong { color: #1e2c3a; font-weight: 500; }
+
+.hero-counts {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: rgba(30,44,58,0.08);
+  border-top: 1px solid rgba(30,44,58,0.1);
+  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.55s forwards;
+}
+.hero-count {
+  padding: 1.1rem 0.8rem;
+  background: rgba(255,255,255,0.7);
+}
+.hero-count-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem; font-weight: 700; line-height: 1;
+  letter-spacing: -0.03em; color: #1e2c3a; margin-bottom: 0.25rem;
+}
+.hero-count-accent { color: #b8d400; }
+.hero-count-label {
+  font-size: 0.65rem; font-weight: 300; color: rgba(30,44,58,0.45);
+  line-height: 1.3; letter-spacing: 0.02em;
 }
 
 /* FILTER BAR */
@@ -307,8 +294,8 @@ html, body { height: auto; overflow-x: hidden; }
 @media (max-width: 768px) {
   .hero { grid-template-columns: 1fr; }
   .hero-left { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--white-faint); }
-  .hero-right { min-height: 280px; }
-  .hero-stat-bar { grid-template-columns: repeat(3, 1fr); }
+  .hero-right { padding: 2rem 1.5rem; }
+  .hero-counts { grid-template-columns: repeat(3, 1fr); }
   .content { padding: 2rem 1.5rem 5rem; }
   .card-grid { grid-template-columns: repeat(2, 1fr); }
   .nav-link { display: none; }
@@ -348,87 +335,22 @@ html, body { height: auto; overflow-x: hidden; }
       </div>
     </div>
     <div class="hero-right">
-      <div class="hero-feed">
-        <div class="hero-feed-inner" id="feedInner">
-
-          <!-- Live pieces first -->
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">SEO — What It Is and How It Works</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">Content Marketing — What It Actually Means</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">Social Media Marketing — Beyond Posting and Hoping</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">Email Marketing — Boring Name, Best Returns</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">Paid Advertising — When to Buy Attention vs. Earn It</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">Personal Branding — People Buy From People, Not Logos</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">Brand vs. Performance — One Makes the Phone Ring Today</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">Inbound vs. Outbound — Two Different Games</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">Analytics and Attribution — The Last Click Gets the Credit</span></div>
-
-          <!-- Coming soon -->
-          <div class="feed-item"><span class="feed-track feed-track-psych">Psychology</span><span class="feed-title">The Buying Journey</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-psych">Psychology</span><span class="feed-title">The Status Quo Bias</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-psych">Psychology</span><span class="feed-title">Loss Aversion</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-psych">Psychology</span><span class="feed-title">The Champion Problem</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-psych">Psychology</span><span class="feed-title">Social Proof in B2B</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-sales">Sales</span><span class="feed-title">The Discovery Call</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-sales">Sales</span><span class="feed-title">The Demo Trap</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-sales">Sales</span><span class="feed-title">The Multi-Stakeholder Sale</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-sales">Sales</span><span class="feed-title">The Three Stages Every Buyer Goes Through</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-sales">Sales</span><span class="feed-title">The Warm Lead vs. Cold Lead</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-frame">Framework</span><span class="feed-title">The Hidden Cost Principle</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-frame">Framework</span><span class="feed-title">The Pre-Call Experience</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-frame">Framework</span><span class="feed-title">What GEO Means for B2B</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-frame">Framework</span><span class="feed-title">The Confirmation Call</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-tear">Teardown</span><span class="feed-title">How to Build a Self-Diagnostic Tool</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-tear">Teardown</span><span class="feed-title">How to Write a Case Study That Closes</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-video">Video</span><span class="feed-title">Walkthrough: The Loss Analysis Diagnostic</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-video">Video</span><span class="feed-title">How I Build a Pre-Call Experience</span></div>
-
-          <!-- Duplicate for seamless loop -->
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">SEO — What It Is and How It Works</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">Content Marketing — What It Actually Means</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">Social Media Marketing — Beyond Posting and Hoping</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">Email Marketing — Boring Name, Best Returns</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">Paid Advertising — When to Buy Attention vs. Earn It</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">Personal Branding — People Buy From People, Not Logos</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">Brand vs. Performance — One Makes the Phone Ring Today</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">Inbound vs. Outbound — Two Different Games</span></div>
-          <div class="feed-item feed-live"><span class="feed-live-dot"></span><span class="feed-track feed-track-basics">The Basics</span><span class="feed-title">Analytics and Attribution — The Last Click Gets the Credit</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-psych">Psychology</span><span class="feed-title">The Buying Journey</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-psych">Psychology</span><span class="feed-title">The Status Quo Bias</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-psych">Psychology</span><span class="feed-title">Loss Aversion</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-psych">Psychology</span><span class="feed-title">The Champion Problem</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-psych">Psychology</span><span class="feed-title">Social Proof in B2B</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-sales">Sales</span><span class="feed-title">The Discovery Call</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-sales">Sales</span><span class="feed-title">The Demo Trap</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-sales">Sales</span><span class="feed-title">The Multi-Stakeholder Sale</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-sales">Sales</span><span class="feed-title">The Three Stages Every Buyer Goes Through</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-sales">Sales</span><span class="feed-title">The Warm Lead vs. Cold Lead</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-frame">Framework</span><span class="feed-title">The Hidden Cost Principle</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-frame">Framework</span><span class="feed-title">The Pre-Call Experience</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-frame">Framework</span><span class="feed-title">What GEO Means for B2B</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-frame">Framework</span><span class="feed-title">The Confirmation Call</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-tear">Teardown</span><span class="feed-title">How to Build a Self-Diagnostic Tool</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-tear">Teardown</span><span class="feed-title">How to Write a Case Study That Closes</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-video">Video</span><span class="feed-title">Walkthrough: The Loss Analysis Diagnostic</span></div>
-          <div class="feed-item"><span class="feed-track feed-track-video">Video</span><span class="feed-title">How I Build a Pre-Call Experience</span></div>
-
-        </div>
-      </div>
-
-      <!-- bottom stat bar -->
-      <div class="hero-stat-bar">
-        <div class="hero-stat">
-          <p class="hero-stat-num"><span class="accent" id="statLive">0</span></p>
-          <p class="hero-stat-label">Live now</p>
-        </div>
-        <div class="hero-stat">
-          <p class="hero-stat-num" id="statTracks">0</p>
-          <p class="hero-stat-label">Tracks</p>
-        </div>
-        <div class="hero-stat">
-          <p class="hero-stat-num" id="statTotal">0</p>
-          <p class="hero-stat-label">Pieces planned</p>
+      <div class="hero-right-inner">
+        <p class="hero-sub">The vocabulary, the psychology, the process — and the frameworks behind the work.
+        <strong>Written for people who are excellent at their product and want to be excellent at selling it.</strong></p>
+        <div class="hero-counts">
+          <div class="hero-count">
+            <p class="hero-count-num"><span class="hero-count-accent" id="statLive">0</span></p>
+            <p class="hero-count-label">Live now</p>
+          </div>
+          <div class="hero-count">
+            <p class="hero-count-num" id="statTracks">0</p>
+            <p class="hero-count-label">Tracks</p>
+          </div>
+          <div class="hero-count">
+            <p class="hero-count-num" id="statTotal">0</p>
+            <p class="hero-count-label">Pieces planned</p>
+          </div>
         </div>
       </div>
     </div>
@@ -760,25 +682,22 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // Counter animation
-function countUp(el, target, duration, prefix) {
+function countUp(el, target, duration) {
   const start = performance.now();
   const update = (now) => {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const ease = 1 - Math.pow(1 - progress, 3); // ease out cubic
-    const val = Math.round(ease * target);
-    el.textContent = (prefix || '') + val;
-    if (progress < 1) requestAnimationFrame(update);
+    const p = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(ease * target);
+    if (p < 1) requestAnimationFrame(update);
   };
   requestAnimationFrame(update);
 }
-
 window.addEventListener('load', () => {
   setTimeout(() => {
-    countUp(document.getElementById('statLive'),   10,  800);
+    countUp(document.getElementById('statLive'),  10,  800);
     countUp(document.getElementById('statTracks'),  6,  600);
     countUp(document.getElementById('statTotal'),  43, 1200);
-  }, 400);
+  }, 300);
 });
 
 // Filter
