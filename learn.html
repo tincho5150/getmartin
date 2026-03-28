@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="getmartin — Learn. Frameworks you can use, decisions broken down.">
+<title>Learn — getmartin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css">
+<style>
+
+:root {
+  --font-display: 'Roboto', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+}
+
+html, body { height: auto; overflow-x: hidden; }
+
+/* NAV */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-height); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--white-faint);
+  background: rgba(30,44,58,0.95);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--white); text-decoration: none; flex-shrink: 0;
+}
+.nav-wordmark span { color: var(--lime); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-link {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white-dim); text-decoration: none;
+  transition: color var(--dur-base);
+}
+.nav-link:hover { color: var(--white); }
+.nav-link.active { color: var(--white); }
+.nav-link-cta {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
+  padding: 0.4rem 1rem; text-decoration: none; transition: background var(--dur-base);
+}
+.nav-link-cta:hover { background: var(--lime-hover); }
+.nav-progress {
+  position: absolute; bottom: 0; left: 0;
+  height: 1px; background: var(--lime); width: 0%;
+  transition: width 0.2s linear;
+}
+
+/* PAGE */
+.page {
+  min-height: 100vh;
+  padding-top: var(--nav-height);
+  position: relative;
+}
+.page::before {
+  content: ''; position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none; z-index: 0;
+}
+
+/* HERO */
+.hero {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--white-faint);
+  min-height: 40vh;
+}
+.hero-left {
+  padding: 6vw 3.5vw 6vw 5vw;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  border-right: 1px solid var(--white-faint);
+}
+.hero-right {
+  padding: 6vw 5vw 6vw 3.5vw;
+  background: #ffffff;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  position: relative;
+}
+.hero-right::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(30,44,58,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,44,58,0.05) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none;
+}
+.hero-right-inner { position: relative; z-index: 1; }
+.hero-eyebrow {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
+  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.2s forwards;
+}
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.5vw, 4.5rem);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
+  color: var(--white);
+  opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards;
+}
+.hero-headline .dim { color: var(--white-dim); }
+.hero-sub {
+  font-size: 1rem; font-weight: 300; line-height: 1.8;
+  color: rgba(30,44,58,0.55); max-width: 40ch;
+  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.4s forwards;
+}
+.hero-sub strong { color: #1e2c3a; font-weight: 400; }
+
+/* FILTER BAR */
+.filter-bar {
+  position: relative; z-index: 1;
+  display: flex; align-items: center;
+  padding: 0 5vw; height: 56px;
+  border-bottom: 1px solid var(--white-faint);
+  gap: 0.5rem;
+}
+.filter-btn {
+  font-family: var(--font-body);
+  font-size: 0.78rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white-dim);
+  background: transparent; border: 1px solid transparent;
+  padding: 0.35rem 0.9rem; cursor: pointer;
+  transition: color var(--dur-base), border-color var(--dur-base);
+}
+.filter-btn:hover { color: var(--white); border-color: var(--white-faint); }
+.filter-btn.active {
+  color: var(--navy-dark); background: var(--lime);
+  border-color: var(--lime);
+}
+.filter-count {
+  margin-left: auto;
+  font-size: 0.72rem; font-weight: 300; letter-spacing: 0.06em;
+  color: rgba(240,239,240,0.25);
+}
+
+/* CONTENT */
+.content {
+  position: relative; z-index: 1;
+  padding: 4vw 5vw 8rem;
+}
+
+/* TRACK */
+.track { margin-bottom: 5rem; }
+.track-header {
+  display: flex; align-items: baseline;
+  gap: 1rem; margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--white-faint);
+}
+.track-label {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime);
+}
+.track-desc {
+  font-size: 0.85rem; font-weight: 300; color: var(--white-dim);
+}
+
+/* GRID */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--white-faint);
+  border: 1px solid var(--white-faint);
+}
+
+/* CARD */
+.resource-card {
+  background: #1e2c3a;
+  padding: 1.6rem 1.4rem;
+  display: flex; flex-direction: column;
+  gap: 0.8rem;
+  text-decoration: none;
+  transition: background var(--dur-base);
+  position: relative;
+}
+.resource-card:hover { background: #253748; }
+.resource-card.coming-soon {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+.card-track {
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--lime);
+}
+.coming-soon .card-track { color: var(--white-dim); }
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700; line-height: 1.2;
+  letter-spacing: -0.01em; color: var(--white);
+  flex: 1;
+}
+.card-desc {
+  font-size: 0.82rem; font-weight: 300; line-height: 1.6;
+  color: var(--white-dim);
+}
+.card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: auto; padding-top: 0.8rem;
+  border-top: 1px solid rgba(240,239,240,0.06);
+}
+.card-tag {
+  font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+.card-status {
+  font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.card-status.live { color: var(--lime); }
+.card-status.soon { color: rgba(240,239,240,0.25); }
+.card-arrow {
+  color: var(--lime); width: 14px; height: 14px;
+  transition: transform var(--dur-base);
+  flex-shrink: 0;
+}
+.resource-card:hover .card-arrow { transform: translateX(4px); }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+/* MOBILE */
+@media (max-width: 1024px) {
+  .card-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--white-faint); }
+  .hero-right { padding: 2rem 1.5rem; }
+  .filter-bar { padding: 0 1.5rem; overflow-x: auto; }
+  .content { padding: 2rem 1.5rem 5rem; }
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav-link { display: none; }
+  .nav-link-cta { display: block; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="nav-wordmark" href="/">get<span>martin</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="/">This First</a>
+    <a class="nav-link" href="/proof">Proof</a>
+    <a class="nav-link active" href="/learn">Learn</a>
+    <a class="nav-link-cta" href="/#ch5">Let's talk</a>
+  </div>
+  <div class="nav-progress"></div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Learn</p>
+      <h1 class="hero-headline">
+        What works<br>
+        <span class="dim">in B2B sales.</span>
+      </h1>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-inner">
+        <p class="hero-sub">
+          Frameworks you can use. Decisions broken down.
+          <strong>What the work taught us — written so you can apply it.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="framework">Frameworks</button>
+    <button class="filter-btn" data-filter="teardown">Teardowns</button>
+    <span class="filter-count" id="filter-count">10 pieces</span>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- FRAMEWORKS -->
+    <div class="track" id="track-frameworks" data-track="framework">
+      <div class="track-header">
+        <span class="track-label">Frameworks</span>
+        <span class="track-desc">Reusable thinking you can apply to your own sales problem</span>
+      </div>
+      <div class="card-grid" id="grid-frameworks">
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Framework</span>
+          <p class="card-title">The Hidden Cost Framework</p>
+          <p class="card-desc">How to surface the cost your prospect doesn't know they're paying — before the first call.</p>
+          <div class="card-footer">
+            <span class="card-tag">Positioning</span>
+            <span class="card-status soon">Coming soon</span>
+          </div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Framework</span>
+          <p class="card-title">The Pre-Call Diagnostic</p>
+          <p class="card-desc">Why sending a self-assessment before the call changes everything — and how to build one.</p>
+          <div class="card-footer">
+            <span class="card-tag">Sales process</span>
+            <span class="card-status soon">Coming soon</span>
+          </div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Framework</span>
+          <p class="card-title">Feel First, Believe Later</p>
+          <p class="card-desc">Buyers don't resist buying — they resist feeling the problem. The framework for making abstract costs visceral.</p>
+          <div class="card-footer">
+            <span class="card-tag">Buyer psychology</span>
+            <span class="card-status soon">Coming soon</span>
+          </div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Framework</span>
+          <p class="card-title">GEO vs SEO</p>
+          <p class="card-desc">What it means to write for AI search — and why clarity for machines is just clarity, full stop.</p>
+          <div class="card-footer">
+            <span class="card-tag">Content strategy</span>
+            <span class="card-status soon">Coming soon</span>
+          </div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Framework</span>
+          <p class="card-title">The Confirmation Call</p>
+          <p class="card-desc">What happens when the discovery call becomes a confirmation. How to engineer that shift before anyone picks up the phone.</p>
+          <div class="card-footer">
+            <span class="card-tag">Sales process</span>
+            <span class="card-status soon">Coming soon</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- TEARDOWNS -->
+    <div class="track" id="track-teardowns" data-track="teardown">
+      <div class="track-header">
+        <span class="track-label">Teardowns</span>
+        <span class="track-desc">Specific decisions broken down — why we made them and what changed</span>
+      </div>
+      <div class="card-grid" id="grid-teardowns">
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Teardown</span>
+          <p class="card-title">Why the 3D Truck Replaced the Slide Deck</p>
+          <p class="card-desc">The decision to make load optimisation visible in real time — and why a bar chart wasn't enough.</p>
+          <div class="card-footer">
+            <span class="card-tag">Interactive</span>
+            <span class="card-status soon">Coming soon</span>
+          </div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Teardown</span>
+          <p class="card-title">Building a Diagnostic That Sells</p>
+          <p class="card-desc">How we designed the loss analysis tool so the prospect arrives with their own gap score — before the rep says a word.</p>
+          <div class="card-footer">
+            <span class="card-tag">Diagnostic</span>
+            <span class="card-status soon">Coming soon</span>
+          </div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Teardown</span>
+          <p class="card-title">Why We Removed the Gate</p>
+          <p class="card-desc">The ProvisionAI resource hub has 23 pieces and zero forms. The reasoning behind making everything free to access.</p>
+          <div class="card-footer">
+            <span class="card-tag">Content strategy</span>
+            <span class="card-status soon">Coming soon</span>
+          </div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Teardown</span>
+          <p class="card-title">Scope 3 as a Sales Angle</p>
+          <p class="card-desc">How connecting load optimisation to a sustainability target opened a completely different buyer conversation.</p>
+          <div class="card-footer">
+            <span class="card-tag">Positioning</span>
+            <span class="card-status soon">Coming soon</span>
+          </div>
+        </a>
+
+        <a class="resource-card coming-soon" href="#">
+          <span class="card-track">Teardown</span>
+          <p class="card-title">The ROI Calculator Decision</p>
+          <p class="card-desc">Why we let the prospect do the maths — and what changes when the number comes from them, not the rep.</p>
+          <div class="card-footer">
+            <span class="card-tag">Interactive</span>
+            <span class="card-status soon">Coming soon</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+const progress = document.querySelector('.nav-progress');
+window.addEventListener('scroll', () => {
+  const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
+  if (progress) progress.style.width = pct + '%';
+}, { passive: true });
+
+/* Filter */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const tracks = document.querySelectorAll('.track');
+const countEl = document.getElementById('filter-count');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+
+    let visible = 0;
+    tracks.forEach(track => {
+      if (filter === 'all' || track.dataset.track === filter) {
+        track.style.display = '';
+        visible += track.querySelectorAll('.resource-card').length;
+      } else {
+        track.style.display = 'none';
+      }
+    });
+
+    countEl.textContent = visible + ' piece' + (visible !== 1 ? 's' : '');
+  });
+});
+</script>
+
+</body>
+</html>
