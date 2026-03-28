@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Content marketing explained — what it actually means, why it works for B2B, and how to do it without wasting time and money.">
+<title>Content Marketing — What It Actually Means — getmartin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/global.css">
+<style>
+
+:root {
+  --font-display: 'Roboto', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+  --max-w: 820px;
+}
+
+html, body { height: auto; overflow-x: hidden; }
+
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-height); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--white-faint);
+  background: rgba(30,44,58,0.95);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--white); text-decoration: none; flex-shrink: 0;
+}
+.nav-wordmark span { color: var(--lime); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-link {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white-dim); text-decoration: none;
+  transition: color var(--dur-base);
+}
+.nav-link:hover { color: var(--white); }
+.nav-link.active { color: var(--white); }
+.nav-link-cta {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
+  padding: 0.4rem 1rem; text-decoration: none; transition: background var(--dur-base);
+}
+.nav-link-cta:hover { background: var(--lime-hover); }
+.nav-progress {
+  position: absolute; bottom: 0; left: 0;
+  height: 1px; background: var(--lime); width: 0%;
+  transition: width 0.2s linear;
+}
+
+.page { min-height: 100vh; padding-top: var(--nav-height); position: relative; }
+.page::before {
+  content: ''; position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none; z-index: 0;
+}
+
+.article {
+  position: relative; z-index: 1;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 5vw 2rem 8rem;
+}
+
+.back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--white-dim);
+  text-decoration: none; margin-bottom: 3rem;
+  transition: color var(--dur-base);
+}
+.back:hover { color: var(--white); }
+
+.article-header { margin-bottom: 3.5rem; }
+.article-eyebrow {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
+}
+.article-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
+  color: var(--white); margin-bottom: 1.4rem;
+}
+.article-intro {
+  font-size: 1.1rem; font-weight: 300; line-height: 1.8;
+  color: var(--white-dim); max-width: 58ch;
+  border-left: 2px solid var(--lime);
+  padding-left: 1.2rem;
+}
+.article-intro strong { color: var(--white); font-weight: 400; }
+.article-meta {
+  display: flex; gap: 1.5rem; margin-top: 1.4rem;
+  font-size: 0.72rem; font-weight: 300; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+
+.divider { border: none; border-top: 1px solid var(--white-faint); margin: 3rem 0; }
+
+.section { margin-bottom: 3.5rem; }
+.section-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.8rem;
+}
+.section-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 1rem;
+}
+.section-headline .dim { color: var(--white-dim); }
+
+.body {
+  font-size: 1rem; font-weight: 300; line-height: 1.9;
+  color: var(--white-dim); max-width: 64ch;
+}
+.body + .body { margin-top: 1rem; }
+.body strong { color: var(--white); font-weight: 400; }
+
+.insight {
+  background: rgba(184,212,0,0.06);
+  border-left: 2px solid var(--lime);
+  padding: 1.2rem 1.4rem; margin: 2rem 0;
+}
+.insight-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.5rem;
+}
+.insight-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--white-dim);
+}
+.insight-text strong { color: var(--white); font-weight: 400; }
+
+.stat-block {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--white-faint);
+  border: 1px solid var(--white-faint); margin: 2.5rem 0;
+}
+.stat { background: #1e2c3a; padding: 1.4rem 1.2rem; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700; line-height: 1;
+  letter-spacing: -0.03em; color: var(--lime); margin-bottom: 0.4rem;
+}
+.stat-label { font-size: 0.82rem; font-weight: 300; color: var(--white-dim); line-height: 1.5; }
+.stat-source { font-size: 0.68rem; color: rgba(240,239,240,0.25); margin-top: 0.3rem; }
+
+.callout {
+  background: #1e2c3a; border: 1px solid rgba(240,239,240,0.06);
+  padding: 1.4rem; margin: 2rem 0;
+}
+.callout-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(240,239,240,0.35); margin-bottom: 0.6rem;
+}
+.callout-text {
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.75);
+}
+.callout-text strong { color: #f0eff0; font-weight: 500; }
+
+.nav-next {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  margin-top: 4rem; padding-top: 3rem;
+  border-top: 1px solid var(--white-faint);
+}
+.nav-next-label {
+  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(240,239,240,0.3);
+}
+.nav-next-link {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); text-decoration: none;
+  transition: color var(--dur-base);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.nav-next-link:hover { color: var(--lime); }
+
+@media (max-width: 768px) {
+  .nav-link { display: none; }
+  .nav-link-cta { display: block; }
+  .stat-block { grid-template-columns: repeat(2, 1fr); }
+  .article { padding: 3rem 1.2rem 5rem; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="nav-wordmark" href="/">get<span>martin</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="/">This First</a>
+    <a class="nav-link" href="/proof">Proof</a>
+    <a class="nav-link active" href="/learn">Learn</a>
+    <a class="nav-link-cta" href="/#ch5">Let's talk</a>
+  </div>
+  <div class="nav-progress"></div>
+</nav>
+
+<div class="page">
+  <div class="article">
+
+    <a class="back" href="/learn">← Back to Learn</a>
+
+    <div class="article-header">
+      <p class="article-eyebrow">The Basics</p>
+      <h1 class="article-headline">Content Marketing —<br>What It Actually Means</h1>
+      <p class="article-intro">
+        Content marketing is the practice of creating and distributing material that is genuinely useful to your target audience — with the goal of building trust, establishing credibility, and eventually earning their business.
+        <strong>It is not blogging for the sake of it. It is not posting on LinkedIn because someone told you to. It is a deliberate strategy for becoming the most trusted voice in the room your buyers are already in.</strong>
+      </p>
+      <div class="article-meta">
+        <span>The Basics</span>
+        <span>7 min read</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT IT IS -->
+    <div class="section">
+      <p class="section-label">The definition</p>
+      <h2 class="section-headline">What content marketing actually is</h2>
+      <p class="body">The term gets used so loosely it has almost lost meaning. A LinkedIn post, a podcast, a 3,000-word technical guide, a case study, a video walkthrough — all of these can be content marketing. What makes something content marketing is not the format. It is the intent behind it.</p>
+      <p class="body"><strong>Traditional marketing interrupts.</strong> It places your message in front of people who were not looking for it — an ad in their feed, a cold email in their inbox, a banner on a website they were reading for something else. The message arrives uninvited, and the audience's default response is to ignore it.</p>
+      <p class="body"><strong>Content marketing attracts.</strong> It creates something people actively seek out — an answer to a question they are already asking, a guide to a problem they are already facing, a perspective on a challenge they are already wrestling with. The audience arrives voluntarily, and they arrive with a reason to trust you before you have said a word about your product.</p>
+      <p class="body">That distinction — interrupting versus attracting — is what content marketing is actually about. Everything else is implementation detail.</p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">The honest one-liner</p>
+      <p class="insight-text">Content marketing is the practice of being useful in public. <strong>You solve problems your buyers have before they become your buyers. In doing so, you become the obvious choice when they are ready to buy.</strong></p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHY IT WORKS FOR B2B -->
+    <div class="section">
+      <p class="section-label">Why it works</p>
+      <h2 class="section-headline">Why content marketing works<br><span class="dim">especially well in B2B</span></h2>
+      <p class="body">B2B buying cycles are long, involve multiple stakeholders, and happen largely out of sight of the vendor. According to research published by Marketing LTB in 2025, only 17% of the B2B buying process now involves direct interaction with a sales representative. The other 83% is research, internal discussion, and evaluation — all conducted without you in the room.</p>
+      <p class="body">Content marketing is how you show up during that 83%. A VP of Operations researching "how to reduce freight costs" before they have spoken to any vendor is reachable through a well-written article. A CFO evaluating supply chain software at 11pm on a Saturday is reachable through a case study that answers the exact question they are sitting with. <strong>Content meets buyers where they are, when they are ready, without requiring a rep to be present.</strong></p>
+      <p class="body">The compounding nature of content also suits B2B's long sales cycles particularly well. A piece published today continues working six months from now. An article that ranks in search or gets cited by an AI engine does not clock off at 5pm. The asset works indefinitely — and the trust it builds with a reader who found it organically is qualitatively different from the trust built through an interruption.</p>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat">
+        <div class="stat-num">91%</div>
+        <div class="stat-label">Of B2B marketers use content marketing as part of their overall strategy</div>
+        <div class="stat-source">Content Marketing Institute, 2024</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">58%</div>
+        <div class="stat-label">Of B2B marketers report an increase in sales and revenue directly attributed to content marketing</div>
+        <div class="stat-source">Content Marketing Institute, 2024</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3×</div>
+        <div class="stat-label">More leads generated by content marketing than outbound marketing — at 62% lower cost</div>
+        <div class="stat-source">DemandSage, 2026</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT IT LOOKS LIKE -->
+    <div class="section">
+      <p class="section-label">The formats</p>
+      <h2 class="section-headline">What content marketing<br><span class="dim">actually looks like in practice</span></h2>
+      <p class="body">The most effective formats vary by audience and purpose, but B2B research consistently points to a few that outperform the rest.</p>
+      <p class="body"><strong>Case studies</strong> are the most effective format for influencing purchasing decisions, according to research from Intero Digital. They work because they show evidence rather than claims. A buyer reading a case study is not being told your product is good — they are seeing what it did for someone in a situation similar to their own.</p>
+      <p class="body"><strong>Video</strong> is the fastest-growing format in B2B. According to the Content Marketing Institute, 58% of B2B marketers now rate video as their most efficient content type. Video explains complex ideas faster than text, demonstrates products in ways static content cannot, and travels further — on social, in search, and increasingly in AI-generated responses.</p>
+      <p class="body"><strong>Long-form written content</strong> — guides, research reports, deep-dive articles — remains the foundation of B2B content strategy. Research consistently shows that content over 2,000 words generates more leads and earns more links than shorter pieces, though it attracts fewer total views. The trade-off is deliberate: depth over breadth, serious buyers over casual browsers.</p>
+      <p class="body"><strong>Email newsletters</strong> are the most reliable distribution channel. Once someone subscribes, you have direct access to their attention without depending on an algorithm. Research by Marketing LTB found that email generates $42 for every $1 spent — the highest ROI of any B2B marketing channel.</p>
+    </div>
+
+    <div class="callout">
+      <p class="callout-label">The format mistake most companies make</p>
+      <p class="callout-text">Companies start with the format rather than the audience. They decide "we need a podcast" or "we should be on LinkedIn" before they have asked what questions their buyers are already searching for answers to. <strong>The format should follow the audience, not the other way around. Start with the question your buyer is asking. Then decide the best format to answer it.</strong></p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- THE STRATEGY QUESTION -->
+    <div class="section">
+      <p class="section-label">The strategy question</p>
+      <h2 class="section-headline">Why most content marketing<br><span class="dim">doesn't work</span></h2>
+      <p class="body">The failure mode is almost always the same. A company decides to "do content marketing," assigns someone to write blog posts, publishes inconsistently for a few months, sees no measurable results, and concludes that content marketing does not work for their business.</p>
+      <p class="body">What failed was not content marketing. What failed was the absence of a strategy behind it.</p>
+      <p class="body">According to the Content Marketing Institute, only 47% of B2B marketers have a documented content strategy. The other half are producing content without a clear definition of who it is for, what questions it answers, how it will be distributed, or how success will be measured. <strong>Publishing without a strategy is not content marketing — it is content production. The distinction matters.</strong></p>
+      <p class="body">A strategy answers four questions before a single word is written: Who is the specific person this content is for? What question are they already asking — or what problem are they already trying to solve? Where do they go to find answers? And what do we want them to think, feel, or do after they encounter this content?</p>
+      <p class="body">Without answers to those questions, content tends toward what is easy to produce rather than what is useful to the reader. It accumulates without compounding. It gets published and forgotten.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHAT IT DOESN'T DO -->
+    <div class="section">
+      <p class="section-label">The limits</p>
+      <h2 class="section-headline">What content marketing doesn't do</h2>
+      <p class="body">Content marketing is slow. The compounding returns that make it so valuable over time are also what make it frustrating in the short term. A piece published today may not generate a meaningful lead for six months. If your business needs revenue next quarter, content marketing is not the answer — at least not in isolation.</p>
+      <p class="body">Content marketing does not replace sales. No article, however good, closes a complex B2B deal on its own. What it does is change the conditions of the sales conversation — the prospect arrives more informed, more trusting, and more ready to engage seriously. <strong>The content does the early work. The sales process does the closing work. Both are necessary.</strong></p>
+      <p class="body">And content marketing does not work without distribution. Publishing and hoping is not a strategy. A piece of content that no one reads has no effect, regardless of its quality. Distribution — through SEO, email, social, paid amplification, or direct outreach — is half the work. Most companies underinvest in it relative to production.</p>
+    </div>
+
+    <div class="insight">
+      <p class="insight-label">The question worth asking before you start</p>
+      <p class="insight-text">Not "what should we write about?" but "what is our buyer already searching for — and why aren't they finding us when they search for it?" <strong>The gap between what your buyer is looking for and what you have published is your content strategy.</strong> Start there and work backwards to formats, cadence, and channels.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WHERE TO START -->
+    <div class="section">
+      <p class="section-label">Where to start</p>
+      <h2 class="section-headline">One concrete next step</h2>
+      <p class="body">List the five questions your sales team hears most often in the first call with a new prospect. The questions prospects ask before they feel comfortable moving forward — about the problem, about the solution, about why they should trust you over the alternatives.</p>
+      <p class="body">Those five questions are your first five pieces of content. Answer each one honestly, in writing, in the same way you would answer it on a call. Publish them. Make them easy to find. Send them to prospects before calls.</p>
+      <p class="body"><strong>You will have done more useful content marketing in that exercise than most companies do in a year of blogging.</strong> The sophistication comes later. The foundation is answering the questions your buyers are already asking, better than anyone else is answering them.</p>
+    </div>
+
+    <div class="nav-next">
+      <span class="nav-next-label">Read next</span>
+      <a class="nav-next-link" href="/learn/seo">
+        SEO — What It Is and How It Works →
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const progress = document.querySelector('.nav-progress');
+window.addEventListener('scroll', () => {
+  const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
+  if (progress) progress.style.width = pct + '%';
+}, { passive: true });
+</script>
+
+</body>
+</html>
