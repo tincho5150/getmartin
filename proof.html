@@ -86,6 +86,38 @@ html, body { height: 100%; overflow: hidden; }
   display: grid; grid-template-columns: 1fr 1fr;
   overflow: hidden; height: 100%;
 }
+/* ── FULL-WIDTH HERO CHAPTER ── */
+.chapter-hero { justify-content: flex-end; }
+.hero-full {
+  position: relative; z-index: 1; flex: 1;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 6vw 5vw 4vw;
+}
+.hero-full-eyebrow {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1.2rem;
+  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.2s forwards;
+}
+.hero-full-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.03em;
+  color: var(--white); max-width: 16ch; margin-bottom: 1.8rem;
+  opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards;
+}
+.hero-full-headline .dim { color: var(--white-dim); }
+.hero-full-sub {
+  font-size: 1.05rem; font-weight: 300; line-height: 1.7;
+  color: var(--white-dim); max-width: 52ch;
+  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.45s forwards;
+}
+.ch-indicator-hero {
+  position: relative; z-index: 1;
+  padding: 1.2rem 5vw 1.8rem;
+  display: flex; align-items: center; gap: 1rem;
+  border-top: 1px solid var(--white-faint);
+}
+
 .col-left {
   display: flex; flex-direction: column; justify-content: center;
   padding: 4vw 3.5vw 4vw 5vw;
@@ -252,33 +284,20 @@ html, body { height: 100%; overflow: hidden; }
 <div class="site-wrapper" id="site-wrapper">
 
   <!-- CH0 — INTRO -->
-  <section class="chapter" id="ch0">
-    <div class="columns">
-      <div class="col-left">
-        <p class="ch-eyebrow">Proof</p>
-        <h1 class="ch-headline">The argument<br><span class="dim">backed up.</span></h1>
-        <p class="ch-body">Three experiences built for real companies with real sales problems. <strong>Different formats, same method, same outcome</strong> — the prospect arrives already sold on the problem.</p>
-      </div>
-      <div class="col-right">
-        <div class="ch-indicator">
-          <span class="ch-indicator-label">What you'll see</span>
-          <div class="ch-indicator-sep"></div>
-          <div class="ch-indicator-dots">
-            <button class="ch-dot active" data-chapter="0">01</button>
-            <button class="ch-dot" data-chapter="1">02</button>
-            <button class="ch-dot" data-chapter="2">03</button>
-            <button class="ch-dot" data-chapter="3">04</button>
-          </div>
-        </div>
-        <div class="col-right-content">
-          <div class="mockup-img">
-            <img src="assets/proof-hero.png" alt="Supply Chain Loss Analysis — rate yourself">
-          </div>
-          <div class="card-navy">
-            <div class="card-navy-label">The method behind every piece</div>
-            <div class="card-navy-text">Every experience starts with the same question: <strong>what does the prospect need to feel before they'll say yes?</strong> The research leads. The format follows. The output is always different. The result is always the same.</div>
-          </div>
-        </div>
+  <section class="chapter chapter-hero" id="ch0">
+    <div class="hero-full">
+      <p class="hero-full-eyebrow">Proof</p>
+      <h1 class="hero-full-headline">The argument.<br><span class="dim">Backed up.</span></h1>
+      <p class="hero-full-sub">Three experiences built for real companies with real sales problems. Different formats, same method — the prospect arrives already sold on the problem.</p>
+    </div>
+    <div class="ch-indicator ch-indicator-hero">
+      <span class="ch-indicator-label">What you'll see</span>
+      <div class="ch-indicator-sep"></div>
+      <div class="ch-indicator-dots">
+        <button class="ch-dot active" data-chapter="0">01</button>
+        <button class="ch-dot" data-chapter="1">02</button>
+        <button class="ch-dot" data-chapter="2">03</button>
+        <button class="ch-dot" data-chapter="3">04</button>
       </div>
     </div>
   </section>
