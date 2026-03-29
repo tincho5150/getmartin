@@ -102,19 +102,6 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .hero-headline .dim { color: var(--white-dim); }
 
-/* track pills on hero left */
-.hero-tracks {
-  display: flex; flex-wrap: wrap; gap: 6px;
-  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.5s forwards;
-}
-.hero-track-pill {
-  font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em;
-  text-transform: uppercase; padding: 0.25rem 0.7rem;
-  border: 1px solid var(--white-faint); color: var(--white-dim);
-  cursor: pointer; background: transparent; transition: color 0.2s, border-color 0.2s;
-}
-.hero-track-pill:hover { color: var(--white); border-color: rgba(240,239,240,0.3); }
-
 /* HERO */
 .hero {
   position: relative; z-index: 1;
@@ -168,7 +155,7 @@ html, body { height: auto; overflow-x: hidden; }
 .track { margin-bottom: 5rem; }
 .track-header {
   display: flex; align-items: baseline; gap: 1rem;
-  margin-bottom: 2rem; padding-bottom: 1rem;
+  margin-bottom: 0; padding-bottom: 1rem;
   border-bottom: 1px solid var(--white-faint);
 }
 .track-label {
@@ -176,6 +163,51 @@ html, body { height: auto; overflow-x: hidden; }
   text-transform: uppercase; color: var(--lime);
 }
 .track-desc { font-size: 0.85rem; font-weight: 300; color: var(--white-dim); }
+
+/* TRACK INTRO */
+.track-intro {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; border: 1px solid var(--white-faint);
+  border-top: none; margin-bottom: 2rem;
+}
+.track-intro-text {
+  padding: 1.8rem 2rem;
+  border-right: 1px solid var(--white-faint);
+}
+.track-intro-body {
+  font-size: 0.95rem; font-weight: 300; line-height: 1.85;
+  color: var(--white-dim); max-width: 52ch;
+}
+.track-intro-body strong { color: var(--white); font-weight: 400; }
+.track-intro-visual {
+  padding: 1.8rem 2rem;
+  background: #151f29;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* diagram shared styles */
+.diag-wrap { width: 100%; }
+.diag-label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px; font-weight: 400;
+  fill: rgba(240,239,240,0.5);
+}
+.diag-label-dim {
+  font-family: 'Roboto', sans-serif;
+  font-size: 9px; font-weight: 300;
+  fill: rgba(240,239,240,0.25);
+}
+.diag-label-lime {
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px; font-weight: 500;
+  fill: #b8d400;
+}
+
+@media (max-width: 768px) {
+  .track-intro { grid-template-columns: 1fr; }
+  .track-intro-text { border-right: none; border-bottom: 1px solid var(--white-faint); }
+  .track-intro-visual { min-height: 200px; }
+}
 
 /* GRID */
 .card-grid {
@@ -257,14 +289,13 @@ html, body { height: auto; overflow-x: hidden; }
   </div>
 
   <div class="filter-bar">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="basics">The Basics</button>
+    <button class="filter-btn active" data-filter="basics">The Basics</button>
     <button class="filter-btn" data-filter="psychology">Buyer Psychology</button>
     <button class="filter-btn" data-filter="sales">Sales Process</button>
     <button class="filter-btn" data-filter="framework">Frameworks</button>
     <button class="filter-btn" data-filter="teardown">Teardowns</button>
     <button class="filter-btn" data-filter="video">Videos</button>
-    <span class="filter-count" id="filter-count">43 pieces</span>
+    <span class="filter-count" id="filter-count">10 pieces</span>
   </div>
 
   <div class="content">
@@ -273,7 +304,31 @@ html, body { height: auto; overflow-x: hidden; }
     <div class="track" data-track="basics">
       <div class="track-header">
         <span class="track-label">The Basics</span>
-        <span class="track-desc">The foundational vocabulary — start here if marketing and sales are new territory</span>
+        <span class="track-desc">The foundational vocabulary — start here</span>
+      </div>
+      <div class="track-intro">
+        <div class="track-intro-text">
+          <p class="track-intro-body">Before strategy, frameworks, or tactics — there is vocabulary. Marketing and sales are full of terms that get used constantly and explained rarely. <strong>This track covers the ten concepts every founder, sales leader, or commercial operator should understand before anything else makes sense.</strong> No jargon. No assumed knowledge. Start here.</p>
+        </div>
+        <div class="track-intro-visual">
+          <svg class="diag-wrap" viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+            <!-- foundation blocks -->
+            <rect x="10" y="110" width="300" height="38" fill="rgba(184,212,0,0.12)" stroke="#b8d400" stroke-width="1"/>
+            <text x="160" y="133" text-anchor="middle" class="diag-label-lime">The Basics — vocabulary and concepts</text>
+            <!-- middle layer -->
+            <rect x="30" y="65" width="120" height="36" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <text x="90" y="87" text-anchor="middle" class="diag-label">Buyer Psychology</text>
+            <rect x="170" y="65" width="120" height="36" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <text x="230" y="87" text-anchor="middle" class="diag-label">Sales Process</text>
+            <!-- top layer -->
+            <rect x="80" y="20" width="160" height="36" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <text x="160" y="42" text-anchor="middle" class="diag-label-dim">Frameworks &amp; Teardowns</text>
+            <!-- connectors -->
+            <line x1="90" y1="65" x2="120" y2="148" stroke="rgba(184,212,0,0.2)" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="230" y1="65" x2="200" y2="148" stroke="rgba(184,212,0,0.2)" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="160" y1="20" x2="160" y2="101" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="3,3"/>
+          </svg>
+        </div>
       </div>
       <div class="card-grid">
 
@@ -357,7 +412,60 @@ html, body { height: auto; overflow-x: hidden; }
     <div class="track" data-track="psychology">
       <div class="track-header">
         <span class="track-label">Buyer Psychology</span>
-        <span class="track-desc">How people actually make decisions — the mental models behind why deals win and lose</span>
+        <span class="track-desc">How people actually make decisions</span>
+      </div>
+      <div class="track-intro">
+        <div class="track-intro-text">
+          <p class="track-intro-body">B2B buyers are not rational actors who evaluate options objectively and choose the best one. They are people — under pressure, managing risk, protecting their careers, navigating internal politics. <strong>Understanding the mental models that drive real buying decisions is what separates marketers who create genuine urgency from those who just add more slides to the deck.</strong></p>
+        </div>
+        <div class="track-intro-visual">
+          <svg class="diag-wrap" viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+            <!-- Left: how companies think buyers decide -->
+            <text x="75" y="16" text-anchor="middle" class="diag-label-dim">How companies think</text>
+            <!-- straight arrow down -->
+            <rect x="30" y="26" width="90" height="24" rx="2" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <text x="75" y="42" text-anchor="middle" class="diag-label">Awareness</text>
+            <line x1="75" y1="50" x2="75" y2="62" stroke="rgba(255,255,255,0.15)" stroke-width="1" marker-end="url(#arr)"/>
+            <rect x="30" y="62" width="90" height="24" rx="2" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <text x="75" y="78" text-anchor="middle" class="diag-label">Evaluation</text>
+            <line x1="75" y1="86" x2="75" y2="98" stroke="rgba(255,255,255,0.15)" stroke-width="1" marker-end="url(#arr)"/>
+            <rect x="30" y="98" width="90" height="24" rx="2" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <text x="75" y="114" text-anchor="middle" class="diag-label">Decision</text>
+            <line x1="75" y1="122" x2="75" y2="134" stroke="rgba(255,255,255,0.15)" stroke-width="1" marker-end="url(#arr)"/>
+            <rect x="30" y="134" width="90" height="20" rx="2" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <text x="75" y="148" text-anchor="middle" class="diag-label">Purchase</text>
+
+            <!-- divider -->
+            <line x1="160" y1="10" x2="160" y2="155" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4,3"/>
+
+            <!-- Right: how buyers actually decide -->
+            <text x="245" y="16" text-anchor="middle" class="diag-label-lime">How buyers actually decide</text>
+            <!-- nonlinear cloud of nodes -->
+            <circle cx="210" cy="50" r="18" fill="rgba(184,212,0,0.08)" stroke="rgba(184,212,0,0.25)" stroke-width="1"/>
+            <text x="210" y="54" text-anchor="middle" class="diag-label-dim" font-size="8">Research</text>
+            <circle cx="270" cy="70" r="18" fill="rgba(184,212,0,0.06)" stroke="rgba(184,212,0,0.15)" stroke-width="1"/>
+            <text x="270" y="74" text-anchor="middle" class="diag-label-dim" font-size="8">Politics</text>
+            <circle cx="240" cy="110" r="18" fill="rgba(184,212,0,0.06)" stroke="rgba(184,212,0,0.15)" stroke-width="1"/>
+            <text x="240" y="114" text-anchor="middle" class="diag-label-dim" font-size="8">Emotion</text>
+            <circle cx="195" cy="130" r="14" fill="rgba(184,212,0,0.06)" stroke="rgba(184,212,0,0.15)" stroke-width="1"/>
+            <text x="195" y="134" text-anchor="middle" class="diag-label-dim" font-size="8">Risk</text>
+            <circle cx="285" cy="125" r="14" fill="rgba(184,212,0,0.08)" stroke="rgba(184,212,0,0.2)" stroke-width="1"/>
+            <text x="285" y="129" text-anchor="middle" class="diag-label-dim" font-size="8">Status</text>
+            <!-- chaotic connectors -->
+            <line x1="225" y1="57" x2="255" y2="62" stroke="rgba(184,212,0,0.15)" stroke-width="1"/>
+            <line x1="258" y1="82" x2="248" y2="94" stroke="rgba(184,212,0,0.15)" stroke-width="1"/>
+            <line x1="225" y1="116" x2="207" y2="120" stroke="rgba(184,212,0,0.15)" stroke-width="1"/>
+            <line x1="253" y1="116" x2="275" y2="113" stroke="rgba(184,212,0,0.15)" stroke-width="1"/>
+            <line x1="210" y1="68" x2="228" y2="95" stroke="rgba(184,212,0,0.1)" stroke-width="1"/>
+
+            <!-- arrow defs -->
+            <defs>
+              <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L6,3 z" fill="rgba(255,255,255,0.2)"/>
+              </marker>
+            </defs>
+          </svg>
+        </div>
       </div>
       <div class="card-grid">
 
@@ -403,7 +511,56 @@ html, body { height: auto; overflow-x: hidden; }
     <div class="track" data-track="sales">
       <div class="track-header">
         <span class="track-label">Sales Process</span>
-        <span class="track-desc">How the sales motion works — the stages, the traps, and the mechanics</span>
+        <span class="track-desc">How the sales motion works — the stages, the traps, the mechanics</span>
+      </div>
+      <div class="track-intro">
+        <div class="track-intro-text">
+          <p class="track-intro-body">Most B2B sales processes fail at predictable moments — the discovery call that turns into a pitch, the demo shown too early, the internal champion who can't close the committee. <strong>This track maps the mechanics of how complex B2B deals move — or stall — and where the decisions that determine the outcome are actually made.</strong></p>
+        </div>
+        <div class="track-intro-visual">
+          <svg class="diag-wrap" viewBox="0 0 320 150" xmlns="http://www.w3.org/2000/svg">
+            <!-- Pipeline stages -->
+            <defs>
+              <marker id="arrs" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L6,3 z" fill="rgba(255,255,255,0.2)"/>
+              </marker>
+            </defs>
+
+            <!-- Stage blocks -->
+            <rect x="8"   y="55" width="52" height="40" fill="rgba(184,212,0,0.1)"  stroke="rgba(184,212,0,0.4)"  stroke-width="1"/>
+            <rect x="68"  y="55" width="52" height="40" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <rect x="128" y="55" width="52" height="40" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <rect x="188" y="55" width="52" height="40" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <rect x="248" y="55" width="64" height="40" fill="rgba(184,212,0,0.06)"  stroke="rgba(184,212,0,0.2)"  stroke-width="1"/>
+
+            <!-- Stage labels -->
+            <text x="34"  y="72" text-anchor="middle" class="diag-label-lime" font-size="9">Discovery</text>
+            <text x="34"  y="84" text-anchor="middle" class="diag-label-dim">Who + why</text>
+            <text x="94"  y="72" text-anchor="middle" class="diag-label">Qualify</text>
+            <text x="94"  y="84" text-anchor="middle" class="diag-label-dim">Real need?</text>
+            <text x="154" y="72" text-anchor="middle" class="diag-label">Demo</text>
+            <text x="154" y="84" text-anchor="middle" class="diag-label-dim">Show value</text>
+            <text x="214" y="72" text-anchor="middle" class="diag-label">Proposal</text>
+            <text x="214" y="84" text-anchor="middle" class="diag-label-dim">Business case</text>
+            <text x="280" y="72" text-anchor="middle" class="diag-label-lime" font-size="9">Close</text>
+            <text x="280" y="84" text-anchor="middle" class="diag-label-dim">Decision</text>
+
+            <!-- Arrows between stages -->
+            <line x1="60"  y1="75" x2="66"  y2="75" stroke="rgba(255,255,255,0.2)" stroke-width="1" marker-end="url(#arrs)"/>
+            <line x1="120" y1="75" x2="126" y2="75" stroke="rgba(255,255,255,0.2)" stroke-width="1" marker-end="url(#arrs)"/>
+            <line x1="180" y1="75" x2="186" y2="75" stroke="rgba(255,255,255,0.2)" stroke-width="1" marker-end="url(#arrs)"/>
+            <line x1="240" y1="75" x2="246" y2="75" stroke="rgba(255,255,255,0.2)" stroke-width="1" marker-end="url(#arrs)"/>
+
+            <!-- Drop-off indicators -->
+            <text x="160" y="120" text-anchor="middle" class="diag-label-dim">Most deals are won or lost before the proposal</text>
+            <line x1="34" y1="95" x2="34" y2="108" stroke="rgba(184,212,0,0.3)" stroke-width="1" stroke-dasharray="2,2"/>
+            <text x="34" y="118" text-anchor="middle" class="diag-label-lime" font-size="8">Start here</text>
+
+            <!-- title -->
+            <text x="160" y="30" text-anchor="middle" class="diag-label-dim">The B2B sales pipeline — where decisions are actually made</text>
+            <line x1="10" y1="36" x2="310" y2="36" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          </svg>
+        </div>
       </div>
       <div class="card-grid">
 
@@ -449,7 +606,12 @@ html, body { height: auto; overflow-x: hidden; }
     <div class="track" data-track="framework">
       <div class="track-header">
         <span class="track-label">Frameworks</span>
-        <span class="track-desc">Applied thinking you can use — proprietary ideas built from the work</span>
+        <span class="track-desc">Applied thinking built from the work</span>
+      </div>
+      <div class="track-intro">
+        <div class="track-intro-text" style="border-right:none;">
+          <p class="track-intro-body">These are not textbook concepts. They are frameworks built from working directly on B2B sales problems — diagnostic tools, pre-call experiences, site architectures, campaign systems. <strong>Each one is a reusable way of thinking about a problem your prospects face before they become your clients.</strong> Read them to understand the thinking behind the work.</p>
+        </div>
       </div>
       <div class="card-grid">
 
@@ -495,7 +657,12 @@ html, body { height: auto; overflow-x: hidden; }
     <div class="track" data-track="teardown">
       <div class="track-header">
         <span class="track-label">Teardowns</span>
-        <span class="track-desc">How to actually implement the frameworks — step by step, decision by decision</span>
+        <span class="track-desc">How to actually implement the frameworks — step by step</span>
+      </div>
+      <div class="track-intro">
+        <div class="track-intro-text" style="border-right:none;">
+          <p class="track-intro-body">The Frameworks track explains the thinking. This track shows the building. Each teardown is a step-by-step walkthrough of how a specific thing gets made — from the brief to the decision to the live result. <strong>Not theory. Not case study. Implementation, decision by decision, with the reasoning behind each one shown in full.</strong></p>
+        </div>
       </div>
       <div class="card-grid">
 
@@ -541,7 +708,12 @@ html, body { height: auto; overflow-x: hidden; }
     <div class="track" data-track="video">
       <div class="track-header">
         <span class="track-label">Videos</span>
-        <span class="track-desc">See the concepts in action — walkthroughs, explainers, and builds</span>
+        <span class="track-desc">See the concepts in action</span>
+      </div>
+      <div class="track-intro">
+        <div class="track-intro-text" style="border-right:none;">
+          <p class="track-intro-body">Some things are faster to show than to explain. This track is screen recordings, walkthroughs, and build sessions — the tools and sites from the Proof page walked through live, with commentary on the decisions behind them. <strong>Watch how the work gets made before reading about how to make it yourself.</strong></p>
+        </div>
       </div>
       <div class="card-grid">
 
@@ -581,7 +753,6 @@ window.addEventListener('scroll', () => {
   if (progress) progress.style.width = pct + '%';
 }, { passive: true });
 
-// Filter
 const filterBtns = document.querySelectorAll('.filter-btn');
 const tracks     = document.querySelectorAll('.track');
 const countEl    = document.getElementById('filter-count');
@@ -592,7 +763,7 @@ function applyFilter(filterValue) {
   if (target) target.classList.add('active');
   let visible = 0;
   tracks.forEach(track => {
-    if (filterValue === 'all' || track.dataset.track === filterValue) {
+    if (track.dataset.track === filterValue) {
       track.style.display = '';
       visible += track.querySelectorAll('.resource-card').length;
     } else {
@@ -605,6 +776,9 @@ function applyFilter(filterValue) {
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
 });
+
+// Default to basics on load
+applyFilter('basics');
 </script>
 
 </body>
