@@ -166,161 +166,14 @@ html, body { height: auto; overflow-x: hidden; }
 
 /* ── TRACK INTRO ── */
 .track-intro {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 0; border: 1px solid var(--white-faint);
-  border-top: none; margin-bottom: 2.5rem;
-}
-.track-intro-text {
-  padding: 2.8rem 3rem;
-  border-right: 1px solid var(--white-faint);
-  display: flex; align-items: center;
+  padding: 1.6rem 0 2rem;
+  max-width: 64ch;
 }
 .track-intro-body {
-  font-size: 1rem; font-weight: 300; line-height: 1.9;
-  color: var(--white-dim); max-width: 48ch;
+  font-size: 0.95rem; font-weight: 300; line-height: 1.85;
+  color: var(--white-dim);
 }
 .track-intro-body strong { color: var(--white); font-weight: 400; }
-.track-intro-visual {
-  padding: 2.8rem 3rem;
-  background: #0f1922;
-  display: flex; align-items: center; justify-content: center;
-}
-
-/* ── BASICS: CURRICULUM PYRAMID ── */
-.basics-diag { width: 100%; display: flex; flex-direction: column; gap: 6px; }
-.basics-tier {
-  display: flex; align-items: center; gap: 12px;
-}
-.basics-bar {
-  height: 44px; display: flex; align-items: center;
-  padding: 0 1.2rem; flex-shrink: 0;
-}
-.basics-bar-label {
-  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em;
-  text-transform: uppercase; white-space: nowrap;
-}
-.basics-bar-t1 { background: #b8d400; width: 100%; color: #1e2c3a; }
-.basics-bar-t2a { background: rgba(255,255,255,0.1); width: 46%; color: rgba(240,239,240,0.7); border: 1px solid rgba(255,255,255,0.12); }
-.basics-bar-t2b { background: rgba(255,255,255,0.06); width: 46%; color: rgba(240,239,240,0.5); border: 1px solid rgba(255,255,255,0.08); }
-.basics-bar-t3  { background: rgba(255,255,255,0.04); width: 60%; color: rgba(240,239,240,0.35); border: 1px solid rgba(255,255,255,0.06); margin: 0 auto; }
-.basics-tier-label {
-  font-size: 0.62rem; font-weight: 300; color: rgba(240,239,240,0.25);
-  letter-spacing: 0.06em; white-space: nowrap;
-}
-.basics-tier-row2 { justify-content: center; gap: 4px; }
-
-/* ── BUYER PSYCHOLOGY: CONTRAST DIAGRAM ── */
-.psych-diag {
-  width: 100%;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-.psych-col { display: flex; flex-direction: column; gap: 0; }
-.psych-col-head {
-  font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em;
-  text-transform: uppercase; padding: 0.6rem 0;
-  margin-bottom: 4px;
-}
-.psych-col-head-grey { color: rgba(240,239,240,0.25); }
-.psych-col-head-lime { color: #b8d400; }
-.psych-step {
-  display: flex; align-items: center; gap: 0;
-  margin-bottom: 2px;
-}
-.psych-step-box {
-  flex: 1; padding: 0.55rem 0.8rem;
-  font-size: 0.78rem; font-weight: 300;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.04);
-  color: rgba(240,239,240,0.5); line-height: 1.3;
-}
-.psych-step-conn {
-  width: 100%; height: 14px;
-  display: flex; align-items: center; justify-content: center;
-  color: rgba(255,255,255,0.1); font-size: 0.55rem;
-}
-.psych-node {
-  padding: 0.55rem 0.8rem; margin-bottom: 2px;
-  font-size: 0.78rem; font-weight: 300;
-  display: flex; align-items: center; gap: 8px;
-  line-height: 1.3;
-}
-.psych-node-hi {
-  border: 1px solid rgba(184,212,0,0.3);
-  background: rgba(184,212,0,0.07);
-  color: rgba(240,239,240,0.8);
-}
-.psych-node-lo {
-  border: 1px solid rgba(255,255,255,0.05);
-  background: rgba(255,255,255,0.02);
-  color: rgba(240,239,240,0.3);
-}
-.psych-node-dot {
-  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
-}
-.psych-node-dot-lime { background: #b8d400; }
-.psych-node-dot-dim  { background: rgba(255,255,255,0.15); }
-
-/* ── SALES: PIPELINE ── */
-.pipeline-diag { width: 100%; }
-.pipeline-stages { display: flex; gap: 0; }
-.pipeline-stage {
-  flex: 1; position: relative;
-  border: 1px solid rgba(255,255,255,0.07);
-  border-right: none;
-  background: rgba(255,255,255,0.02);
-}
-.pipeline-stage:last-child { border-right: 1px solid rgba(255,255,255,0.07); }
-.pipeline-stage-hi {
-  background: rgba(184,212,0,0.08);
-  border-color: rgba(184,212,0,0.35) !important;
-}
-.pipeline-stage-num {
-  font-size: 1.4rem; font-weight: 700; letter-spacing: -0.03em;
-  color: rgba(255,255,255,0.06); padding: 0.8rem 0.8rem 0;
-  line-height: 1;
-}
-.pipeline-stage-hi .pipeline-stage-num { color: rgba(184,212,0,0.2); }
-.pipeline-stage-name {
-  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.04em;
-  text-transform: uppercase; padding: 0 0.8rem 0.3rem;
-  color: rgba(240,239,240,0.4);
-}
-.pipeline-stage-hi .pipeline-stage-name { color: #b8d400; }
-.pipeline-stage-sub {
-  font-size: 0.65rem; font-weight: 300; line-height: 1.5;
-  color: rgba(240,239,240,0.2); padding: 0 0.8rem 0.8rem;
-}
-.pipeline-stage-hi .pipeline-stage-sub { color: rgba(184,212,0,0.45); }
-.pipeline-chevron {
-  position: absolute; right: -10px; top: 50%;
-  transform: translateY(-50%); z-index: 2;
-  width: 0; height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 10px solid rgba(255,255,255,0.05);
-}
-.pipeline-stage-hi .pipeline-chevron { border-left-color: rgba(184,212,0,0.25); }
-.pipeline-note {
-  margin-top: 0.8rem;
-  font-size: 0.62rem; font-weight: 300; letter-spacing: 0.04em;
-  color: rgba(240,239,240,0.18); text-align: center;
-  padding-top: 0.6rem; border-top: 1px solid rgba(255,255,255,0.04);
-}
-
-.track-intro-solo {
-  grid-template-columns: 1fr;
-}
-.track-intro-solo .track-intro-text {
-  border-right: none; max-width: 72ch;
-}
-  .track-intro { grid-template-columns: 1fr; }
-  .track-intro-text { border-right: none; border-bottom: 1px solid var(--white-faint); }
-  .pipeline-stages { flex-direction: column; }
-  .pipeline-stage { border-right: 1px solid rgba(255,255,255,0.07) !important; border-bottom: none; }
-  .pipeline-stage:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
-  .pipeline-chevron { display: none; }
-}
 
 /* GRID */
 .card-grid {
@@ -402,13 +255,14 @@ html, body { height: auto; overflow-x: hidden; }
   </div>
 
   <div class="filter-bar">
-    <button class="filter-btn active" data-filter="basics">The Basics</button>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="basics">The Basics</button>
     <button class="filter-btn" data-filter="psychology">Buyer Psychology</button>
     <button class="filter-btn" data-filter="sales">Sales Process</button>
     <button class="filter-btn" data-filter="framework">Frameworks</button>
     <button class="filter-btn" data-filter="teardown">Teardowns</button>
     <button class="filter-btn" data-filter="video">Videos</button>
-    <span class="filter-count" id="filter-count">10 pieces</span>
+    <span class="filter-count" id="filter-count">43 pieces</span>
   </div>
 
   <div class="content">
@@ -419,33 +273,7 @@ html, body { height: auto; overflow-x: hidden; }
         <span class="track-label">The Basics</span>
         <span class="track-desc">The foundational vocabulary — start here</span>
       </div>
-      <div class="track-intro">
-        <div class="track-intro-text">
-          <p class="track-intro-body">Before strategy, frameworks, or tactics — there is vocabulary. Marketing and sales are full of terms that get used constantly and explained rarely. <strong>This track covers the ten concepts every founder, sales leader, or commercial operator should understand before anything else makes sense.</strong> No jargon. No assumed knowledge. Start here.</p>
-        </div>
-        <div class="track-intro-visual">
-          <div class="basics-diag">
-            <div class="basics-tier">
-              <div class="basics-bar basics-bar-t1" style="width:100%">
-                <span class="basics-bar-label">The Basics — start here</span>
-              </div>
-            </div>
-            <div class="basics-tier basics-tier-row2">
-              <div class="basics-bar basics-bar-t2a">
-                <span class="basics-bar-label">Buyer Psychology</span>
-              </div>
-              <div class="basics-bar basics-bar-t2b">
-                <span class="basics-bar-label">Sales Process</span>
-              </div>
-            </div>
-            <div class="basics-tier" style="justify-content:center">
-              <div class="basics-bar basics-bar-t3" style="width:55%; margin:0 auto">
-                <span class="basics-bar-label">Frameworks &amp; Teardowns</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="track-intro"><p class="track-intro-body">Before strategy, frameworks, or tactics — there is vocabulary. Marketing and sales are full of terms that get used constantly and explained rarely. <strong>This track covers the ten concepts every founder, sales leader, or commercial operator should understand before anything else makes sense.</strong> No jargon. No assumed knowledge. Start here.</p></div>
       <div class="card-grid">
 
         <a class="resource-card" href="/learn/seo">
@@ -530,37 +358,7 @@ html, body { height: auto; overflow-x: hidden; }
         <span class="track-label">Buyer Psychology</span>
         <span class="track-desc">How people actually make decisions</span>
       </div>
-      <div class="track-intro">
-        <div class="track-intro-text">
-          <p class="track-intro-body">B2B buyers are not rational actors who evaluate options objectively and choose the best one. They are people — under pressure, managing risk, protecting their careers, navigating internal politics. <strong>Understanding the mental models that drive real buying decisions is what separates marketers who create genuine urgency from those who just add more slides to the deck.</strong></p>
-        </div>
-        <div class="track-intro-visual">
-          <div class="psych-diag">
-            <div class="psych-col">
-              <p class="psych-col-head psych-col-head-grey">How companies think it works</p>
-              <div class="psych-step"><div class="psych-step-box">Awareness</div></div>
-              <div class="psych-step-conn">↓</div>
-              <div class="psych-step"><div class="psych-step-box">Evaluation</div></div>
-              <div class="psych-step-conn">↓</div>
-              <div class="psych-step"><div class="psych-step-box">Shortlist</div></div>
-              <div class="psych-step-conn">↓</div>
-              <div class="psych-step"><div class="psych-step-box">Decision</div></div>
-              <div class="psych-step-conn">↓</div>
-              <div class="psych-step"><div class="psych-step-box" style="border-color:rgba(255,255,255,0.15);color:rgba(240,239,240,0.7)">Purchase ✓</div></div>
-            </div>
-            <div class="psych-col">
-              <p class="psych-col-head psych-col-head-lime">How buyers actually decide</p>
-              <div class="psych-node psych-node-hi"><span class="psych-node-dot psych-node-dot-lime"></span>Research alone, online</div>
-              <div class="psych-node psych-node-hi"><span class="psych-node-dot psych-node-dot-lime"></span>Internal politics kick in</div>
-              <div class="psych-node psych-node-lo"><span class="psych-node-dot psych-node-dot-dim"></span>Loop back to research</div>
-              <div class="psych-node psych-node-hi"><span class="psych-node-dot psych-node-dot-lime"></span>Career risk calculation</div>
-              <div class="psych-node psych-node-lo"><span class="psych-node-dot psych-node-dot-dim"></span>Champion loses the room</div>
-              <div class="psych-node psych-node-hi"><span class="psych-node-dot psych-node-dot-lime"></span>Gut feel decides</div>
-              <div class="psych-node psych-node-lo"><span class="psych-node-dot psych-node-dot-dim"></span>Status quo wins. No deal.</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="track-intro"><p class="track-intro-body">B2B buyers are not rational actors who evaluate options objectively and choose the best one. They are people — under pressure, managing risk, protecting their careers, navigating internal politics. <strong>Understanding the mental models that drive real buying decisions is what separates marketers who create genuine urgency from those who just add more slides to the deck.</strong></p></div>
       <div class="card-grid">
 
         <a class="resource-card coming-soon" href="#">
@@ -607,47 +405,7 @@ html, body { height: auto; overflow-x: hidden; }
         <span class="track-label">Sales Process</span>
         <span class="track-desc">How the sales motion works — the stages, the traps, the mechanics</span>
       </div>
-      <div class="track-intro">
-        <div class="track-intro-text">
-          <p class="track-intro-body">Most B2B sales processes fail at predictable moments — the discovery call that turns into a pitch, the demo shown too early, the internal champion who can't close the committee. <strong>This track maps the mechanics of how complex B2B deals move — or stall — and where the decisions that determine the outcome are actually made.</strong></p>
-        </div>
-        <div class="track-intro-visual">
-          <div class="pipeline-diag">
-            <div class="pipeline-stages">
-              <div class="pipeline-stage pipeline-stage-hi">
-                <p class="pipeline-stage-num">01</p>
-                <p class="pipeline-stage-name">Discovery</p>
-                <p class="pipeline-stage-sub">Who has the problem. Why now. Why change.</p>
-                <span class="pipeline-chevron"></span>
-              </div>
-              <div class="pipeline-stage">
-                <p class="pipeline-stage-num">02</p>
-                <p class="pipeline-stage-name">Qualify</p>
-                <p class="pipeline-stage-sub">Budget, authority, real need.</p>
-                <span class="pipeline-chevron"></span>
-              </div>
-              <div class="pipeline-stage">
-                <p class="pipeline-stage-num">03</p>
-                <p class="pipeline-stage-name">Demo</p>
-                <p class="pipeline-stage-sub">Show value — at the right moment.</p>
-                <span class="pipeline-chevron"></span>
-              </div>
-              <div class="pipeline-stage">
-                <p class="pipeline-stage-num">04</p>
-                <p class="pipeline-stage-name">Proposal</p>
-                <p class="pipeline-stage-sub">Business case for the committee.</p>
-                <span class="pipeline-chevron"></span>
-              </div>
-              <div class="pipeline-stage">
-                <p class="pipeline-stage-num">05</p>
-                <p class="pipeline-stage-name">Close</p>
-                <p class="pipeline-stage-sub">Decision. Yes or no.</p>
-              </div>
-            </div>
-            <p class="pipeline-note">Most deals are won or lost in stage 01 — before the demo is ever shown</p>
-          </div>
-        </div>
-      </div>
+      <div class="track-intro"><p class="track-intro-body">Most B2B sales processes fail at predictable moments — the discovery call that turns into a pitch, the demo shown too early, the internal champion who can't close the committee. <strong>This track maps the mechanics of how complex B2B deals move — or stall — and where the decisions that determine the outcome are actually made.</strong></p></div>
       <div class="card-grid">
 
         <a class="resource-card coming-soon" href="#">
@@ -694,11 +452,7 @@ html, body { height: auto; overflow-x: hidden; }
         <span class="track-label">Frameworks</span>
         <span class="track-desc">Applied thinking built from the work</span>
       </div>
-      <div class="track-intro track-intro-solo">
-        <div class="track-intro-text">
-          <p class="track-intro-body">These are not textbook concepts. They are frameworks built from working directly on B2B sales problems — diagnostic tools, pre-call experiences, site architectures, campaign systems. <strong>Each one is a reusable way of thinking about a problem your prospects face before they become your clients.</strong> Read them to understand the thinking behind the work.</p>
-        </div>
-      </div>
+      <div class="track-intro"><p class="track-intro-body">These are not textbook concepts. They are frameworks built from working directly on B2B sales problems — diagnostic tools, pre-call experiences, site architectures, campaign systems. <strong>Each one is a reusable way of thinking about a problem your prospects face before they become your clients.</strong> Read them to understand the thinking behind the work.</p></div>
       <div class="card-grid">
 
         <a class="resource-card coming-soon" href="#">
@@ -745,11 +499,7 @@ html, body { height: auto; overflow-x: hidden; }
         <span class="track-label">Teardowns</span>
         <span class="track-desc">How to actually implement the frameworks — step by step</span>
       </div>
-      <div class="track-intro track-intro-solo">
-        <div class="track-intro-text">
-          <p class="track-intro-body">The Frameworks track explains the thinking. This track shows the building. Each teardown is a step-by-step walkthrough of how a specific thing gets made — from the brief to the decision to the live result. <strong>Not theory. Not case study. Implementation, decision by decision, with the reasoning behind each one shown in full.</strong></p>
-        </div>
-      </div>
+      <div class="track-intro"><p class="track-intro-body">The Frameworks track explains the thinking. This track shows the building. Each teardown is a step-by-step walkthrough of how a specific thing gets made — from the brief to the decision to the live result. <strong>Not theory. Not case study. Implementation, decision by decision, with the reasoning behind each one shown in full.</strong></p></div>
       <div class="card-grid">
 
         <a class="resource-card coming-soon" href="#">
@@ -796,11 +546,7 @@ html, body { height: auto; overflow-x: hidden; }
         <span class="track-label">Videos</span>
         <span class="track-desc">See the concepts in action</span>
       </div>
-      <div class="track-intro track-intro-solo">
-        <div class="track-intro-text">
-          <p class="track-intro-body">Some things are faster to show than to explain. This track is screen recordings, walkthroughs, and build sessions — the tools and sites from the Proof page walked through live, with commentary on the decisions behind them. <strong>Watch how the work gets made before reading about how to make it yourself.</strong></p>
-        </div>
-      </div>
+      <div class="track-intro"><p class="track-intro-body">Some things are faster to show than to explain. This track is screen recordings, walkthroughs, and build sessions — the tools and sites from the Proof page walked through live, with commentary on the decisions behind them. <strong>Watch how the work gets made before reading about how to make it yourself.</strong></p></div>
       <div class="card-grid">
 
         <a class="resource-card coming-soon" href="#">
@@ -849,7 +595,7 @@ function applyFilter(filterValue) {
   if (target) target.classList.add('active');
   let visible = 0;
   tracks.forEach(track => {
-    if (track.dataset.track === filterValue) {
+    if (filterValue === 'all' || track.dataset.track === filterValue) {
       track.style.display = '';
       visible += track.querySelectorAll('.resource-card').length;
     } else {
@@ -860,11 +606,17 @@ function applyFilter(filterValue) {
 }
 
 filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+  btn.addEventListener('click', () => {
+    applyFilter(btn.dataset.filter);
+    if (btn.dataset.filter !== 'all') {
+      document.querySelector(`.track[data-track="${btn.dataset.filter}"]`)
+        .scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
 });
 
-// Default to basics on load
-applyFilter('basics');
+// Default — show all
+applyFilter('all');
 </script>
 
 </body>
