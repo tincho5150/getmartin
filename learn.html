@@ -123,13 +123,12 @@ html, body { height: auto; overflow-x: hidden; }
   min-height: 44vh;
 }
 .hero-left {
-  padding: 6vw 3.5vw 5vw 5vw;
-  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 6vw 3.5vw 6vw 5vw;
+  display: flex; flex-direction: column; justify-content: flex-end;
   border-right: 1px solid var(--white-faint);
 }
-.hero-left-top { display: flex; flex-direction: column; }
 .hero-right {
-  padding: 5vw 5vw 5vw 3.5vw;
+  padding: 5vw 5vw 0 3.5vw;
   background: #ffffff; position: relative;
   display: flex; flex-direction: column; justify-content: space-between;
 }
@@ -147,59 +146,52 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .hero-eyebrow {
   font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--lime); margin-bottom: 1.4rem;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
   opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.2s forwards;
 }
 .hero-headline {
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 4.5vw, 4.5rem);
   font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
-  color: var(--white); margin-bottom: 2rem;
+  color: var(--white);
   opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards;
 }
 .hero-headline .dim { color: var(--white-dim); }
 
-/* track pills */
-.hero-tracks {
-  display: flex; flex-wrap: wrap; gap: 6px;
-  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.5s forwards;
-}
-.hero-track-pill {
-  font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em;
-  text-transform: uppercase; padding: 0.25rem 0.7rem;
-  border: 1px solid var(--white-faint); color: var(--white-dim);
-  cursor: pointer; background: transparent;
-  transition: color 0.2s, border-color 0.2s;
-}
-.hero-track-pill:hover { color: var(--white); border-color: rgba(240,239,240,0.3); }
-
-/* right col */
+/* right col — sub copy */
 .hero-sub {
-  font-size: 1.05rem; font-weight: 300; line-height: 1.8;
-  color: rgba(30,44,58,0.6);
+  font-size: 1.15rem; font-weight: 300; line-height: 1.75;
+  color: rgba(30,44,58,0.55);
   opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.4s forwards;
 }
-.hero-sub strong { color: #1e2c3a; font-weight: 500; }
+.hero-sub strong {
+  color: #1e2c3a; font-weight: 500;
+  display: block; margin-top: 0.5rem;
+}
 
+/* counts row */
 .hero-counts {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: rgba(30,44,58,0.08);
+  gap: 1px; background: rgba(30,44,58,0.1);
   border-top: 1px solid rgba(30,44,58,0.1);
   opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.55s forwards;
 }
 .hero-count {
-  padding: 1.1rem 0.8rem;
-  background: rgba(255,255,255,0.7);
+  padding: 1.4rem 1.2rem;
+  background: #ffffff;
 }
 .hero-count-num {
   font-family: var(--font-display);
-  font-size: 1.8rem; font-weight: 700; line-height: 1;
-  letter-spacing: -0.03em; color: #1e2c3a; margin-bottom: 0.25rem;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700; line-height: 1;
+  letter-spacing: -0.04em; color: #1e2c3a;
+  margin-bottom: 0.3rem;
 }
 .hero-count-accent { color: #b8d400; }
 .hero-count-label {
-  font-size: 0.65rem; font-weight: 300; color: rgba(30,44,58,0.45);
-  line-height: 1.3; letter-spacing: 0.02em;
+  font-size: 0.68rem; font-weight: 400; letter-spacing: 0.06em;
+  text-transform: uppercase; color: rgba(30,44,58,0.4);
+  line-height: 1.3;
 }
 
 /* FILTER BAR */
@@ -321,23 +313,12 @@ html, body { height: auto; overflow-x: hidden; }
 
   <div class="hero">
     <div class="hero-left">
-      <div class="hero-left-top">
-        <p class="hero-eyebrow">Learn</p>
-        <h1 class="hero-headline">Marketing and sales.<br><span class="dim">Properly explained.</span></h1>
-      </div>
-      <div class="hero-tracks">
-        <button class="hero-track-pill" data-filter="basics" onclick="filterFromHero(this)">The Basics</button>
-        <button class="hero-track-pill" data-filter="psychology" onclick="filterFromHero(this)">Buyer Psychology</button>
-        <button class="hero-track-pill" data-filter="sales" onclick="filterFromHero(this)">Sales Process</button>
-        <button class="hero-track-pill" data-filter="framework" onclick="filterFromHero(this)">Frameworks</button>
-        <button class="hero-track-pill" data-filter="teardown" onclick="filterFromHero(this)">Teardowns</button>
-        <button class="hero-track-pill" data-filter="video" onclick="filterFromHero(this)">Videos</button>
-      </div>
+      <p class="hero-eyebrow">Learn</p>
+      <h1 class="hero-headline">Marketing and sales.<br><span class="dim">Properly explained.</span></h1>
     </div>
     <div class="hero-right">
       <div class="hero-right-inner">
-        <p class="hero-sub">The vocabulary, the psychology, the process — and the frameworks behind the work.
-        <strong>Written for people who are excellent at their product and want to be excellent at selling it.</strong></p>
+        <p class="hero-sub">The vocabulary, the psychology, the process — and the frameworks behind the work. <strong>Written for people who are excellent at their product and want to be excellent at selling it.</strong></p>
         <div class="hero-counts">
           <div class="hero-count">
             <p class="hero-count-num"><span class="hero-count-accent" id="statLive">0</span></p>
