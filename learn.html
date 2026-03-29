@@ -164,49 +164,162 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .track-desc { font-size: 0.85rem; font-weight: 300; color: var(--white-dim); }
 
-/* TRACK INTRO */
+/* ── TRACK INTRO ── */
 .track-intro {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 0; border: 1px solid var(--white-faint);
-  border-top: none; margin-bottom: 2rem;
+  border-top: none; margin-bottom: 2.5rem;
 }
 .track-intro-text {
-  padding: 1.8rem 2rem;
+  padding: 2.8rem 3rem;
   border-right: 1px solid var(--white-faint);
+  display: flex; align-items: center;
 }
 .track-intro-body {
-  font-size: 0.95rem; font-weight: 300; line-height: 1.85;
-  color: var(--white-dim); max-width: 52ch;
+  font-size: 1rem; font-weight: 300; line-height: 1.9;
+  color: var(--white-dim); max-width: 48ch;
 }
 .track-intro-body strong { color: var(--white); font-weight: 400; }
 .track-intro-visual {
-  padding: 1.8rem 2rem;
-  background: #151f29;
+  padding: 2.8rem 3rem;
+  background: #0f1922;
   display: flex; align-items: center; justify-content: center;
 }
 
-/* diagram shared styles */
-.diag-wrap { width: 100%; }
-.diag-label {
-  font-family: 'Roboto', sans-serif;
-  font-size: 10px; font-weight: 400;
-  fill: rgba(240,239,240,0.5);
+/* ── BASICS: CURRICULUM PYRAMID ── */
+.basics-diag { width: 100%; display: flex; flex-direction: column; gap: 6px; }
+.basics-tier {
+  display: flex; align-items: center; gap: 12px;
 }
-.diag-label-dim {
-  font-family: 'Roboto', sans-serif;
-  font-size: 9px; font-weight: 300;
-  fill: rgba(240,239,240,0.25);
+.basics-bar {
+  height: 44px; display: flex; align-items: center;
+  padding: 0 1.2rem; flex-shrink: 0;
 }
-.diag-label-lime {
-  font-family: 'Roboto', sans-serif;
-  font-size: 10px; font-weight: 500;
-  fill: #b8d400;
+.basics-bar-label {
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; white-space: nowrap;
+}
+.basics-bar-t1 { background: #b8d400; width: 100%; color: #1e2c3a; }
+.basics-bar-t2a { background: rgba(255,255,255,0.1); width: 46%; color: rgba(240,239,240,0.7); border: 1px solid rgba(255,255,255,0.12); }
+.basics-bar-t2b { background: rgba(255,255,255,0.06); width: 46%; color: rgba(240,239,240,0.5); border: 1px solid rgba(255,255,255,0.08); }
+.basics-bar-t3  { background: rgba(255,255,255,0.04); width: 60%; color: rgba(240,239,240,0.35); border: 1px solid rgba(255,255,255,0.06); margin: 0 auto; }
+.basics-tier-label {
+  font-size: 0.62rem; font-weight: 300; color: rgba(240,239,240,0.25);
+  letter-spacing: 0.06em; white-space: nowrap;
+}
+.basics-tier-row2 { justify-content: center; gap: 4px; }
+
+/* ── BUYER PSYCHOLOGY: CONTRAST DIAGRAM ── */
+.psych-diag {
+  width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.psych-col { display: flex; flex-direction: column; gap: 0; }
+.psych-col-head {
+  font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 0.6rem 0;
+  margin-bottom: 4px;
+}
+.psych-col-head-grey { color: rgba(240,239,240,0.25); }
+.psych-col-head-lime { color: #b8d400; }
+.psych-step {
+  display: flex; align-items: center; gap: 0;
+  margin-bottom: 2px;
+}
+.psych-step-box {
+  flex: 1; padding: 0.55rem 0.8rem;
+  font-size: 0.78rem; font-weight: 300;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: rgba(240,239,240,0.5); line-height: 1.3;
+}
+.psych-step-conn {
+  width: 100%; height: 14px;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.1); font-size: 0.55rem;
+}
+.psych-node {
+  padding: 0.55rem 0.8rem; margin-bottom: 2px;
+  font-size: 0.78rem; font-weight: 300;
+  display: flex; align-items: center; gap: 8px;
+  line-height: 1.3;
+}
+.psych-node-hi {
+  border: 1px solid rgba(184,212,0,0.3);
+  background: rgba(184,212,0,0.07);
+  color: rgba(240,239,240,0.8);
+}
+.psych-node-lo {
+  border: 1px solid rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.02);
+  color: rgba(240,239,240,0.3);
+}
+.psych-node-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.psych-node-dot-lime { background: #b8d400; }
+.psych-node-dot-dim  { background: rgba(255,255,255,0.15); }
+
+/* ── SALES: PIPELINE ── */
+.pipeline-diag { width: 100%; }
+.pipeline-stages { display: flex; gap: 0; }
+.pipeline-stage {
+  flex: 1; position: relative;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-right: none;
+  background: rgba(255,255,255,0.02);
+}
+.pipeline-stage:last-child { border-right: 1px solid rgba(255,255,255,0.07); }
+.pipeline-stage-hi {
+  background: rgba(184,212,0,0.08);
+  border-color: rgba(184,212,0,0.35) !important;
+}
+.pipeline-stage-num {
+  font-size: 1.4rem; font-weight: 700; letter-spacing: -0.03em;
+  color: rgba(255,255,255,0.06); padding: 0.8rem 0.8rem 0;
+  line-height: 1;
+}
+.pipeline-stage-hi .pipeline-stage-num { color: rgba(184,212,0,0.2); }
+.pipeline-stage-name {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.04em;
+  text-transform: uppercase; padding: 0 0.8rem 0.3rem;
+  color: rgba(240,239,240,0.4);
+}
+.pipeline-stage-hi .pipeline-stage-name { color: #b8d400; }
+.pipeline-stage-sub {
+  font-size: 0.65rem; font-weight: 300; line-height: 1.5;
+  color: rgba(240,239,240,0.2); padding: 0 0.8rem 0.8rem;
+}
+.pipeline-stage-hi .pipeline-stage-sub { color: rgba(184,212,0,0.45); }
+.pipeline-chevron {
+  position: absolute; right: -10px; top: 50%;
+  transform: translateY(-50%); z-index: 2;
+  width: 0; height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid rgba(255,255,255,0.05);
+}
+.pipeline-stage-hi .pipeline-chevron { border-left-color: rgba(184,212,0,0.25); }
+.pipeline-note {
+  margin-top: 0.8rem;
+  font-size: 0.62rem; font-weight: 300; letter-spacing: 0.04em;
+  color: rgba(240,239,240,0.18); text-align: center;
+  padding-top: 0.6rem; border-top: 1px solid rgba(255,255,255,0.04);
 }
 
-@media (max-width: 768px) {
+.track-intro-solo {
+  grid-template-columns: 1fr;
+}
+.track-intro-solo .track-intro-text {
+  border-right: none; max-width: 72ch;
+}
   .track-intro { grid-template-columns: 1fr; }
   .track-intro-text { border-right: none; border-bottom: 1px solid var(--white-faint); }
-  .track-intro-visual { min-height: 200px; }
+  .pipeline-stages { flex-direction: column; }
+  .pipeline-stage { border-right: 1px solid rgba(255,255,255,0.07) !important; border-bottom: none; }
+  .pipeline-stage:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .pipeline-chevron { display: none; }
 }
 
 /* GRID */
@@ -311,30 +424,33 @@ html, body { height: auto; overflow-x: hidden; }
           <p class="track-intro-body">Before strategy, frameworks, or tactics — there is vocabulary. Marketing and sales are full of terms that get used constantly and explained rarely. <strong>This track covers the ten concepts every founder, sales leader, or commercial operator should understand before anything else makes sense.</strong> No jargon. No assumed knowledge. Start here.</p>
         </div>
         <div class="track-intro-visual">
-          <svg class="diag-wrap" viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
-            <!-- foundation blocks -->
-            <rect x="10" y="110" width="300" height="38" fill="rgba(184,212,0,0.12)" stroke="#b8d400" stroke-width="1"/>
-            <text x="160" y="133" text-anchor="middle" class="diag-label-lime">The Basics — vocabulary and concepts</text>
-            <!-- middle layer -->
-            <rect x="30" y="65" width="120" height="36" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-            <text x="90" y="87" text-anchor="middle" class="diag-label">Buyer Psychology</text>
-            <rect x="170" y="65" width="120" height="36" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-            <text x="230" y="87" text-anchor="middle" class="diag-label">Sales Process</text>
-            <!-- top layer -->
-            <rect x="80" y="20" width="160" height="36" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-            <text x="160" y="42" text-anchor="middle" class="diag-label-dim">Frameworks &amp; Teardowns</text>
-            <!-- connectors -->
-            <line x1="90" y1="65" x2="120" y2="148" stroke="rgba(184,212,0,0.2)" stroke-width="1" stroke-dasharray="3,3"/>
-            <line x1="230" y1="65" x2="200" y2="148" stroke="rgba(184,212,0,0.2)" stroke-width="1" stroke-dasharray="3,3"/>
-            <line x1="160" y1="20" x2="160" y2="101" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="3,3"/>
-          </svg>
+          <div class="basics-diag">
+            <div class="basics-tier">
+              <div class="basics-bar basics-bar-t1" style="width:100%">
+                <span class="basics-bar-label">The Basics — start here</span>
+              </div>
+            </div>
+            <div class="basics-tier basics-tier-row2">
+              <div class="basics-bar basics-bar-t2a">
+                <span class="basics-bar-label">Buyer Psychology</span>
+              </div>
+              <div class="basics-bar basics-bar-t2b">
+                <span class="basics-bar-label">Sales Process</span>
+              </div>
+            </div>
+            <div class="basics-tier" style="justify-content:center">
+              <div class="basics-bar basics-bar-t3" style="width:55%; margin:0 auto">
+                <span class="basics-bar-label">Frameworks &amp; Teardowns</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="card-grid">
 
         <a class="resource-card" href="/learn/seo">
           <span class="card-track">The Basics</span>
-          <p class="card-title">SEO — Not Dead Yet</p>
+          <p class="card-title">SEO — What It Is and How It Works</p>
           <p class="card-desc">Why some pages show up on Google and others don't — and what you can actually do about it.</p>
           <div class="card-footer">
             <span class="card-tag">Search</span>
@@ -351,14 +467,14 @@ html, body { height: auto; overflow-x: hidden; }
 
         <a class="resource-card" href="/learn/social-media-marketing">
           <span class="card-track">The Basics</span>
-          <p class="card-title">Social Media Marketing — Forget About Posting and Hoping</p>
+          <p class="card-title">Social Media Marketing — Beyond Posting and Hoping</p>
           <p class="card-desc">The difference between presence and strategy. What social actually does in a B2B sales cycle and what it can't.</p>
           <div class="card-footer"><span class="card-tag">Social</span><span class="card-status live">Read now →</span></div>
         </a>
 
         <a class="resource-card" href="/learn/email-marketing">
           <span class="card-track">The Basics</span>
-          <p class="card-title">Email Marketing — Boring Name, Still Your Best ROI</p>
+          <p class="card-title">Email Marketing — Boring Name, Best Returns</p>
           <p class="card-desc">Why email outperforms every other channel in B2B — and how to use it without sounding like everyone else in the inbox.</p>
           <div class="card-footer"><span class="card-tag">Email</span><span class="card-status live">Read now →</span></div>
         </a>
@@ -419,52 +535,30 @@ html, body { height: auto; overflow-x: hidden; }
           <p class="track-intro-body">B2B buyers are not rational actors who evaluate options objectively and choose the best one. They are people — under pressure, managing risk, protecting their careers, navigating internal politics. <strong>Understanding the mental models that drive real buying decisions is what separates marketers who create genuine urgency from those who just add more slides to the deck.</strong></p>
         </div>
         <div class="track-intro-visual">
-          <svg class="diag-wrap" viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
-            <!-- Left: how companies think buyers decide -->
-            <text x="75" y="16" text-anchor="middle" class="diag-label-dim">How companies think</text>
-            <!-- straight arrow down -->
-            <rect x="30" y="26" width="90" height="24" rx="2" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-            <text x="75" y="42" text-anchor="middle" class="diag-label">Awareness</text>
-            <line x1="75" y1="50" x2="75" y2="62" stroke="rgba(255,255,255,0.15)" stroke-width="1" marker-end="url(#arr)"/>
-            <rect x="30" y="62" width="90" height="24" rx="2" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-            <text x="75" y="78" text-anchor="middle" class="diag-label">Evaluation</text>
-            <line x1="75" y1="86" x2="75" y2="98" stroke="rgba(255,255,255,0.15)" stroke-width="1" marker-end="url(#arr)"/>
-            <rect x="30" y="98" width="90" height="24" rx="2" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-            <text x="75" y="114" text-anchor="middle" class="diag-label">Decision</text>
-            <line x1="75" y1="122" x2="75" y2="134" stroke="rgba(255,255,255,0.15)" stroke-width="1" marker-end="url(#arr)"/>
-            <rect x="30" y="134" width="90" height="20" rx="2" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-            <text x="75" y="148" text-anchor="middle" class="diag-label">Purchase</text>
-
-            <!-- divider -->
-            <line x1="160" y1="10" x2="160" y2="155" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4,3"/>
-
-            <!-- Right: how buyers actually decide -->
-            <text x="245" y="16" text-anchor="middle" class="diag-label-lime">How buyers actually decide</text>
-            <!-- nonlinear cloud of nodes -->
-            <circle cx="210" cy="50" r="18" fill="rgba(184,212,0,0.08)" stroke="rgba(184,212,0,0.25)" stroke-width="1"/>
-            <text x="210" y="54" text-anchor="middle" class="diag-label-dim" font-size="8">Research</text>
-            <circle cx="270" cy="70" r="18" fill="rgba(184,212,0,0.06)" stroke="rgba(184,212,0,0.15)" stroke-width="1"/>
-            <text x="270" y="74" text-anchor="middle" class="diag-label-dim" font-size="8">Politics</text>
-            <circle cx="240" cy="110" r="18" fill="rgba(184,212,0,0.06)" stroke="rgba(184,212,0,0.15)" stroke-width="1"/>
-            <text x="240" y="114" text-anchor="middle" class="diag-label-dim" font-size="8">Emotion</text>
-            <circle cx="195" cy="130" r="14" fill="rgba(184,212,0,0.06)" stroke="rgba(184,212,0,0.15)" stroke-width="1"/>
-            <text x="195" y="134" text-anchor="middle" class="diag-label-dim" font-size="8">Risk</text>
-            <circle cx="285" cy="125" r="14" fill="rgba(184,212,0,0.08)" stroke="rgba(184,212,0,0.2)" stroke-width="1"/>
-            <text x="285" y="129" text-anchor="middle" class="diag-label-dim" font-size="8">Status</text>
-            <!-- chaotic connectors -->
-            <line x1="225" y1="57" x2="255" y2="62" stroke="rgba(184,212,0,0.15)" stroke-width="1"/>
-            <line x1="258" y1="82" x2="248" y2="94" stroke="rgba(184,212,0,0.15)" stroke-width="1"/>
-            <line x1="225" y1="116" x2="207" y2="120" stroke="rgba(184,212,0,0.15)" stroke-width="1"/>
-            <line x1="253" y1="116" x2="275" y2="113" stroke="rgba(184,212,0,0.15)" stroke-width="1"/>
-            <line x1="210" y1="68" x2="228" y2="95" stroke="rgba(184,212,0,0.1)" stroke-width="1"/>
-
-            <!-- arrow defs -->
-            <defs>
-              <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L6,3 z" fill="rgba(255,255,255,0.2)"/>
-              </marker>
-            </defs>
-          </svg>
+          <div class="psych-diag">
+            <div class="psych-col">
+              <p class="psych-col-head psych-col-head-grey">How companies think it works</p>
+              <div class="psych-step"><div class="psych-step-box">Awareness</div></div>
+              <div class="psych-step-conn">↓</div>
+              <div class="psych-step"><div class="psych-step-box">Evaluation</div></div>
+              <div class="psych-step-conn">↓</div>
+              <div class="psych-step"><div class="psych-step-box">Shortlist</div></div>
+              <div class="psych-step-conn">↓</div>
+              <div class="psych-step"><div class="psych-step-box">Decision</div></div>
+              <div class="psych-step-conn">↓</div>
+              <div class="psych-step"><div class="psych-step-box" style="border-color:rgba(255,255,255,0.15);color:rgba(240,239,240,0.7)">Purchase ✓</div></div>
+            </div>
+            <div class="psych-col">
+              <p class="psych-col-head psych-col-head-lime">How buyers actually decide</p>
+              <div class="psych-node psych-node-hi"><span class="psych-node-dot psych-node-dot-lime"></span>Research alone, online</div>
+              <div class="psych-node psych-node-hi"><span class="psych-node-dot psych-node-dot-lime"></span>Internal politics kick in</div>
+              <div class="psych-node psych-node-lo"><span class="psych-node-dot psych-node-dot-dim"></span>Loop back to research</div>
+              <div class="psych-node psych-node-hi"><span class="psych-node-dot psych-node-dot-lime"></span>Career risk calculation</div>
+              <div class="psych-node psych-node-lo"><span class="psych-node-dot psych-node-dot-dim"></span>Champion loses the room</div>
+              <div class="psych-node psych-node-hi"><span class="psych-node-dot psych-node-dot-lime"></span>Gut feel decides</div>
+              <div class="psych-node psych-node-lo"><span class="psych-node-dot psych-node-dot-dim"></span>Status quo wins. No deal.</div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="card-grid">
@@ -518,48 +612,40 @@ html, body { height: auto; overflow-x: hidden; }
           <p class="track-intro-body">Most B2B sales processes fail at predictable moments — the discovery call that turns into a pitch, the demo shown too early, the internal champion who can't close the committee. <strong>This track maps the mechanics of how complex B2B deals move — or stall — and where the decisions that determine the outcome are actually made.</strong></p>
         </div>
         <div class="track-intro-visual">
-          <svg class="diag-wrap" viewBox="0 0 320 150" xmlns="http://www.w3.org/2000/svg">
-            <!-- Pipeline stages -->
-            <defs>
-              <marker id="arrs" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L6,3 z" fill="rgba(255,255,255,0.2)"/>
-              </marker>
-            </defs>
-
-            <!-- Stage blocks -->
-            <rect x="8"   y="55" width="52" height="40" fill="rgba(184,212,0,0.1)"  stroke="rgba(184,212,0,0.4)"  stroke-width="1"/>
-            <rect x="68"  y="55" width="52" height="40" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-            <rect x="128" y="55" width="52" height="40" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-            <rect x="188" y="55" width="52" height="40" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-            <rect x="248" y="55" width="64" height="40" fill="rgba(184,212,0,0.06)"  stroke="rgba(184,212,0,0.2)"  stroke-width="1"/>
-
-            <!-- Stage labels -->
-            <text x="34"  y="72" text-anchor="middle" class="diag-label-lime" font-size="9">Discovery</text>
-            <text x="34"  y="84" text-anchor="middle" class="diag-label-dim">Who + why</text>
-            <text x="94"  y="72" text-anchor="middle" class="diag-label">Qualify</text>
-            <text x="94"  y="84" text-anchor="middle" class="diag-label-dim">Real need?</text>
-            <text x="154" y="72" text-anchor="middle" class="diag-label">Demo</text>
-            <text x="154" y="84" text-anchor="middle" class="diag-label-dim">Show value</text>
-            <text x="214" y="72" text-anchor="middle" class="diag-label">Proposal</text>
-            <text x="214" y="84" text-anchor="middle" class="diag-label-dim">Business case</text>
-            <text x="280" y="72" text-anchor="middle" class="diag-label-lime" font-size="9">Close</text>
-            <text x="280" y="84" text-anchor="middle" class="diag-label-dim">Decision</text>
-
-            <!-- Arrows between stages -->
-            <line x1="60"  y1="75" x2="66"  y2="75" stroke="rgba(255,255,255,0.2)" stroke-width="1" marker-end="url(#arrs)"/>
-            <line x1="120" y1="75" x2="126" y2="75" stroke="rgba(255,255,255,0.2)" stroke-width="1" marker-end="url(#arrs)"/>
-            <line x1="180" y1="75" x2="186" y2="75" stroke="rgba(255,255,255,0.2)" stroke-width="1" marker-end="url(#arrs)"/>
-            <line x1="240" y1="75" x2="246" y2="75" stroke="rgba(255,255,255,0.2)" stroke-width="1" marker-end="url(#arrs)"/>
-
-            <!-- Drop-off indicators -->
-            <text x="160" y="120" text-anchor="middle" class="diag-label-dim">Most deals are won or lost before the proposal</text>
-            <line x1="34" y1="95" x2="34" y2="108" stroke="rgba(184,212,0,0.3)" stroke-width="1" stroke-dasharray="2,2"/>
-            <text x="34" y="118" text-anchor="middle" class="diag-label-lime" font-size="8">Start here</text>
-
-            <!-- title -->
-            <text x="160" y="30" text-anchor="middle" class="diag-label-dim">The B2B sales pipeline — where decisions are actually made</text>
-            <line x1="10" y1="36" x2="310" y2="36" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-          </svg>
+          <div class="pipeline-diag">
+            <div class="pipeline-stages">
+              <div class="pipeline-stage pipeline-stage-hi">
+                <p class="pipeline-stage-num">01</p>
+                <p class="pipeline-stage-name">Discovery</p>
+                <p class="pipeline-stage-sub">Who has the problem. Why now. Why change.</p>
+                <span class="pipeline-chevron"></span>
+              </div>
+              <div class="pipeline-stage">
+                <p class="pipeline-stage-num">02</p>
+                <p class="pipeline-stage-name">Qualify</p>
+                <p class="pipeline-stage-sub">Budget, authority, real need.</p>
+                <span class="pipeline-chevron"></span>
+              </div>
+              <div class="pipeline-stage">
+                <p class="pipeline-stage-num">03</p>
+                <p class="pipeline-stage-name">Demo</p>
+                <p class="pipeline-stage-sub">Show value — at the right moment.</p>
+                <span class="pipeline-chevron"></span>
+              </div>
+              <div class="pipeline-stage">
+                <p class="pipeline-stage-num">04</p>
+                <p class="pipeline-stage-name">Proposal</p>
+                <p class="pipeline-stage-sub">Business case for the committee.</p>
+                <span class="pipeline-chevron"></span>
+              </div>
+              <div class="pipeline-stage">
+                <p class="pipeline-stage-num">05</p>
+                <p class="pipeline-stage-name">Close</p>
+                <p class="pipeline-stage-sub">Decision. Yes or no.</p>
+              </div>
+            </div>
+            <p class="pipeline-note">Most deals are won or lost in stage 01 — before the demo is ever shown</p>
+          </div>
         </div>
       </div>
       <div class="card-grid">
@@ -608,8 +694,8 @@ html, body { height: auto; overflow-x: hidden; }
         <span class="track-label">Frameworks</span>
         <span class="track-desc">Applied thinking built from the work</span>
       </div>
-      <div class="track-intro">
-        <div class="track-intro-text" style="border-right:none;">
+      <div class="track-intro track-intro-solo">
+        <div class="track-intro-text">
           <p class="track-intro-body">These are not textbook concepts. They are frameworks built from working directly on B2B sales problems — diagnostic tools, pre-call experiences, site architectures, campaign systems. <strong>Each one is a reusable way of thinking about a problem your prospects face before they become your clients.</strong> Read them to understand the thinking behind the work.</p>
         </div>
       </div>
@@ -659,8 +745,8 @@ html, body { height: auto; overflow-x: hidden; }
         <span class="track-label">Teardowns</span>
         <span class="track-desc">How to actually implement the frameworks — step by step</span>
       </div>
-      <div class="track-intro">
-        <div class="track-intro-text" style="border-right:none;">
+      <div class="track-intro track-intro-solo">
+        <div class="track-intro-text">
           <p class="track-intro-body">The Frameworks track explains the thinking. This track shows the building. Each teardown is a step-by-step walkthrough of how a specific thing gets made — from the brief to the decision to the live result. <strong>Not theory. Not case study. Implementation, decision by decision, with the reasoning behind each one shown in full.</strong></p>
         </div>
       </div>
@@ -710,8 +796,8 @@ html, body { height: auto; overflow-x: hidden; }
         <span class="track-label">Videos</span>
         <span class="track-desc">See the concepts in action</span>
       </div>
-      <div class="track-intro">
-        <div class="track-intro-text" style="border-right:none;">
+      <div class="track-intro track-intro-solo">
+        <div class="track-intro-text">
           <p class="track-intro-body">Some things are faster to show than to explain. This track is screen recordings, walkthroughs, and build sessions — the tools and sites from the Proof page walked through live, with commentary on the decisions behind them. <strong>Watch how the work gets made before reading about how to make it yourself.</strong></p>
         </div>
       </div>
