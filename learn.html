@@ -118,31 +118,10 @@ html, body { height: auto; overflow-x: hidden; }
 /* HERO */
 .hero {
   position: relative; z-index: 1;
-  display: grid; grid-template-columns: 1fr 1fr;
   border-bottom: 1px solid var(--white-faint);
-  min-height: 44vh;
-}
-.hero-left {
-  padding: 6vw 3.5vw 6vw 5vw;
+  padding: 6vw 5vw 5vw;
+  min-height: 28vh;
   display: flex; flex-direction: column; justify-content: flex-end;
-  border-right: 1px solid var(--white-faint);
-}
-.hero-right {
-  padding: 5vw 5vw 0 3.5vw;
-  background: #ffffff; position: relative;
-  display: flex; flex-direction: column; justify-content: space-between;
-}
-.hero-right::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(30,44,58,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(30,44,58,0.05) 1px, transparent 1px);
-  background-size: 72px 72px; pointer-events: none;
-}
-.hero-right-inner {
-  position: relative; z-index: 1;
-  display: flex; flex-direction: column;
-  height: 100%; justify-content: space-between;
 }
 .hero-eyebrow {
   font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
@@ -151,48 +130,12 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .hero-headline {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4.5vw, 4.5rem);
-  font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
-  color: var(--white);
+  font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.03em;
+  color: var(--white); max-width: 14ch;
   opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards;
 }
 .hero-headline .dim { color: var(--white-dim); }
-
-/* right col — sub copy */
-.hero-sub {
-  font-size: 1.15rem; font-weight: 300; line-height: 1.75;
-  color: rgba(30,44,58,0.55);
-  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.4s forwards;
-}
-.hero-sub strong {
-  color: #1e2c3a; font-weight: 500;
-  display: block; margin-top: 0.5rem;
-}
-
-/* counts row */
-.hero-counts {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: rgba(30,44,58,0.1);
-  border-top: 1px solid rgba(30,44,58,0.1);
-  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.55s forwards;
-}
-.hero-count {
-  padding: 1.4rem 1.2rem;
-  background: #ffffff;
-}
-.hero-count-num {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 3.5vw, 3rem);
-  font-weight: 700; line-height: 1;
-  letter-spacing: -0.04em; color: #1e2c3a;
-  margin-bottom: 0.3rem;
-}
-.hero-count-accent { color: #b8d400; }
-.hero-count-label {
-  font-size: 0.68rem; font-weight: 400; letter-spacing: 0.06em;
-  text-transform: uppercase; color: rgba(30,44,58,0.4);
-  line-height: 1.3;
-}
 
 /* FILTER BAR */
 .filter-bar {
@@ -284,10 +227,7 @@ html, body { height: auto; overflow-x: hidden; }
 @media (max-width: 1200px) { .card-grid { grid-template-columns: repeat(4, 1fr); } }
 @media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero-left { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--white-faint); }
-  .hero-right { padding: 2rem 1.5rem; }
-  .hero-counts { grid-template-columns: repeat(3, 1fr); }
+  .hero { padding: 3rem 1.5rem 2.5rem; min-height: auto; }
   .content { padding: 2rem 1.5rem 5rem; }
   .card-grid { grid-template-columns: repeat(2, 1fr); }
   .nav-link { display: none; }
@@ -312,29 +252,8 @@ html, body { height: auto; overflow-x: hidden; }
 <div class="page">
 
   <div class="hero">
-    <div class="hero-left">
-      <p class="hero-eyebrow">Learn</p>
-      <h1 class="hero-headline">Marketing and sales.<br><span class="dim">Properly explained.</span></h1>
-    </div>
-    <div class="hero-right">
-      <div class="hero-right-inner">
-        <p class="hero-sub">The vocabulary, the psychology, the process — and the frameworks behind the work. <strong>Written for people who are excellent at their product and want to be excellent at selling it.</strong></p>
-        <div class="hero-counts">
-          <div class="hero-count">
-            <p class="hero-count-num"><span class="hero-count-accent" id="statLive">0</span></p>
-            <p class="hero-count-label">Live now</p>
-          </div>
-          <div class="hero-count">
-            <p class="hero-count-num" id="statTracks">0</p>
-            <p class="hero-count-label">Tracks</p>
-          </div>
-          <div class="hero-count">
-            <p class="hero-count-num" id="statTotal">0</p>
-            <p class="hero-count-label">Pieces planned</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <p class="hero-eyebrow">Learn</p>
+    <h1 class="hero-headline">Marketing and sales.<br><span class="dim">Properly explained.</span></h1>
   </div>
 
   <div class="filter-bar">
@@ -662,25 +581,6 @@ window.addEventListener('scroll', () => {
   if (progress) progress.style.width = pct + '%';
 }, { passive: true });
 
-// Counter animation
-function countUp(el, target, duration) {
-  const start = performance.now();
-  const update = (now) => {
-    const p = Math.min((now - start) / duration, 1);
-    const ease = 1 - Math.pow(1 - p, 3);
-    el.textContent = Math.round(ease * target);
-    if (p < 1) requestAnimationFrame(update);
-  };
-  requestAnimationFrame(update);
-}
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    countUp(document.getElementById('statLive'),  10,  800);
-    countUp(document.getElementById('statTracks'),  6,  600);
-    countUp(document.getElementById('statTotal'),  43, 1200);
-  }, 300);
-});
-
 // Filter
 const filterBtns = document.querySelectorAll('.filter-btn');
 const tracks     = document.querySelectorAll('.track');
@@ -705,11 +605,6 @@ function applyFilter(filterValue) {
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
 });
-
-function filterFromHero(pill) {
-  applyFilter(pill.dataset.filter);
-  document.querySelector('.filter-bar').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
 </script>
 
 </body>
