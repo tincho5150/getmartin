@@ -64,15 +64,26 @@ html,body { height:auto; overflow-x:hidden; }
 .learn-section-title { position:relative;z-index:1;font-family:var(--font-display);font-size:clamp(2.2rem,4vw,4rem);font-weight:700;line-height:1.0;letter-spacing:-0.025em;color:var(--white); }
 .learn-section-intro { position:relative;z-index:1;font-size:1rem;font-weight:300;line-height:1.75;color:var(--white-dim);margin-top:1.5rem;max-width:38ch; }
 .learn-section-intro strong { color:var(--white);font-weight:400; }
+.learn-right-intro {
+  position: relative; z-index: 1;
+  padding: 1.8rem 3rem 0 2.5rem;
+  border-bottom: 1px solid rgba(30,44,58,0.08);
+  padding-bottom: 1.6rem;
+}
+.learn-right-intro p {
+  font-size: 0.92rem; font-weight: 300; line-height: 1.8;
+  color: rgba(30,44,58,0.65); max-width: 56ch;
+}
+.learn-right-intro p strong { color: var(--ink); font-weight: 500; }
 
 /* RIGHT */
 .learn-right { background:#ffffff;display:flex;flex-direction:column;position:relative; }
 .learn-right::before { content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(30,44,58,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(30,44,58,0.04) 1px,transparent 1px);background-size:72px 72px;pointer-events:none; }
-.learn-body { flex:1;display:grid;grid-template-columns:240px 1fr;position:relative;z-index:1;align-items:center; }
+.learn-body { flex:1;display:grid;grid-template-columns:240px 1fr;position:relative;z-index:1; }
 
 /* VERTICAL NAV */
-.learn-nav { padding:3rem 0 3rem 2.5rem;border-right:1px solid rgba(30,44,58,0.08);display:flex;flex-direction:column;justify-content:center;position:relative;align-self:stretch; }
-.learn-nav::before { content:'';position:absolute;left:calc(2.5rem + 5px);top:4rem;bottom:4rem;width:1px;background:rgba(30,44,58,0.1); }
+.learn-nav { padding:2.5rem 0 2.5rem 2.5rem;border-right:1px solid rgba(30,44,58,0.08);display:flex;flex-direction:column;justify-content:center;position:relative;align-self:stretch; }
+.learn-nav::before { content:'';position:absolute;left:calc(2.5rem + 5px);top:3.5rem;bottom:3.5rem;width:1px;background:rgba(30,44,58,0.1); }
 .learn-nav-item { display:flex;align-items:flex-start;gap:1rem;padding:0.9rem 1.5rem 0.9rem 0;cursor:pointer;position:relative; }
 .learn-nav-dot { width:12px;height:12px;border-radius:50%;flex-shrink:0;border:2px solid rgba(30,44,58,0.18);background:#fff;margin-top:5px;position:relative;z-index:1;transition:border-color 0.2s,background 0.2s; }
 .learn-nav-item.active .learn-nav-dot { background:var(--lime);border-color:var(--lime); }
@@ -82,7 +93,7 @@ html,body { height:auto; overflow-x:hidden; }
 .learn-nav-item:hover .learn-nav-title { color:var(--ink-dim); }
 
 /* CONTENT */
-.learn-content-area { padding:3rem 3rem 3rem 2.5rem;display:flex;flex-direction:column;gap:var(--col-gap);justify-content:center; }
+.learn-content-area { padding:2.5rem 3rem 2.5rem 2.5rem;display:flex;flex-direction:column;gap:var(--col-gap);justify-content:center; }
 .learn-panel { display:none;flex-direction:column;gap:var(--col-gap); }
 .learn-panel.active { display:flex;animation:fadeUp 0.3s var(--ease-out) forwards; }
 
@@ -244,9 +255,11 @@ html,body { height:auto; overflow-x:hidden; }
     <div class="learn-left">
       <p class="learn-section-eyebrow">Buyer Psychology</p>
       <h2 class="learn-section-title">How people<br>actually<br>decide.</h2>
-      <p class="learn-section-intro">B2B buyers are not rational actors. They are people — under pressure, managing risk, protecting their careers. <strong>Understanding the mental models that drive real buying decisions is what separates genuine urgency from adding more slides to the deck.</strong></p>
     </div>
     <div class="learn-right">
+      <div class="learn-right-intro">
+        <p>B2B buyers are not rational actors. They are people — under pressure, managing risk, protecting their careers. <strong>Understanding the mental models that drive real buying decisions is what separates genuine urgency from adding more slides to the deck.</strong></p>
+      </div>
       <div class="learn-body">
         <nav class="learn-nav">
           <div class="learn-nav-item active" data-section="psychology" data-panel="0"><span class="learn-nav-dot"></span><span class="learn-nav-title">The Buying Journey</span></div>
@@ -450,9 +463,11 @@ html,body { height:auto; overflow-x:hidden; }
     <div class="learn-left">
       <p class="learn-section-eyebrow">Sales Process</p>
       <h2 class="learn-section-title">Where deals<br>move —<br>or stall.</h2>
-      <p class="learn-section-intro">Most B2B sales processes fail at predictable moments. <strong>This track maps how complex deals move — or stall — and where the decisions that determine the outcome are actually made.</strong></p>
     </div>
     <div class="learn-right">
+      <div class="learn-right-intro">
+        <p>Most B2B sales processes fail at predictable moments. <strong>This track maps how complex deals move — or stall — and where the decisions that determine the outcome are actually made.</strong></p>
+      </div>
       <div class="learn-body">
         <nav class="learn-nav">
           <div class="learn-nav-item active" data-section="sales" data-panel="0"><span class="learn-nav-dot"></span><span class="learn-nav-title">Discovery</span></div>
