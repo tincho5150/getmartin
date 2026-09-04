@@ -65,46 +65,6 @@ html, body { height: auto; overflow-x: hidden; }
 /* HERO */
 .hero {
   position: relative; z-index: 1;
-  display: grid; grid-template-columns: 1fr 1fr;
-  border-bottom: 1px solid var(--white-faint);
-  min-height: 46vh;
-}
-.hero-left {
-  padding: 6vw 3.5vw 5vw 5vw;
-  display: flex; flex-direction: column; justify-content: space-between;
-  border-right: 1px solid var(--white-faint);
-}
-.hero-left-top { display: flex; flex-direction: column; gap: 0; }
-.hero-right {
-  padding: 4vw 5vw 4vw 3.5vw;
-  background: #ffffff; position: relative;
-  display: flex; flex-direction: column; justify-content: space-between;
-}
-.hero-right::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(30,44,58,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(30,44,58,0.05) 1px, transparent 1px);
-  background-size: 72px 72px; pointer-events: none;
-}
-.hero-right-inner { position: relative; z-index: 1; display: flex; flex-direction: column; height: 100%; justify-content: space-between; }
-.hero-eyebrow {
-  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--lime); margin-bottom: 1.4rem;
-  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.2s forwards;
-}
-.hero-headline {
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4.5vw, 4.5rem);
-  font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
-  color: var(--white);
-  opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards;
-}
-.hero-headline .dim { color: var(--white-dim); }
-
-/* HERO */
-.hero {
-  position: relative; z-index: 1;
   border-bottom: 1px solid var(--white-faint);
   padding: 6vw 5vw 5vw;
   min-height: 28vh;
@@ -164,15 +124,9 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .track-desc { font-size: 0.85rem; font-weight: 300; color: var(--white-dim); }
 
-/* ── TRACK INTRO ── */
-.track-intro {
-  padding: 1.6rem 0 2rem;
-  max-width: 64ch;
-}
-.track-intro-body {
-  font-size: 0.95rem; font-weight: 300; line-height: 1.85;
-  color: var(--white-dim);
-}
+/* TRACK INTRO */
+.track-intro { padding: 1.6rem 0 2rem; max-width: 64ch; }
+.track-intro-body { font-size: 0.95rem; font-weight: 300; line-height: 1.85; color: var(--white-dim); }
 .track-intro-body strong { color: var(--white); font-weight: 400; }
 
 /* GRID */
@@ -190,40 +144,124 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .resource-card:not(.coming-soon):hover { background: #253748; }
 .resource-card.coming-soon { opacity: 0.38; cursor: default; pointer-events: none; }
-.card-track {
-  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--lime);
-}
+.card-track { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lime); }
 .coming-soon .card-track { color: rgba(240,239,240,0.4); }
-.card-title {
-  font-family: var(--font-display);
-  font-size: 1rem; font-weight: 700; line-height: 1.2;
-  letter-spacing: -0.01em; color: var(--white); flex: 1;
-}
-.card-desc {
-  font-size: 0.82rem; font-weight: 300; line-height: 1.6; color: var(--white-dim);
-}
-.card-footer {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-top: auto; padding-top: 0.8rem;
-  border-top: 1px solid rgba(240,239,240,0.06);
-}
-.card-tag {
-  font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em;
-  text-transform: uppercase; color: rgba(240,239,240,0.3);
-}
+.card-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; color: var(--white); flex: 1; }
+.card-desc { font-size: 0.82rem; font-weight: 300; line-height: 1.6; color: var(--white-dim); }
+.card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid rgba(240,239,240,0.06); }
+.card-tag { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(240,239,240,0.3); }
 .card-status.live { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lime); }
 .card-status.soon { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(240,239,240,0.2); }
-.card-arrow {
-  color: var(--lime); width: 14px; height: 14px;
-  transition: transform var(--dur-base); flex-shrink: 0;
-}
+.card-arrow { color: var(--lime); width: 14px; height: 14px; transition: transform var(--dur-base); flex-shrink: 0; }
 .resource-card:hover .card-arrow { transform: translateX(4px); }
+
+/* BUYER PSYCHOLOGY INFOGRAPHIC */
+.psych-infographic { border: 1px solid var(--white-faint); margin-bottom: 2.5rem; overflow: hidden; }
+.psych-header {
+  padding: 1.2rem 2rem;
+  border-bottom: 1px solid var(--white-faint);
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+}
+.psych-header-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,239,240,0.35); }
+.psych-header-sub { font-size: 0.65rem; font-weight: 300; color: rgba(240,239,240,0.18); flex-shrink: 0; }
+
+.psych-concept { border-bottom: 1px solid var(--white-faint); }
+.psych-concept:last-child { border-bottom: none; }
+.psych-concept-bar {
+  display: flex; align-items: center; gap: 1.4rem;
+  padding: 1rem 2rem; cursor: pointer; transition: background 0.2s;
+}
+.psych-concept-bar:hover { background: rgba(255,255,255,0.02); }
+.psych-concept.open > .psych-concept-bar { background: rgba(184,212,0,0.05); }
+.psych-concept-num { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; color: rgba(184,212,0,0.35); width: 22px; flex-shrink: 0; }
+.psych-concept.open > .psych-concept-bar .psych-concept-num { color: #b8d400; }
+.psych-concept-title { font-size: 0.95rem; font-weight: 500; color: var(--white); letter-spacing: -0.01em; flex: 1; }
+.psych-concept-tag { font-size: 0.6rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,239,240,0.2); }
+.psych-concept-toggle { font-size: 1.1rem; font-weight: 300; color: rgba(184,212,0,0.4); width: 20px; text-align: center; flex-shrink: 0; transition: transform 0.3s; }
+.psych-concept.open > .psych-concept-bar .psych-concept-toggle { transform: rotate(45deg); }
+
+.psych-concept-body { display: none; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--white-faint); }
+.psych-concept.open > .psych-concept-body { display: grid; }
+.psych-concept-visual { padding: 2rem; background: #0f1922; border-right: 1px solid var(--white-faint); display: flex; align-items: center; justify-content: center; min-height: 200px; }
+.psych-concept-text { padding: 2rem; display: flex; flex-direction: column; gap: 1.2rem; }
+.psych-concept-insight { font-size: 0.9rem; font-weight: 300; line-height: 1.85; color: var(--white-dim); }
+.psych-concept-implication { padding: 1rem 1.2rem; background: rgba(184,212,0,0.06); border-left: 2px solid var(--lime); display: flex; flex-direction: column; gap: 0.35rem; }
+.psych-impl-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lime); }
+.psych-impl-text { font-size: 0.83rem; font-weight: 300; line-height: 1.7; color: var(--white-dim); }
+
+/* Journey visual */
+.psych-journey { width: 100%; display: flex; flex-direction: column; gap: 0.8rem; }
+.psych-journey-label { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(184,212,0,0.55); margin-bottom: 0.2rem; }
+.psych-journey-label-dim { color: rgba(240,239,240,0.2); }
+.psych-journey-linear { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.psych-journey-real { display: flex; flex-wrap: wrap; gap: 4px; }
+.psych-journey-node { padding: 0.3rem 0.65rem; font-size: 0.7rem; font-weight: 300; border: 1px solid; }
+.psych-journey-arrow { color: rgba(255,255,255,0.15); font-size: 0.65rem; }
+.psych-node-hi  { border-color: rgba(184,212,0,0.3); background: rgba(184,212,0,0.07); color: rgba(240,239,240,0.8); }
+.psych-node-mid { border-color: rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: rgba(240,239,240,0.45); }
+.psych-node-lo  { border-color: rgba(255,80,80,0.2); background: rgba(255,80,80,0.04); color: rgba(255,120,120,0.6); }
+.psych-node-dim { border-color: rgba(255,255,255,0.06); background: transparent; color: rgba(240,239,240,0.22); }
+
+/* Scale visual */
+.psych-scale-wrap { width: 100%; display: flex; flex-direction: column; gap: 1rem; }
+.psych-scale-row { display: flex; align-items: center; gap: 1rem; }
+.psych-scale-label { font-size: 0.65rem; font-weight: 300; color: rgba(240,239,240,0.3); line-height: 1.4; width: 130px; flex-shrink: 0; }
+.psych-scale-track { flex: 1; height: 8px; background: rgba(255,255,255,0.05); }
+.psych-scale-bar { height: 100%; width: 0%; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+.psych-scale-gain { background: rgba(184,212,0,0.7); }
+.psych-scale-pain { background: rgba(255,80,80,0.65); }
+.psych-scale-val { font-size: 0.9rem; font-weight: 700; letter-spacing: -0.02em; width: 44px; flex-shrink: 0; text-align: right; }
+.psych-val-lime { color: rgba(184,212,0,0.8); }
+.psych-val-red  { color: rgba(255,100,100,0.8); }
+.psych-scale-caption { font-size: 0.65rem; font-weight: 300; color: rgba(240,239,240,0.18); line-height: 1.5; text-align: center; padding-top: 0.6rem; border-top: 1px solid rgba(255,255,255,0.04); }
+
+/* Framing visual */
+.psych-framing { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.psych-frame { padding: 0.9rem 1.1rem; border: 1px solid; }
+.psych-frame-weak   { border-color: rgba(255,255,255,0.07); background: rgba(255,255,255,0.02); }
+.psych-frame-strong { border-color: rgba(184,212,0,0.25); background: rgba(184,212,0,0.05); }
+.psych-frame-label { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,239,240,0.22); margin-bottom: 0.45rem; }
+.psych-frame-label-lime { color: rgba(184,212,0,0.55); }
+.psych-frame-text { font-size: 0.78rem; font-weight: 300; line-height: 1.6; color: rgba(240,239,240,0.55); margin-bottom: 0.5rem; font-style: italic; }
+.psych-frame-response { font-size: 0.7rem; font-weight: 400; color: rgba(240,239,240,0.28); }
+.psych-response-hi { color: rgba(184,212,0,0.75); }
+
+/* Committee visual */
+.psych-committee { width: 100%; display: flex; flex-direction: column; gap: 0.8rem; }
+.psych-committee-row { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+.psych-committee-person { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 0.7rem 0.8rem; border: 1px solid; min-width: 72px; text-align: center; }
+.psych-person-champion { border-color: rgba(184,212,0,0.35); background: rgba(184,212,0,0.07); }
+.psych-person-neutral  { border-color: rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); }
+.psych-person-blocker  { border-color: rgba(255,80,80,0.25); background: rgba(255,80,80,0.05); }
+.psych-person-icon  { font-size: 0.9rem; }
+.psych-person-label { font-size: 0.65rem; font-weight: 500; color: var(--white-dim); }
+.psych-person-sub   { font-size: 0.58rem; font-weight: 300; color: rgba(240,239,240,0.28); }
+.psych-committee-arrow { font-size: 1rem; color: rgba(255,255,255,0.12); }
+.psych-committee-caption { font-size: 0.63rem; font-weight: 300; color: rgba(240,239,240,0.2); line-height: 1.5; }
+
+/* Proof visual */
+.psych-proof { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+.psych-proof-item { padding: 0.9rem 1.1rem; border: 1px solid; }
+.psych-proof-weak   { border-color: rgba(255,255,255,0.07); background: rgba(255,255,255,0.02); }
+.psych-proof-strong { border-color: rgba(184,212,0,0.25); background: rgba(184,212,0,0.05); }
+.psych-proof-label { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,239,240,0.22); margin-bottom: 0.45rem; }
+.psych-proof-label-lime { color: rgba(184,212,0,0.55); }
+.psych-proof-quote { font-size: 0.78rem; font-weight: 300; line-height: 1.6; color: rgba(240,239,240,0.55); font-style: italic; margin-bottom: 0.5rem; }
+.psych-proof-attr { font-size: 0.65rem; font-style: normal; color: rgba(240,239,240,0.35); }
+.psych-proof-trust { display: flex; align-items: center; gap: 0.6rem; font-size: 0.6rem; font-weight: 300; color: rgba(240,239,240,0.22); }
+.psych-trust-hi { color: rgba(184,212,0,0.55); }
+.psych-trust-bar { height: 4px; }
+.psych-trust-bar-dim  { background: rgba(255,255,255,0.1); width: 18%; }
+.psych-trust-bar-lime { background: var(--lime); width: 85%; }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 1200px) { .card-grid { grid-template-columns: repeat(4, 1fr); } }
 @media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px) {
+  .psych-concept-body { grid-template-columns: 1fr; }
+  .psych-concept-visual { border-right: none; border-bottom: 1px solid var(--white-faint); }
+}
 @media (max-width: 768px) {
   .hero { padding: 3rem 1.5rem 2.5rem; min-height: auto; }
   .content { padding: 2rem 1.5rem 5rem; }
@@ -280,10 +318,7 @@ html, body { height: auto; overflow-x: hidden; }
           <span class="card-track">The Basics</span>
           <p class="card-title">SEO — What It Is and How It Works</p>
           <p class="card-desc">Why some pages show up on Google and others don't — and what you can actually do about it.</p>
-          <div class="card-footer">
-            <span class="card-tag">Search</span>
-            <span class="card-status live">Read now →</span>
-          </div>
+          <div class="card-footer"><span class="card-tag">Search</span><span class="card-status live">Read now →</span></div>
         </a>
 
         <a class="resource-card" href="/learn/content-marketing">
@@ -359,44 +394,208 @@ html, body { height: auto; overflow-x: hidden; }
         <span class="track-desc">How people actually make decisions</span>
       </div>
       <div class="track-intro"><p class="track-intro-body">B2B buyers are not rational actors who evaluate options objectively and choose the best one. They are people — under pressure, managing risk, protecting their careers, navigating internal politics. <strong>Understanding the mental models that drive real buying decisions is what separates marketers who create genuine urgency from those who just add more slides to the deck.</strong></p></div>
-      <div class="card-grid">
 
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Buyer Psychology</span>
-          <p class="card-title">The Buying Journey</p>
-          <p class="card-desc">How B2B decisions actually get made — the research, the internal politics, and the moments that determine the outcome before anyone talks to a rep.</p>
-          <div class="card-footer"><span class="card-tag">Decision-making</span><span class="card-status soon">Coming soon</span></div>
-        </a>
+      <!-- INFOGRAPHIC -->
+      <div class="psych-infographic" id="psychInfographic">
+        <div class="psych-header">
+          <p class="psych-header-label">Five forces that determine every B2B deal</p>
+          <p class="psych-header-sub">Click any concept to expand</p>
+        </div>
 
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Buyer Psychology</span>
-          <p class="card-title">The Status Quo Bias</p>
-          <p class="card-desc">Why doing nothing always beats change in the buyer's mind — and what it actually takes to overcome the pull of "we'll sort it next quarter."</p>
-          <div class="card-footer"><span class="card-tag">Decision-making</span><span class="card-status soon">Coming soon</span></div>
-        </a>
+        <!-- 01 -->
+        <div class="psych-concept open" data-concept="0">
+          <div class="psych-concept-bar">
+            <span class="psych-concept-num">01</span>
+            <span class="psych-concept-title">The Buying Journey</span>
+            <span class="psych-concept-tag">Decision-making</span>
+            <span class="psych-concept-toggle">+</span>
+          </div>
+          <div class="psych-concept-body">
+            <div class="psych-concept-visual">
+              <div class="psych-journey">
+                <p class="psych-journey-label psych-journey-label-dim">What companies assume</p>
+                <div class="psych-journey-linear">
+                  <div class="psych-journey-node psych-node-dim">Aware</div>
+                  <span class="psych-journey-arrow">→</span>
+                  <div class="psych-journey-node psych-node-dim">Interested</div>
+                  <span class="psych-journey-arrow">→</span>
+                  <div class="psych-journey-node psych-node-dim">Decides</div>
+                  <span class="psych-journey-arrow">→</span>
+                  <div class="psych-journey-node psych-node-dim">Buys</div>
+                </div>
+                <p class="psych-journey-label" style="margin-top:1rem">What actually happens</p>
+                <div class="psych-journey-real">
+                  <div class="psych-journey-node psych-node-hi">Research alone</div>
+                  <div class="psych-journey-node psych-node-mid">Internal debate</div>
+                  <div class="psych-journey-node psych-node-hi">More research</div>
+                  <div class="psych-journey-node psych-node-lo">Stalls</div>
+                  <div class="psych-journey-node psych-node-hi">Champion pushes</div>
+                  <div class="psych-journey-node psych-node-mid">Committee</div>
+                  <div class="psych-journey-node psych-node-lo">No decision</div>
+                  <div class="psych-journey-node psych-node-hi">Buys</div>
+                </div>
+              </div>
+            </div>
+            <div class="psych-concept-text">
+              <p class="psych-concept-insight">75% of B2B buyers complete the majority of their research before speaking to a rep. By the time they reach out, they've already formed a view. Your job is to shape that view — not change it after the fact.</p>
+              <div class="psych-concept-implication">
+                <span class="psych-impl-label">Implication</span>
+                <span class="psych-impl-text">The sale happens in the research phase. If you're not present there — through content, tools, reputation — you're not in the conversation.</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Buyer Psychology</span>
-          <p class="card-title">Loss Aversion</p>
-          <p class="card-desc">Why the cost of inaction lands harder than the promise of gain — and how to use this in positioning without being manipulative.</p>
-          <div class="card-footer"><span class="card-tag">Positioning</span><span class="card-status soon">Coming soon</span></div>
-        </a>
+        <!-- 02 -->
+        <div class="psych-concept" data-concept="1">
+          <div class="psych-concept-bar">
+            <span class="psych-concept-num">02</span>
+            <span class="psych-concept-title">Status Quo Bias</span>
+            <span class="psych-concept-tag">Decision-making</span>
+            <span class="psych-concept-toggle">+</span>
+          </div>
+          <div class="psych-concept-body">
+            <div class="psych-concept-visual">
+              <div class="psych-scale-wrap">
+                <div class="psych-scale-row">
+                  <p class="psych-scale-label">Perceived gain from switching</p>
+                  <div class="psych-scale-track"><div class="psych-scale-bar psych-scale-gain" id="scaleGain"></div></div>
+                  <span class="psych-scale-val psych-val-lime">+1×</span>
+                </div>
+                <div class="psych-scale-row">
+                  <p class="psych-scale-label">Perceived pain of switching</p>
+                  <div class="psych-scale-track"><div class="psych-scale-bar psych-scale-pain" id="scalePain"></div></div>
+                  <span class="psych-scale-val psych-val-red">−2.5×</span>
+                </div>
+                <p class="psych-scale-caption">The pain of change feels 2–3× heavier than the equivalent gain</p>
+              </div>
+            </div>
+            <div class="psych-concept-text">
+              <p class="psych-concept-insight">Doing nothing is always the default. It requires no decision, no risk, no justification. Your product has to make the cost of inaction feel more painful than the cost of change — or the deal dies quietly with "we'll revisit next quarter."</p>
+              <div class="psych-concept-implication">
+                <span class="psych-impl-label">Implication</span>
+                <span class="psych-impl-text">Don't just show the benefit of switching. Make the hidden cost of staying visible — quantified, felt, and personal to their operation.</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Buyer Psychology</span>
-          <p class="card-title">The Champion Problem</p>
-          <p class="card-desc">Why your internal advocate keeps losing the internal battle — and what you can give them to win it without you in the room.</p>
-          <div class="card-footer"><span class="card-tag">Sales</span><span class="card-status soon">Coming soon</span></div>
-        </a>
+        <!-- 03 -->
+        <div class="psych-concept" data-concept="2">
+          <div class="psych-concept-bar">
+            <span class="psych-concept-num">03</span>
+            <span class="psych-concept-title">Loss Aversion</span>
+            <span class="psych-concept-tag">Positioning</span>
+            <span class="psych-concept-toggle">+</span>
+          </div>
+          <div class="psych-concept-body">
+            <div class="psych-concept-visual">
+              <div class="psych-framing">
+                <div class="psych-frame psych-frame-weak">
+                  <p class="psych-frame-label">Gain framing</p>
+                  <p class="psych-frame-text">"Our platform could increase your team's output by 30%"</p>
+                  <p class="psych-frame-response">Sounds good. We'll think about it.</p>
+                </div>
+                <div class="psych-frame psych-frame-strong">
+                  <p class="psych-frame-label psych-frame-label-lime">Loss framing</p>
+                  <p class="psych-frame-text">"Your team is losing the equivalent of one full day per person, per week, to this problem."</p>
+                  <p class="psych-frame-response psych-response-hi">Tell me more. What would that cost us annually?</p>
+                </div>
+              </div>
+            </div>
+            <div class="psych-concept-text">
+              <p class="psych-concept-insight">People feel losses roughly twice as strongly as equivalent gains. The same information framed as what they're losing — rather than what they could gain — produces a fundamentally different emotional response and a faster decision.</p>
+              <div class="psych-concept-implication">
+                <span class="psych-impl-label">Implication</span>
+                <span class="psych-impl-text">Reframe your value proposition around what the buyer is currently losing — time, money, deals, talent — not what they could gain.</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Buyer Psychology</span>
-          <p class="card-title">Social Proof in B2B</p>
-          <p class="card-desc">Why logos on a website work better than any claim you can make — and how to use social proof without it looking desperate.</p>
-          <div class="card-footer"><span class="card-tag">Trust</span><span class="card-status soon">Coming soon</span></div>
-        </a>
+        <!-- 04 -->
+        <div class="psych-concept" data-concept="3">
+          <div class="psych-concept-bar">
+            <span class="psych-concept-num">04</span>
+            <span class="psych-concept-title">The Champion Problem</span>
+            <span class="psych-concept-tag">Sales</span>
+            <span class="psych-concept-toggle">+</span>
+          </div>
+          <div class="psych-concept-body">
+            <div class="psych-concept-visual">
+              <div class="psych-committee">
+                <div class="psych-committee-row">
+                  <div class="psych-committee-person psych-person-champion">
+                    <span class="psych-person-icon">★</span>
+                    <span class="psych-person-label">Champion</span>
+                    <span class="psych-person-sub">Sold. Motivated.</span>
+                  </div>
+                  <span class="psych-committee-arrow">→</span>
+                  <div class="psych-committee-person psych-person-neutral">
+                    <span class="psych-person-icon">?</span>
+                    <span class="psych-person-label">CFO</span>
+                    <span class="psych-person-sub">ROI unclear</span>
+                  </div>
+                  <div class="psych-committee-person psych-person-neutral">
+                    <span class="psych-person-icon">?</span>
+                    <span class="psych-person-label">IT</span>
+                    <span class="psych-person-sub">Integration risk</span>
+                  </div>
+                  <div class="psych-committee-person psych-person-blocker">
+                    <span class="psych-person-icon">✕</span>
+                    <span class="psych-person-label">Legal</span>
+                    <span class="psych-person-sub">Not now</span>
+                  </div>
+                </div>
+                <p class="psych-committee-caption">Your champion walks into a room of unconvinced stakeholders — without you</p>
+              </div>
+            </div>
+            <div class="psych-concept-text">
+              <p class="psych-concept-insight">Your champion believes in you. But they have to sell internally to people you've never met, with objections you've never heard, using arguments you've never equipped them with. Most champions lose that room — not because the product is wrong, but because they weren't ready to win it.</p>
+              <div class="psych-concept-implication">
+                <span class="psych-impl-label">Implication</span>
+                <span class="psych-impl-text">Give your champion something that sells without you in the room — a document, a tool, a one-pager built for their committee, not for you.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 -->
+        <div class="psych-concept" data-concept="4">
+          <div class="psych-concept-bar">
+            <span class="psych-concept-num">05</span>
+            <span class="psych-concept-title">Social Proof in B2B</span>
+            <span class="psych-concept-tag">Trust</span>
+            <span class="psych-concept-toggle">+</span>
+          </div>
+          <div class="psych-concept-body">
+            <div class="psych-concept-visual">
+              <div class="psych-proof">
+                <div class="psych-proof-item psych-proof-weak">
+                  <p class="psych-proof-label">What you say about yourself</p>
+                  <p class="psych-proof-quote">"We're the leading platform for supply chain optimisation."</p>
+                  <div class="psych-proof-trust"><div class="psych-trust-bar psych-trust-bar-dim"></div><span>Low trust</span></div>
+                </div>
+                <div class="psych-proof-item psych-proof-strong">
+                  <p class="psych-proof-label psych-proof-label-lime">What a customer says about you</p>
+                  <p class="psych-proof-quote">"We reduced spoilage by 23% in the first quarter. I wish we'd done this two years ago." <span class="psych-proof-attr">— Head of Ops, Coles</span></p>
+                  <div class="psych-proof-trust psych-trust-hi"><div class="psych-trust-bar psych-trust-bar-lime"></div><span>High trust</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="psych-concept-text">
+              <p class="psych-concept-insight">Buyers don't trust what companies say about themselves — they trust what people like them say. A specific result from a recognisable company does more commercial work than any claim you can make about your own product.</p>
+              <div class="psych-concept-implication">
+                <span class="psych-impl-label">Implication</span>
+                <span class="psych-impl-text">Collect specific, numbered results from real customers. "We helped them improve efficiency" is worthless. "23% reduction in spoilage in Q1" is a sales asset.</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
+      <!-- END INFOGRAPHIC -->
+
     </div>
 
     <!-- SALES PROCESS -->
@@ -407,42 +606,11 @@ html, body { height: auto; overflow-x: hidden; }
       </div>
       <div class="track-intro"><p class="track-intro-body">Most B2B sales processes fail at predictable moments — the discovery call that turns into a pitch, the demo shown too early, the internal champion who can't close the committee. <strong>This track maps the mechanics of how complex B2B deals move — or stall — and where the decisions that determine the outcome are actually made.</strong></p></div>
       <div class="card-grid">
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Sales Process</span>
-          <p class="card-title">The Discovery Call</p>
-          <p class="card-desc">What it is, what it should be, and why most discovery calls are actually pitch calls in disguise — and what that costs you.</p>
-          <div class="card-footer"><span class="card-tag">Calls</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Sales Process</span>
-          <p class="card-title">The Demo Trap</p>
-          <p class="card-desc">Why showing the product too early kills deals — and what needs to happen before the demo for it to land the way you hope.</p>
-          <div class="card-footer"><span class="card-tag">Demos</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Sales Process</span>
-          <p class="card-title">The Multi-Stakeholder Sale</p>
-          <p class="card-desc">How to navigate 6 decision-makers with different priorities, different objections, and different definitions of success.</p>
-          <div class="card-footer"><span class="card-tag">Enterprise</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Sales Process</span>
-          <p class="card-title">The Three Stages Every Buyer Goes Through</p>
-          <p class="card-desc">Top, middle, and bottom of funnel — what buyers need at each stage and why sending the wrong content at the wrong time loses the deal quietly.</p>
-          <div class="card-footer"><span class="card-tag">Funnel</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Sales Process</span>
-          <p class="card-title">The Warm Lead vs. Cold Lead</p>
-          <p class="card-desc">What actually makes a lead warm — and why most "warm" leads are still cold in the ways that matter most.</p>
-          <div class="card-footer"><span class="card-tag">Pipeline</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Sales Process</span><p class="card-title">The Discovery Call</p><p class="card-desc">What it is, what it should be, and why most discovery calls are actually pitch calls in disguise — and what that costs you.</p><div class="card-footer"><span class="card-tag">Calls</span><span class="card-status soon">Coming soon</span></div></a>
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Sales Process</span><p class="card-title">The Demo Trap</p><p class="card-desc">Why showing the product too early kills deals — and what needs to happen before the demo for it to land the way you hope.</p><div class="card-footer"><span class="card-tag">Demos</span><span class="card-status soon">Coming soon</span></div></a>
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Sales Process</span><p class="card-title">The Multi-Stakeholder Sale</p><p class="card-desc">How to navigate 6 decision-makers with different priorities, different objections, and different definitions of success.</p><div class="card-footer"><span class="card-tag">Enterprise</span><span class="card-status soon">Coming soon</span></div></a>
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Sales Process</span><p class="card-title">The Three Stages Every Buyer Goes Through</p><p class="card-desc">Top, middle, and bottom of funnel — what buyers need at each stage and why sending the wrong content at the wrong time loses the deal quietly.</p><div class="card-footer"><span class="card-tag">Funnel</span><span class="card-status soon">Coming soon</span></div></a>
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Sales Process</span><p class="card-title">The Warm Lead vs. Cold Lead</p><p class="card-desc">What actually makes a lead warm — and why most "warm" leads are still cold in the ways that matter most.</p><div class="card-footer"><span class="card-tag">Pipeline</span><span class="card-status soon">Coming soon</span></div></a>
       </div>
     </div>
 
@@ -454,42 +622,11 @@ html, body { height: auto; overflow-x: hidden; }
       </div>
       <div class="track-intro"><p class="track-intro-body">These are not textbook concepts. They are frameworks built from working directly on B2B sales problems — diagnostic tools, pre-call experiences, site architectures, campaign systems. <strong>Each one is a reusable way of thinking about a problem your prospects face before they become your clients.</strong> Read them to understand the thinking behind the work.</p></div>
       <div class="card-grid">
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Framework</span>
-          <p class="card-title">The Hidden Cost Principle</p>
-          <p class="card-desc">Why buyers can't act on pain they can't feel — and what it takes to make an invisible cost visible before the first call.</p>
-          <div class="card-footer"><span class="card-tag">Buyer psychology</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Framework</span>
-          <p class="card-title">The Pre-Call Experience</p>
-          <p class="card-desc">The buying decision happens before hello. What occurs in the 72 hours before a prospect agrees to a call — and how to own it.</p>
-          <div class="card-footer"><span class="card-tag">Buyer journey</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Framework</span>
-          <p class="card-title">How B2B Buyers Actually Decide</p>
-          <p class="card-desc">6 of 10 decision-makers, 75% who'd rather never talk to a rep. The research behind why the sale is mostly over before it starts.</p>
-          <div class="card-footer"><span class="card-tag">Buyer psychology</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Framework</span>
-          <p class="card-title">What GEO Means for B2B</p>
-          <p class="card-desc">Generative Engine Optimisation isn't a technical trick — it's clarity. Writing so well that any system, human or machine, immediately understands what you do.</p>
-          <div class="card-footer"><span class="card-tag">Content strategy</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Framework</span>
-          <p class="card-title">The Confirmation Call</p>
-          <p class="card-desc">What it looks like when the rep arrives to confirm rather than convince — and how to engineer that shift before anyone picks up the phone.</p>
-          <div class="card-footer"><span class="card-tag">Sales process</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Framework</span><p class="card-title">The Hidden Cost Principle</p><p class="card-desc">Why buyers can't act on pain they can't feel — and what it takes to make an invisible cost visible before the first call.</p><div class="card-footer"><span class="card-tag">Buyer psychology</span><span class="card-status soon">Coming soon</span></div></a>
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Framework</span><p class="card-title">The Pre-Call Experience</p><p class="card-desc">The buying decision happens before hello. What occurs in the 72 hours before a prospect agrees to a call — and how to own it.</p><div class="card-footer"><span class="card-tag">Buyer journey</span><span class="card-status soon">Coming soon</span></div></a>
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Framework</span><p class="card-title">How B2B Buyers Actually Decide</p><p class="card-desc">6 of 10 decision-makers, 75% who'd rather never talk to a rep. The research behind why the sale is mostly over before it starts.</p><div class="card-footer"><span class="card-tag">Buyer psychology</span><span class="card-status soon">Coming soon</span></div></a>
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Framework</span><p class="card-title">What GEO Means for B2B</p><p class="card-desc">Generative Engine Optimisation isn't a technical trick — it's clarity. Writing so well that any system, human or machine, immediately understands what you do.</p><div class="card-footer"><span class="card-tag">Content strategy</span><span class="card-status soon">Coming soon</span></div></a>
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Framework</span><p class="card-title">The Confirmation Call</p><p class="card-desc">What it looks like when the rep arrives to confirm rather than convince — and how to engineer that shift before anyone picks up the phone.</p><div class="card-footer"><span class="card-tag">Sales process</span><span class="card-status soon">Coming soon</span></div></a>
       </div>
     </div>
 
@@ -501,42 +638,11 @@ html, body { height: auto; overflow-x: hidden; }
       </div>
       <div class="track-intro"><p class="track-intro-body">The Frameworks track explains the thinking. This track shows the building. Each teardown is a step-by-step walkthrough of how a specific thing gets made — from the brief to the decision to the live result. <strong>Not theory. Not case study. Implementation, decision by decision, with the reasoning behind each one shown in full.</strong></p></div>
       <div class="card-grid">
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Teardown</span>
-          <p class="card-title">How to Build a Self-Diagnostic Tool</p>
-          <p class="card-desc">Step by step — from identifying the hidden gap to designing the scoring system, the roadmap output, and the pre-call workflow around it.</p>
-          <div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Teardown</span>
-          <p class="card-title">How to Make an Abstract Product Visible</p>
-          <p class="card-desc">When the software works inside systems buyers can't see, the demo has to do the seeing for them. How to turn invisible value into a felt experience.</p>
-          <div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Teardown</span>
-          <p class="card-title">How to Build a Resource Hub That Earns Trust</p>
-          <p class="card-desc">Architecture, content strategy, and the ungated decision — how to build a library that brings buyers back before they're ready to buy.</p>
-          <div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Teardown</span>
-          <p class="card-title">How to Write a Case Study That Closes</p>
-          <p class="card-desc">The difference between a portfolio piece and a sales asset. Structure, copy, and the one thesis every case study needs to do its job.</p>
-          <div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Teardown</span>
-          <p class="card-title">How to Turn a Feature Into a Felt Cost</p>
-          <p class="card-desc">The copy and design decisions that take a product capability and turn it into something the prospect can feel in their own operation — before the demo.</p>
-          <div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Teardown</span><p class="card-title">How to Build a Self-Diagnostic Tool</p><p class="card-desc">Step by step — from identifying the hidden gap to designing the scoring system, the roadmap output, and the pre-call workflow around it.</p><div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div></a>
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Teardown</span><p class="card-title">How to Make an Abstract Product Visible</p><p class="card-desc">When the software works inside systems buyers can't see, the demo has to do the seeing for them. How to turn invisible value into a felt experience.</p><div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div></a>
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Teardown</span><p class="card-title">How to Build a Resource Hub That Earns Trust</p><p class="card-desc">Architecture, content strategy, and the ungated decision — how to build a library that brings buyers back before they're ready to buy.</p><div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div></a>
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Teardown</span><p class="card-title">How to Write a Case Study That Closes</p><p class="card-desc">The difference between a portfolio piece and a sales asset. Structure, copy, and the one thesis every case study needs to do its job.</p><div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div></a>
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Teardown</span><p class="card-title">How to Turn a Feature Into a Felt Cost</p><p class="card-desc">The copy and design decisions that take a product capability and turn it into something the prospect can feel in their own operation — before the demo.</p><div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div></a>
       </div>
     </div>
 
@@ -548,28 +654,9 @@ html, body { height: auto; overflow-x: hidden; }
       </div>
       <div class="track-intro"><p class="track-intro-body">Some things are faster to show than to explain. This track is screen recordings, walkthroughs, and build sessions — the tools and sites from the Proof page walked through live, with commentary on the decisions behind them. <strong>Watch how the work gets made before reading about how to make it yourself.</strong></p></div>
       <div class="card-grid">
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Video</span>
-          <p class="card-title">Walkthrough: The Loss Analysis Diagnostic</p>
-          <p class="card-desc">A 4-minute screen walkthrough of the full diagnostic — from the intro screen to the personalised roadmap output.</p>
-          <div class="card-footer"><span class="card-tag">Walkthrough</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Video</span>
-          <p class="card-title">Walkthrough: The 3D Truck Loader</p>
-          <p class="card-desc">Three load scenarios, the ROI calculator, and the network flow simulator — everything the buyer experiences before the demo.</p>
-          <div class="card-footer"><span class="card-tag">Walkthrough</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Video</span>
-          <p class="card-title">How I Build a Pre-Call Experience</p>
-          <p class="card-desc">End to end — from the brief to the live tool. The decisions, the tradeoffs, and what changes when the prospect arrives already educated.</p>
-          <div class="card-footer"><span class="card-tag">Behind the build</span><span class="card-status soon">Coming soon</span></div>
-        </a>
-
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Video</span><p class="card-title">Walkthrough: The Loss Analysis Diagnostic</p><p class="card-desc">A 4-minute screen walkthrough of the full diagnostic — from the intro screen to the personalised roadmap output.</p><div class="card-footer"><span class="card-tag">Walkthrough</span><span class="card-status soon">Coming soon</span></div></a>
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Video</span><p class="card-title">Walkthrough: The 3D Truck Loader</p><p class="card-desc">Three load scenarios, the ROI calculator, and the network flow simulator — everything the buyer experiences before the demo.</p><div class="card-footer"><span class="card-tag">Walkthrough</span><span class="card-status soon">Coming soon</span></div></a>
+        <a class="resource-card coming-soon" href="#"><span class="card-track">Video</span><p class="card-title">How I Build a Pre-Call Experience</p><p class="card-desc">End to end — from the brief to the live tool. The decisions, the tradeoffs, and what changes when the prospect arrives already educated.</p><div class="card-footer"><span class="card-tag">Behind the build</span><span class="card-status soon">Coming soon</span></div></a>
       </div>
     </div>
 
@@ -585,6 +672,27 @@ window.addEventListener('scroll', () => {
   if (progress) progress.style.width = pct + '%';
 }, { passive: true });
 
+// Infographic accordion
+const concepts = document.querySelectorAll('.psych-concept');
+concepts.forEach(concept => {
+  concept.querySelector('.psych-concept-bar').addEventListener('click', () => {
+    const isOpen = concept.classList.contains('open');
+    concepts.forEach(c => c.classList.remove('open'));
+    if (!isOpen) {
+      concept.classList.add('open');
+      if (concept.dataset.concept === '1') {
+        setTimeout(() => {
+          const g = document.getElementById('scaleGain');
+          const p = document.getElementById('scalePain');
+          if (g) g.style.width = '30%';
+          if (p) p.style.width = '75%';
+        }, 100);
+      }
+    }
+  });
+});
+
+// Animate scale bars when concept 1 is open on load (it's not, but just in case)
 const filterBtns = document.querySelectorAll('.filter-btn');
 const tracks     = document.querySelectorAll('.track');
 const countEl    = document.getElementById('filter-count');
@@ -597,7 +705,7 @@ function applyFilter(filterValue) {
   tracks.forEach(track => {
     if (filterValue === 'all' || track.dataset.track === filterValue) {
       track.style.display = '';
-      visible += track.querySelectorAll('.resource-card').length;
+      visible += track.querySelectorAll('.resource-card, .psych-infographic').length;
     } else {
       track.style.display = 'none';
     }
@@ -615,7 +723,6 @@ filterBtns.forEach(btn => {
   });
 });
 
-// Default — show all
 applyFilter('all');
 </script>
 
