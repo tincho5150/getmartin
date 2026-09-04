@@ -41,6 +41,7 @@ html,body { height:auto; overflow-x:hidden; }
   display: flex; flex-direction: column;
   padding: 2.5rem 2.5rem;
   gap: var(--col-gap);
+  max-width: 520px;
 }
 .funnel-stage {
   display: flex; flex-direction: column;
@@ -50,18 +51,13 @@ html,body { height:auto; overflow-x:hidden; }
 .funnel-stage-header {
   background: var(--navy-dark);
   padding: 0.9rem 1.2rem;
-  display: flex; align-items: baseline;
-  justify-content: space-between; gap: 1rem;
 }
 .funnel-stage-label {
   font-size: 0.68rem; font-weight: 700;
   letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--lime);
 }
-.funnel-stage-desc {
-  font-size: 0.7rem; font-weight: 300;
-  color: rgba(240,239,240,0.3); line-height: 1.4;
-}
+.funnel-stage-desc { display: none; }
 .funnel-links {
   display: flex; flex-direction: column;
   background: #ffffff;
