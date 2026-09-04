@@ -18,6 +18,7 @@
 
 html, body { height: auto; overflow-x: hidden; }
 
+/* NAV */
 .site-nav {
   position: fixed; top: 0; left: 0; right: 0;
   height: var(--nav-height); z-index: 100;
@@ -27,97 +28,153 @@ html, body { height: auto; overflow-x: hidden; }
   background: rgba(30,44,58,0.95);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
-.nav-wordmark {
-  font-family: var(--font-display);
-  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
-  color: var(--white); text-decoration: none; flex-shrink: 0;
-}
+.nav-wordmark { font-family: var(--font-display); font-size: 1rem; font-weight: 700; letter-spacing: 0.04em; color: var(--white); text-decoration: none; flex-shrink: 0; }
 .nav-wordmark span { color: var(--lime); }
 .nav-links { display: flex; align-items: center; gap: 2rem; }
-.nav-link {
-  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--white-dim); text-decoration: none;
-  transition: color var(--dur-base);
-}
+.nav-link { font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white-dim); text-decoration: none; transition: color var(--dur-base); }
 .nav-link:hover { color: var(--white); }
 .nav-link.active { color: var(--white); }
-.nav-link-cta {
-  font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
-  padding: 0.4rem 1rem; text-decoration: none; transition: background var(--dur-base);
-}
+.nav-link-cta { font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-dark); background: var(--lime); padding: 0.4rem 1rem; text-decoration: none; transition: background var(--dur-base); }
 .nav-link-cta:hover { background: var(--lime-hover); }
-.nav-progress {
-  position: absolute; bottom: 0; left: 0;
-  height: 1px; background: var(--lime); width: 0%;
-  transition: width 0.2s linear;
-}
+.nav-progress { position: absolute; bottom: 0; left: 0; height: 1px; background: var(--lime); width: 0%; transition: width 0.2s linear; }
 
-.page { min-height: 100vh; padding-top: var(--nav-height); position: relative; }
-.page::before {
-  content: ''; position: fixed; inset: 0;
-  background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 72px 72px; pointer-events: none; z-index: 0;
-}
+/* PAGE */
+.page { min-height: 100vh; padding-top: var(--nav-height); }
 
-/* HERO */
+/* HERO — full width dark */
 .hero {
-  position: relative; z-index: 1;
+  position: relative;
   border-bottom: 1px solid var(--white-faint);
   padding: 6vw 5vw 5vw;
   min-height: 28vh;
   display: flex; flex-direction: column; justify-content: flex-end;
+  background: var(--navy-dark);
 }
-.hero-eyebrow {
-  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
-  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.2s forwards;
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none;
 }
-.hero-headline {
-  font-family: var(--font-display);
-  font-size: clamp(2.8rem, 5.5vw, 5.5rem);
-  font-weight: 700; line-height: 1.0; letter-spacing: -0.03em;
-  color: var(--white); max-width: 14ch;
-  opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards;
-}
+.hero-eyebrow { position: relative; z-index: 1; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lime); margin-bottom: 1rem; opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.2s forwards; }
+.hero-headline { position: relative; z-index: 1; font-family: var(--font-display); font-size: clamp(2.8rem, 5.5vw, 5.5rem); font-weight: 700; line-height: 1.0; letter-spacing: -0.03em; color: var(--white); max-width: 14ch; opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards; }
 .hero-headline .dim { color: var(--white-dim); }
 
 /* CONTENT */
-.content { position: relative; z-index: 1; padding: 4vw 5vw 8rem; }
+.content { padding: 0 0 8rem; }
 
-/* TRACK */
-.track { margin-bottom: 5rem; }
-.track-header {
-  display: flex; align-items: baseline; gap: 1rem;
-  margin-bottom: 0; padding-bottom: 1rem;
+/* SECTION — split layout matching home page */
+.learn-section {
+  display: grid; grid-template-columns: 1fr 1fr;
   border-bottom: 1px solid var(--white-faint);
+  min-height: 80vh;
 }
-.track-label {
-  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--lime);
+
+/* LEFT COL — dark, big title */
+.learn-left {
+  background: var(--navy-dark);
+  padding: 5vw 3.5vw 5vw 5vw;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  border-right: 1px solid var(--white-faint);
+  position: relative;
 }
-.track-desc { font-size: 0.85rem; font-weight: 300; color: var(--white-dim); }
+.learn-left::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none;
+}
+.learn-section-eyebrow { position: relative; z-index: 1; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lime); margin-bottom: 1rem; }
+.learn-section-title { position: relative; z-index: 1; font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 4rem); font-weight: 700; line-height: 1.0; letter-spacing: -0.025em; color: var(--white); }
 
-/* TRACK INTRO */
-.track-intro { padding: 1.6rem 0 2rem; max-width: 64ch; }
-.track-intro-body { font-size: 0.95rem; font-weight: 300; line-height: 1.85; color: var(--white-dim); }
-.track-intro-body strong { color: var(--white); font-weight: 400; }
+/* RIGHT COL — white, indicator + content */
+.learn-right {
+  background: #ffffff;
+  display: flex; flex-direction: column;
+  position: relative;
+}
+.learn-right::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(var(--grid-light) 1px, transparent 1px), linear-gradient(90deg, var(--grid-light) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none;
+}
 
-/* CARD GRID */
+/* INDICATOR BAR — matches ch-indicator from index */
+.learn-indicator {
+  display: flex; align-items: center;
+  padding: 0 2rem; height: 44px;
+  border-bottom: 1px solid rgba(30,44,58,0.1);
+  background: #ffffff;
+  position: relative; z-index: 2; flex-shrink: 0;
+}
+.learn-indicator-sep { width: 1px; height: 16px; background: rgba(30,44,58,0.15); margin: 0 1.5rem; flex-shrink: 0; }
+.learn-indicator-dots { display: flex; gap: 1.2rem; align-items: center; }
+.learn-dot {
+  font-family: var(--font-body); font-size: 0.72rem; font-weight: 400; letter-spacing: 0.08em;
+  color: rgba(30,44,58,0.25); border: none; background: none; cursor: pointer; padding: 0;
+  transition: color var(--dur-base);
+}
+.learn-dot:hover { color: rgba(30,44,58,0.5); }
+.learn-dot.active { color: #1e2c3a; font-weight: 700; }
+
+/* RIGHT CONTENT AREA */
+.learn-right-content {
+  flex: 1; display: flex; flex-direction: column;
+  padding: 3vw 5vw 3vw 3.5vw;
+  position: relative; z-index: 1; gap: var(--col-gap);
+}
+
+/* INTRO TEXT */
+.learn-intro {
+  font-size: 1rem; font-weight: 300; line-height: 1.8;
+  color: var(--ink-dim); max-width: 52ch;
+}
+.learn-intro strong { color: var(--ink); font-weight: 400; }
+
+/* CONCEPT PANELS — hidden by default, shown when tab active */
+.learn-panel { display: none; flex-direction: column; gap: var(--col-gap); }
+.learn-panel.active { display: flex; }
+
+/* CONCEPT CARD — navy, white text */
+.concept-card {
+  background: var(--navy-dark);
+  padding: 1.4rem;
+  display: flex; flex-direction: column; gap: 0.6rem;
+  animation: fadeUp 0.4s var(--ease-out) forwards;
+}
+.concept-card-lime {
+  background: var(--lime);
+  padding: 1.4rem;
+  display: flex; flex-direction: column; gap: 0.6rem;
+  animation: fadeUp 0.4s var(--ease-out) forwards;
+}
+.concept-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(240,239,240,0.4); }
+.concept-label-dark { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(30,44,58,0.4); }
+.concept-title { font-family: var(--font-display); font-size: clamp(1rem, 1.6vw, 1.3rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; color: var(--white); }
+.concept-title-dark { font-family: var(--font-display); font-size: clamp(1rem, 1.6vw, 1.3rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; color: var(--navy-dark); }
+.concept-body { font-size: 0.88rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.6); }
+.concept-body-dark { font-size: 0.88rem; font-weight: 300; line-height: 1.7; color: rgba(30,44,58,0.65); }
+
+/* STAT BAR inside concept card */
+.concept-stat { display: flex; align-items: center; gap: 1rem; margin-top: 0.4rem; }
+.concept-stat-num { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--lime); flex-shrink: 0; }
+.concept-stat-num-dark { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--navy-dark); flex-shrink: 0; }
+.concept-stat-right { display: flex; flex-direction: column; gap: 0.4rem; flex: 1; }
+.concept-stat-desc { font-size: 0.75rem; font-weight: 300; line-height: 1.5; color: rgba(240,239,240,0.45); }
+.concept-stat-desc-dark { font-size: 0.75rem; font-weight: 300; line-height: 1.5; color: rgba(30,44,58,0.55); }
+.concept-bar-track { height: 3px; background: rgba(240,239,240,0.1); width: 100%; }
+.concept-bar-track-dark { height: 3px; background: rgba(30,44,58,0.15); width: 100%; }
+.concept-bar-fill { height: 100%; background: var(--lime); width: 0%; transition: width 1s var(--ease-out); }
+.concept-bar-fill-dark { height: 100%; background: var(--navy-dark); width: 0%; transition: width 1s var(--ease-out); }
+
+/* TWO COLUMN inside right */
+.concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); }
+
+/* THE BASICS — card grid */
 .card-grid {
   display: grid; grid-template-columns: repeat(5, 1fr);
   gap: 1px; background: var(--white-faint);
   border: 1px solid var(--white-faint);
 }
-
-/* CARD */
-.resource-card {
-  background: #1e2c3a; padding: 1.6rem 1.4rem;
-  display: flex; flex-direction: column; gap: 0.8rem;
-  text-decoration: none; transition: background var(--dur-base);
-}
+.resource-card { background: #1e2c3a; padding: 1.6rem 1.4rem; display: flex; flex-direction: column; gap: 0.8rem; text-decoration: none; transition: background var(--dur-base); }
 .resource-card:not(.coming-soon):hover { background: #253748; }
 .resource-card.coming-soon { opacity: 0.38; cursor: default; pointer-events: none; }
 .card-track { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lime); }
@@ -129,100 +186,25 @@ html, body { height: auto; overflow-x: hidden; }
 .card-status.live { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lime); }
 .card-status.soon { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(240,239,240,0.2); }
 
-/* STAT GRID — white background, matches index right column */
-.stat-section {
-  background: #ffffff; position: relative;
-  padding: 3vw 4vw;
-  margin-bottom: 0;
+/* BASICS section is full width, not split */
+.basics-section { border-bottom: 1px solid var(--white-faint); }
+.basics-header {
+  display: flex; align-items: baseline; gap: 1rem;
+  padding: 3vw 5vw 0;
 }
-.stat-section::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(var(--grid-light) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-light) 1px, transparent 1px);
-  background-size: 72px 72px; pointer-events: none;
-}
-.stat-section .stats-grid { position: relative; z-index: 1; }
-
-.stats-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: var(--col-gap);
-}
-
-/* Lime stat card */
-.stat-card {
-  background: var(--lime); padding: 1.4rem 1.4rem 1.8rem;
-  position: relative; overflow: hidden;
-  transition: background var(--dur-base), transform var(--dur-base) var(--ease-out);
-}
-.stat-card:hover { background: var(--lime-hover); transform: translateY(-2px); }
-.stat-card .stat-number {
-  font-family: var(--font-display); font-weight: 700;
-  line-height: 0.95; letter-spacing: -0.03em;
-  margin-bottom: 0.8rem; color: var(--navy-dark);
-  font-size: clamp(2.4rem, 4.2vw, 4rem);
-}
-.stat-card .stat-desc {
-  font-size: 0.88rem; font-weight: 300; line-height: 1.6;
-  color: rgba(30,44,58,0.65);
-}
-.stat-card .stat-desc strong { color: var(--navy-dark); font-weight: 600; }
-
-/* Orange stat card */
-.stat-orange { background: var(--orange); }
-.stat-orange:hover { background: #f58535; }
-.stat-orange .stat-number { color: #fff; }
-.stat-orange .stat-desc { color: rgba(255,255,255,0.75); }
-.stat-orange .stat-desc strong { color: #fff; }
-
-/* Navy card — thesis statement */
-.card-lime {
-  background: var(--navy-dark); padding: 1.8rem;
-  display: flex; flex-direction: column; justify-content: space-between;
-  gap: 1rem;
-}
-.card-lime.no-hover { cursor: default; }
-.card-lime-text {
-  font-family: var(--font-display);
-  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
-  font-weight: 700; line-height: 1.15;
-  letter-spacing: -0.02em; color: var(--white);
-}
-
-/* Large stat card spanning full width */
-.stat-card-large {
-  background: var(--lime); padding: 2.4rem;
-  grid-column: 1 / -1;
-  display: grid; grid-template-columns: auto 1fr;
-  align-items: center; gap: 2.4rem;
-  transition: background var(--dur-base), transform var(--dur-base) var(--ease-out);
-}
-.stat-card-large:hover { background: var(--lime-hover); transform: translateY(-2px); }
-.stat-card-large .stat-number {
-  font-family: var(--font-display); font-weight: 700;
-  font-size: clamp(3.5rem, 7vw, 6rem);
-  line-height: 0.9; letter-spacing: -0.04em;
-  color: var(--navy-dark);
-}
-.stat-card-large .stat-desc {
-  font-size: 1rem; font-weight: 300; line-height: 1.65;
-  color: rgba(30,44,58,0.65);
-}
-.stat-card-large .stat-desc strong { color: var(--navy-dark); font-weight: 600; }
-
-@media (max-width: 768px) {
-  .stats-grid { grid-template-columns: 1fr; }
-  .stat-card-large { grid-template-columns: 1fr; gap: 1rem; }
-}
+.basics-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lime); }
+.basics-intro { padding: 1.6rem 5vw 2rem; max-width: 64ch; font-size: 0.95rem; font-weight: 300; line-height: 1.85; color: var(--white-dim); }
+.basics-intro strong { color: var(--white); font-weight: 400; }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 1200px) { .card-grid { grid-template-columns: repeat(4, 1fr); } }
 @media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) {
-  .hero { padding: 3rem 1.5rem 2.5rem; min-height: auto; }
-  .content { padding: 2rem 1.5rem 5rem; }
+  .learn-section { grid-template-columns: 1fr; }
+  .learn-left { min-height: 35vw; border-right: none; border-bottom: 1px solid var(--white-faint); }
   .card-grid { grid-template-columns: repeat(2, 1fr); }
+  .concept-grid { grid-template-columns: 1fr; }
   .nav-link { display: none; }
   .nav-link-cta { display: block; }
 }
@@ -251,12 +233,12 @@ html, body { height: auto; overflow-x: hidden; }
 
   <div class="content">
 
-    <!-- THE BASICS -->
-    <div class="track">
-      <div class="track-header">
-        <span class="track-label">The Basics</span>
+    <!-- ── THE BASICS ── -->
+    <div class="basics-section">
+      <div class="basics-header">
+        <span class="basics-label">The Basics</span>
       </div>
-      <div class="track-intro"><p class="track-intro-body">Before strategy, frameworks, or tactics — there is vocabulary. Marketing and sales are full of terms that get used constantly and explained rarely. <strong>This track covers the ten concepts every founder, sales leader, or commercial operator should understand before anything else makes sense.</strong> No jargon. No assumed knowledge. Start here.</p></div>
+      <p class="basics-intro">Before strategy, frameworks, or tactics — there is vocabulary. Marketing and sales are full of terms that get used constantly and explained rarely. <strong>This track covers the ten concepts every founder, sales leader, or commercial operator should understand before anything else makes sense.</strong> No jargon. No assumed knowledge. Start here.</p>
       <div class="card-grid">
 
         <a class="resource-card" href="/learn/seo">
@@ -265,157 +247,279 @@ html, body { height: auto; overflow-x: hidden; }
           <p class="card-desc">Why some pages show up on Google and others don't — and what you can actually do about it.</p>
           <div class="card-footer"><span class="card-tag">Search</span><span class="card-status live">Read now →</span></div>
         </a>
-
         <a class="resource-card" href="/learn/content-marketing">
           <span class="card-track">The Basics</span>
           <p class="card-title">Content Marketing — What It Actually Means</p>
           <p class="card-desc">Not blogging for the sake of it. The logic behind creating content that brings the right people to you before you go looking for them.</p>
           <div class="card-footer"><span class="card-tag">Content</span><span class="card-status live">Read now →</span></div>
         </a>
-
         <a class="resource-card" href="/learn/social-media-marketing">
           <span class="card-track">The Basics</span>
           <p class="card-title">Social Media Marketing — Beyond Posting and Hoping</p>
           <p class="card-desc">The difference between presence and strategy. What social actually does in a B2B sales cycle and what it can't.</p>
           <div class="card-footer"><span class="card-tag">Social</span><span class="card-status live">Read now →</span></div>
         </a>
-
         <a class="resource-card" href="/learn/email-marketing">
           <span class="card-track">The Basics</span>
           <p class="card-title">Email Marketing — Boring Name, Best Returns</p>
           <p class="card-desc">Why email outperforms every other channel in B2B — and how to use it without sounding like everyone else in the inbox.</p>
           <div class="card-footer"><span class="card-tag">Email</span><span class="card-status live">Read now →</span></div>
         </a>
-
         <a class="resource-card" href="/learn/paid-advertising">
           <span class="card-track">The Basics</span>
           <p class="card-title">Paid Advertising — When to Buy Attention vs. Earn It</p>
-          <p class="card-desc">Paid vs. organic — not which is better, but when each makes sense. The decision framework for where to spend your budget first.</p>
+          <p class="card-desc">Paid vs. organic — not which is better, but when each makes sense.</p>
           <div class="card-footer"><span class="card-tag">Paid</span><span class="card-status live">Read now →</span></div>
         </a>
-
         <a class="resource-card" href="/learn/personal-branding">
           <span class="card-track">The Basics</span>
           <p class="card-title">Personal Branding — People Buy From People, Not Logos</p>
-          <p class="card-desc">People buy from people. What personal brand actually means for a founder or sales leader — and how to build one without becoming a LinkedIn cliché.</p>
+          <p class="card-desc">What personal brand actually means for a founder or sales leader — and how to build one without becoming a LinkedIn cliché.</p>
           <div class="card-footer"><span class="card-tag">Brand</span><span class="card-status live">Read now →</span></div>
         </a>
-
         <a class="resource-card" href="/learn/marketing-funnel">
           <span class="card-track">The Basics</span>
           <p class="card-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains and Everyone Uses</p>
-          <p class="card-desc">Awareness, consideration, decision — what each stage actually means, what it takes to move buyers through it, and where most companies get stuck.</p>
+          <p class="card-desc">Awareness, consideration, decision — what each stage actually means and where most companies get stuck.</p>
           <div class="card-footer"><span class="card-tag">Funnel</span><span class="card-status live">Read now →</span></div>
         </a>
-
         <a class="resource-card" href="/learn/brand-vs-performance">
           <span class="card-track">The Basics</span>
           <p class="card-title">Brand vs. Performance — One Makes the Phone Ring Today, One Makes It Ring Forever</p>
-          <p class="card-desc">The eternal debate — building long-term trust vs. generating immediate pipeline. Why you need both and when to lean on each.</p>
+          <p class="card-desc">The eternal debate — building long-term trust vs. generating immediate pipeline.</p>
           <div class="card-footer"><span class="card-tag">Strategy</span><span class="card-status live">Read now →</span></div>
         </a>
-
         <a class="resource-card" href="/learn/inbound-vs-outbound">
           <span class="card-track">The Basics</span>
           <p class="card-title">Inbound vs. Outbound — Two Different Games</p>
-          <p class="card-desc">Attracting buyers vs. going after them. The logic, the costs, and the right mix for a B2B company at different stages of growth.</p>
+          <p class="card-desc">Attracting buyers vs. going after them. The logic, the costs, and the right mix at different stages of growth.</p>
           <div class="card-footer"><span class="card-tag">Strategy</span><span class="card-status live">Read now →</span></div>
         </a>
-
         <a class="resource-card" href="/learn/analytics-attribution">
           <span class="card-track">The Basics</span>
           <p class="card-title">Analytics and Attribution — The Last Click Gets the Credit, The First Click Did the Work</p>
-          <p class="card-desc">What to measure, what to ignore, and the honest truth about why attribution in B2B is harder than anyone admits.</p>
+          <p class="card-desc">What to measure, what to ignore, and the honest truth about attribution in B2B.</p>
           <div class="card-footer"><span class="card-tag">Analytics</span><span class="card-status live">Read now →</span></div>
         </a>
-
       </div>
     </div>
 
-    <!-- BUYER PSYCHOLOGY -->
-    <div class="track">
-      <div class="track-header">
-        <span class="track-label">Buyer Psychology</span>
+    <!-- ── BUYER PSYCHOLOGY ── -->
+    <div class="learn-section" id="section-psychology">
+      <div class="learn-left">
+        <p class="learn-section-eyebrow">Buyer Psychology</p>
+        <h2 class="learn-section-title">How people<br>actually<br>decide.</h2>
       </div>
-      <div class="track-intro"><p class="track-intro-body">B2B buyers are not rational actors who evaluate options objectively and choose the best one. They are people — under pressure, managing risk, protecting their careers, navigating internal politics. <strong>Understanding the mental models that drive real buying decisions is what separates marketers who create genuine urgency from those who just add more slides to the deck.</strong></p></div>
+      <div class="learn-right">
+        <div class="learn-indicator">
+          <div class="learn-indicator-dots" id="psych-dots">
+            <button class="learn-dot active" data-section="psychology" data-panel="0">01</button>
+            <button class="learn-dot" data-section="psychology" data-panel="1">02</button>
+            <button class="learn-dot" data-section="psychology" data-panel="2">03</button>
+            <button class="learn-dot" data-section="psychology" data-panel="3">04</button>
+            <button class="learn-dot" data-section="psychology" data-panel="4">05</button>
+          </div>
+        </div>
+        <div class="learn-right-content">
+          <p class="learn-intro">B2B buyers are not rational actors who evaluate options objectively and choose the best one. They are people — under pressure, managing risk, protecting their careers, navigating internal politics. <strong>Understanding the mental models that drive real buying decisions is what separates marketers who create genuine urgency from those who just add more slides to the deck.</strong></p>
 
-      <div class="stat-section">
-        <div class="stats-grid">
-
-          <div class="stat-card-large">
-            <div class="stat-number">75%</div>
-            <div class="stat-desc"><strong>of B2B buyers prefer to complete their research without ever talking to a sales rep.</strong> By the time they reach out, they've already formed a view. Your job is to shape that view — not overcome it after the fact. The sale happens in the research phase. If you're not present there, you're not in the conversation. — Gartner</div>
+          <!-- Panel 01 — The Buying Journey -->
+          <div class="learn-panel active" id="psychology-0">
+            <div class="concept-card">
+              <p class="concept-label">01 — The Buying Journey</p>
+              <p class="concept-title">75% of the decision happens before they talk to you</p>
+              <p class="concept-body">B2B buyers complete most of their research independently. By the time they reach out, they've already formed a view. Your job is to shape that view — not overcome it after the fact.</p>
+              <div class="concept-stat">
+                <span class="concept-stat-num">75%</span>
+                <div class="concept-stat-right">
+                  <span class="concept-stat-desc">prefer no sales rep contact during research — Gartner</span>
+                  <div class="concept-bar-track"><div class="concept-bar-fill" style="width:75%"></div></div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="stat-card">
-            <div class="stat-number">60%</div>
-            <div class="stat-desc">Of qualified B2B deals are lost to <strong>"no decision"</strong> — not to a competitor. Doing nothing is always the default. Make the cost of staying put feel more painful than the cost of moving. — CEB/Gartner</div>
+          <!-- Panel 02 — Status Quo Bias -->
+          <div class="learn-panel" id="psychology-1">
+            <div class="concept-card">
+              <p class="concept-label">02 — Status Quo Bias</p>
+              <p class="concept-title">Doing nothing always wins — unless you make the cost visible</p>
+              <p class="concept-body">The default decision in any buying process is inaction. Your product has to make the cost of staying put feel more painful than the cost of moving — or the deal dies quietly with "we'll revisit next quarter."</p>
+              <div class="concept-stat">
+                <span class="concept-stat-num">60%</span>
+                <div class="concept-stat-right">
+                  <span class="concept-stat-desc">of qualified deals lost to "no decision" — not a competitor — CEB/Gartner</span>
+                  <div class="concept-bar-track"><div class="concept-bar-fill" style="width:60%"></div></div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="stat-card stat-orange">
-            <div class="stat-number">2×</div>
-            <div class="stat-desc">Losses feel <strong>twice as powerful</strong> as equivalent gains. Reframe your pitch around what the buyer is currently losing — not what they could gain. — Kahneman &amp; Tversky</div>
+          <!-- Panel 03 — Loss Aversion -->
+          <div class="learn-panel" id="psychology-2">
+            <div class="concept-grid">
+              <div class="concept-card">
+                <p class="concept-label">03 — Loss Aversion</p>
+                <p class="concept-title">Losses feel twice as powerful as equivalent gains</p>
+                <p class="concept-body">Reframe your pitch around what the buyer is currently losing — not what they could gain. Same information, completely different urgency.</p>
+                <div class="concept-stat">
+                  <span class="concept-stat-num">2×</span>
+                  <div class="concept-stat-right">
+                    <span class="concept-stat-desc">the emotional weight of a loss vs. an equivalent gain — Kahneman &amp; Tversky</span>
+                    <div class="concept-bar-track"><div class="concept-bar-fill" style="width:100%"></div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="concept-card-lime">
+                <p class="concept-label-dark">The reframe</p>
+                <p class="concept-title-dark">"Your team is losing one full day per person, per week, to this problem."</p>
+                <p class="concept-body-dark">vs. "Our platform could increase output by 30%." Same fact. Completely different response.</p>
+              </div>
+            </div>
           </div>
 
-          <div class="stat-card">
-            <div class="stat-number">6.3</div>
-            <div class="stat-desc"><strong>Average stakeholders</strong> in a B2B purchase. Your champion has to sell your deal to a room you're never in. Give them something that does the selling without you.</div>
+          <!-- Panel 04 — The Champion Problem -->
+          <div class="learn-panel" id="psychology-3">
+            <div class="concept-card">
+              <p class="concept-label">04 — The Champion Problem</p>
+              <p class="concept-title">Your champion has to sell your deal without you in the room</p>
+              <p class="concept-body">Your champion believes in you. But they face a committee of people you've never met, with objections you've never heard, using arguments you've never given them. Most champions lose that room — not because the product is wrong, but because they weren't equipped to win it.</p>
+              <div class="concept-stat">
+                <span class="concept-stat-num">6.3</span>
+                <div class="concept-stat-right">
+                  <span class="concept-stat-desc">average stakeholders involved in a B2B purchase decision — Gartner</span>
+                  <div class="concept-bar-track"><div class="concept-bar-fill" style="width:63%"></div></div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="card-lime no-hover span-full">
-            <p class="card-lime-text">92% of B2B buyers are more likely to purchase after reading a trusted review. What others say about you does more commercial work than anything you say about yourself.</p>
+          <!-- Panel 05 — Social Proof -->
+          <div class="learn-panel" id="psychology-4">
+            <div class="concept-grid">
+              <div class="concept-card">
+                <p class="concept-label">05 — Social Proof</p>
+                <p class="concept-title">What others say does more work than anything you say</p>
+                <p class="concept-body">Buyers don't trust what companies say about themselves. A specific result from a recognisable company does more commercial work than any claim you can make.</p>
+                <div class="concept-stat">
+                  <span class="concept-stat-num">92%</span>
+                  <div class="concept-stat-right">
+                    <span class="concept-stat-desc">more likely to purchase after reading a trusted review — G2/Heinz</span>
+                    <div class="concept-bar-track"><div class="concept-bar-fill" style="width:92%"></div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="concept-card-lime">
+                <p class="concept-label-dark">The difference</p>
+                <p class="concept-title-dark">"23% reduction in spoilage in Q1"</p>
+                <p class="concept-body-dark">vs. "We helped them improve efficiency." One is a sales asset. The other is noise.</p>
+              </div>
+            </div>
           </div>
 
         </div>
       </div>
     </div>
 
-    <!-- SALES PROCESS -->
-    <div class="track">
-      <div class="track-header">
-        <span class="track-label">Sales Process</span>
+    <!-- ── SALES PROCESS ── -->
+    <div class="learn-section" id="section-sales">
+      <div class="learn-left">
+        <p class="learn-section-eyebrow">Sales Process</p>
+        <h2 class="learn-section-title">Where deals<br>move —<br>or stall.</h2>
       </div>
-      <div class="track-intro"><p class="track-intro-body">Most B2B sales processes fail at predictable moments — the discovery call that turns into a pitch, the demo shown too early, the internal champion who can't close the committee. <strong>This track maps how complex B2B deals move — or stall — and where the decisions that determine the outcome are actually made.</strong></p></div>
+      <div class="learn-right">
+        <div class="learn-indicator">
+          <div class="learn-indicator-dots" id="sales-dots">
+            <button class="learn-dot active" data-section="sales" data-panel="0">01</button>
+            <button class="learn-dot" data-section="sales" data-panel="1">02</button>
+            <button class="learn-dot" data-section="sales" data-panel="2">03</button>
+            <button class="learn-dot" data-section="sales" data-panel="3">04</button>
+            <button class="learn-dot" data-section="sales" data-panel="4">05</button>
+          </div>
+        </div>
+        <div class="learn-right-content">
+          <p class="learn-intro">Most B2B sales processes fail at predictable moments — the discovery call that turns into a pitch, the demo shown too early, the internal champion who can't close the committee. <strong>This track maps how complex B2B deals move — or stall — and where the decisions that determine the outcome are actually made.</strong></p>
 
-      <div class="stat-section">
-        <div class="stats-grid">
-
-          <div class="card-lime no-hover span-full">
-            <p class="card-lime-text">The deal is won or lost in Discovery. Everything after is confirming — or undoing — what happened in that first conversation.</p>
+          <!-- Panel 01 — Discovery -->
+          <div class="learn-panel active" id="sales-0">
+            <div class="concept-grid">
+              <div class="concept-card">
+                <p class="concept-label">01 — Discovery</p>
+                <p class="concept-title">The most important call you'll ever turn into a pitch</p>
+                <p class="concept-body">Discovery is about understanding the buyer's world — what the problem costs them, why they haven't solved it, whether you're the right fit. The moment you start showing the product, you've stopped listening.</p>
+              </div>
+              <div class="concept-card-lime">
+                <p class="concept-label-dark">The rule</p>
+                <p class="concept-title-dark">Questions over features. Always.</p>
+                <p class="concept-body-dark">You should be speaking less than 30% of the time. If you're pitching, you've already lost the discovery.</p>
+              </div>
+            </div>
           </div>
 
-          <div class="stat-card">
-            <div class="stat-number" style="font-size:clamp(1.4rem,2.2vw,2rem);letter-spacing:-0.01em;margin-bottom:0.6rem">01 — Discovery</div>
-            <div class="stat-desc"><strong>The most important call you'll turn into a pitch.</strong> Discovery is about understanding the buyer's world — what the problem costs, why they haven't solved it, whether you're the right fit. Stop showing the product. Start listening.</div>
+          <!-- Panel 02 — Qualification -->
+          <div class="learn-panel" id="sales-1">
+            <div class="concept-card">
+              <p class="concept-label">02 — Qualification</p>
+              <p class="concept-title">Not every prospect is a real opportunity</p>
+              <p class="concept-body">Establish early whether budget, authority, need, and timing are real. Deals that aren't qualified early become deals that disappear quietly at proposal stage — after you've spent weeks on them. The best sales teams disqualify faster than they qualify.</p>
+              <div class="concept-stat">
+                <span class="concept-stat-num">B·A·N·T</span>
+                <div class="concept-stat-right">
+                  <span class="concept-stat-desc">Budget · Authority · Need · Timing — the four things that make a prospect real</span>
+                  <div class="concept-bar-track"><div class="concept-bar-fill" style="width:100%"></div></div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="stat-card stat-orange">
-            <div class="stat-number" style="font-size:clamp(1.4rem,2.2vw,2rem);letter-spacing:-0.01em;margin-bottom:0.6rem">02 — Qualify</div>
-            <div class="stat-desc"><strong>Not every prospect is a real opportunity.</strong> Establish whether budget, authority, need, and timing are real — early. Deals that aren't qualified disappear at proposal stage, after weeks of work.</div>
+          <!-- Panel 03 — Demo -->
+          <div class="learn-panel" id="sales-2">
+            <div class="concept-grid">
+              <div class="concept-card">
+                <p class="concept-label">03 — The Demo</p>
+                <p class="concept-title">By the time they see it, they should already want it</p>
+                <p class="concept-body">Shown too early, the demo kills deals. It should confirm what the buyer already suspects — not convince someone who isn't ready. A generic feature walkthrough lands for no one.</p>
+              </div>
+              <div class="concept-card-lime">
+                <p class="concept-label-dark">The test</p>
+                <p class="concept-title-dark">Could this demo be for anyone?</p>
+                <p class="concept-body-dark">If yes, it will land for no one. Show them their problem being solved — not your product's capabilities.</p>
+              </div>
+            </div>
           </div>
 
-          <div class="stat-card-large">
-            <div class="stat-number">03</div>
-            <div class="stat-desc"><strong style="font-size:1.1rem;display:block;margin-bottom:0.5rem;letter-spacing:-0.01em">The Demo — by the time they see it, they should already want it.</strong>Shown too early, the demo kills deals. It should confirm what the buyer already suspects — not convince someone who isn't ready. A generic feature walkthrough lands for no one.</div>
+          <!-- Panel 04 — Proposal -->
+          <div class="learn-panel" id="sales-3">
+            <div class="concept-card">
+              <p class="concept-label">04 — The Proposal</p>
+              <p class="concept-title">A business case for people you've never met</p>
+              <p class="concept-body">A proposal is not a price list. It's a document written for the committee — people who weren't in the room. It should restate the problem in their language, quantify the cost of inaction, and make the ROI obvious to someone who has never spoken to you. Walk your champion through it before you send it.</p>
+            </div>
           </div>
 
-          <div class="stat-card">
-            <div class="stat-number" style="font-size:clamp(1.4rem,2.2vw,2rem);letter-spacing:-0.01em;margin-bottom:0.6rem">04 — Proposal</div>
-            <div class="stat-desc"><strong>A business case for people you've never met.</strong> Written for the committee — not the champion. Restate the problem in their language, quantify the cost of inaction, make the ROI obvious to someone who wasn't in the room.</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-number" style="font-size:clamp(1.4rem,2.2vw,2rem);letter-spacing:-0.01em;margin-bottom:0.6rem">05 — Close</div>
-            <div class="stat-desc"><strong>A confirmation, not a negotiation.</strong> The best closes happen when saying yes feels like the obvious, low-risk next step. If you need artificial urgency to close, the earlier stages didn't work.</div>
+          <!-- Panel 05 — Close -->
+          <div class="learn-panel" id="sales-4">
+            <div class="concept-grid">
+              <div class="concept-card">
+                <p class="concept-label">05 — The Close</p>
+                <p class="concept-title">The deal is won or lost in Discovery — not here</p>
+                <p class="concept-body">If the previous four stages were done well, the close is a confirmation, not a negotiation. The best closes happen when saying yes feels like the obvious, low-risk next step.</p>
+              </div>
+              <div class="concept-card-lime">
+                <p class="concept-label-dark">The trap</p>
+                <p class="concept-title-dark">Artificial urgency signals the value was never real</p>
+                <p class="concept-body-dark">Discounts and deadlines that appear from nowhere destroy trust. Close on confidence, not pressure.</p>
+              </div>
+            </div>
           </div>
 
         </div>
       </div>
     </div>
 
-  </div>
+  </div><!-- /content -->
 
-</div>
+</div><!-- /page -->
 
 <script>
 const progress = document.querySelector('.nav-progress');
@@ -424,6 +528,41 @@ window.addEventListener('scroll', () => {
   const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
   if (progress) progress.style.width = pct + '%';
 }, { passive: true });
+
+// Tab switching
+document.querySelectorAll('.learn-dot').forEach(dot => {
+  dot.addEventListener('click', () => {
+    const section = dot.dataset.section;
+    const panelIdx = dot.dataset.panel;
+
+    // Update dots
+    document.querySelectorAll(`.learn-dot[data-section="${section}"]`).forEach(d => {
+      d.classList.toggle('active', d.dataset.panel === panelIdx);
+    });
+
+    // Show panel
+    document.querySelectorAll(`[id^="${section}-"]`).forEach(panel => {
+      panel.classList.toggle('active', panel.id === `${section}-${panelIdx}`);
+    });
+
+    // Animate bars in active panel
+    const activePanel = document.getElementById(`${section}-${panelIdx}`);
+    if (activePanel) {
+      activePanel.querySelectorAll('.concept-bar-fill, .concept-bar-fill-dark').forEach(bar => {
+        const target = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => { bar.style.width = target; }, 50);
+      });
+    }
+  });
+});
+
+// Animate bars on load for default panels
+document.querySelectorAll('.learn-panel.active .concept-bar-fill, .learn-panel.active .concept-bar-fill-dark').forEach(bar => {
+  const target = bar.style.width;
+  bar.style.width = '0%';
+  setTimeout(() => { bar.style.width = target; }, 400);
+});
 </script>
 
 </body>
