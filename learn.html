@@ -226,80 +226,39 @@ html,body { height:auto; overflow-x:hidden; }
 
 /* SECTION BREAK */
 .section-break {
-  display: flex; flex-direction: column; align-items: flex-start;
-  padding: 4vw 5vw;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0.6rem;
+  padding: 2.8rem 5vw;
   border-bottom: 1px solid var(--white-faint);
   background: var(--navy-dark);
-  position: relative;
-}
-.section-break::before {
-  content: ''; position: absolute; inset: 0;
-  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 72px 72px; pointer-events: none;
+  text-align: center;
 }
 .section-break-top {
-  display: flex; align-items: center; gap: 0.6rem;
-  margin-bottom: 0.8rem; position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem;
 }
 .section-break-num {
   font-size: 0.78rem; font-weight: 400;
-  letter-spacing: 0.16em; color: rgba(184,212,0,0.4);
+  letter-spacing: 0.16em; color: rgba(184,212,0,0.3);
 }
 .section-break-dot {
   width: 3px; height: 3px; border-radius: 50%;
-  background: rgba(240,239,240,0.2); flex-shrink: 0;
+  background: rgba(240,239,240,0.15); flex-shrink: 0;
 }
 .section-break-label {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 5.5vw, 5.5rem);
-  font-weight: 700; line-height: 1.0; letter-spacing: -0.03em;
-  color: var(--white); position: relative; z-index: 1;
-  margin: 0;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-weight: 700; letter-spacing: -0.01em;
+  color: rgba(240,239,240,0.35);
 }
 .section-break-sub {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 5.5vw, 5.5rem);
-  font-weight: 700; line-height: 1.0; letter-spacing: -0.03em;
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 400; letter-spacing: -0.01em;
   color: var(--white-dim);
-  position: relative; z-index: 1;
-  margin: 0;
+  max-width: 52ch;
 }
 .section-break-line { display: none; }
-
-/* FUNNEL BREAK — same pattern inside basics */
-.funnel-break {
-  background: var(--navy-dark);
-  border-top: 1px solid var(--white-faint);
-  border-bottom: 1px solid var(--white-faint);
-  padding: 3vw 5vw;
-  position: relative;
-}
-.funnel-break::before {
-  content: ''; position: absolute; inset: 0;
-  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 72px 72px; pointer-events: none;
-}
-.funnel-break-top {
-  display: flex; align-items: center; gap: 1rem;
-  position: relative; z-index: 1;
-}
-.funnel-break-num {
-  font-size: 0.78rem; font-weight: 400;
-  letter-spacing: 0.16em; color: rgba(184,212,0,0.4);
-}
-.funnel-break-label {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 4rem);
-  font-weight: 700; line-height: 1.0; letter-spacing: -0.03em;
-  color: var(--white);
-}
-.funnel-break-hook { color: var(--lime); }
-
-/* FULL WIDTH LINK LIST */
-.funnel-sub-solo {
-  width: 100%;
-  border-bottom: none;
-}
 
 
 @media(max-width:1024px){
@@ -348,60 +307,63 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- SECTION BREAK -->
   <div class="section-break">
-    <div class="section-break-top"><span class="section-break-num">01</span><span class="section-break-dot"></span></div>
-    <p class="section-break-label">The Basics</p>
+    <div class="section-break-top">
+      <span class="section-break-num">01</span>
+      <span class="section-break-dot"></span>
+      <span class="section-break-label">The Basics</span>
+    </div>
     <p class="section-break-sub">Ten concepts mapped to where they actually matter in the buyer's journey.</p>
   </div>
 
   <!-- BASICS -->
   <div class="basics-full">
 
-    <div class="funnel-break">
-      <div class="funnel-break-top">
-        <span class="funnel-break-num">01</span>
-        <span class="section-break-dot"></span>
-        <span class="funnel-break-label">Awareness. <span class="funnel-break-hook">What gets you in front of buyers.</span></span>
+    <div class="funnel-subsection funnel-subsection-first">
+      <div class="funnel-sub-left">
+        <p class="funnel-sub-num">01</p>
+        <h3 class="funnel-sub-title">Awareness. <span class="funnel-sub-hook">What gets you in front of buyers.</span></h3>
       </div>
-    </div>
-    <div class="funnel-sub-right funnel-sub-solo">
+      <div class="funnel-sub-right">
         <a class="funnel-link" href="/learn/seo"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">SEO — What It Is and How It Works</span></span><span class="funnel-link-tag">Search</span><span class="funnel-link-arrow">→</span></a>
         <a class="funnel-link" href="/learn/content-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Content Marketing — What It Actually Means</span></span><span class="funnel-link-tag">Content</span><span class="funnel-link-arrow">→</span></a>
         <a class="funnel-link" href="/learn/social-media-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Social Media Marketing — Beyond Posting and Hoping</span></span><span class="funnel-link-tag">Social</span><span class="funnel-link-arrow">→</span></a>
         <a class="funnel-link" href="/learn/personal-branding"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Personal Branding — People Buy From People, Not Logos</span></span><span class="funnel-link-tag">Brand</span><span class="funnel-link-arrow">→</span></a>
-    </div>
-
-    <div class="funnel-break">
-      <div class="funnel-break-top">
-        <span class="funnel-break-num">02</span>
-        <span class="section-break-dot"></span>
-        <span class="funnel-break-label">Consideration. <span class="funnel-break-hook">Where most deals are quietly won or lost.</span></span>
       </div>
     </div>
-    <div class="funnel-sub-right funnel-sub-solo">
+
+    <div class="funnel-subsection">
+      <div class="funnel-sub-left">
+        <p class="funnel-sub-num">02</p>
+        <h3 class="funnel-sub-title">Consideration. <span class="funnel-sub-hook">Where most deals are quietly won or lost.</span></h3>
+      </div>
+      <div class="funnel-sub-right">
         <a class="funnel-link" href="/learn/email-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Email Marketing — Boring Name, Best Returns</span></span><span class="funnel-link-tag">Email</span><span class="funnel-link-arrow">→</span></a>
         <a class="funnel-link" href="/learn/inbound-vs-outbound"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Inbound vs. Outbound — Two Different Games</span></span><span class="funnel-link-tag">Strategy</span><span class="funnel-link-arrow">→</span></a>
         <a class="funnel-link" href="/learn/marketing-funnel"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains</span></span><span class="funnel-link-tag">Funnel</span><span class="funnel-link-arrow">→</span></a>
-    </div>
-
-    <div class="funnel-break">
-      <div class="funnel-break-top">
-        <span class="funnel-break-num">03</span>
-        <span class="section-break-dot"></span>
-        <span class="funnel-break-label">Decision. <span class="funnel-break-hook">Convert intent into action.</span></span>
       </div>
     </div>
-    <div class="funnel-sub-right funnel-sub-solo">
+
+    <div class="funnel-subsection">
+      <div class="funnel-sub-left">
+        <p class="funnel-sub-num">03</p>
+        <h3 class="funnel-sub-title">Decision. <span class="funnel-sub-hook">Convert intent into action.</span></h3>
+      </div>
+      <div class="funnel-sub-right">
         <a class="funnel-link" href="/learn/paid-advertising"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Paid Advertising — When to Buy Attention vs. Earn It</span></span><span class="funnel-link-tag">Paid</span><span class="funnel-link-arrow">→</span></a>
         <a class="funnel-link" href="/learn/brand-vs-performance"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Brand vs. Performance — One Makes the Phone Ring Today</span></span><span class="funnel-link-tag">Strategy</span><span class="funnel-link-arrow">→</span></a>
         <a class="funnel-link" href="/learn/analytics-attribution"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Analytics and Attribution — The Last Click Gets the Credit</span></span><span class="funnel-link-tag">Analytics</span><span class="funnel-link-arrow">→</span></a>
+      </div>
     </div>
 
   </div>
 
   <!-- SECTION BREAK -->
   <div class="section-break">
-    <div class="section-break-top"><span class="section-break-num">02</span><span class="section-break-dot"></span></div>
-    <p class="section-break-label">Buyer Psychology</p>
+    <div class="section-break-top">
+      <span class="section-break-num">02</span>
+      <span class="section-break-dot"></span>
+      <span class="section-break-label">Buyer Psychology</span>
+    </div>
     <p class="section-break-sub">Why buyers do what they do — and how to use it to create genuine urgency.</p>
   </div>
 
@@ -602,8 +564,11 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- SECTION BREAK -->
   <div class="section-break">
-    <div class="section-break-top"><span class="section-break-num">03</span><span class="section-break-dot"></span></div>
-    <p class="section-break-label">Sales Process</p>
+    <div class="section-break-top">
+      <span class="section-break-num">03</span>
+      <span class="section-break-dot"></span>
+      <span class="section-break-label">Sales Process</span>
+    </div>
     <p class="section-break-sub">Where deals move, where they stall, and what determines the outcome.</p>
   </div>
 
