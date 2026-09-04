@@ -254,6 +254,95 @@ html, body { height: auto; overflow-x: hidden; }
 .psych-trust-bar-dim  { background: rgba(255,255,255,0.1); width: 18%; }
 .psych-trust-bar-lime { background: var(--lime); width: 85%; }
 
+/* SALES PROCESS TIMELINE */
+.sales-timeline {
+  position: relative;
+  padding: 0.5rem 0 2rem 0;
+}
+.sales-timeline-line {
+  position: absolute;
+  left: 23px; top: 0; bottom: 0; width: 1px;
+  background: var(--white-faint);
+  transform-origin: top;
+}
+.sales-timeline-line-progress {
+  position: absolute;
+  left: 0; top: 0; width: 100%;
+  background: var(--lime);
+  height: 0%;
+  transition: height 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+.sales-stage {
+  display: flex; gap: 1.8rem;
+  padding: 0 0 2.5rem 0;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+  position: relative;
+}
+.sales-stage.visible { opacity: 1; transform: translateY(0); }
+.sales-stage-marker {
+  flex-shrink: 0;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0;
+}
+.sales-stage-dot {
+  width: 48px; height: 48px;
+  border: 1px solid var(--white-faint);
+  background: var(--navy-dark);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.3s, background 0.3s;
+}
+.sales-stage.visible .sales-stage-dot {
+  border-color: rgba(184,212,0,0.4);
+  background: rgba(184,212,0,0.07);
+}
+.sales-stage-num {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+  color: rgba(184,212,0,0.4);
+}
+.sales-stage.visible .sales-stage-num { color: var(--lime); }
+.sales-stage-content {
+  flex: 1; padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--white-faint);
+}
+.sales-stage:last-child .sales-stage-content { border-bottom: none; }
+.sales-stage-name {
+  font-size: 1rem; font-weight: 600; color: var(--white);
+  letter-spacing: -0.01em; margin-bottom: 0.4rem;
+}
+.sales-stage-sub {
+  font-size: 0.82rem; font-weight: 300; color: var(--white-dim);
+  line-height: 1.6; margin-bottom: 1rem;
+}
+.sales-stage-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+.sales-stage-pill {
+  font-size: 0.6rem; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 0.25rem 0.6rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(240,239,240,0.4);
+}
+.sales-stage-pill.pill-warn {
+  border-color: rgba(244,115,32,0.3);
+  color: rgba(244,115,32,0.7);
+  background: rgba(244,115,32,0.05);
+}
+.sales-stage-pill.pill-good {
+  border-color: rgba(184,212,0,0.25);
+  color: rgba(184,212,0,0.7);
+  background: rgba(184,212,0,0.05);
+}
+.sales-stage-trap {
+  padding: 0.8rem 1rem;
+  background: rgba(244,115,32,0.05);
+  border-left: 2px solid rgba(244,115,32,0.4);
+  font-size: 0.8rem; font-weight: 300; line-height: 1.6;
+  color: rgba(240,239,240,0.5);
+}
+.sales-stage-trap strong { color: rgba(244,115,32,0.8); font-weight: 400; }
+
+
+
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 1200px) { .card-grid { grid-template-columns: repeat(4, 1fr); } }
@@ -297,9 +386,7 @@ html, body { height: auto; overflow-x: hidden; }
     <button class="filter-btn" data-filter="basics">The Basics</button>
     <button class="filter-btn" data-filter="psychology">Buyer Psychology</button>
     <button class="filter-btn" data-filter="sales">Sales Process</button>
-    <button class="filter-btn" data-filter="framework">Frameworks</button>
     <button class="filter-btn" data-filter="teardown">Teardowns</button>
-    <button class="filter-btn" data-filter="video">Videos</button>
     <span class="filter-count" id="filter-count">43 pieces</span>
   </div>
 
@@ -605,28 +692,91 @@ html, body { height: auto; overflow-x: hidden; }
         <span class="track-desc">How the sales motion works — the stages, the traps, the mechanics</span>
       </div>
       <div class="track-intro"><p class="track-intro-body">Most B2B sales processes fail at predictable moments — the discovery call that turns into a pitch, the demo shown too early, the internal champion who can't close the committee. <strong>This track maps the mechanics of how complex B2B deals move — or stall — and where the decisions that determine the outcome are actually made.</strong></p></div>
-      <div class="card-grid">
-        <a class="resource-card coming-soon" href="#"><span class="card-track">Sales Process</span><p class="card-title">The Discovery Call</p><p class="card-desc">What it is, what it should be, and why most discovery calls are actually pitch calls in disguise — and what that costs you.</p><div class="card-footer"><span class="card-tag">Calls</span><span class="card-status soon">Coming soon</span></div></a>
-        <a class="resource-card coming-soon" href="#"><span class="card-track">Sales Process</span><p class="card-title">The Demo Trap</p><p class="card-desc">Why showing the product too early kills deals — and what needs to happen before the demo for it to land the way you hope.</p><div class="card-footer"><span class="card-tag">Demos</span><span class="card-status soon">Coming soon</span></div></a>
-        <a class="resource-card coming-soon" href="#"><span class="card-track">Sales Process</span><p class="card-title">The Multi-Stakeholder Sale</p><p class="card-desc">How to navigate 6 decision-makers with different priorities, different objections, and different definitions of success.</p><div class="card-footer"><span class="card-tag">Enterprise</span><span class="card-status soon">Coming soon</span></div></a>
-        <a class="resource-card coming-soon" href="#"><span class="card-track">Sales Process</span><p class="card-title">The Three Stages Every Buyer Goes Through</p><p class="card-desc">Top, middle, and bottom of funnel — what buyers need at each stage and why sending the wrong content at the wrong time loses the deal quietly.</p><div class="card-footer"><span class="card-tag">Funnel</span><span class="card-status soon">Coming soon</span></div></a>
-        <a class="resource-card coming-soon" href="#"><span class="card-track">Sales Process</span><p class="card-title">The Warm Lead vs. Cold Lead</p><p class="card-desc">What actually makes a lead warm — and why most "warm" leads are still cold in the ways that matter most.</p><div class="card-footer"><span class="card-tag">Pipeline</span><span class="card-status soon">Coming soon</span></div></a>
-      </div>
-    </div>
+      <div class="sales-timeline" id="salesTimeline">
+        <div class="sales-timeline-line">
+          <div class="sales-timeline-line-progress" id="salesLineProgress"></div>
+        </div>
 
-    <!-- FRAMEWORKS -->
-    <div class="track" data-track="framework">
-      <div class="track-header">
-        <span class="track-label">Frameworks</span>
-        <span class="track-desc">Applied thinking built from the work</span>
-      </div>
-      <div class="track-intro"><p class="track-intro-body">These are not textbook concepts. They are frameworks built from working directly on B2B sales problems — diagnostic tools, pre-call experiences, site architectures, campaign systems. <strong>Each one is a reusable way of thinking about a problem your prospects face before they become your clients.</strong> Read them to understand the thinking behind the work.</p></div>
-      <div class="card-grid">
-        <a class="resource-card coming-soon" href="#"><span class="card-track">Framework</span><p class="card-title">The Hidden Cost Principle</p><p class="card-desc">Why buyers can't act on pain they can't feel — and what it takes to make an invisible cost visible before the first call.</p><div class="card-footer"><span class="card-tag">Buyer psychology</span><span class="card-status soon">Coming soon</span></div></a>
-        <a class="resource-card coming-soon" href="#"><span class="card-track">Framework</span><p class="card-title">The Pre-Call Experience</p><p class="card-desc">The buying decision happens before hello. What occurs in the 72 hours before a prospect agrees to a call — and how to own it.</p><div class="card-footer"><span class="card-tag">Buyer journey</span><span class="card-status soon">Coming soon</span></div></a>
-        <a class="resource-card coming-soon" href="#"><span class="card-track">Framework</span><p class="card-title">How B2B Buyers Actually Decide</p><p class="card-desc">6 of 10 decision-makers, 75% who'd rather never talk to a rep. The research behind why the sale is mostly over before it starts.</p><div class="card-footer"><span class="card-tag">Buyer psychology</span><span class="card-status soon">Coming soon</span></div></a>
-        <a class="resource-card coming-soon" href="#"><span class="card-track">Framework</span><p class="card-title">What GEO Means for B2B</p><p class="card-desc">Generative Engine Optimisation isn't a technical trick — it's clarity. Writing so well that any system, human or machine, immediately understands what you do.</p><div class="card-footer"><span class="card-tag">Content strategy</span><span class="card-status soon">Coming soon</span></div></a>
-        <a class="resource-card coming-soon" href="#"><span class="card-track">Framework</span><p class="card-title">The Confirmation Call</p><p class="card-desc">What it looks like when the rep arrives to confirm rather than convince — and how to engineer that shift before anyone picks up the phone.</p><div class="card-footer"><span class="card-tag">Sales process</span><span class="card-status soon">Coming soon</span></div></a>
+        <div class="sales-stage" data-stage="0">
+          <div class="sales-stage-marker">
+            <div class="sales-stage-dot"><span class="sales-stage-num">01</span></div>
+          </div>
+          <div class="sales-stage-content">
+            <p class="sales-stage-name">Discovery</p>
+            <p class="sales-stage-sub">The most important conversation in the sales process — and the one most often turned into a pitch. Discovery is about understanding the buyer's world: what the problem costs them, why they haven't solved it, and whether you're actually the right fit.</p>
+            <div class="sales-stage-pills">
+              <span class="sales-stage-pill pill-good">Goal: understand, not pitch</span>
+              <span class="sales-stage-pill">Questions over features</span>
+              <span class="sales-stage-pill">Why now matters</span>
+            </div>
+            <div class="sales-stage-trap"><strong>The trap:</strong> turning discovery into a demo. The moment you start showing the product, you've stopped listening — and the buyer notices.</div>
+          </div>
+        </div>
+
+        <div class="sales-stage" data-stage="1">
+          <div class="sales-stage-marker">
+            <div class="sales-stage-dot"><span class="sales-stage-num">02</span></div>
+          </div>
+          <div class="sales-stage-content">
+            <p class="sales-stage-name">Qualification</p>
+            <p class="sales-stage-sub">Not every prospect is a real opportunity. Qualification is the discipline of establishing — early — whether the budget, authority, need, and timing are real. Chasing unqualified deals wastes both sides' time and kills your close rate.</p>
+            <div class="sales-stage-pills">
+              <span class="sales-stage-pill pill-good">Budget confirmed</span>
+              <span class="sales-stage-pill pill-good">Decision-maker identified</span>
+              <span class="sales-stage-pill pill-warn">Timeline is vague = risk</span>
+            </div>
+            <div class="sales-stage-trap"><strong>The trap:</strong> hoping qualification will sort itself out later. It won't. Deals that aren't qualified early become deals that disappear at proposal stage.</div>
+          </div>
+        </div>
+
+        <div class="sales-stage" data-stage="2">
+          <div class="sales-stage-marker">
+            <div class="sales-stage-dot"><span class="sales-stage-num">03</span></div>
+          </div>
+          <div class="sales-stage-content">
+            <p class="sales-stage-name">The Demo</p>
+            <p class="sales-stage-sub">Shown too early, the demo kills deals. Shown to the wrong person, it produces no decision. The demo should be a confirmation of what the buyer already suspects is true — not the moment you try to convince them. By the time they see the product, they should already want it.</p>
+            <div class="sales-stage-pills">
+              <span class="sales-stage-pill pill-warn">Too early = fatal</span>
+              <span class="sales-stage-pill pill-good">Tailored to their problem</span>
+              <span class="sales-stage-pill">Right stakeholders in room</span>
+            </div>
+            <div class="sales-stage-trap"><strong>The trap:</strong> a generic feature walkthrough. If the demo could be for anyone, it lands for no one. Show them their problem being solved — not your product's capabilities.</div>
+          </div>
+        </div>
+
+        <div class="sales-stage" data-stage="3">
+          <div class="sales-stage-marker">
+            <div class="sales-stage-dot"><span class="sales-stage-num">04</span></div>
+          </div>
+          <div class="sales-stage-content">
+            <p class="sales-stage-name">The Proposal</p>
+            <p class="sales-stage-sub">A proposal is not a price list. It's a business case — written for a committee, not the person you've been speaking to. It should restate the problem in their language, quantify the cost of inaction, and make the ROI obvious to someone who has never met you.</p>
+            <div class="sales-stage-pills">
+              <span class="sales-stage-pill pill-good">Written for the committee</span>
+              <span class="sales-stage-pill">Cost of inaction visible</span>
+              <span class="sales-stage-pill pill-warn">Price without context = stall</span>
+            </div>
+            <div class="sales-stage-trap"><strong>The trap:</strong> sending a proposal without a walkthrough. A PDF sent cold gets read cold. Walk your champion through it so they can walk the room through it.</div>
+          </div>
+        </div>
+
+        <div class="sales-stage" data-stage="4">
+          <div class="sales-stage-marker">
+            <div class="sales-stage-dot"><span class="sales-stage-num">05</span></div>
+          </div>
+          <div class="sales-stage-content">
+            <p class="sales-stage-name">The Close</p>
+            <p class="sales-stage-sub">If the previous four stages were done well, the close is a confirmation — not a negotiation. The deal is won or lost in Discovery, not here. The best closes happen when the buyer feels that saying yes is the obvious, low-risk, well-understood next step.</p>
+            <div class="sales-stage-pills">
+              <span class="sales-stage-pill pill-good">Confirmation, not persuasion</span>
+              <span class="sales-stage-pill">Objections already handled</span>
+              <span class="sales-stage-pill pill-warn">Urgency manufactured = churn</span>
+            </div>
+            <div class="sales-stage-trap"><strong>The trap:</strong> artificial urgency. Discounts and deadlines that appear from nowhere signal that the value was never real. Close on confidence, not pressure.</div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -643,20 +793,6 @@ html, body { height: auto; overflow-x: hidden; }
         <a class="resource-card coming-soon" href="#"><span class="card-track">Teardown</span><p class="card-title">How to Build a Resource Hub That Earns Trust</p><p class="card-desc">Architecture, content strategy, and the ungated decision — how to build a library that brings buyers back before they're ready to buy.</p><div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div></a>
         <a class="resource-card coming-soon" href="#"><span class="card-track">Teardown</span><p class="card-title">How to Write a Case Study That Closes</p><p class="card-desc">The difference between a portfolio piece and a sales asset. Structure, copy, and the one thesis every case study needs to do its job.</p><div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div></a>
         <a class="resource-card coming-soon" href="#"><span class="card-track">Teardown</span><p class="card-title">How to Turn a Feature Into a Felt Cost</p><p class="card-desc">The copy and design decisions that take a product capability and turn it into something the prospect can feel in their own operation — before the demo.</p><div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div></a>
-      </div>
-    </div>
-
-    <!-- VIDEOS -->
-    <div class="track" data-track="video">
-      <div class="track-header">
-        <span class="track-label">Videos</span>
-        <span class="track-desc">See the concepts in action</span>
-      </div>
-      <div class="track-intro"><p class="track-intro-body">Some things are faster to show than to explain. This track is screen recordings, walkthroughs, and build sessions — the tools and sites from the Proof page walked through live, with commentary on the decisions behind them. <strong>Watch how the work gets made before reading about how to make it yourself.</strong></p></div>
-      <div class="card-grid">
-        <a class="resource-card coming-soon" href="#"><span class="card-track">Video</span><p class="card-title">Walkthrough: The Loss Analysis Diagnostic</p><p class="card-desc">A 4-minute screen walkthrough of the full diagnostic — from the intro screen to the personalised roadmap output.</p><div class="card-footer"><span class="card-tag">Walkthrough</span><span class="card-status soon">Coming soon</span></div></a>
-        <a class="resource-card coming-soon" href="#"><span class="card-track">Video</span><p class="card-title">Walkthrough: The 3D Truck Loader</p><p class="card-desc">Three load scenarios, the ROI calculator, and the network flow simulator — everything the buyer experiences before the demo.</p><div class="card-footer"><span class="card-tag">Walkthrough</span><span class="card-status soon">Coming soon</span></div></a>
-        <a class="resource-card coming-soon" href="#"><span class="card-track">Video</span><p class="card-title">How I Build a Pre-Call Experience</p><p class="card-desc">End to end — from the brief to the live tool. The decisions, the tradeoffs, and what changes when the prospect arrives already educated.</p><div class="card-footer"><span class="card-tag">Behind the build</span><span class="card-status soon">Coming soon</span></div></a>
       </div>
     </div>
 
@@ -692,8 +828,27 @@ concepts.forEach(concept => {
   });
 });
 
-// Animate scale bars when concept 1 is open on load (it's not, but just in case)
-const filterBtns = document.querySelectorAll('.filter-btn');
+// Sales timeline scroll animation
+const salesStages = document.querySelectorAll('.sales-stage');
+const salesLine = document.getElementById('salesLineProgress');
+
+if (salesStages.length && salesLine) {
+  const timelineObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Update line progress
+        const visible = document.querySelectorAll('.sales-stage.visible').length;
+        const pct = (visible / salesStages.length) * 100;
+        salesLine.style.height = pct + '%';
+      }
+    });
+  }, { threshold: 0.3 });
+  salesStages.forEach(s => timelineObs.observe(s));
+}
+
+// Filter
+ = document.querySelectorAll('.filter-btn');
 const tracks     = document.querySelectorAll('.track');
 const countEl    = document.getElementById('filter-count');
 
