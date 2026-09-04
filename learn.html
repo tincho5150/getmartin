@@ -35,7 +35,7 @@ html,body { height:auto; overflow-x:hidden; }
 .hero-headline { position:relative;z-index:1;font-family:var(--font-display);font-size:clamp(2.8rem,5.5vw,5.5rem);font-weight:700;line-height:1.0;letter-spacing:-0.03em;color:var(--white);max-width:14ch;opacity:0;animation:fadeUp 0.7s var(--ease-out) 0.3s forwards; }
 .hero-headline .dim { color:var(--white-dim); }
 
-/* THE BASICS — full width */
+/* BASICS */
 .basics-section { border-bottom:1px solid var(--white-faint); }
 .basics-header { padding:3vw 5vw 0; }
 .basics-label { font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--lime); }
@@ -57,15 +57,15 @@ html,body { height:auto; overflow-x:hidden; }
 /* SPLIT SECTION */
 .learn-section { display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--white-faint);min-height:80vh; }
 
-/* LEFT — dark */
+/* LEFT */
 .learn-left { background:var(--navy-dark);padding:5vw 3.5vw 5vw 5vw;display:flex;flex-direction:column;justify-content:flex-end;border-right:1px solid var(--white-faint);position:relative; }
 .learn-left::before { content:'';position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:72px 72px;pointer-events:none; }
 .learn-section-eyebrow { position:relative;z-index:1;font-size:0.72rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--lime);margin-bottom:1rem; }
 .learn-section-title { position:relative;z-index:1;font-family:var(--font-display);font-size:clamp(2.2rem,4vw,4rem);font-weight:700;line-height:1.0;letter-spacing:-0.025em;color:var(--white); }
-.learn-section-intro { position:relative;z-index:1;font-size:0.9rem;font-weight:300;line-height:1.7;color:var(--white-dim);margin-top:1.5rem;max-width:38ch; }
+.learn-section-intro { position:relative;z-index:1;font-size:1rem;font-weight:300;line-height:1.75;color:var(--white-dim);margin-top:1.5rem;max-width:38ch; }
 .learn-section-intro strong { color:var(--white);font-weight:400; }
 
-/* RIGHT — white, vertical nav + content */
+/* RIGHT */
 .learn-right { background:#ffffff;display:flex;flex-direction:column;position:relative; }
 .learn-right::before { content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(30,44,58,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(30,44,58,0.04) 1px,transparent 1px);background-size:72px 72px;pointer-events:none; }
 .learn-body { flex:1;display:grid;grid-template-columns:240px 1fr;position:relative;z-index:1;align-items:center; }
@@ -81,33 +81,42 @@ html,body { height:auto; overflow-x:hidden; }
 .learn-nav-item.active .learn-nav-title { color:var(--ink);font-weight:600; }
 .learn-nav-item:hover .learn-nav-title { color:var(--ink-dim); }
 
-/* CONTENT PANELS */
+/* CONTENT */
 .learn-content-area { padding:3rem 3rem 3rem 2.5rem;display:flex;flex-direction:column;gap:var(--col-gap);justify-content:center; }
 .learn-panel { display:none;flex-direction:column;gap:var(--col-gap); }
 .learn-panel.active { display:flex;animation:fadeUp 0.3s var(--ease-out) forwards; }
 
-/* CARDS inside panels */
+/* CONCEPT CARD */
 .concept-card { background:var(--navy-dark);padding:1.8rem;display:flex;flex-direction:column;gap:0.8rem; }
 .concept-card-lime { background:var(--lime);padding:1.8rem;display:flex;flex-direction:column;gap:0.8rem; }
-.concept-label { font-size:0.62rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,239,240,0.35); }
-.concept-label-dark { font-size:0.62rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(30,44,58,0.35); }
+.concept-label { font-size:0.62rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,239,240,0.4); }
+.concept-label-dark { font-size:0.62rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(30,44,58,0.38); }
 .concept-title { font-family:var(--font-display);font-size:clamp(1.05rem,1.6vw,1.35rem);font-weight:700;line-height:1.2;letter-spacing:-0.01em;color:var(--white); }
 .concept-title-dark { font-family:var(--font-display);font-size:clamp(1.05rem,1.6vw,1.35rem);font-weight:700;line-height:1.2;letter-spacing:-0.01em;color:var(--navy-dark); }
-.concept-body { font-size:0.88rem;font-weight:300;line-height:1.8;color:rgba(240,239,240,0.62); }
-.concept-body-dark { font-size:0.88rem;font-weight:300;line-height:1.8;color:rgba(30,44,58,0.62); }
+.concept-body { font-size:0.88rem;font-weight:300;line-height:1.8;color:rgba(240,239,240,0.75); }
+.concept-body-dark { font-size:0.88rem;font-weight:300;line-height:1.8;color:rgba(30,44,58,0.72); }
 .concept-grid { display:grid;grid-template-columns:1fr 1fr;gap:var(--col-gap); }
 
-/* STAT CARD — separate lime card below content */
-.stat-card-standalone {
+/* MINI DASHBOARD — separate lime card */
+.stat-dashboard {
   background:var(--lime);
   padding:1.4rem 1.8rem;
-  display:flex;align-items:center;gap:1.5rem;
+  display:flex;flex-direction:column;gap:0.9rem;
 }
-.stat-card-big-num { font-family:var(--font-display);font-size:clamp(2.8rem,5vw,4rem);font-weight:700;line-height:1;letter-spacing:-0.04em;color:var(--navy-dark);flex-shrink:0; }
-.stat-card-right { display:flex;flex-direction:column;gap:0.5rem;flex:1; }
-.stat-card-desc { font-size:0.82rem;font-weight:400;line-height:1.5;color:rgba(30,44,58,0.7); }
-.stat-bar-track { height:4px;background:rgba(30,44,58,0.15);width:100%; }
+.stat-dashboard-row {
+  display:flex;align-items:center;gap:1rem;
+}
+.stat-num {
+  font-family:var(--font-display);font-size:clamp(1.6rem,2.8vw,2.4rem);
+  font-weight:700;line-height:1;letter-spacing:-0.04em;
+  color:var(--navy-dark);flex-shrink:0;width:5.5rem;text-align:right;
+}
+.stat-right { display:flex;flex-direction:column;gap:0.35rem;flex:1; }
+.stat-desc { font-size:0.78rem;font-weight:400;line-height:1.4;color:rgba(30,44,58,0.7); }
+.stat-source { font-size:0.64rem;font-weight:300;color:rgba(30,44,58,0.4); }
+.stat-bar-track { height:4px;background:rgba(30,44,58,0.12);width:100%; }
 .stat-bar-fill { height:100%;background:var(--navy-dark);width:0%;transition:width 1.2s var(--ease-out); }
+.stat-divider { height:1px;background:rgba(30,44,58,0.1); }
 
 @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
 
@@ -124,7 +133,8 @@ html,body { height:auto; overflow-x:hidden; }
   .learn-content-area{padding:1.5rem}
   .card-grid{grid-template-columns:repeat(2,1fr)}
   .concept-grid{grid-template-columns:1fr}
-  .stat-card-standalone{flex-direction:column;gap:0.8rem}
+  .stat-dashboard-row{flex-wrap:wrap}
+  .stat-num{width:auto;text-align:left}
   .nav-link{display:none}
   .nav-link-cta{display:block}
 }
@@ -150,7 +160,7 @@ html,body { height:auto; overflow-x:hidden; }
     <h1 class="hero-headline">Marketing and sales.<br><span class="dim">Properly explained.</span></h1>
   </div>
 
-  <!-- ── THE BASICS ── -->
+  <!-- BASICS -->
   <div class="basics-section">
     <div class="basics-header"><span class="basics-label">The Basics</span></div>
     <p class="basics-intro">Before strategy, frameworks, or tactics — there is vocabulary. Marketing and sales are full of terms that get used constantly and explained rarely. <strong>This track covers the ten concepts every founder, sales leader, or commercial operator should understand before anything else makes sense.</strong> No jargon. No assumed knowledge. Start here.</p>
@@ -161,14 +171,14 @@ html,body { height:auto; overflow-x:hidden; }
       <a class="resource-card" href="/learn/email-marketing"><span class="card-track">The Basics</span><p class="card-title">Email Marketing — Boring Name, Best Returns</p><p class="card-desc">Why email outperforms every other channel in B2B — and how to use it without sounding like everyone else.</p><div class="card-footer"><span class="card-tag">Email</span><span class="card-status live">Read now →</span></div></a>
       <a class="resource-card" href="/learn/paid-advertising"><span class="card-track">The Basics</span><p class="card-title">Paid Advertising — When to Buy Attention vs. Earn It</p><p class="card-desc">Paid vs. organic — not which is better, but when each makes sense.</p><div class="card-footer"><span class="card-tag">Paid</span><span class="card-status live">Read now →</span></div></a>
       <a class="resource-card" href="/learn/personal-branding"><span class="card-track">The Basics</span><p class="card-title">Personal Branding — People Buy From People, Not Logos</p><p class="card-desc">What personal brand actually means for a founder or sales leader.</p><div class="card-footer"><span class="card-tag">Brand</span><span class="card-status live">Read now →</span></div></a>
-      <a class="resource-card" href="/learn/marketing-funnel"><span class="card-track">The Basics</span><p class="card-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains</p><p class="card-desc">What each stage actually means and where most companies get stuck.</p><div class="card-footer"><span class="card-tag">Funnel</span><span class="card-status live">Read now →</span></div></a>
+      <a class="resource-card" href="/learn/marketing-funnel"><span class="card-track">The Basics</span><p class="card-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains</p><p class="card-desc">What each funnel stage actually means and where most companies get stuck.</p><div class="card-footer"><span class="card-tag">Funnel</span><span class="card-status live">Read now →</span></div></a>
       <a class="resource-card" href="/learn/brand-vs-performance"><span class="card-track">The Basics</span><p class="card-title">Brand vs. Performance — One Makes the Phone Ring Today</p><p class="card-desc">Building long-term trust vs. generating immediate pipeline. Why you need both.</p><div class="card-footer"><span class="card-tag">Strategy</span><span class="card-status live">Read now →</span></div></a>
       <a class="resource-card" href="/learn/inbound-vs-outbound"><span class="card-track">The Basics</span><p class="card-title">Inbound vs. Outbound — Two Different Games</p><p class="card-desc">Attracting buyers vs. going after them. The logic, the costs, the right mix.</p><div class="card-footer"><span class="card-tag">Strategy</span><span class="card-status live">Read now →</span></div></a>
       <a class="resource-card" href="/learn/analytics-attribution"><span class="card-track">The Basics</span><p class="card-title">Analytics and Attribution — The Last Click Gets the Credit</p><p class="card-desc">What to measure, what to ignore, and the honest truth about attribution in B2B.</p><div class="card-footer"><span class="card-tag">Analytics</span><span class="card-status live">Read now →</span></div></a>
     </div>
   </div>
 
-  <!-- ── BUYER PSYCHOLOGY ── -->
+  <!-- BUYER PSYCHOLOGY -->
   <div class="learn-section">
     <div class="learn-left">
       <p class="learn-section-eyebrow">Buyer Psychology</p>
@@ -190,13 +200,34 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="concept-card">
               <p class="concept-label">The Buying Journey</p>
               <p class="concept-title">75% of the decision happens before they talk to you</p>
-              <p class="concept-body">B2B buyers complete most of their research independently — before a rep is ever involved. By the time they reach out, they've already formed a view. Your job is to shape that view, not overcome it after the fact. The sale happens in the research phase.</p>
+              <p class="concept-body">B2B buyers complete most of their research independently. By the time they reach out, they've already formed a view and often have a preferred vendor. Your job is to shape that view during the research phase — not overcome it after the fact.</p>
             </div>
-            <div class="stat-card-standalone">
-              <span class="stat-card-big-num">75%</span>
-              <div class="stat-card-right">
-                <span class="stat-card-desc">prefer no sales rep contact during research — Gartner</span>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="75"></div></div>
+            <div class="stat-dashboard">
+              <div class="stat-dashboard-row">
+                <span class="stat-num">80%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">of the buying journey is self-directed, without vendor contact</span>
+                  <span class="stat-source">Gartner, 2024</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="80"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">81%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">of buyers have already chosen a preferred vendor before first contact</span>
+                  <span class="stat-source">6sense, 2024 Buyer Experience Report</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="81"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">83%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">define their purchase requirements before engaging any sales rep</span>
+                  <span class="stat-source">6sense, 2025 Buyer Experience Report</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="83"></div></div>
+                </div>
               </div>
             </div>
           </div>
@@ -207,11 +238,32 @@ html,body { height:auto; overflow-x:hidden; }
               <p class="concept-title">Doing nothing always wins — unless you make the cost visible</p>
               <p class="concept-body">The default decision in any buying process is inaction. Change requires effort, risk, and internal justification. Your product has to make the cost of staying put feel more painful than the cost of moving — or the deal dies quietly with "we'll revisit next quarter."</p>
             </div>
-            <div class="stat-card-standalone">
-              <span class="stat-card-big-num">60%</span>
-              <div class="stat-card-right">
-                <span class="stat-card-desc">of qualified deals lost to "no decision" — not a competitor — CEB/Gartner</span>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="60"></div></div>
+            <div class="stat-dashboard">
+              <div class="stat-dashboard-row">
+                <span class="stat-num">40–60%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">of qualified B2B deals are lost to "no decision" — not a competitor</span>
+                  <span class="stat-source">Dixon &amp; McKenna, The Jolt Effect / HBR 2022</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="50"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">86%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">of B2B purchases stall before a decision is reached</span>
+                  <span class="stat-source">Forrester, State of Business Buying 2024</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="86"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">2–3×</span>
+                <div class="stat-right">
+                  <span class="stat-desc">no-decision losses exceed losses to any single competitor</span>
+                  <span class="stat-source">Gartner buyer behaviour research</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="100"></div></div>
+                </div>
               </div>
             </div>
           </div>
@@ -221,7 +273,7 @@ html,body { height:auto; overflow-x:hidden; }
               <div class="concept-card">
                 <p class="concept-label">Loss Aversion</p>
                 <p class="concept-title">Losses feel twice as powerful as equivalent gains</p>
-                <p class="concept-body">Reframe your pitch around what the buyer is currently losing — not what they could gain. Same information, completely different urgency. — Kahneman &amp; Tversky</p>
+                <p class="concept-body">Reframe your pitch around what the buyer is currently losing — not what they could gain. Same information, completely different urgency.</p>
               </div>
               <div class="concept-card-lime">
                 <p class="concept-label-dark">The reframe</p>
@@ -229,11 +281,23 @@ html,body { height:auto; overflow-x:hidden; }
                 <p class="concept-body-dark">vs. "Our platform could increase output by 30%." Same fact. Completely different emotional response.</p>
               </div>
             </div>
-            <div class="stat-card-standalone">
-              <span class="stat-card-big-num">2×</span>
-              <div class="stat-card-right">
-                <span class="stat-card-desc">the emotional weight of a loss vs. an equivalent gain — Kahneman &amp; Tversky</span>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="100"></div></div>
+            <div class="stat-dashboard">
+              <div class="stat-dashboard-row">
+                <span class="stat-num">2×</span>
+                <div class="stat-right">
+                  <span class="stat-desc">losses feel approximately twice as powerful as equivalent gains</span>
+                  <span class="stat-source">Kahneman &amp; Tversky, Prospect Theory, 1979</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="100"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">60%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">of deals lost to no decision trace directly to fear of a wrong choice — not love of the status quo</span>
+                  <span class="stat-source">Dixon &amp; McKenna, The Jolt Effect</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="60"></div></div>
+                </div>
               </div>
             </div>
           </div>
@@ -244,11 +308,32 @@ html,body { height:auto; overflow-x:hidden; }
               <p class="concept-title">Your champion has to sell your deal without you in the room</p>
               <p class="concept-body">Your champion believes in you. But they face a committee of people you've never met, with objections you've never heard, using arguments you've never given them. Most champions lose that room — not because the product is wrong, but because they weren't equipped to win it.</p>
             </div>
-            <div class="stat-card-standalone">
-              <span class="stat-card-big-num">6.3</span>
-              <div class="stat-card-right">
-                <span class="stat-card-desc">average stakeholders involved in a B2B purchase — Gartner</span>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="63"></div></div>
+            <div class="stat-dashboard">
+              <div class="stat-dashboard-row">
+                <span class="stat-num">13</span>
+                <div class="stat-right">
+                  <span class="stat-desc">average internal stakeholders involved in a complex B2B purchase</span>
+                  <span class="stat-source">Forrester, State of Business Buying 2024</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="65"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">74%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">of buying teams experience unhealthy internal conflict during the purchase</span>
+                  <span class="stat-source">Gartner, 2025</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="74"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">4–5</span>
+                <div class="stat-right">
+                  <span class="stat-desc">pieces of independent research each stakeholder brings into the room</span>
+                  <span class="stat-source">Gartner, 2024</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="50"></div></div>
+                </div>
               </div>
             </div>
           </div>
@@ -258,19 +343,40 @@ html,body { height:auto; overflow-x:hidden; }
               <div class="concept-card">
                 <p class="concept-label">Social Proof</p>
                 <p class="concept-title">What others say does more work than anything you say</p>
-                <p class="concept-body">Buyers don't trust what companies say about themselves. A specific result from a recognisable company does more commercial work than any claim you can make.</p>
+                <p class="concept-body">Buyers don't trust what companies say about themselves. A specific result from a recognisable company does more commercial work than any claim you can make. "23% reduction in spoilage in Q1" is a sales asset. "We helped them improve efficiency" is noise.</p>
               </div>
               <div class="concept-card-lime">
                 <p class="concept-label-dark">The difference</p>
-                <p class="concept-title-dark">"23% reduction in spoilage in Q1"</p>
-                <p class="concept-body-dark">vs. "We helped them improve efficiency." One is a sales asset. The other is noise.</p>
+                <p class="concept-title-dark">"23% reduction in spoilage in Q1. I wish we'd done this two years ago."</p>
+                <p class="concept-body-dark">Specific. Numbered. From a real person at a real company. That's a sales asset. Anything less is wallpaper.</p>
               </div>
             </div>
-            <div class="stat-card-standalone">
-              <span class="stat-card-big-num">92%</span>
-              <div class="stat-card-right">
-                <span class="stat-card-desc">more likely to purchase after a trusted review — G2/Heinz</span>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="92"></div></div>
+            <div class="stat-dashboard">
+              <div class="stat-dashboard-row">
+                <span class="stat-num">92%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">of B2B buyers are more likely to purchase after reading a trusted review</span>
+                  <span class="stat-source">G2 / Heinz Marketing</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="92"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">77%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">of B2B buyers read user reviews during the decision-making process</span>
+                  <span class="stat-source">Sopro, B2B Buyer Statistics 2025</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="77"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">54%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">speak directly with current customers of the vendor before purchasing</span>
+                  <span class="stat-source">Sopro, B2B Buyer Statistics 2025</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="54"></div></div>
+                </div>
               </div>
             </div>
           </div>
@@ -280,7 +386,7 @@ html,body { height:auto; overflow-x:hidden; }
     </div>
   </div>
 
-  <!-- ── SALES PROCESS ── -->
+  <!-- SALES PROCESS -->
   <div class="learn-section">
     <div class="learn-left">
       <p class="learn-section-eyebrow">Sales Process</p>
@@ -303,12 +409,40 @@ html,body { height:auto; overflow-x:hidden; }
               <div class="concept-card">
                 <p class="concept-label">01 — Discovery</p>
                 <p class="concept-title">The most important call you'll ever turn into a pitch</p>
-                <p class="concept-body">Discovery is about understanding the buyer's world — what the problem costs them, why they haven't solved it, whether you're the right fit. The moment you start showing the product, you've stopped listening. And the buyer notices.</p>
+                <p class="concept-body">Discovery is about understanding the buyer's world — what the problem costs, why they haven't solved it, whether you're the right fit. The moment you start showing the product, you've stopped listening.</p>
               </div>
               <div class="concept-card-lime">
                 <p class="concept-label-dark">The rule</p>
                 <p class="concept-title-dark">Questions over features. Always.</p>
                 <p class="concept-body-dark">You should be speaking less than 30% of the time. If you're pitching, you've already lost the discovery.</p>
+              </div>
+            </div>
+            <div class="stat-dashboard">
+              <div class="stat-dashboard-row">
+                <span class="stat-num">67%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">of sales professionals say discovery is the most critical stage in the entire process</span>
+                  <span class="stat-source">CareerTrainer, Discovery Calls Statistics 2026</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="67"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">47%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">higher win rates for reps who conduct thorough discovery vs. those who don't</span>
+                  <span class="stat-source">CareerTrainer, Discovery Calls Statistics 2026</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="47"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">13%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">of customers believe salespeople understand their needs — the discovery gap is real</span>
+                  <span class="stat-source">Forrester, via Saleslion</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="13"></div></div>
+                </div>
               </div>
             </div>
           </div>
@@ -317,12 +451,33 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="concept-card">
               <p class="concept-label">02 — Qualification</p>
               <p class="concept-title">Not every prospect is a real opportunity</p>
-              <p class="concept-body">Establish early whether budget, authority, need, and timing are real. Deals that aren't qualified early become deals that disappear quietly at proposal stage — after you've spent weeks on them. The best sales teams disqualify faster than they qualify.</p>
-              <div class="concept-stat">
-                <span class="concept-stat-num" style="font-size:1.4rem;letter-spacing:0">B·A·N·T</span>
-                <div class="concept-stat-right">
-                  <span class="concept-stat-desc">Budget · Authority · Need · Timing — the four things that make a prospect real</span>
-                  <div class="concept-bar-track"><div class="concept-bar-fill" data-width="100"></div></div>
+              <p class="concept-body">Establish early whether budget, authority, need, and timing are real. Deals that aren't qualified early disappear at proposal stage — after weeks of work. The best sales teams disqualify faster than they qualify.</p>
+            </div>
+            <div class="stat-dashboard">
+              <div class="stat-dashboard-row">
+                <span class="stat-num">21%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">average B2B win rate — meaning 79% of worked deals are lost</span>
+                  <span class="stat-source">HubSpot, 2024 Sales Trends Report</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="21"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">35%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">of closed-lost opportunities stall or die at the discovery/qualification stage</span>
+                  <span class="stat-source">HubSpot 2024 Sales Trends, via SalesHive</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="35"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">55%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">higher win rates when decision-makers are involved early in the process</span>
+                  <span class="stat-source">Ebsta x Pavilion, 2025 B2B Sales Benchmarks</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="55"></div></div>
                 </div>
               </div>
             </div>
@@ -341,6 +496,34 @@ html,body { height:auto; overflow-x:hidden; }
                 <p class="concept-body-dark">If yes, it lands for no one. Show them their problem being solved — not your product's capabilities.</p>
               </div>
             </div>
+            <div class="stat-dashboard">
+              <div class="stat-dashboard-row">
+                <span class="stat-num">78%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">of buyers expect salespeople to understand their needs before the first demo</span>
+                  <span class="stat-source">CareerTrainer, Discovery Calls Statistics 2026</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="78"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">54%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">of buyers say they want to see a demo or trial during — not before — the discovery stage</span>
+                  <span class="stat-source">CareerTrainer, Discovery Calls Statistics 2026</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="54"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">44%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">of B2B buyers prefer self-directed online demos over rep-led product walkthroughs</span>
+                  <span class="stat-source">Forrester</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="44"></div></div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="learn-panel" id="sales-3">
@@ -348,6 +531,34 @@ html,body { height:auto; overflow-x:hidden; }
               <p class="concept-label">04 — The Proposal</p>
               <p class="concept-title">A business case for people you've never met</p>
               <p class="concept-body">A proposal is not a price list. It's a document written for the committee — people who weren't in the room. It should restate the problem in their language, quantify the cost of inaction, and make the ROI obvious to someone who has never spoken to you. Walk your champion through it before you send it cold.</p>
+            </div>
+            <div class="stat-dashboard">
+              <div class="stat-dashboard-row">
+                <span class="stat-num">45%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">average RFP win rate in 2025 — best teams achieve 60%+</span>
+                  <span class="stat-source">Cobl, Sales Proposal Statistics 2025</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="45"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">35%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">higher close rate when prospects receive answers within 4 hours of proposal questions</span>
+                  <span class="stat-source">Martal Group, via Cobl</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="35"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">#1</span>
+                <div class="stat-right">
+                  <span class="stat-desc">section that most increases win rate when added to a proposal: case studies and testimonials</span>
+                  <span class="stat-source">Cobl, Sales Proposal Statistics 2025</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="100"></div></div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -362,6 +573,34 @@ html,body { height:auto; overflow-x:hidden; }
                 <p class="concept-label-dark">The trap</p>
                 <p class="concept-title-dark">Artificial urgency signals the value was never real</p>
                 <p class="concept-body-dark">Discounts and deadlines that appear from nowhere destroy trust. Close on confidence, not pressure.</p>
+              </div>
+            </div>
+            <div class="stat-dashboard">
+              <div class="stat-dashboard-row">
+                <span class="stat-num">19%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">average B2B win rate in 2025 — down from 29% in 2024, a historic low</span>
+                  <span class="stat-source">Ebsta x Pavilion, 2025 B2B Sales Benchmarks</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="19"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">113%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">reduction in win rate when deals are delayed — speed to close is not optional</span>
+                  <span class="stat-source">Ebsta x Pavilion, 2025 B2B Sales Benchmarks</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="100"></div></div>
+                </div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-dashboard-row">
+                <span class="stat-num">31–50%</span>
+                <div class="stat-right">
+                  <span class="stat-desc">post-proposal win rate for top-performing teams — the proposal is where it's decided</span>
+                  <span class="stat-source">Norwest, 2024 Sales &amp; Marketing Benchmark Report</span>
+                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="40"></div></div>
+                </div>
               </div>
             </div>
           </div>
@@ -381,30 +620,32 @@ window.addEventListener('scroll', () => {
   if (progress) progress.style.width = pct + '%';
 }, { passive: true });
 
+function animateBars(panel) {
+  panel.querySelectorAll('.stat-bar-fill').forEach(bar => {
+    const w = bar.dataset.width;
+    bar.style.width = '0%';
+    requestAnimationFrame(() => requestAnimationFrame(() => { bar.style.width = w + '%'; }));
+  });
+}
+
 function activatePanel(section, panelIdx) {
   document.querySelectorAll(`.learn-nav-item[data-section="${section}"]`).forEach(item => {
     item.classList.toggle('active', item.dataset.panel === panelIdx);
   });
   document.querySelectorAll(`[id^="${section}-"]`).forEach(panel => {
-    panel.classList.toggle('active', panel.id === `${section}-${panelIdx}`);
+    const isActive = panel.id === `${section}-${panelIdx}`;
+    panel.classList.toggle('active', isActive);
+    if (isActive) animateBars(panel);
   });
-  const active = document.getElementById(`${section}-${panelIdx}`);
-  if (active) {
-    active.querySelectorAll('.stat-bar-fill').forEach(bar => {
-      const w = bar.dataset.width;
-      bar.style.width = '0%';
-      requestAnimationFrame(() => requestAnimationFrame(() => { bar.style.width = w + '%'; }));
-    });
-  }
 }
 
 document.querySelectorAll('.learn-nav-item').forEach(item => {
   item.addEventListener('click', () => activatePanel(item.dataset.section, item.dataset.panel));
 });
 
-document.querySelectorAll('.learn-panel.active .stat-bar-fill').forEach(bar => {
-  const w = bar.dataset.width;
-  setTimeout(() => { bar.style.width = w + '%'; }, 500);
+// Animate default panels on load
+document.querySelectorAll('.learn-panel.active').forEach(panel => {
+  setTimeout(() => animateBars(panel), 500);
 });
 </script>
 </body>
