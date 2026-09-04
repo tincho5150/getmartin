@@ -68,13 +68,18 @@ html,body { height:auto; overflow-x:hidden; }
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--white-faint);
+  max-width: 1280px;
+  margin: 0 auto;
+  width: calc(100% - 10vw);
+  margin-top: 3vw;
+  margin-bottom: 3vw;
 }
 .funnel-stage {
   display: flex; flex-direction: column;
   overflow: hidden;
 }
 .funnel-stage-header {
-  background: var(--navy-dark);
+  background: var(--navy-mid);
   padding: 1rem 1.4rem;
   border-bottom: 1px solid var(--white-faint);
 }
@@ -86,7 +91,7 @@ html,body { height:auto; overflow-x:hidden; }
 .funnel-stage-desc { display: none; }
 .funnel-links {
   display: flex; flex-direction: column;
-  background: #ffffff; flex: 1;
+  background: var(--navy-dark); flex: 1;
 }
 .funnel-link {
   display: flex; align-items: center;
@@ -94,7 +99,7 @@ html,body { height:auto; overflow-x:hidden; }
   gap: 1rem;
   padding: 0.85rem 1.4rem;
   text-decoration: none;
-  border-bottom: 1px solid rgba(30,44,58,0.06);
+  border-bottom: 1px solid var(--white-faint);
   transition: background 0.15s;
 }
 .funnel-link:last-child { border-bottom: none; }
@@ -102,18 +107,18 @@ html,body { height:auto; overflow-x:hidden; }
 .funnel-link-left { display: flex; align-items: center; gap: 0.75rem; flex: 1; min-width: 0; }
 .funnel-dot {
   width: 5px; height: 5px; border-radius: 50%;
-  background: rgba(30,44,58,0.18); flex-shrink: 0;
+  background: rgba(240,239,240,0.2); flex-shrink: 0;
   transition: background 0.15s;
 }
 .funnel-link:hover .funnel-dot { background: var(--lime); }
 .funnel-link-title {
-  font-size: 0.84rem; font-weight: 400;
-  color: rgba(30,44,58,0.6); line-height: 1.35;
+  font-size: 0.84rem; font-weight: 300;
+  color: var(--white-dim); line-height: 1.35;
   transition: color 0.15s;
 }
-.funnel-link:hover .funnel-link-title { color: var(--ink); }
+.funnel-link:hover .funnel-link-title { color: var(--white); }
 .funnel-link-arrow {
-  font-size: 0.72rem; color: rgba(30,44,58,0.18);
+  font-size: 0.72rem; color: var(--white-faint);
   flex-shrink: 0; transition: color 0.15s, transform 0.15s;
 }
 .funnel-link:hover .funnel-link-arrow { color: var(--lime); transform: translateX(3px); }
