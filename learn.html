@@ -35,22 +35,48 @@ html,body { height:auto; overflow-x:hidden; }
 .hero-headline { position:relative;z-index:1;font-family:var(--font-display);font-size:clamp(2.8rem,5.5vw,5.5rem);font-weight:700;line-height:1.0;letter-spacing:-0.03em;color:var(--white);max-width:14ch;opacity:0;animation:fadeUp 0.7s var(--ease-out) 0.3s forwards; }
 .hero-headline .dim { color:var(--white-dim); }
 
-/* FUNNEL MAP */
-.funnel-map {
+/* BASICS FULL WIDTH */
+.basics-full {
+  background: var(--navy-dark);
+  border-bottom: 1px solid var(--white-faint);
+  position: relative;
+}
+.basics-full::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none;
+}
+.basics-full-header {
   position: relative; z-index: 1;
-  display: flex; flex-direction: column;
-  padding: 2.5rem 2.5rem;
-  gap: var(--col-gap);
-  max-width: 520px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4vw;
+  padding: 4vw 5vw 3vw;
+  border-bottom: 1px solid var(--white-faint);
+  align-items: end;
+}
+.basics-full-left { display: flex; flex-direction: column; gap: 0; }
+.basics-full-intro {
+  font-size: 1rem; font-weight: 300; line-height: 1.75;
+  color: var(--white-dim); max-width: 52ch;
+  align-self: end;
+}
+.basics-full-intro strong { color: var(--white); font-weight: 400; }
+
+/* THREE COLUMN FUNNEL */
+.funnel-columns {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--white-faint);
 }
 .funnel-stage {
   display: flex; flex-direction: column;
   overflow: hidden;
-  border: 1px solid rgba(30,44,58,0.1);
 }
 .funnel-stage-header {
   background: var(--navy-dark);
-  padding: 0.9rem 1.2rem;
+  padding: 1rem 1.4rem;
+  border-bottom: 1px solid var(--white-faint);
 }
 .funnel-stage-label {
   font-size: 0.68rem; font-weight: 700;
@@ -60,13 +86,13 @@ html,body { height:auto; overflow-x:hidden; }
 .funnel-stage-desc { display: none; }
 .funnel-links {
   display: flex; flex-direction: column;
-  background: #ffffff;
+  background: #ffffff; flex: 1;
 }
 .funnel-link {
   display: flex; align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.8rem 1.2rem;
+  padding: 0.85rem 1.4rem;
   text-decoration: none;
   border-bottom: 1px solid rgba(30,44,58,0.06);
   transition: background 0.15s;
@@ -262,53 +288,52 @@ html,body { height:auto; overflow-x:hidden; }
   </div>
 
   <!-- BASICS -->
-  <div class="learn-section">
-    <div class="learn-left">
-      <p class="learn-section-eyebrow">The Basics</p>
-      <h2 class="learn-section-title">Ten concepts.<br>One buying<br>journey.</h2>
-      <p class="learn-section-intro">The ten concepts every founder, sales leader, or commercial operator should understand — <strong>mapped to where they actually matter in the buyer's journey.</strong></p>
-    </div>
-    <div class="learn-right">
-      <div class="funnel-map">
-
-        <div class="funnel-stage">
-          <div class="funnel-stage-header">
-            <span class="funnel-stage-label">Awareness</span>
-            <span class="funnel-stage-desc">Getting found before they know they need you</span>
-          </div>
-          <div class="funnel-links">
-            <a class="funnel-link" href="/learn/seo"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">SEO — What It Is and How It Works</span></span><span class="funnel-link-arrow">→</span></a>
-            <a class="funnel-link" href="/learn/content-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Content Marketing — What It Actually Means</span></span><span class="funnel-link-arrow">→</span></a>
-            <a class="funnel-link" href="/learn/social-media-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Social Media Marketing — Beyond Posting and Hoping</span></span><span class="funnel-link-arrow">→</span></a>
-            <a class="funnel-link" href="/learn/personal-branding"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Personal Branding — People Buy From People, Not Logos</span></span><span class="funnel-link-arrow">→</span></a>
-          </div>
-        </div>
-
-        <div class="funnel-stage">
-          <div class="funnel-stage-header">
-            <span class="funnel-stage-label">Consideration</span>
-            <span class="funnel-stage-desc">Staying in the conversation while they decide</span>
-          </div>
-          <div class="funnel-links">
-            <a class="funnel-link" href="/learn/email-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Email Marketing — Boring Name, Best Returns</span></span><span class="funnel-link-arrow">→</span></a>
-            <a class="funnel-link" href="/learn/inbound-vs-outbound"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Inbound vs. Outbound — Two Different Games</span></span><span class="funnel-link-arrow">→</span></a>
-            <a class="funnel-link" href="/learn/marketing-funnel"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains</span></span><span class="funnel-link-arrow">→</span></a>
-          </div>
-        </div>
-
-        <div class="funnel-stage">
-          <div class="funnel-stage-header">
-            <span class="funnel-stage-label">Decision</span>
-            <span class="funnel-stage-desc">Converting intent into action</span>
-          </div>
-          <div class="funnel-links">
-            <a class="funnel-link" href="/learn/paid-advertising"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Paid Advertising — When to Buy Attention vs. Earn It</span></span><span class="funnel-link-arrow">→</span></a>
-            <a class="funnel-link" href="/learn/brand-vs-performance"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Brand vs. Performance — One Makes the Phone Ring Today</span></span><span class="funnel-link-arrow">→</span></a>
-            <a class="funnel-link" href="/learn/analytics-attribution"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Analytics and Attribution — The Last Click Gets the Credit</span></span><span class="funnel-link-arrow">→</span></a>
-          </div>
-        </div>
-
+  <div class="basics-full">
+    <div class="basics-full-header">
+      <div class="basics-full-left">
+        <p class="learn-section-eyebrow">The Basics</p>
+        <h2 class="learn-section-title">Ten concepts.<br>One buying journey.</h2>
       </div>
+      <div class="basics-full-right">
+        <p class="basics-full-intro">The ten concepts every founder, sales leader, or commercial operator should understand — <strong>mapped to where they actually matter in the buyer's journey.</strong></p>
+      </div>
+    </div>
+    <div class="funnel-columns">
+
+      <div class="funnel-stage">
+        <div class="funnel-stage-header">
+          <span class="funnel-stage-label">Awareness</span>
+        </div>
+        <div class="funnel-links">
+          <a class="funnel-link" href="/learn/seo"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">SEO — What It Is and How It Works</span></span><span class="funnel-link-arrow">→</span></a>
+          <a class="funnel-link" href="/learn/content-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Content Marketing — What It Actually Means</span></span><span class="funnel-link-arrow">→</span></a>
+          <a class="funnel-link" href="/learn/social-media-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Social Media Marketing — Beyond Posting and Hoping</span></span><span class="funnel-link-arrow">→</span></a>
+          <a class="funnel-link" href="/learn/personal-branding"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Personal Branding — People Buy From People, Not Logos</span></span><span class="funnel-link-arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="funnel-stage">
+        <div class="funnel-stage-header">
+          <span class="funnel-stage-label">Consideration</span>
+        </div>
+        <div class="funnel-links">
+          <a class="funnel-link" href="/learn/email-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Email Marketing — Boring Name, Best Returns</span></span><span class="funnel-link-arrow">→</span></a>
+          <a class="funnel-link" href="/learn/inbound-vs-outbound"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Inbound vs. Outbound — Two Different Games</span></span><span class="funnel-link-arrow">→</span></a>
+          <a class="funnel-link" href="/learn/marketing-funnel"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains</span></span><span class="funnel-link-arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="funnel-stage">
+        <div class="funnel-stage-header">
+          <span class="funnel-stage-label">Decision</span>
+        </div>
+        <div class="funnel-links">
+          <a class="funnel-link" href="/learn/paid-advertising"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Paid Advertising — When to Buy Attention vs. Earn It</span></span><span class="funnel-link-arrow">→</span></a>
+          <a class="funnel-link" href="/learn/brand-vs-performance"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Brand vs. Performance — One Makes the Phone Ring Today</span></span><span class="funnel-link-arrow">→</span></a>
+          <a class="funnel-link" href="/learn/analytics-attribution"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Analytics and Attribution — The Last Click Gets the Credit</span></span><span class="funnel-link-arrow">→</span></a>
+        </div>
+      </div>
+
     </div>
   </div>
 
