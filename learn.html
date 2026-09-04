@@ -83,15 +83,18 @@ html,body { height:auto; overflow-x:hidden; }
   font-size: clamp(1.6rem, 3vw, 2.8rem);
   font-weight: 700; line-height: 1.0;
   letter-spacing: -0.02em; color: var(--white);
-  margin-bottom: 0.6rem;
 }
-.funnel-sub-desc {
-  font-size: 0.85rem; font-weight: 300;
-  color: var(--white-dim); line-height: 1.5;
-}
+.funnel-sub-desc { display: none; }
 .funnel-sub-right {
+  background: #ffffff;
   display: flex; flex-direction: column;
   justify-content: center;
+  position: relative;
+}
+.funnel-sub-right::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(30,44,58,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(30,44,58,0.04) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none;
 }
 .funnel-link {
   display: flex; align-items: center;
@@ -99,26 +102,35 @@ html,body { height:auto; overflow-x:hidden; }
   gap: 1rem;
   padding: 1rem 3.5vw;
   text-decoration: none;
-  border-bottom: 1px solid var(--white-faint);
+  border-bottom: 1px solid rgba(30,44,58,0.07);
   transition: background 0.15s;
+  position: relative; z-index: 1;
 }
 .funnel-link:last-child { border-bottom: none; }
-.funnel-link:hover { background: rgba(184,212,0,0.04); }
-.funnel-link-left { display: flex; align-items: center; gap: 0.75rem; flex: 1; min-width: 0; }
+.funnel-link:hover { background: rgba(184,212,0,0.06); }
+.funnel-link-left { display: flex; align-items: center; gap: 1rem; flex: 1; min-width: 0; }
 .funnel-dot {
-  width: 5px; height: 5px; border-radius: 50%;
-  background: rgba(240,239,240,0.2); flex-shrink: 0;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(30,44,58,0.18); flex-shrink: 0;
   transition: background 0.15s;
 }
 .funnel-link:hover .funnel-dot { background: var(--lime); }
 .funnel-link-title {
-  font-size: 0.88rem; font-weight: 300;
-  color: var(--white-dim); line-height: 1.4;
+  font-size: 0.88rem; font-weight: 400;
+  color: rgba(30,44,58,0.7); line-height: 1.4;
+  transition: color 0.15s; flex: 1;
+}
+.funnel-link:hover .funnel-link-title { color: var(--ink); }
+.funnel-link-tag {
+  font-size: 0.6rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(30,44,58,0.3);
+  flex-shrink: 0;
   transition: color 0.15s;
 }
-.funnel-link:hover .funnel-link-title { color: var(--white); }
+.funnel-link:hover .funnel-link-tag { color: rgba(30,44,58,0.5); }
 .funnel-link-arrow {
-  font-size: 0.72rem; color: var(--white-faint);
+  font-size: 0.72rem; color: rgba(30,44,58,0.2);
   flex-shrink: 0; transition: color 0.15s, transform 0.15s;
 }
 .funnel-link:hover .funnel-link-arrow { color: var(--lime); transform: translateX(3px); }
@@ -302,40 +314,37 @@ html,body { height:auto; overflow-x:hidden; }
     <div class="funnel-subsection">
       <div class="funnel-sub-left">
         <p class="funnel-sub-num">01</p>
-        <h3 class="funnel-sub-title">Awareness</h3>
-        <p class="funnel-sub-desc">Getting found before they know they need you</p>
+        <h3 class="funnel-sub-title">Awareness.</h3>
       </div>
       <div class="funnel-sub-right">
-        <a class="funnel-link" href="/learn/seo"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">SEO — What It Is and How It Works</span></span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link" href="/learn/content-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Content Marketing — What It Actually Means</span></span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link" href="/learn/social-media-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Social Media Marketing — Beyond Posting and Hoping</span></span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link" href="/learn/personal-branding"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Personal Branding — People Buy From People, Not Logos</span></span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link" href="/learn/seo"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">SEO — What It Is and How It Works</span></span><span class="funnel-link-tag">Search</span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link" href="/learn/content-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Content Marketing — What It Actually Means</span></span><span class="funnel-link-tag">Content</span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link" href="/learn/social-media-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Social Media Marketing — Beyond Posting and Hoping</span></span><span class="funnel-link-tag">Social</span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link" href="/learn/personal-branding"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Personal Branding — People Buy From People, Not Logos</span></span><span class="funnel-link-tag">Brand</span><span class="funnel-link-arrow">→</span></a>
       </div>
     </div>
 
     <div class="funnel-subsection">
       <div class="funnel-sub-left">
         <p class="funnel-sub-num">02</p>
-        <h3 class="funnel-sub-title">Consideration</h3>
-        <p class="funnel-sub-desc">Staying in the conversation while they decide</p>
+        <h3 class="funnel-sub-title">Consideration.</h3>
       </div>
       <div class="funnel-sub-right">
-        <a class="funnel-link" href="/learn/email-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Email Marketing — Boring Name, Best Returns</span></span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link" href="/learn/inbound-vs-outbound"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Inbound vs. Outbound — Two Different Games</span></span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link" href="/learn/marketing-funnel"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains</span></span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link" href="/learn/email-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Email Marketing — Boring Name, Best Returns</span></span><span class="funnel-link-tag">Email</span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link" href="/learn/inbound-vs-outbound"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Inbound vs. Outbound — Two Different Games</span></span><span class="funnel-link-tag">Strategy</span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link" href="/learn/marketing-funnel"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains</span></span><span class="funnel-link-tag">Funnel</span><span class="funnel-link-arrow">→</span></a>
       </div>
     </div>
 
     <div class="funnel-subsection">
       <div class="funnel-sub-left">
         <p class="funnel-sub-num">03</p>
-        <h3 class="funnel-sub-title">Decision</h3>
-        <p class="funnel-sub-desc">Converting intent into action</p>
+        <h3 class="funnel-sub-title">Decision.</h3>
       </div>
       <div class="funnel-sub-right">
-        <a class="funnel-link" href="/learn/paid-advertising"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Paid Advertising — When to Buy Attention vs. Earn It</span></span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link" href="/learn/brand-vs-performance"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Brand vs. Performance — One Makes the Phone Ring Today</span></span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link" href="/learn/analytics-attribution"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Analytics and Attribution — The Last Click Gets the Credit</span></span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link" href="/learn/paid-advertising"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Paid Advertising — When to Buy Attention vs. Earn It</span></span><span class="funnel-link-tag">Paid</span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link" href="/learn/brand-vs-performance"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Brand vs. Performance — One Makes the Phone Ring Today</span></span><span class="funnel-link-tag">Strategy</span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link" href="/learn/analytics-attribution"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Analytics and Attribution — The Last Click Gets the Credit</span></span><span class="funnel-link-tag">Analytics</span><span class="funnel-link-arrow">→</span></a>
       </div>
     </div>
 
