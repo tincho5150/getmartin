@@ -145,7 +145,28 @@ html,body { height:auto; overflow-x:hidden; }
   width: 0%; transition: width 1.2s var(--ease-out);
 }
 
-@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+/* SECTION BREAK — lime rule + label bar */
+.section-break {
+  display: flex; align-items: center;
+  height: 44px;
+  border-top: 2px solid var(--lime);
+  background: var(--navy-dark);
+  padding: 0 5vw;
+  gap: 1.5rem;
+}
+.section-break-num {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.12em; color: rgba(184,212,0,0.45);
+}
+.section-break-label {
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--white-dim);
+}
+.section-break-line {
+  flex: 1; height: 1px;
+  background: var(--white-faint);
+}
 
 @media(max-width:1200px){.card-grid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:1024px){.card-grid{grid-template-columns:repeat(3,1fr)}.learn-body{grid-template-columns:200px 1fr}}
@@ -187,9 +208,15 @@ html,body { height:auto; overflow-x:hidden; }
     <h1 class="hero-headline">Marketing and sales.<br><span class="dim">Properly explained.</span></h1>
   </div>
 
+  <!-- SECTION BREAK -->
+  <div class="section-break">
+    <span class="section-break-num">01</span>
+    <span class="section-break-label">The Basics</span>
+    <span class="section-break-line"></span>
+  </div>
+
   <!-- BASICS -->
   <div class="basics-section">
-    <div class="basics-header"><span class="basics-label">The Basics</span></div>
     <p class="basics-intro">Before strategy, frameworks, or tactics — there is vocabulary. Marketing and sales are full of terms that get used constantly and explained rarely. <strong>This track covers the ten concepts every founder, sales leader, or commercial operator should understand before anything else makes sense.</strong> No jargon. No assumed knowledge. Start here.</p>
     <div class="card-grid">
       <a class="resource-card" href="/learn/seo"><span class="card-track">The Basics</span><p class="card-title">SEO — What It Is and How It Works</p><p class="card-desc">Why some pages show up on Google and others don't — and what you can actually do about it.</p><div class="card-footer"><span class="card-tag">Search</span><span class="card-status live">Read now →</span></div></a>
@@ -203,6 +230,13 @@ html,body { height:auto; overflow-x:hidden; }
       <a class="resource-card" href="/learn/inbound-vs-outbound"><span class="card-track">The Basics</span><p class="card-title">Inbound vs. Outbound — Two Different Games</p><p class="card-desc">Attracting buyers vs. going after them. The logic, the costs, the right mix.</p><div class="card-footer"><span class="card-tag">Strategy</span><span class="card-status live">Read now →</span></div></a>
       <a class="resource-card" href="/learn/analytics-attribution"><span class="card-track">The Basics</span><p class="card-title">Analytics and Attribution — The Last Click Gets the Credit</p><p class="card-desc">What to measure, what to ignore, and the honest truth about attribution in B2B.</p><div class="card-footer"><span class="card-tag">Analytics</span><span class="card-status live">Read now →</span></div></a>
     </div>
+  </div>
+
+  <!-- SECTION BREAK -->
+  <div class="section-break">
+    <span class="section-break-num">02</span>
+    <span class="section-break-label">Buyer Psychology</span>
+    <span class="section-break-line"></span>
   </div>
 
   <!-- BUYER PSYCHOLOGY -->
@@ -402,6 +436,13 @@ html,body { height:auto; overflow-x:hidden; }
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- SECTION BREAK -->
+  <div class="section-break">
+    <span class="section-break-num">03</span>
+    <span class="section-break-label">Sales Process</span>
+    <span class="section-break-line"></span>
   </div>
 
   <!-- SALES PROCESS -->
