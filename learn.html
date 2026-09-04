@@ -218,12 +218,16 @@ html,body { height:auto; overflow-x:hidden; }
 
 /* SECTION BREAK */
 .section-break {
-  display: flex; align-items: center; justify-content: center;
-  gap: 1rem;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0.6rem;
   padding: 2.8rem 5vw;
   border-bottom: 1px solid var(--white-faint);
   background: var(--navy-dark);
-  flex-wrap: wrap;
+  text-align: center;
+}
+.section-break-top {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem;
 }
 .section-break-num {
   font-size: 0.78rem; font-weight: 400;
@@ -240,9 +244,11 @@ html,body { height:auto; overflow-x:hidden; }
   color: rgba(240,239,240,0.35);
 }
 .section-break-sub {
-  font-size: 0.82rem; font-weight: 300;
-  color: rgba(240,239,240,0.25);
-  letter-spacing: 0.01em;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 400; letter-spacing: -0.01em;
+  color: var(--white-dim);
+  max-width: 52ch;
 }
 .section-break-line { display: none; }
 
@@ -288,11 +294,12 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- SECTION BREAK -->
   <div class="section-break">
-    <span class="section-break-num">01</span>
-    <span class="section-break-dot"></span>
-    <span class="section-break-label">The Basics</span>
-    <span class="section-break-dot"></span>
-    <span class="section-break-sub">Ten concepts mapped to where they actually matter in the buyer's journey.</span>
+    <div class="section-break-top">
+      <span class="section-break-num">01</span>
+      <span class="section-break-dot"></span>
+      <span class="section-break-label">The Basics</span>
+    </div>
+    <p class="section-break-sub">Ten concepts mapped to where they actually matter in the buyer's journey.</p>
   </div>
 
   <!-- BASICS -->
@@ -339,10 +346,12 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- SECTION BREAK -->
   <div class="section-break">
-    <span class="section-break-num">02</span>
-    <span class="section-break-dot"></span>
-    <span class="section-break-label">Buyer Psychology</span>
-    
+    <div class="section-break-top">
+      <span class="section-break-num">02</span>
+      <span class="section-break-dot"></span>
+      <span class="section-break-label">Buyer Psychology</span>
+    </div>
+    <p class="section-break-sub">Why buyers do what they do — and how to use it to create genuine urgency.</p>
   </div>
 
   <!-- BUYER PSYCHOLOGY -->
@@ -546,10 +555,12 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- SECTION BREAK -->
   <div class="section-break">
-    <span class="section-break-num">03</span>
-    <span class="section-break-dot"></span>
-    <span class="section-break-label">Sales Process</span>
-    
+    <div class="section-break-top">
+      <span class="section-break-num">03</span>
+      <span class="section-break-dot"></span>
+      <span class="section-break-label">Sales Process</span>
+    </div>
+    <p class="section-break-sub">Where deals move, where they stall, and what determines the outcome.</p>
   </div>
 
   <!-- SALES PROCESS -->
