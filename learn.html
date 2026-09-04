@@ -129,13 +129,29 @@ html, body { height: auto; overflow-x: hidden; }
 .card-status.live { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lime); }
 .card-status.soon { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(240,239,240,0.2); }
 
-/* STAT GRID — matches index page */
+/* STAT GRID — white background, matches index right column */
+.stat-section {
+  background: #ffffff; position: relative;
+  padding: 3vw 4vw;
+  margin-bottom: 0;
+}
+.stat-section::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--grid-light) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-light) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none;
+}
+.stat-section .stats-grid { position: relative; z-index: 1; }
+
 .stats-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: var(--col-gap);
 }
+
+/* Lime stat card */
 .stat-card {
-  background: var(--lime); padding: 1.4rem 1.4rem 1.6rem;
+  background: var(--lime); padding: 1.4rem 1.4rem 1.8rem;
   position: relative; overflow: hidden;
   transition: background var(--dur-base), transform var(--dur-base) var(--ease-out);
 }
@@ -147,24 +163,56 @@ html, body { height: auto; overflow-x: hidden; }
   font-size: clamp(2.4rem, 4.2vw, 4rem);
 }
 .stat-card .stat-desc {
-  font-size: 0.88rem; font-weight: 300; line-height: 1.55;
+  font-size: 0.88rem; font-weight: 300; line-height: 1.6;
   color: rgba(30,44,58,0.65);
 }
 .stat-card .stat-desc strong { color: var(--navy-dark); font-weight: 600; }
+
+/* Orange stat card */
+.stat-orange { background: var(--orange); }
+.stat-orange:hover { background: #f58535; }
+.stat-orange .stat-number { color: #fff; }
+.stat-orange .stat-desc { color: rgba(255,255,255,0.75); }
+.stat-orange .stat-desc strong { color: #fff; }
+
+/* Navy card — thesis statement */
 .card-lime {
-  background: #1e2c3a; padding: 1.4rem;
+  background: var(--navy-dark); padding: 1.8rem;
   display: flex; flex-direction: column; justify-content: space-between;
+  gap: 1rem;
 }
 .card-lime.no-hover { cursor: default; }
 .card-lime-text {
   font-family: var(--font-display);
-  font-size: clamp(1.1rem, 2vw, 1.6rem);
-  font-weight: 700; line-height: 1.2;
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  font-weight: 700; line-height: 1.15;
   letter-spacing: -0.02em; color: var(--white);
 }
 
+/* Large stat card spanning full width */
+.stat-card-large {
+  background: var(--lime); padding: 2.4rem;
+  grid-column: 1 / -1;
+  display: grid; grid-template-columns: auto 1fr;
+  align-items: center; gap: 2.4rem;
+  transition: background var(--dur-base), transform var(--dur-base) var(--ease-out);
+}
+.stat-card-large:hover { background: var(--lime-hover); transform: translateY(-2px); }
+.stat-card-large .stat-number {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  line-height: 0.9; letter-spacing: -0.04em;
+  color: var(--navy-dark);
+}
+.stat-card-large .stat-desc {
+  font-size: 1rem; font-weight: 300; line-height: 1.65;
+  color: rgba(30,44,58,0.65);
+}
+.stat-card-large .stat-desc strong { color: var(--navy-dark); font-weight: 600; }
+
 @media (max-width: 768px) {
   .stats-grid { grid-template-columns: 1fr; }
+  .stat-card-large { grid-template-columns: 1fr; gap: 1rem; }
 }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
@@ -291,34 +339,33 @@ html, body { height: auto; overflow-x: hidden; }
       </div>
       <div class="track-intro"><p class="track-intro-body">B2B buyers are not rational actors who evaluate options objectively and choose the best one. They are people — under pressure, managing risk, protecting their careers, navigating internal politics. <strong>Understanding the mental models that drive real buying decisions is what separates marketers who create genuine urgency from those who just add more slides to the deck.</strong></p></div>
 
-      <div class="stats-grid">
-        <div class="card-lime span-full no-hover">
-          <p class="card-lime-text">Most B2B deals are lost before the first conversation — to indecision, inertia, and invisible costs the buyer never felt.</p>
-        </div>
+      <div class="stat-section">
+        <div class="stats-grid">
 
-        <div class="stat-card stat-lime">
-          <div class="stat-number">75<span style="font-size:0.55em;font-weight:400;color:rgba(30,44,58,0.5)">%</span></div>
-          <div class="stat-desc"><strong>of B2B buyers</strong> prefer to do their research without ever talking to a sales rep — Gartner</div>
-        </div>
+          <div class="stat-card-large">
+            <div class="stat-number">75%</div>
+            <div class="stat-desc"><strong>of B2B buyers prefer to complete their research without ever talking to a sales rep.</strong> By the time they reach out, they've already formed a view. Your job is to shape that view — not overcome it after the fact. The sale happens in the research phase. If you're not present there, you're not in the conversation. — Gartner</div>
+          </div>
 
-        <div class="stat-card stat-lime">
-          <div class="stat-number">60<span style="font-size:0.55em;font-weight:400;color:rgba(30,44,58,0.5)">%</span></div>
-          <div class="stat-desc">Of qualified B2B deals are lost to <strong>"no decision"</strong> — not to a competitor — CEB/Gartner</div>
-        </div>
+          <div class="stat-card">
+            <div class="stat-number">60%</div>
+            <div class="stat-desc">Of qualified B2B deals are lost to <strong>"no decision"</strong> — not to a competitor. Doing nothing is always the default. Make the cost of staying put feel more painful than the cost of moving. — CEB/Gartner</div>
+          </div>
 
-        <div class="stat-card stat-lime">
-          <div class="stat-number" style="font-size:clamp(2rem,3.5vw,3.2rem)">2<span style="font-size:0.55em;font-weight:400;color:rgba(30,44,58,0.5)">×</span></div>
-          <div class="stat-desc">Losses feel <strong>twice as powerful</strong> as equivalent gains — the core of loss aversion (Kahneman &amp; Tversky)</div>
-        </div>
+          <div class="stat-card stat-orange">
+            <div class="stat-number">2×</div>
+            <div class="stat-desc">Losses feel <strong>twice as powerful</strong> as equivalent gains. Reframe your pitch around what the buyer is currently losing — not what they could gain. — Kahneman &amp; Tversky</div>
+          </div>
 
-        <div class="stat-card stat-lime">
-          <div class="stat-number">6.3</div>
-          <div class="stat-desc"><strong>Average stakeholders</strong> involved in a B2B purchase — your champion has to win a room you're never in</div>
-        </div>
+          <div class="stat-card">
+            <div class="stat-number">6.3</div>
+            <div class="stat-desc"><strong>Average stakeholders</strong> in a B2B purchase. Your champion has to sell your deal to a room you're never in. Give them something that does the selling without you.</div>
+          </div>
 
-        <div class="stat-card stat-lime span-full">
-          <div class="stat-number">92<span style="font-size:0.55em;font-weight:400;color:rgba(30,44,58,0.5)">%</span></div>
-          <div class="stat-desc">Of B2B buyers are <strong>more likely to purchase</strong> after reading a trusted review — G2/Heinz Marketing. What others say about you does more work than anything you say about yourself.</div>
+          <div class="card-lime no-hover span-full">
+            <p class="card-lime-text">92% of B2B buyers are more likely to purchase after reading a trusted review. What others say about you does more commercial work than anything you say about yourself.</p>
+          </div>
+
         </div>
       </div>
     </div>
@@ -330,34 +377,38 @@ html, body { height: auto; overflow-x: hidden; }
       </div>
       <div class="track-intro"><p class="track-intro-body">Most B2B sales processes fail at predictable moments — the discovery call that turns into a pitch, the demo shown too early, the internal champion who can't close the committee. <strong>This track maps how complex B2B deals move — or stall — and where the decisions that determine the outcome are actually made.</strong></p></div>
 
-      <div class="stats-grid">
-        <div class="card-lime span-full no-hover">
-          <p class="card-lime-text">The deal is won or lost in Discovery. Everything after is just confirming or undoing what happened in that first conversation.</p>
-        </div>
+      <div class="stat-section">
+        <div class="stats-grid">
 
-        <div class="stat-card stat-lime">
-          <div class="stat-number" style="font-size:clamp(1.6rem,2.5vw,2.4rem);margin-bottom:0.5rem">01 — Discovery</div>
-          <div class="stat-desc"><strong>The most important call you'll turn into a pitch.</strong> Discovery is about understanding the buyer's world — what the problem costs, why they haven't solved it, whether you're the right fit. Stop showing the product. Start listening.</div>
-        </div>
+          <div class="card-lime no-hover span-full">
+            <p class="card-lime-text">The deal is won or lost in Discovery. Everything after is confirming — or undoing — what happened in that first conversation.</p>
+          </div>
 
-        <div class="stat-card stat-lime">
-          <div class="stat-number" style="font-size:clamp(1.6rem,2.5vw,2.4rem);margin-bottom:0.5rem">02 — Qualify</div>
-          <div class="stat-desc"><strong>Not every prospect is a real opportunity.</strong> Establish early whether budget, authority, need, and timing are real. Deals that aren't qualified early disappear at proposal stage — after weeks of work.</div>
-        </div>
+          <div class="stat-card">
+            <div class="stat-number" style="font-size:clamp(1.4rem,2.2vw,2rem);letter-spacing:-0.01em;margin-bottom:0.6rem">01 — Discovery</div>
+            <div class="stat-desc"><strong>The most important call you'll turn into a pitch.</strong> Discovery is about understanding the buyer's world — what the problem costs, why they haven't solved it, whether you're the right fit. Stop showing the product. Start listening.</div>
+          </div>
 
-        <div class="stat-card stat-lime">
-          <div class="stat-number" style="font-size:clamp(1.6rem,2.5vw,2.4rem);margin-bottom:0.5rem">03 — Demo</div>
-          <div class="stat-desc"><strong>By the time they see it, they should already want it.</strong> The demo should confirm what the buyer already suspects — not convince someone who isn't ready. Shown too early, it kills deals.</div>
-        </div>
+          <div class="stat-card stat-orange">
+            <div class="stat-number" style="font-size:clamp(1.4rem,2.2vw,2rem);letter-spacing:-0.01em;margin-bottom:0.6rem">02 — Qualify</div>
+            <div class="stat-desc"><strong>Not every prospect is a real opportunity.</strong> Establish whether budget, authority, need, and timing are real — early. Deals that aren't qualified disappear at proposal stage, after weeks of work.</div>
+          </div>
 
-        <div class="stat-card stat-lime">
-          <div class="stat-number" style="font-size:clamp(1.6rem,2.5vw,2.4rem);margin-bottom:0.5rem">04 — Proposal</div>
-          <div class="stat-desc"><strong>A business case for people you've never met.</strong> Written for the committee — not the champion. Restate the problem in their language, quantify the cost of inaction, make the ROI obvious to someone who wasn't in the room.</div>
-        </div>
+          <div class="stat-card-large">
+            <div class="stat-number">03</div>
+            <div class="stat-desc"><strong style="font-size:1.1rem;display:block;margin-bottom:0.5rem;letter-spacing:-0.01em">The Demo — by the time they see it, they should already want it.</strong>Shown too early, the demo kills deals. It should confirm what the buyer already suspects — not convince someone who isn't ready. A generic feature walkthrough lands for no one.</div>
+          </div>
 
-        <div class="stat-card stat-lime span-full">
-          <div class="stat-number" style="font-size:clamp(1.6rem,2.5vw,2.4rem);margin-bottom:0.5rem">05 — Close</div>
-          <div class="stat-desc"><strong>A confirmation, not a negotiation.</strong> If Discovery through Proposal were done well, the close is obvious. The best closes happen when saying yes feels like the low-risk, well-understood next step — not a leap of faith under manufactured deadline pressure.</div>
+          <div class="stat-card">
+            <div class="stat-number" style="font-size:clamp(1.4rem,2.2vw,2rem);letter-spacing:-0.01em;margin-bottom:0.6rem">04 — Proposal</div>
+            <div class="stat-desc"><strong>A business case for people you've never met.</strong> Written for the committee — not the champion. Restate the problem in their language, quantify the cost of inaction, make the ROI obvious to someone who wasn't in the room.</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-number" style="font-size:clamp(1.4rem,2.2vw,2rem);letter-spacing:-0.01em;margin-bottom:0.6rem">05 — Close</div>
+            <div class="stat-desc"><strong>A confirmation, not a negotiation.</strong> The best closes happen when saying yes feels like the obvious, low-risk next step. If you need artificial urgency to close, the earlier stages didn't work.</div>
+          </div>
+
         </div>
       </div>
     </div>
