@@ -35,26 +35,67 @@ html,body { height:auto; overflow-x:hidden; }
 .hero-headline { position:relative;z-index:1;font-family:var(--font-display);font-size:clamp(2.8rem,5.5vw,5.5rem);font-weight:700;line-height:1.0;letter-spacing:-0.03em;color:var(--white);max-width:14ch;opacity:0;animation:fadeUp 0.7s var(--ease-out) 0.3s forwards; }
 .hero-headline .dim { color:var(--white-dim); }
 
-/* BASICS */
-.basics-section { border-bottom:1px solid var(--white-faint); }
-.basics-header { padding:3vw 5vw 0; }
-.basics-label { font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--lime); }
-.basics-intro { padding:1.6rem 5vw 2rem;max-width:64ch;font-size:0.95rem;font-weight:300;line-height:1.85;color:var(--white-dim); }
-.basics-intro strong { color:var(--white);font-weight:400; }
-.card-grid { display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--white-faint);border:1px solid var(--white-faint); }
-.resource-card { background:#1e2c3a;padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:0.8rem;text-decoration:none;transition:background var(--dur-base); }
-.resource-card:not(.coming-soon):hover { background:#253748; }
-.resource-card.coming-soon { opacity:0.38;cursor:default;pointer-events:none; }
-.card-track { font-size:0.65rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--lime); }
-.coming-soon .card-track { color:rgba(240,239,240,0.4); }
-.card-title { font-family:var(--font-display);font-size:1rem;font-weight:700;line-height:1.2;letter-spacing:-0.01em;color:var(--white);flex:1; }
-.card-desc { font-size:0.82rem;font-weight:300;line-height:1.6;color:var(--white-dim); }
-.card-footer { display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:0.8rem;border-top:1px solid rgba(240,239,240,0.06); }
-.card-tag { font-size:0.65rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:rgba(240,239,240,0.3); }
-.card-status.live { font-size:0.65rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:var(--lime); }
-.card-status.soon { font-size:0.65rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:rgba(240,239,240,0.2); }
-
-/* SPLIT SECTION */
+/* FUNNEL MAP */
+.funnel-map {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column;
+  padding: 2.5rem 2.5rem;
+  gap: 0;
+}
+.funnel-stage {
+  position: relative;
+  padding-left: 1.8rem;
+  border-left: 1px solid rgba(30,44,58,0.12);
+}
+.funnel-stage::before {
+  content: '';
+  position: absolute; left: -5px; top: 1.35rem;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #fff;
+  border: 2px solid rgba(30,44,58,0.2);
+}
+.funnel-stage-header {
+  padding: 1.2rem 0 0.8rem;
+  display: flex; flex-direction: column; gap: 0.2rem;
+}
+.funnel-stage:first-child .funnel-stage-header { padding-top: 0; }
+.funnel-stage-label {
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--lime);
+}
+.funnel-stage-desc {
+  font-size: 0.78rem; font-weight: 300;
+  color: rgba(30,44,58,0.4); line-height: 1.4;
+}
+.funnel-links {
+  display: flex; flex-direction: column;
+  padding-bottom: 1.8rem;
+  gap: 0;
+}
+.funnel-stage:last-child .funnel-links { padding-bottom: 0; }
+.funnel-link {
+  display: flex; align-items: flex-start; gap: 0.85rem;
+  padding: 0.55rem 0;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(30,44,58,0.06);
+  transition: background var(--dur-base);
+}
+.funnel-link:last-child { border-bottom: none; }
+.funnel-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(30,44,58,0.15);
+  flex-shrink: 0; margin-top: 6px;
+  transition: background 0.2s;
+}
+.funnel-link:hover .funnel-dot { background: var(--lime); }
+.funnel-link-title {
+  font-size: 0.88rem; font-weight: 400;
+  color: rgba(30,44,58,0.6); line-height: 1.45;
+  transition: color 0.2s;
+}
+.funnel-link:hover .funnel-link-title { color: var(--ink); }
 .learn-section { display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--white-faint); }
 
 /* LEFT */
@@ -177,8 +218,8 @@ html,body { height:auto; overflow-x:hidden; }
 }
 .section-break-line { display: none; }
 
-@media(max-width:1200px){.card-grid{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:1024px){.card-grid{grid-template-columns:repeat(3,1fr)}.learn-body{grid-template-columns:200px 1fr}}
+
+@media(max-width:1024px){.learn-body{grid-template-columns:200px 1fr}}
 @media(max-width:768px){
   .learn-section{grid-template-columns:1fr}
   .learn-left{min-height:auto;padding:3rem 1.5rem 2.5rem;border-right:none;border-bottom:1px solid var(--white-faint)}
@@ -188,7 +229,7 @@ html,body { height:auto; overflow-x:hidden; }
   .learn-nav-dot{display:none}
   .learn-nav-item{padding:0.3rem 0.5rem}
   .learn-content-area{padding:1.5rem}
-  .card-grid{grid-template-columns:repeat(2,1fr)}
+
   .concept-grid{grid-template-columns:1fr}
   .stat-dashboard-row{flex-wrap:wrap}
   .stat-num{width:auto;text-align:left}
@@ -226,19 +267,53 @@ html,body { height:auto; overflow-x:hidden; }
   </div>
 
   <!-- BASICS -->
-  <div class="basics-section">
-    <p class="basics-intro">Before strategy, frameworks, or tactics — there is vocabulary. Marketing and sales are full of terms that get used constantly and explained rarely. <strong>This track covers the ten concepts every founder, sales leader, or commercial operator should understand before anything else makes sense.</strong> No jargon. No assumed knowledge. Start here.</p>
-    <div class="card-grid">
-      <a class="resource-card" href="/learn/seo"><span class="card-track">The Basics</span><p class="card-title">SEO — What It Is and How It Works</p><p class="card-desc">Why some pages show up on Google and others don't — and what you can actually do about it.</p><div class="card-footer"><span class="card-tag">Search</span><span class="card-status live">Read now →</span></div></a>
-      <a class="resource-card" href="/learn/content-marketing"><span class="card-track">The Basics</span><p class="card-title">Content Marketing — What It Actually Means</p><p class="card-desc">Not blogging for the sake of it. The logic behind creating content that brings the right people to you.</p><div class="card-footer"><span class="card-tag">Content</span><span class="card-status live">Read now →</span></div></a>
-      <a class="resource-card" href="/learn/social-media-marketing"><span class="card-track">The Basics</span><p class="card-title">Social Media Marketing — Beyond Posting and Hoping</p><p class="card-desc">What social actually does in a B2B sales cycle and what it can't.</p><div class="card-footer"><span class="card-tag">Social</span><span class="card-status live">Read now →</span></div></a>
-      <a class="resource-card" href="/learn/email-marketing"><span class="card-track">The Basics</span><p class="card-title">Email Marketing — Boring Name, Best Returns</p><p class="card-desc">Why email outperforms every other channel in B2B — and how to use it without sounding like everyone else.</p><div class="card-footer"><span class="card-tag">Email</span><span class="card-status live">Read now →</span></div></a>
-      <a class="resource-card" href="/learn/paid-advertising"><span class="card-track">The Basics</span><p class="card-title">Paid Advertising — When to Buy Attention vs. Earn It</p><p class="card-desc">Paid vs. organic — not which is better, but when each makes sense.</p><div class="card-footer"><span class="card-tag">Paid</span><span class="card-status live">Read now →</span></div></a>
-      <a class="resource-card" href="/learn/personal-branding"><span class="card-track">The Basics</span><p class="card-title">Personal Branding — People Buy From People, Not Logos</p><p class="card-desc">What personal brand actually means for a founder or sales leader.</p><div class="card-footer"><span class="card-tag">Brand</span><span class="card-status live">Read now →</span></div></a>
-      <a class="resource-card" href="/learn/marketing-funnel"><span class="card-track">The Basics</span><p class="card-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains</p><p class="card-desc">What each funnel stage actually means and where most companies get stuck.</p><div class="card-footer"><span class="card-tag">Funnel</span><span class="card-status live">Read now →</span></div></a>
-      <a class="resource-card" href="/learn/brand-vs-performance"><span class="card-track">The Basics</span><p class="card-title">Brand vs. Performance — One Makes the Phone Ring Today</p><p class="card-desc">Building long-term trust vs. generating immediate pipeline. Why you need both.</p><div class="card-footer"><span class="card-tag">Strategy</span><span class="card-status live">Read now →</span></div></a>
-      <a class="resource-card" href="/learn/inbound-vs-outbound"><span class="card-track">The Basics</span><p class="card-title">Inbound vs. Outbound — Two Different Games</p><p class="card-desc">Attracting buyers vs. going after them. The logic, the costs, the right mix.</p><div class="card-footer"><span class="card-tag">Strategy</span><span class="card-status live">Read now →</span></div></a>
-      <a class="resource-card" href="/learn/analytics-attribution"><span class="card-track">The Basics</span><p class="card-title">Analytics and Attribution — The Last Click Gets the Credit</p><p class="card-desc">What to measure, what to ignore, and the honest truth about attribution in B2B.</p><div class="card-footer"><span class="card-tag">Analytics</span><span class="card-status live">Read now →</span></div></a>
+  <div class="learn-section">
+    <div class="learn-left">
+      <p class="learn-section-eyebrow">The Basics</p>
+      <h2 class="learn-section-title">Ten concepts.<br>One buying<br>journey.</h2>
+      <p class="learn-section-intro">The ten concepts every founder, sales leader, or commercial operator should understand — <strong>mapped to where they actually matter in the buyer's journey.</strong></p>
+    </div>
+    <div class="learn-right">
+      <div class="funnel-map">
+
+        <div class="funnel-stage">
+          <div class="funnel-stage-header">
+            <span class="funnel-stage-label">Awareness</span>
+            <span class="funnel-stage-desc">Getting found before they know they need you</span>
+          </div>
+          <div class="funnel-links">
+            <a class="funnel-link" href="/learn/seo"><span class="funnel-dot"></span><span class="funnel-link-title">SEO — What It Is and How It Works</span></a>
+            <a class="funnel-link" href="/learn/content-marketing"><span class="funnel-dot"></span><span class="funnel-link-title">Content Marketing — What It Actually Means</span></a>
+            <a class="funnel-link" href="/learn/social-media-marketing"><span class="funnel-dot"></span><span class="funnel-link-title">Social Media Marketing — Beyond Posting and Hoping</span></a>
+            <a class="funnel-link" href="/learn/personal-branding"><span class="funnel-dot"></span><span class="funnel-link-title">Personal Branding — People Buy From People, Not Logos</span></a>
+          </div>
+        </div>
+
+        <div class="funnel-stage">
+          <div class="funnel-stage-header">
+            <span class="funnel-stage-label">Consideration</span>
+            <span class="funnel-stage-desc">Staying in the conversation while they decide</span>
+          </div>
+          <div class="funnel-links">
+            <a class="funnel-link" href="/learn/email-marketing"><span class="funnel-dot"></span><span class="funnel-link-title">Email Marketing — Boring Name, Best Returns</span></a>
+            <a class="funnel-link" href="/learn/inbound-vs-outbound"><span class="funnel-dot"></span><span class="funnel-link-title">Inbound vs. Outbound — Two Different Games</span></a>
+            <a class="funnel-link" href="/learn/marketing-funnel"><span class="funnel-dot"></span><span class="funnel-link-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains</span></a>
+          </div>
+        </div>
+
+        <div class="funnel-stage">
+          <div class="funnel-stage-header">
+            <span class="funnel-stage-label">Decision</span>
+            <span class="funnel-stage-desc">Converting intent into action</span>
+          </div>
+          <div class="funnel-links">
+            <a class="funnel-link" href="/learn/paid-advertising"><span class="funnel-dot"></span><span class="funnel-link-title">Paid Advertising — When to Buy Attention vs. Earn It</span></a>
+            <a class="funnel-link" href="/learn/brand-vs-performance"><span class="funnel-dot"></span><span class="funnel-link-title">Brand vs. Performance — One Makes the Phone Ring Today</span></a>
+            <a class="funnel-link" href="/learn/analytics-attribution"><span class="funnel-dot"></span><span class="funnel-link-title">Analytics and Attribution — The Last Click Gets the Credit</span></a>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 
