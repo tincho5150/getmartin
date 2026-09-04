@@ -784,9 +784,9 @@ html, body { height: auto; overflow-x: hidden; }
     <div class="track" data-track="teardown">
       <div class="track-header">
         <span class="track-label">Teardowns</span>
-        <span class="track-desc">How to actually implement the frameworks — step by step</span>
+        <span class="track-desc">How to actually implement — step by step</span>
       </div>
-      <div class="track-intro"><p class="track-intro-body">The Frameworks track explains the thinking. This track shows the building. Each teardown is a step-by-step walkthrough of how a specific thing gets made — from the brief to the decision to the live result. <strong>Not theory. Not case study. Implementation, decision by decision, with the reasoning behind each one shown in full.</strong></p></div>
+      <div class="track-intro"><p class="track-intro-body">Each teardown is a step-by-step walkthrough of how a specific thing gets made — from the brief to the decision to the live result. <strong>Not theory. Not case study. Implementation, decision by decision, with the reasoning behind each one shown in full.</strong></p></div>
       <div class="card-grid">
         <a class="resource-card coming-soon" href="#"><span class="card-track">Teardown</span><p class="card-title">How to Build a Self-Diagnostic Tool</p><p class="card-desc">Step by step — from identifying the hidden gap to designing the scoring system, the roadmap output, and the pre-call workflow around it.</p><div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div></a>
         <a class="resource-card coming-soon" href="#"><span class="card-track">Teardown</span><p class="card-title">How to Make an Abstract Product Visible</p><p class="card-desc">When the software works inside systems buyers can't see, the demo has to do the seeing for them. How to turn invisible value into a felt experience.</p><div class="card-footer"><span class="card-tag">Implementation</span><span class="card-status soon">Coming soon</span></div></a>
@@ -808,7 +808,7 @@ window.addEventListener('scroll', () => {
   if (progress) progress.style.width = pct + '%';
 }, { passive: true });
 
-// Infographic accordion
+// Buyer Psychology accordion
 const concepts = document.querySelectorAll('.psych-concept');
 concepts.forEach(concept => {
   concept.querySelector('.psych-concept-bar').addEventListener('click', () => {
@@ -828,29 +828,31 @@ concepts.forEach(concept => {
   });
 });
 
-// Sales timeline scroll animation
+// Sales timeline — reveal on scroll, trigger immediately if already in view
 const salesStages = document.querySelectorAll('.sales-stage');
-const salesLine = document.getElementById('salesLineProgress');
+const salesLine   = document.getElementById('salesLineProgress');
 
-if (salesStages.length && salesLine) {
-  const timelineObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        // Update line progress
-        const visible = document.querySelectorAll('.sales-stage.visible').length;
-        const pct = (visible / salesStages.length) * 100;
-        salesLine.style.height = pct + '%';
-      }
-    });
-  }, { threshold: 0.3 });
-  salesStages.forEach(s => timelineObs.observe(s));
+function updateLine() {
+  if (!salesLine) return;
+  const visible = document.querySelectorAll('.sales-stage.visible').length;
+  salesLine.style.height = (visible / salesStages.length * 100) + '%';
 }
 
+const stageObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      updateLine();
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+salesStages.forEach(s => stageObs.observe(s));
+
 // Filter
- = document.querySelectorAll('.filter-btn');
-const tracks     = document.querySelectorAll('.track');
-const countEl    = document.getElementById('filter-count');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const tracks      = document.querySelectorAll('.track');
+const countEl     = document.getElementById('filter-count');
 
 function applyFilter(filterValue) {
   filterBtns.forEach(b => b.classList.remove('active'));
@@ -860,7 +862,7 @@ function applyFilter(filterValue) {
   tracks.forEach(track => {
     if (filterValue === 'all' || track.dataset.track === filterValue) {
       track.style.display = '';
-      visible += track.querySelectorAll('.resource-card, .psych-infographic').length;
+      visible += track.querySelectorAll('.resource-card, .psych-infographic, .sales-timeline').length;
     } else {
       track.style.display = 'none';
     }
