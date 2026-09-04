@@ -181,6 +181,21 @@ html, body { height: auto; overflow-x: hidden; }
 .sales-stage-tag { color: rgba(240,239,240,0.3); }
 .sales-stage-trap { color: rgba(244,115,32,0.7); }
 
+.sales-stage-stat {
+  display: flex; align-items: baseline; gap: 1rem;
+  margin-top: 0.4rem; padding-top: 0.8rem;
+  border-top: 1px solid rgba(240,239,240,0.06);
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem; font-weight: 700; line-height: 1;
+  letter-spacing: -0.03em; color: var(--lime); flex-shrink: 0;
+}
+.stat-label {
+  font-size: 0.72rem; font-weight: 300; line-height: 1.5;
+  color: rgba(240,239,240,0.3);
+}
+
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 1200px) { .card-grid { grid-template-columns: repeat(4, 1fr); } }
@@ -221,7 +236,6 @@ html, body { height: auto; overflow-x: hidden; }
     <div class="track">
       <div class="track-header">
         <span class="track-label">The Basics</span>
-        <span class="track-desc">The foundational vocabulary — start here</span>
       </div>
       <div class="track-intro"><p class="track-intro-body">Before strategy, frameworks, or tactics — there is vocabulary. Marketing and sales are full of terms that get used constantly and explained rarely. <strong>This track covers the ten concepts every founder, sales leader, or commercial operator should understand before anything else makes sense.</strong> No jargon. No assumed knowledge. Start here.</p></div>
       <div class="card-grid">
@@ -303,45 +317,55 @@ html, body { height: auto; overflow-x: hidden; }
     <div class="track">
       <div class="track-header">
         <span class="track-label">Buyer Psychology</span>
-        <span class="track-desc">How people actually make decisions</span>
       </div>
       <div class="track-intro"><p class="track-intro-body">B2B buyers are not rational actors who evaluate options objectively and choose the best one. They are people — under pressure, managing risk, protecting their careers, navigating internal politics. <strong>Understanding the mental models that drive real buying decisions is what separates marketers who create genuine urgency from those who just add more slides to the deck.</strong></p></div>
-      <div class="card-grid">
 
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Buyer Psychology</span>
-          <p class="card-title">The Buying Journey</p>
-          <p class="card-desc">How B2B decisions actually get made — the research, the internal politics, and the moments that determine the outcome before anyone talks to a rep.</p>
-          <div class="card-footer"><span class="card-tag">Decision-making</span><span class="card-status soon">Coming soon</span></div>
-        </a>
+      <div class="sales-timeline">
 
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Buyer Psychology</span>
-          <p class="card-title">The Status Quo Bias</p>
-          <p class="card-desc">Why doing nothing always beats change in the buyer's mind — and what it actually takes to overcome the pull of "we'll sort it next quarter."</p>
-          <div class="card-footer"><span class="card-tag">Decision-making</span><span class="card-status soon">Coming soon</span></div>
-        </a>
+        <div class="sales-stage">
+          <div class="sales-stage-card">
+            <span class="sales-stage-num">01 — The Buying Journey</span>
+            <p class="sales-stage-name">75% of the decision happens before they talk to you</p>
+            <p class="sales-stage-desc">B2B buyers complete most of their research independently — before a rep is ever involved. By the time they reach out, they've already formed a view. Your job is to shape that view, not overcome it after the fact.</p>
+            <div class="sales-stage-stat"><span class="stat-num">75%</span><span class="stat-label">of B2B buyers say they prefer not to interact with a sales rep at all — Gartner</span></div>
+          </div>
+        </div>
 
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Buyer Psychology</span>
-          <p class="card-title">Loss Aversion</p>
-          <p class="card-desc">Why the cost of inaction lands harder than the promise of gain — and how to use this in positioning without being manipulative.</p>
-          <div class="card-footer"><span class="card-tag">Positioning</span><span class="card-status soon">Coming soon</span></div>
-        </a>
+        <div class="sales-stage">
+          <div class="sales-stage-card">
+            <span class="sales-stage-num">02 — Status Quo Bias</span>
+            <p class="sales-stage-name">Doing nothing always wins — unless you make the cost visible</p>
+            <p class="sales-stage-desc">The default decision in any buying process is inaction. Change requires effort, risk, and internal justification. Your product has to make the cost of staying put feel more painful than the cost of moving — or the deal dies quietly with "we'll revisit next quarter."</p>
+            <div class="sales-stage-stat"><span class="stat-num">60%</span><span class="stat-label">of B2B deals are lost to "no decision" — not to a competitor — CEB/Gartner</span></div>
+          </div>
+        </div>
 
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Buyer Psychology</span>
-          <p class="card-title">The Champion Problem</p>
-          <p class="card-desc">Why your internal advocate keeps losing the internal battle — and what you can give them to win it without you in the room.</p>
-          <div class="card-footer"><span class="card-tag">Sales</span><span class="card-status soon">Coming soon</span></div>
-        </a>
+        <div class="sales-stage">
+          <div class="sales-stage-card">
+            <span class="sales-stage-num">03 — Loss Aversion</span>
+            <p class="sales-stage-name">What they're losing lands twice as hard as what they could gain</p>
+            <p class="sales-stage-desc">People feel losses roughly twice as strongly as equivalent gains. "Your platform could increase output by 30%" produces a very different response than "your team is losing the equivalent of one full day per person, per week, to this problem." Same information. Different emotional weight. Different urgency.</p>
+            <div class="sales-stage-stat"><span class="stat-num">2×</span><span class="stat-label">Losses feel approximately twice as powerful as equivalent gains — Kahneman & Tversky</span></div>
+          </div>
+        </div>
 
-        <a class="resource-card coming-soon" href="#">
-          <span class="card-track">Buyer Psychology</span>
-          <p class="card-title">Social Proof in B2B</p>
-          <p class="card-desc">Why logos on a website work better than any claim you can make — and how to use social proof without it looking desperate.</p>
-          <div class="card-footer"><span class="card-tag">Trust</span><span class="card-status soon">Coming soon</span></div>
-        </a>
+        <div class="sales-stage">
+          <div class="sales-stage-card">
+            <span class="sales-stage-num">04 — The Champion Problem</span>
+            <p class="sales-stage-name">Your champion has to sell your deal without you in the room</p>
+            <p class="sales-stage-desc">Your champion believes in you. But they face a committee of people you've never met, with objections you've never heard, using arguments you've never given them. Most champions lose that room — not because the product is wrong, but because they weren't equipped to win it.</p>
+            <div class="sales-stage-stat"><span class="stat-num">6.3</span><span class="stat-label">Average number of stakeholders involved in a B2B purchase decision — Gartner</span></div>
+          </div>
+        </div>
+
+        <div class="sales-stage">
+          <div class="sales-stage-card">
+            <span class="sales-stage-num">05 — Social Proof</span>
+            <p class="sales-stage-name">What others say about you does more work than anything you say</p>
+            <p class="sales-stage-desc">Buyers don't trust what companies say about themselves — they trust what people like them say. A specific result from a recognisable company does more commercial work than any claim you can make. "We helped them improve efficiency" is worthless. "23% reduction in spoilage in Q1" is a sales asset.</p>
+            <div class="sales-stage-stat"><span class="stat-num">92%</span><span class="stat-label">of B2B buyers are more likely to purchase after reading a trusted review — G2/Heinz Marketing</span></div>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -350,7 +374,6 @@ html, body { height: auto; overflow-x: hidden; }
     <div class="track">
       <div class="track-header">
         <span class="track-label">Sales Process</span>
-        <span class="track-desc">The stages, the traps, the mechanics</span>
       </div>
       <div class="track-intro"><p class="track-intro-body">Most B2B sales processes fail at predictable moments — the discovery call that turns into a pitch, the demo shown too early, the internal champion who can't close the committee. <strong>This track maps how complex B2B deals move — or stall — and where the decisions that determine the outcome are actually made.</strong></p></div>
 
@@ -361,10 +384,6 @@ html, body { height: auto; overflow-x: hidden; }
             <span class="sales-stage-num">01 — Discovery</span>
             <p class="sales-stage-name">The most important call you'll ever turn into a pitch</p>
             <p class="sales-stage-desc">Discovery is about understanding the buyer's world — what the problem costs them, why they haven't solved it, whether you're the right fit. The moment you start showing the product, you've stopped listening. And the buyer notices.</p>
-            <div class="sales-stage-footer">
-              <span class="sales-stage-tag">Questions over features</span>
-              <span class="sales-stage-trap">Trap: pitching instead of listening</span>
-            </div>
           </div>
         </div>
 
@@ -373,10 +392,6 @@ html, body { height: auto; overflow-x: hidden; }
             <span class="sales-stage-num">02 — Qualification</span>
             <p class="sales-stage-name">Not every prospect is a real opportunity</p>
             <p class="sales-stage-desc">Establish early whether budget, authority, need, and timing are real. Deals that aren't qualified early become deals that disappear quietly at proposal stage — after you've spent weeks on them.</p>
-            <div class="sales-stage-footer">
-              <span class="sales-stage-tag">Budget · Authority · Need · Timing</span>
-              <span class="sales-stage-trap">Trap: hoping it sorts itself out</span>
-            </div>
           </div>
         </div>
 
@@ -385,10 +400,6 @@ html, body { height: auto; overflow-x: hidden; }
             <span class="sales-stage-num">03 — The Demo</span>
             <p class="sales-stage-name">By the time they see the product, they should already want it</p>
             <p class="sales-stage-desc">Shown too early, the demo kills deals. Shown to the wrong person, it produces no decision. The demo should confirm what the buyer already suspects is true — not try to convince someone who isn't ready.</p>
-            <div class="sales-stage-footer">
-              <span class="sales-stage-tag">Tailored · Right people · Right moment</span>
-              <span class="sales-stage-trap">Trap: generic feature walkthrough</span>
-            </div>
           </div>
         </div>
 
@@ -397,10 +408,6 @@ html, body { height: auto; overflow-x: hidden; }
             <span class="sales-stage-num">04 — The Proposal</span>
             <p class="sales-stage-name">A business case for people you've never met</p>
             <p class="sales-stage-desc">A proposal is not a price list. It's a document written for the committee — people who weren't in the room. It should restate the problem in their language, quantify the cost of inaction, and make the ROI obvious without a walkthrough.</p>
-            <div class="sales-stage-footer">
-              <span class="sales-stage-tag">Written for the room, not the champion</span>
-              <span class="sales-stage-trap">Trap: price without context</span>
-            </div>
           </div>
         </div>
 
@@ -409,10 +416,6 @@ html, body { height: auto; overflow-x: hidden; }
             <span class="sales-stage-num">05 — The Close</span>
             <p class="sales-stage-name">The deal is won or lost in Discovery — not here</p>
             <p class="sales-stage-desc">If the previous four stages were done well, the close is a confirmation, not a negotiation. The best closes happen when saying yes feels like the obvious, low-risk, well-understood next step — not a leap of faith under deadline pressure.</p>
-            <div class="sales-stage-footer">
-              <span class="sales-stage-tag">Confirmation, not persuasion</span>
-              <span class="sales-stage-trap">Trap: artificial urgency</span>
-            </div>
           </div>
         </div>
 
@@ -431,7 +434,7 @@ window.addEventListener('scroll', () => {
   if (progress) progress.style.width = pct + '%';
 }, { passive: true });
 
-// Sales timeline — reveal on scroll
+// Timeline reveal on scroll — covers both Buyer Psychology and Sales Process
 const salesStages = document.querySelectorAll('.sales-stage');
 const stageObs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
