@@ -125,6 +125,14 @@ html,body { height:auto; overflow-x:hidden; }
 .funnel-link:hover .funnel-link-arrow { color: var(--lime); transform: translateX(3px); }
 .learn-section { display:grid;grid-template-columns:2fr 3fr;border-bottom:1px solid var(--white-faint); }
 
+/* FULL WIDTH SECTION — no dark left col */
+.learn-section-full { border-bottom:1px solid var(--white-faint); }
+.learn-section-full .learn-right { width:100%; }
+.learn-section-full .learn-body { grid-template-columns:260px 1fr; }
+.learn-section-full .learn-nav { padding-left:5vw; }
+.learn-section-full .learn-nav::before { left:calc(5vw + 5px); }
+.learn-section-full .learn-content-area { padding:2.5rem 5vw 2.5rem 2.5rem; }
+
 /* LEFT */
 .learn-left { background:var(--navy-dark);padding:4vw 3.5vw 4vw 5vw;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--white-faint);position:relative; }
 .learn-left::before { content:'';position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:72px 72px;pointer-events:none; }
@@ -355,11 +363,7 @@ html,body { height:auto; overflow-x:hidden; }
   </div>
 
   <!-- BUYER PSYCHOLOGY -->
-  <div class="learn-section">
-    <div class="learn-left">
-      <p class="learn-section-eyebrow">Buyer Psychology</p>
-      <h2 class="learn-section-title">How people<br>actually<br>decide.</h2>
-    </div>
+  <div class="learn-section-full">
     <div class="learn-right">
       <div class="learn-body">
         <nav class="learn-nav">
@@ -564,11 +568,7 @@ html,body { height:auto; overflow-x:hidden; }
   </div>
 
   <!-- SALES PROCESS -->
-  <div class="learn-section">
-    <div class="learn-left">
-      <p class="learn-section-eyebrow">Sales Process</p>
-      <h2 class="learn-section-title">Where deals<br>move —<br>or stall.</h2>
-    </div>
+  <div class="learn-section-full">
     <div class="learn-right">
       <div class="learn-body">
         <nav class="learn-nav">
