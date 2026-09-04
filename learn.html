@@ -46,28 +46,13 @@ html,body { height:auto; overflow-x:hidden; }
   background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 72px 72px; pointer-events: none;
 }
-.basics-full-header {
-  position: relative; z-index: 1;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 4vw;
-  padding: 4vw 5vw 3vw;
-  border-bottom: 1px solid var(--white-faint);
-  align-items: end;
-}
-.basics-full-left { display: flex; flex-direction: column; gap: 0; }
-.basics-full-intro {
-  font-size: 1rem; font-weight: 300; line-height: 1.75;
-  color: var(--white-dim); max-width: 52ch;
-  align-self: end;
-}
-.basics-full-intro strong { color: var(--white); font-weight: 400; }
-
-/* FUNNEL SUBSECTIONS — split layout matching main sections */
+/* FUNNEL SUBSECTIONS */
 .funnel-subsection {
-  display: grid; grid-template-columns: 1fr 1fr;
+  display: grid; grid-template-columns: 2fr 3fr;
   border-top: 1px solid var(--white-faint);
   position: relative; z-index: 1;
 }
+.funnel-subsection-first .funnel-sub-right { padding-top: 0.5rem; }
 .funnel-sub-left {
   padding: 3vw 3.5vw 3vw 5vw;
   display: flex; flex-direction: column; justify-content: center;
@@ -138,7 +123,7 @@ html,body { height:auto; overflow-x:hidden; }
   flex-shrink: 0; transition: color 0.15s, transform 0.15s;
 }
 .funnel-link:hover .funnel-link-arrow { color: var(--lime); transform: translateX(3px); }
-.learn-section { display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--white-faint); }
+.learn-section { display:grid;grid-template-columns:2fr 3fr;border-bottom:1px solid var(--white-faint); }
 
 /* LEFT */
 .learn-left { background:var(--navy-dark);padding:4vw 3.5vw 4vw 5vw;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--white-faint);position:relative; }
@@ -238,6 +223,7 @@ html,body { height:auto; overflow-x:hidden; }
   padding: 2.8rem 5vw;
   border-bottom: 1px solid var(--white-faint);
   background: var(--navy-dark);
+  flex-wrap: wrap;
 }
 .section-break-num {
   font-size: 0.78rem; font-weight: 400;
@@ -252,6 +238,11 @@ html,body { height:auto; overflow-x:hidden; }
   font-size: clamp(1.1rem, 2vw, 1.6rem);
   font-weight: 700; letter-spacing: -0.01em;
   color: rgba(240,239,240,0.35);
+}
+.section-break-sub {
+  font-size: 0.82rem; font-weight: 300;
+  color: rgba(240,239,240,0.25);
+  letter-spacing: 0.01em;
 }
 .section-break-line { display: none; }
 
@@ -300,22 +291,14 @@ html,body { height:auto; overflow-x:hidden; }
     <span class="section-break-num">01</span>
     <span class="section-break-dot"></span>
     <span class="section-break-label">The Basics</span>
-    
+    <span class="section-break-dot"></span>
+    <span class="section-break-sub">Ten concepts mapped to where they actually matter in the buyer's journey.</span>
   </div>
 
   <!-- BASICS -->
   <div class="basics-full">
-    <div class="basics-full-header">
-      <div class="basics-full-left">
-        <p class="learn-section-eyebrow">The Basics</p>
-        <h2 class="learn-section-title">Ten concepts.<br>One buying journey.</h2>
-      </div>
-      <div class="basics-full-right">
-        <p class="basics-full-intro">The ten concepts every founder, sales leader, or commercial operator should understand — <strong>mapped to where they actually matter in the buyer's journey.</strong></p>
-      </div>
-    </div>
 
-    <div class="funnel-subsection">
+    <div class="funnel-subsection funnel-subsection-first">
       <div class="funnel-sub-left">
         <p class="funnel-sub-num">01</p>
         <h3 class="funnel-sub-title">Awareness. <span class="funnel-sub-hook">What gets you in front of buyers.</span></h3>
