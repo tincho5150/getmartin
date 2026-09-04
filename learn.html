@@ -96,6 +96,13 @@ html,body { height:auto; overflow-x:hidden; }
   background-image: linear-gradient(rgba(30,44,58,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(30,44,58,0.04) 1px, transparent 1px);
   background-size: 72px 72px; pointer-events: none;
 }
+.funnel-sub-intro {
+  font-size: 0.82rem; font-weight: 300; line-height: 1.7;
+  color: rgba(30,44,58,0.55);
+  padding: 1rem 3.5vw;
+  border-bottom: 1px solid rgba(30,44,58,0.07);
+}
+.funnel-sub-intro strong { color: var(--ink); font-weight: 500; }
 .funnel-link {
   display: flex; align-items: center;
   justify-content: space-between;
@@ -111,7 +118,7 @@ html,body { height:auto; overflow-x:hidden; }
 .funnel-link-left { display: flex; align-items: center; gap: 1rem; flex: 1; min-width: 0; }
 .funnel-dot {
   width: 6px; height: 6px; border-radius: 50%;
-  background: rgba(30,44,58,0.18); flex-shrink: 0;
+  background: var(--lime); flex-shrink: 0;
   transition: background 0.15s;
 }
 .funnel-link:hover .funnel-dot { background: var(--lime); }
@@ -317,6 +324,7 @@ html,body { height:auto; overflow-x:hidden; }
         <h3 class="funnel-sub-title">Awareness.</h3>
       </div>
       <div class="funnel-sub-right">
+        <p class="funnel-sub-intro">The channels and tactics that get your product in front of buyers who don't know you exist yet. <strong>Start here before anything else.</strong></p>
         <a class="funnel-link" href="/learn/seo"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">SEO — What It Is and How It Works</span></span><span class="funnel-link-tag">Search</span><span class="funnel-link-arrow">→</span></a>
         <a class="funnel-link" href="/learn/content-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Content Marketing — What It Actually Means</span></span><span class="funnel-link-tag">Content</span><span class="funnel-link-arrow">→</span></a>
         <a class="funnel-link" href="/learn/social-media-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Social Media Marketing — Beyond Posting and Hoping</span></span><span class="funnel-link-tag">Social</span><span class="funnel-link-arrow">→</span></a>
@@ -330,6 +338,7 @@ html,body { height:auto; overflow-x:hidden; }
         <h3 class="funnel-sub-title">Consideration.</h3>
       </div>
       <div class="funnel-sub-right">
+        <p class="funnel-sub-intro">The concepts that keep you present and credible while buyers research, compare, and decide — often without telling you. <strong>This is where most deals are quietly won or lost.</strong></p>
         <a class="funnel-link" href="/learn/email-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Email Marketing — Boring Name, Best Returns</span></span><span class="funnel-link-tag">Email</span><span class="funnel-link-arrow">→</span></a>
         <a class="funnel-link" href="/learn/inbound-vs-outbound"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Inbound vs. Outbound — Two Different Games</span></span><span class="funnel-link-tag">Strategy</span><span class="funnel-link-arrow">→</span></a>
         <a class="funnel-link" href="/learn/marketing-funnel"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains</span></span><span class="funnel-link-tag">Funnel</span><span class="funnel-link-arrow">→</span></a>
@@ -342,6 +351,7 @@ html,body { height:auto; overflow-x:hidden; }
         <h3 class="funnel-sub-title">Decision.</h3>
       </div>
       <div class="funnel-sub-right">
+        <p class="funnel-sub-intro">The tools that convert intent into action — and help you understand what worked after the fact. <strong>Spending without these is guessing.</strong></p>
         <a class="funnel-link" href="/learn/paid-advertising"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Paid Advertising — When to Buy Attention vs. Earn It</span></span><span class="funnel-link-tag">Paid</span><span class="funnel-link-arrow">→</span></a>
         <a class="funnel-link" href="/learn/brand-vs-performance"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Brand vs. Performance — One Makes the Phone Ring Today</span></span><span class="funnel-link-tag">Strategy</span><span class="funnel-link-arrow">→</span></a>
         <a class="funnel-link" href="/learn/analytics-attribution"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Analytics and Attribution — The Last Click Gets the Credit</span></span><span class="funnel-link-tag">Analytics</span><span class="funnel-link-arrow">→</span></a>
