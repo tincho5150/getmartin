@@ -68,58 +68,63 @@ html,body { height:auto; overflow-x:hidden; }
 /* RIGHT — white, vertical nav + content */
 .learn-right { background:#ffffff;display:flex;flex-direction:column;position:relative; }
 .learn-right::before { content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(30,44,58,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(30,44,58,0.04) 1px,transparent 1px);background-size:72px 72px;pointer-events:none; }
-.learn-body { flex:1;display:grid;grid-template-columns:200px 1fr;position:relative;z-index:1; }
+.learn-body { flex:1;display:grid;grid-template-columns:240px 1fr;position:relative;z-index:1;align-items:center; }
 
 /* VERTICAL NAV */
-.learn-nav { padding:2.5rem 0 2.5rem 2rem;border-right:1px solid rgba(30,44,58,0.08);display:flex;flex-direction:column;position:relative; }
-.learn-nav::before { content:'';position:absolute;left:calc(2rem + 4px);top:3.5rem;bottom:3.5rem;width:1px;background:rgba(30,44,58,0.1); }
-.learn-nav-item { display:flex;align-items:flex-start;gap:0.8rem;padding:0.65rem 1.2rem 0.65rem 0;cursor:pointer;position:relative; }
-.learn-nav-dot { width:10px;height:10px;border-radius:50%;flex-shrink:0;border:2px solid rgba(30,44,58,0.18);background:#fff;margin-top:4px;position:relative;z-index:1;transition:border-color 0.2s,background 0.2s; }
+.learn-nav { padding:3rem 0 3rem 2.5rem;border-right:1px solid rgba(30,44,58,0.08);display:flex;flex-direction:column;justify-content:center;position:relative;align-self:stretch; }
+.learn-nav::before { content:'';position:absolute;left:calc(2.5rem + 5px);top:4rem;bottom:4rem;width:1px;background:rgba(30,44,58,0.1); }
+.learn-nav-item { display:flex;align-items:flex-start;gap:1rem;padding:0.9rem 1.5rem 0.9rem 0;cursor:pointer;position:relative; }
+.learn-nav-dot { width:12px;height:12px;border-radius:50%;flex-shrink:0;border:2px solid rgba(30,44,58,0.18);background:#fff;margin-top:5px;position:relative;z-index:1;transition:border-color 0.2s,background 0.2s; }
 .learn-nav-item.active .learn-nav-dot { background:var(--lime);border-color:var(--lime); }
 .learn-nav-item:hover .learn-nav-dot { border-color:var(--lime); }
-.learn-nav-title { font-size:0.8rem;font-weight:400;line-height:1.4;color:rgba(30,44,58,0.4);transition:color 0.2s; }
-.learn-nav-item.active .learn-nav-title { color:var(--ink);font-weight:500; }
+.learn-nav-title { font-size:0.95rem;font-weight:400;line-height:1.4;color:rgba(30,44,58,0.35);transition:color 0.2s; }
+.learn-nav-item.active .learn-nav-title { color:var(--ink);font-weight:600; }
 .learn-nav-item:hover .learn-nav-title { color:var(--ink-dim); }
 
 /* CONTENT PANELS */
-.learn-content-area { padding:2.5rem 2.5rem 2.5rem 2rem;display:flex;flex-direction:column;gap:var(--col-gap); }
+.learn-content-area { padding:3rem 3rem 3rem 2.5rem;display:flex;flex-direction:column;gap:var(--col-gap);justify-content:center; }
 .learn-panel { display:none;flex-direction:column;gap:var(--col-gap); }
 .learn-panel.active { display:flex;animation:fadeUp 0.3s var(--ease-out) forwards; }
 
 /* CARDS inside panels */
-.concept-card { background:var(--navy-dark);padding:1.6rem;display:flex;flex-direction:column;gap:0.7rem; }
-.concept-card-lime { background:var(--lime);padding:1.6rem;display:flex;flex-direction:column;gap:0.7rem; }
+.concept-card { background:var(--navy-dark);padding:1.8rem;display:flex;flex-direction:column;gap:0.8rem; }
+.concept-card-lime { background:var(--lime);padding:1.8rem;display:flex;flex-direction:column;gap:0.8rem; }
 .concept-label { font-size:0.62rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,239,240,0.35); }
 .concept-label-dark { font-size:0.62rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(30,44,58,0.35); }
-.concept-title { font-family:var(--font-display);font-size:clamp(1rem,1.5vw,1.25rem);font-weight:700;line-height:1.2;letter-spacing:-0.01em;color:var(--white); }
-.concept-title-dark { font-family:var(--font-display);font-size:clamp(1rem,1.5vw,1.25rem);font-weight:700;line-height:1.2;letter-spacing:-0.01em;color:var(--navy-dark); }
-.concept-body { font-size:0.85rem;font-weight:300;line-height:1.75;color:rgba(240,239,240,0.6); }
-.concept-body-dark { font-size:0.85rem;font-weight:300;line-height:1.75;color:rgba(30,44,58,0.6); }
+.concept-title { font-family:var(--font-display);font-size:clamp(1.05rem,1.6vw,1.35rem);font-weight:700;line-height:1.2;letter-spacing:-0.01em;color:var(--white); }
+.concept-title-dark { font-family:var(--font-display);font-size:clamp(1.05rem,1.6vw,1.35rem);font-weight:700;line-height:1.2;letter-spacing:-0.01em;color:var(--navy-dark); }
+.concept-body { font-size:0.88rem;font-weight:300;line-height:1.8;color:rgba(240,239,240,0.62); }
+.concept-body-dark { font-size:0.88rem;font-weight:300;line-height:1.8;color:rgba(30,44,58,0.62); }
 .concept-grid { display:grid;grid-template-columns:1fr 1fr;gap:var(--col-gap); }
 
-/* STAT BAR */
-.concept-stat { display:flex;align-items:center;gap:1rem;margin-top:0.5rem; }
-.concept-stat-num { font-family:var(--font-display);font-size:clamp(2rem,3vw,2.8rem);font-weight:700;line-height:1;letter-spacing:-0.03em;color:var(--lime);flex-shrink:0; }
-.concept-stat-right { display:flex;flex-direction:column;gap:0.4rem;flex:1; }
-.concept-stat-desc { font-size:0.72rem;font-weight:300;line-height:1.5;color:rgba(240,239,240,0.4); }
-.concept-bar-track { height:3px;background:rgba(240,239,240,0.1);width:100%; }
-.concept-bar-fill { height:100%;background:var(--lime);width:0%;transition:width 1s var(--ease-out); }
+/* STAT CARD — separate lime card below content */
+.stat-card-standalone {
+  background:var(--lime);
+  padding:1.4rem 1.8rem;
+  display:flex;align-items:center;gap:1.5rem;
+}
+.stat-card-big-num { font-family:var(--font-display);font-size:clamp(2.8rem,5vw,4rem);font-weight:700;line-height:1;letter-spacing:-0.04em;color:var(--navy-dark);flex-shrink:0; }
+.stat-card-right { display:flex;flex-direction:column;gap:0.5rem;flex:1; }
+.stat-card-desc { font-size:0.82rem;font-weight:400;line-height:1.5;color:rgba(30,44,58,0.7); }
+.stat-bar-track { height:4px;background:rgba(30,44,58,0.15);width:100%; }
+.stat-bar-fill { height:100%;background:var(--navy-dark);width:0%;transition:width 1.2s var(--ease-out); }
 
 @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
 
 @media(max-width:1200px){.card-grid{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:1024px){.card-grid{grid-template-columns:repeat(3,1fr)}.learn-body{grid-template-columns:170px 1fr}}
+@media(max-width:1024px){.card-grid{grid-template-columns:repeat(3,1fr)}.learn-body{grid-template-columns:200px 1fr}}
 @media(max-width:768px){
   .learn-section{grid-template-columns:1fr}
   .learn-left{min-height:auto;padding:3rem 1.5rem 2.5rem;border-right:none;border-bottom:1px solid var(--white-faint)}
-  .learn-body{grid-template-columns:1fr}
-  .learn-nav{flex-direction:row;flex-wrap:wrap;border-right:none;border-bottom:1px solid rgba(30,44,58,0.08);padding:1rem 1.5rem;gap:0.3rem}
+  .learn-body{grid-template-columns:1fr;align-items:start}
+  .learn-nav{flex-direction:row;flex-wrap:wrap;border-right:none;border-bottom:1px solid rgba(30,44,58,0.08);padding:1rem 1.5rem;gap:0.3rem;justify-content:start}
   .learn-nav::before{display:none}
   .learn-nav-dot{display:none}
   .learn-nav-item{padding:0.3rem 0.5rem}
   .learn-content-area{padding:1.5rem}
   .card-grid{grid-template-columns:repeat(2,1fr)}
   .concept-grid{grid-template-columns:1fr}
+  .stat-card-standalone{flex-direction:column;gap:0.8rem}
   .nav-link{display:none}
   .nav-link-cta{display:block}
 }
@@ -186,12 +191,12 @@ html,body { height:auto; overflow-x:hidden; }
               <p class="concept-label">The Buying Journey</p>
               <p class="concept-title">75% of the decision happens before they talk to you</p>
               <p class="concept-body">B2B buyers complete most of their research independently — before a rep is ever involved. By the time they reach out, they've already formed a view. Your job is to shape that view, not overcome it after the fact. The sale happens in the research phase.</p>
-              <div class="concept-stat">
-                <span class="concept-stat-num">75%</span>
-                <div class="concept-stat-right">
-                  <span class="concept-stat-desc">prefer no sales rep contact during research — Gartner</span>
-                  <div class="concept-bar-track"><div class="concept-bar-fill" data-width="75"></div></div>
-                </div>
+            </div>
+            <div class="stat-card-standalone">
+              <span class="stat-card-big-num">75%</span>
+              <div class="stat-card-right">
+                <span class="stat-card-desc">prefer no sales rep contact during research — Gartner</span>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="75"></div></div>
               </div>
             </div>
           </div>
@@ -201,12 +206,12 @@ html,body { height:auto; overflow-x:hidden; }
               <p class="concept-label">Status Quo Bias</p>
               <p class="concept-title">Doing nothing always wins — unless you make the cost visible</p>
               <p class="concept-body">The default decision in any buying process is inaction. Change requires effort, risk, and internal justification. Your product has to make the cost of staying put feel more painful than the cost of moving — or the deal dies quietly with "we'll revisit next quarter."</p>
-              <div class="concept-stat">
-                <span class="concept-stat-num">60%</span>
-                <div class="concept-stat-right">
-                  <span class="concept-stat-desc">of qualified deals lost to "no decision" — not a competitor — CEB/Gartner</span>
-                  <div class="concept-bar-track"><div class="concept-bar-fill" data-width="60"></div></div>
-                </div>
+            </div>
+            <div class="stat-card-standalone">
+              <span class="stat-card-big-num">60%</span>
+              <div class="stat-card-right">
+                <span class="stat-card-desc">of qualified deals lost to "no decision" — not a competitor — CEB/Gartner</span>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="60"></div></div>
               </div>
             </div>
           </div>
@@ -217,18 +222,18 @@ html,body { height:auto; overflow-x:hidden; }
                 <p class="concept-label">Loss Aversion</p>
                 <p class="concept-title">Losses feel twice as powerful as equivalent gains</p>
                 <p class="concept-body">Reframe your pitch around what the buyer is currently losing — not what they could gain. Same information, completely different urgency. — Kahneman &amp; Tversky</p>
-                <div class="concept-stat">
-                  <span class="concept-stat-num">2×</span>
-                  <div class="concept-stat-right">
-                    <span class="concept-stat-desc">the emotional weight of a loss vs. an equivalent gain</span>
-                    <div class="concept-bar-track"><div class="concept-bar-fill" data-width="100"></div></div>
-                  </div>
-                </div>
               </div>
               <div class="concept-card-lime">
                 <p class="concept-label-dark">The reframe</p>
                 <p class="concept-title-dark">"Your team is losing one full day per person, per week."</p>
                 <p class="concept-body-dark">vs. "Our platform could increase output by 30%." Same fact. Completely different emotional response.</p>
+              </div>
+            </div>
+            <div class="stat-card-standalone">
+              <span class="stat-card-big-num">2×</span>
+              <div class="stat-card-right">
+                <span class="stat-card-desc">the emotional weight of a loss vs. an equivalent gain — Kahneman &amp; Tversky</span>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="100"></div></div>
               </div>
             </div>
           </div>
@@ -238,12 +243,12 @@ html,body { height:auto; overflow-x:hidden; }
               <p class="concept-label">The Champion Problem</p>
               <p class="concept-title">Your champion has to sell your deal without you in the room</p>
               <p class="concept-body">Your champion believes in you. But they face a committee of people you've never met, with objections you've never heard, using arguments you've never given them. Most champions lose that room — not because the product is wrong, but because they weren't equipped to win it.</p>
-              <div class="concept-stat">
-                <span class="concept-stat-num">6.3</span>
-                <div class="concept-stat-right">
-                  <span class="concept-stat-desc">average stakeholders involved in a B2B purchase — Gartner</span>
-                  <div class="concept-bar-track"><div class="concept-bar-fill" data-width="63"></div></div>
-                </div>
+            </div>
+            <div class="stat-card-standalone">
+              <span class="stat-card-big-num">6.3</span>
+              <div class="stat-card-right">
+                <span class="stat-card-desc">average stakeholders involved in a B2B purchase — Gartner</span>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="63"></div></div>
               </div>
             </div>
           </div>
@@ -254,18 +259,18 @@ html,body { height:auto; overflow-x:hidden; }
                 <p class="concept-label">Social Proof</p>
                 <p class="concept-title">What others say does more work than anything you say</p>
                 <p class="concept-body">Buyers don't trust what companies say about themselves. A specific result from a recognisable company does more commercial work than any claim you can make.</p>
-                <div class="concept-stat">
-                  <span class="concept-stat-num">92%</span>
-                  <div class="concept-stat-right">
-                    <span class="concept-stat-desc">more likely to purchase after a trusted review — G2/Heinz</span>
-                    <div class="concept-bar-track"><div class="concept-bar-fill" data-width="92"></div></div>
-                  </div>
-                </div>
               </div>
               <div class="concept-card-lime">
                 <p class="concept-label-dark">The difference</p>
                 <p class="concept-title-dark">"23% reduction in spoilage in Q1"</p>
                 <p class="concept-body-dark">vs. "We helped them improve efficiency." One is a sales asset. The other is noise.</p>
+              </div>
+            </div>
+            <div class="stat-card-standalone">
+              <span class="stat-card-big-num">92%</span>
+              <div class="stat-card-right">
+                <span class="stat-card-desc">more likely to purchase after a trusted review — G2/Heinz</span>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="92"></div></div>
               </div>
             </div>
           </div>
@@ -377,18 +382,15 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 function activatePanel(section, panelIdx) {
-  // Update nav dots
   document.querySelectorAll(`.learn-nav-item[data-section="${section}"]`).forEach(item => {
     item.classList.toggle('active', item.dataset.panel === panelIdx);
   });
-  // Swap panels
   document.querySelectorAll(`[id^="${section}-"]`).forEach(panel => {
     panel.classList.toggle('active', panel.id === `${section}-${panelIdx}`);
   });
-  // Animate bars
   const active = document.getElementById(`${section}-${panelIdx}`);
   if (active) {
-    active.querySelectorAll('.concept-bar-fill').forEach(bar => {
+    active.querySelectorAll('.stat-bar-fill').forEach(bar => {
       const w = bar.dataset.width;
       bar.style.width = '0%';
       requestAnimationFrame(() => requestAnimationFrame(() => { bar.style.width = w + '%'; }));
@@ -400,8 +402,7 @@ document.querySelectorAll('.learn-nav-item').forEach(item => {
   item.addEventListener('click', () => activatePanel(item.dataset.section, item.dataset.panel));
 });
 
-// Animate bars on first load
-document.querySelectorAll('.learn-panel.active .concept-bar-fill').forEach(bar => {
+document.querySelectorAll('.learn-panel.active .stat-bar-fill').forEach(bar => {
   const w = bar.dataset.width;
   setTimeout(() => { bar.style.width = w + '%'; }, 500);
 });
