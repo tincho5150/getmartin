@@ -307,7 +307,8 @@ html,body { height:auto; overflow-x:hidden; }
   background: var(--navy-dark);
   position: relative;
 }
-.section-break-first { margin-top: 4vw; }
+.section-break { margin-top: 0; }
+.section-break-first { margin-top: 0; }
 .section-break::before {
   content: ''; position: absolute; inset: 0;
   background-image: linear-gradient(var(--grid) 1px, transparent 1px),
@@ -419,6 +420,9 @@ html,body { height:auto; overflow-x:hidden; }
       </div>
     </div>
   </div>
+
+  <!-- WHITE SPACER -->
+  <div style="height:4vw;background:#ffffff;"></div>
 
   <!-- SECTION BREAK -->
   <div class="section-break section-break-first" id="basics">
