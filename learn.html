@@ -362,6 +362,59 @@ html,body { height:auto; overflow-x:hidden; }
 .learn-panel[data-section="basics"] .stat-bar-track { display: none; }
 .learn-panel[data-section="basics"] .stat-bar-fill { display: none; }
 
+/* PSYCHOLOGY + SALES — same horizontal scorecard */
+.learn-panel[id^="psychology-"] .stat-dashboard,
+.learn-panel[id^="sales-"] .stat-dashboard {
+  background: #1e2c3a;
+  border: 1px solid #1e2c3a;
+  border-top: 1px solid #1e2c3a;
+  padding: 1.4rem;
+  margin-top: 2px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.learn-panel[id^="psychology-"] .stat-dashboard-row,
+.learn-panel[id^="sales-"] .stat-dashboard-row {
+  display: flex; flex-direction: column;
+  padding: 0 1.2rem 0 0;
+  margin-right: 1.2rem;
+  border-bottom: none;
+  border-right: 1px solid rgba(184,212,0,0.2);
+  gap: 0.3rem;
+  grid-template-columns: unset;
+  align-items: unset;
+}
+.learn-panel[id^="psychology-"] .stat-dashboard-row:last-child,
+.learn-panel[id^="sales-"] .stat-dashboard-row:last-child {
+  border-right: none; padding-right: 0; margin-right: 0;
+}
+.learn-panel[id^="psychology-"] .stat-num,
+.learn-panel[id^="sales-"] .stat-num {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700; letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--lime); line-height: 1; padding-top: 0;
+}
+.learn-panel[id^="psychology-"] .stat-right,
+.learn-panel[id^="sales-"] .stat-right {
+  display: flex; flex-direction: column; gap: 0.2rem;
+}
+.learn-panel[id^="psychology-"] .stat-desc,
+.learn-panel[id^="sales-"] .stat-desc {
+  font-size: 0.78rem; font-weight: 400;
+  color: rgba(240,239,240,0.65); line-height: 1.4;
+}
+.learn-panel[id^="psychology-"] .stat-source,
+.learn-panel[id^="sales-"] .stat-source {
+  font-size: 0.62rem; font-weight: 300;
+  color: rgba(240,239,240,0.25);
+}
+.learn-panel[id^="psychology-"] .stat-bar-track,
+.learn-panel[id^="sales-"] .stat-bar-track { display: none; }
+.learn-panel[id^="psychology-"] .stat-bar-fill,
+.learn-panel[id^="sales-"] .stat-bar-fill { display: none; }
+
 /* SECTION BREAK */
 .section-break {
   display: flex; flex-direction: column; align-items: flex-start;
@@ -973,7 +1026,7 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- SECTION BREAK -->
   <div class="section-break" id="psychology">
-    <p class="section-break-label">Buyer Psychology. <span class="section-break-sub">Why buyers do what they do.</span></p>
+    <p class="section-break-label">Buyer Psychology. <span class="section-break-sub">Why buyers do what they do — and how to use it to create genuine urgency.</span></p>
   </div>
 
   <!-- BUYER PSYCHOLOGY -->
@@ -1173,7 +1226,7 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- SECTION BREAK -->
   <div class="section-break" id="sales">
-    <p class="section-break-label">Sales Process. <span class="section-break-sub">Most deals don't lose. They stall.</span></p>
+    <p class="section-break-label">Sales Process. <span class="section-break-sub">Where deals move, where they stall, and what determines the outcome.</span></p>
   </div>
 
   <!-- SALES PROCESS -->
