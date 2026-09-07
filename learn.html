@@ -225,6 +225,14 @@ html,body { height:auto; overflow-x:hidden; }
 .learn-section-intro { position:relative;z-index:1;font-size:1rem;font-weight:300;line-height:1.75;color:var(--white-dim);margin-top:1.5rem;max-width:38ch; }
 .learn-section-intro strong { color:var(--white);font-weight:400; }
 .learn-right-intro { display: none; }
+.basics-teardown {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; text-decoration: none;
+  color: var(--lime); margin-top: 0.5rem;
+  transition: gap 0.2s;
+}
+.basics-teardown:hover { gap: 0.8rem; }
 .learn-panel-intro {
   font-size: 0.88rem; font-weight: 300; line-height: 1.8;
   color: rgba(30,44,58,0.7);
@@ -407,109 +415,157 @@ html,body { height:auto; overflow-x:hidden; }
   </div>
 
   <!-- BASICS -->
-  <div class="basics-full">
+  <div class="learn-section-full">
+    <div class="learn-right">
+      <div class="learn-body">
+        <nav class="learn-nav" id="basics-nav">
+          <div class="learn-nav-item active" data-section="basics" data-panel="0"><span class="learn-nav-dot"></span><span class="learn-nav-title">SEO</span></div>
+          <div class="learn-nav-item" data-section="basics" data-panel="1"><span class="learn-nav-dot"></span><span class="learn-nav-title">Content Marketing</span></div>
+          <div class="learn-nav-item" data-section="basics" data-panel="2"><span class="learn-nav-dot"></span><span class="learn-nav-title">Social Media Marketing</span></div>
+          <div class="learn-nav-item" data-section="basics" data-panel="3"><span class="learn-nav-dot"></span><span class="learn-nav-title">Personal Branding</span></div>
+          <div class="learn-nav-item" data-section="basics" data-panel="4"><span class="learn-nav-dot"></span><span class="learn-nav-title">Email Marketing</span></div>
+          <div class="learn-nav-item" data-section="basics" data-panel="5"><span class="learn-nav-dot"></span><span class="learn-nav-title">Inbound vs. Outbound</span></div>
+          <div class="learn-nav-item" data-section="basics" data-panel="6"><span class="learn-nav-dot"></span><span class="learn-nav-title">TOFU, MOFU, BOFU</span></div>
+          <div class="learn-nav-item" data-section="basics" data-panel="7"><span class="learn-nav-dot"></span><span class="learn-nav-title">Paid Advertising</span></div>
+          <div class="learn-nav-item" data-section="basics" data-panel="8"><span class="learn-nav-dot"></span><span class="learn-nav-title">Brand vs. Performance</span></div>
+          <div class="learn-nav-item" data-section="basics" data-panel="9"><span class="learn-nav-dot"></span><span class="learn-nav-title">Analytics and Attribution</span></div>
+        </nav>
+        <div class="learn-content-area">
+          <p class="learn-panel-intro">Ten concepts every founder, sales leader, or commercial operator should understand — mapped to where they actually matter in the buyer's journey.</p>
 
+          <!-- 0: SEO -->
+          <div class="learn-panel active" data-section="basics" data-panel="0">
+            <div class="concept-card">
+              <p class="concept-eyebrow">Awareness</p>
+              <h3 class="concept-title">SEO</h3>
+              <p class="concept-body">Search Engine Optimisation is how you earn organic visibility on Google and other search engines. When a prospect searches for a problem your product solves, SEO determines whether you show up — or your competitor does. It's not about tricks or hacks. It's about creating genuinely useful content that matches what buyers are actually searching for, on a site that's technically sound enough for search engines to trust.</p>
+            </div>
+            <div class="concept-card concept-card-lime">
+              <p class="concept-body">Most B2B buyers search before they ever talk to a salesperson. SEO is how you get in the room before the conversation starts.</p>
+            </div>
+            <a class="basics-teardown" href="/learn/seo">Full teardown →</a>
+          </div>
 
-    <div class="funnel-subsection funnel-subsection-first">
-      <div class="funnel-sub-left">
-        <h3 class="funnel-sub-title funnel-title-lime">Awareness. <span class="funnel-sub-hook">What gets you in front of buyers.</span></h3>
-      </div>
-      <div class="funnel-sub-right">
-        <div class="step-cards">
-          <a class="step-card" href="/learn/seo">
-            <div class="step-num">01</div>
-            <div class="step-content">
-              <div class="step-title">SEO</div>
-              <div class="step-desc">Why some pages show up on Google and others don't — and what you can actually do about it.</div>
+          <!-- 1: Content Marketing -->
+          <div class="learn-panel" data-section="basics" data-panel="1" id="basics-1">
+            <div class="concept-card">
+              <p class="concept-eyebrow">Awareness</p>
+              <h3 class="concept-title">Content Marketing</h3>
+              <p class="concept-body">Content marketing is the practice of creating and distributing useful, relevant content to attract and retain a clearly defined audience. In B2B, it means publishing articles, guides, and resources that your buyers actually want to read — not product-first promotional material. Done right, content builds trust long before anyone is ready to buy.</p>
             </div>
-          </a>
-          <a class="step-card" href="/learn/content-marketing">
-            <div class="step-num">02</div>
-            <div class="step-content">
-              <div class="step-title">Content Marketing</div>
-              <div class="step-desc">Not blogging for the sake of it. The logic behind creating content that brings the right people to you.</div>
+            <div class="concept-card concept-card-lime">
+              <p class="concept-body">The best content marketing doesn't feel like marketing. It feels like the answer to a question your buyer was already asking.</p>
             </div>
-          </a>
-          <a class="step-card" href="/learn/social-media-marketing">
-            <div class="step-num">03</div>
-            <div class="step-content">
-              <div class="step-title">Social Media Marketing</div>
-              <div class="step-desc">What social actually does in a B2B sales cycle — and what it can't.</div>
+            <a class="basics-teardown" href="/learn/content-marketing">Full teardown →</a>
+          </div>
+
+          <!-- 2: Social Media Marketing -->
+          <div class="learn-panel" data-section="basics" data-panel="2" id="basics-2">
+            <div class="concept-card">
+              <p class="concept-eyebrow">Awareness</p>
+              <h3 class="concept-title">Social Media Marketing</h3>
+              <p class="concept-body">In B2B, social media marketing is less about posting and more about presence. LinkedIn is where most of it happens — used well, it builds the kind of familiarity that makes a cold outreach feel warm. The mistake most companies make is treating social as a broadcast channel instead of a trust-building one.</p>
             </div>
-          </a>
-          <a class="step-card" href="/learn/personal-branding">
-            <div class="step-num">04</div>
-            <div class="step-content">
-              <div class="step-title">Personal Branding</div>
-              <div class="step-desc">What personal brand actually means for a founder or sales leader — and how to build one without becoming a LinkedIn cliché.</div>
+            <div class="concept-card concept-card-lime">
+              <p class="concept-body">Social doesn't close deals. It makes the close easier by the time it comes.</p>
             </div>
-          </a>
+            <a class="basics-teardown" href="/learn/social-media-marketing">Full teardown →</a>
+          </div>
+
+          <!-- 3: Personal Branding -->
+          <div class="learn-panel" data-section="basics" data-panel="3" id="basics-3">
+            <div class="concept-card">
+              <p class="concept-eyebrow">Awareness</p>
+              <h3 class="concept-title">Personal Branding</h3>
+              <p class="concept-body">People buy from people. In B2B, the founder or sales leader's personal brand often carries more weight than the company brand — especially in the early stages. Personal branding isn't about becoming an influencer. It's about being visible, consistent, and credible in the spaces where your buyers spend time.</p>
+            </div>
+            <div class="concept-card concept-card-lime">
+              <p class="concept-body">Your buyers Google you before they Google your company. What they find matters.</p>
+            </div>
+            <a class="basics-teardown" href="/learn/personal-branding">Full teardown →</a>
+          </div>
+
+          <!-- 4: Email Marketing -->
+          <div class="learn-panel" data-section="basics" data-panel="4" id="basics-4">
+            <div class="concept-card">
+              <p class="concept-eyebrow">Consideration</p>
+              <h3 class="concept-title">Email Marketing</h3>
+              <p class="concept-body">Email remains the highest-ROI channel in B2B marketing. Unlike social media, you own the list — no algorithm stands between you and your audience. Used well, email nurtures prospects through the consideration stage, keeps you top of mind between conversations, and creates consistent touchpoints without requiring a salesperson to make every contact.</p>
+            </div>
+            <div class="concept-card concept-card-lime">
+              <p class="concept-body">The best B2B emails don't feel like marketing emails. They feel like a message worth opening.</p>
+            </div>
+            <a class="basics-teardown" href="/learn/email-marketing">Full teardown →</a>
+          </div>
+
+          <!-- 5: Inbound vs Outbound -->
+          <div class="learn-panel" data-section="basics" data-panel="5" id="basics-5">
+            <div class="concept-card">
+              <p class="concept-eyebrow">Consideration</p>
+              <h3 class="concept-title">Inbound vs. Outbound</h3>
+              <p class="concept-body">Inbound marketing attracts buyers by creating content and experiences they come to you for. Outbound goes after them directly — cold email, calls, paid ads. Neither is better in isolation. Inbound takes time to build but compounds. Outbound generates pipeline faster but requires constant input. The right mix depends on your stage, your market, and how long your sales cycle is.</p>
+            </div>
+            <div class="concept-card concept-card-lime">
+              <p class="concept-body">Inbound earns trust. Outbound creates urgency. You need both.</p>
+            </div>
+            <a class="basics-teardown" href="/learn/inbound-vs-outbound">Full teardown →</a>
+          </div>
+
+          <!-- 6: TOFU/MOFU/BOFU -->
+          <div class="learn-panel" data-section="basics" data-panel="6" id="basics-6">
+            <div class="concept-card">
+              <p class="concept-eyebrow">Consideration</p>
+              <h3 class="concept-title">TOFU, MOFU, BOFU</h3>
+              <p class="concept-body">Top of funnel, middle of funnel, bottom of funnel. These three stages describe where a buyer is in their journey — and what kind of content or conversation they need at each stage. TOFU is awareness — broad, educational. MOFU is evaluation — comparative, specific. BOFU is decision — proof, ROI, risk reduction. Most companies only create content for one stage and wonder why the others stall.</p>
+            </div>
+            <div class="concept-card concept-card-lime">
+              <p class="concept-body">The funnel isn't a metaphor. It's a map. Most companies only have content for one stop on it.</p>
+            </div>
+            <a class="basics-teardown" href="/learn/marketing-funnel">Full teardown →</a>
+          </div>
+
+          <!-- 7: Paid Advertising -->
+          <div class="learn-panel" data-section="basics" data-panel="7" id="basics-7">
+            <div class="concept-card">
+              <p class="concept-eyebrow">Decision</p>
+              <h3 class="concept-title">Paid Advertising</h3>
+              <p class="concept-body">Paid advertising lets you buy visibility instead of earning it. In B2B, the most common channels are LinkedIn Ads, Google Search Ads, and retargeting. Paid works best when you have a clear, high-intent audience and a strong offer — it accelerates what's already working organically. Used before that foundation exists, it's an expensive way to learn what doesn't work.</p>
+            </div>
+            <div class="concept-card concept-card-lime">
+              <p class="concept-body">Paid advertising amplifies. It doesn't fix a broken message or an undefined audience.</p>
+            </div>
+            <a class="basics-teardown" href="/learn/paid-advertising">Full teardown →</a>
+          </div>
+
+          <!-- 8: Brand vs Performance -->
+          <div class="learn-panel" data-section="basics" data-panel="8" id="basics-8">
+            <div class="concept-card">
+              <p class="concept-eyebrow">Decision</p>
+              <h3 class="concept-title">Brand vs. Performance</h3>
+              <p class="concept-body">Performance marketing drives measurable, immediate results — clicks, leads, conversions. Brand marketing builds the long-term reputation that makes performance marketing cheaper and more effective over time. Most early-stage companies default to performance only because it's measurable. But companies that neglect brand find themselves paying more and more for the same leads as competitors who built recognition.</p>
+            </div>
+            <div class="concept-card concept-card-lime">
+              <p class="concept-body">Performance makes the phone ring today. Brand determines whether it keeps ringing next year.</p>
+            </div>
+            <a class="basics-teardown" href="/learn/brand-vs-performance">Full teardown →</a>
+          </div>
+
+          <!-- 9: Analytics and Attribution -->
+          <div class="learn-panel" data-section="basics" data-panel="9" id="basics-9">
+            <div class="concept-card">
+              <p class="concept-eyebrow">Decision</p>
+              <h3 class="concept-title">Analytics and Attribution</h3>
+              <p class="concept-body">Analytics tells you what's happening. Attribution tells you why — which channels and touchpoints contributed to a conversion. In B2B, attribution is genuinely hard. A buyer might see a LinkedIn post, read an article, attend a webinar, and then respond to a cold email six months later. Most attribution models credit the last thing that happened. That's rarely the thing that actually worked.</p>
+            </div>
+            <div class="concept-card concept-card-lime">
+              <p class="concept-body">The last click gets the credit. That's almost never the whole story.</p>
+            </div>
+            <a class="basics-teardown" href="/learn/analytics-attribution">Full teardown →</a>
+          </div>
+
         </div>
       </div>
     </div>
-
-    <div class="funnel-subsection">
-      <div class="funnel-sub-left">
-        <h3 class="funnel-sub-title funnel-title-teal">Consideration. <span class="funnel-sub-hook">Where most deals are quietly won or lost.</span></h3>
-      </div>
-      <div class="funnel-sub-right">
-        <div class="step-cards">
-          <a class="step-card" href="/learn/email-marketing">
-            <div class="step-num">01</div>
-            <div class="step-content">
-              <div class="step-title">Email Marketing</div>
-              <div class="step-desc">Why email outperforms every other channel in B2B — and how to use it without sounding like everyone else.</div>
-            </div>
-          </a>
-          <a class="step-card" href="/learn/inbound-vs-outbound">
-            <div class="step-num">02</div>
-            <div class="step-content">
-              <div class="step-title">Inbound vs. Outbound</div>
-              <div class="step-desc">Attracting buyers vs. going after them. The logic, the costs, and the right mix at different stages of growth.</div>
-            </div>
-          </a>
-          <a class="step-card" href="/learn/marketing-funnel">
-            <div class="step-num">03</div>
-            <div class="step-content">
-              <div class="step-title">TOFU, MOFU, BOFU</div>
-              <div class="step-desc">What each funnel stage actually means and where most companies get stuck.</div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="funnel-subsection funnel-subsection-last">
-      <div class="funnel-sub-left">
-        <h3 class="funnel-sub-title funnel-title-orange">Decision. <span class="funnel-sub-hook">Convert intent into action.</span></h3>
-      </div>
-      <div class="funnel-sub-right">
-        <div class="step-cards">
-          <a class="step-card" href="/learn/paid-advertising">
-            <div class="step-num">01</div>
-            <div class="step-content">
-              <div class="step-title">Paid Advertising</div>
-              <div class="step-desc">Paid vs. organic — not which is better, but when each makes sense and where to spend first.</div>
-            </div>
-          </a>
-          <a class="step-card" href="/learn/brand-vs-performance">
-            <div class="step-num">02</div>
-            <div class="step-content">
-              <div class="step-title">Brand vs. Performance</div>
-              <div class="step-desc">Building long-term trust vs. generating immediate pipeline. Why you need both and when to lean on each.</div>
-            </div>
-          </a>
-          <a class="step-card" href="/learn/analytics-attribution">
-            <div class="step-num">03</div>
-            <div class="step-content">
-              <div class="step-title">Analytics and Attribution</div>
-              <div class="step-desc">What to measure, what to ignore, and the honest truth about why attribution in B2B is harder than anyone admits.</div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <!-- SECTION BREAK -->
