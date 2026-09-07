@@ -316,6 +316,50 @@ html,body { height:auto; overflow-x:hidden; }
   width: 0%; transition: width 1.2s var(--ease-out);
 }
 
+/* BASICS STAT CARD — horizontal 3-col scorecard */
+.basics-stat-card {
+  background: #1e2c3a;
+  border: 1px solid #1e2c3a;
+  padding: 1.4rem;
+  margin-top: 2px;
+}
+.basics-stat-card .stat-dashboard {
+  border-top: none; padding-top: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0; flex-direction: unset;
+}
+.basics-stat-card .stat-dashboard-row {
+  display: flex; flex-direction: column;
+  grid-template-columns: unset;
+  padding: 0 1.2rem 0 0;
+  border-bottom: none;
+  border-right: 1px solid rgba(184,212,0,0.2);
+  margin-right: 1.2rem;
+  gap: 0.3rem;
+}
+.basics-stat-card .stat-dashboard-row:last-child {
+  border-right: none; padding-right: 0; margin-right: 0;
+}
+.basics-stat-card .stat-num {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700; letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--lime); line-height: 1;
+}
+.basics-stat-card .stat-right {
+  display: flex; flex-direction: column; gap: 0.2rem;
+}
+.basics-stat-card .stat-desc {
+  font-size: 0.78rem; font-weight: 400;
+  color: rgba(240,239,240,0.65); line-height: 1.4;
+}
+.basics-stat-card .stat-source {
+  font-size: 0.62rem; font-weight: 300;
+  color: rgba(240,239,240,0.25); letter-spacing: 0.01em;
+}
+.basics-stat-card .stat-bar-track { display: none; }
+.basics-stat-card .stat-bar-fill { display: none; }
+
 /* SECTION BREAK */
 .section-break {
   display: flex; flex-direction: column; align-items: flex-start;
@@ -438,7 +482,8 @@ html,body { height:auto; overflow-x:hidden; }
               <h3 class="concept-title">SEO</h3>
               <p class="concept-body">Search Engine Optimisation is how you earn organic visibility on Google and other search engines. When a prospect searches for a problem your product solves, SEO determines whether you show up — or your competitor does. It's not about tricks or hacks. It's about creating genuinely useful content that matches what buyers are actually searching for, on a site that's technically sound enough for search engines to trust.</p>
             </div>
-                        <div class="stat-dashboard">
+<div class="basics-stat-card">
+            <div class="basics-stat-card"><div class="stat-dashboard">
             <div class="stat-dashboard-row">
               <div class="stat-num">53%</div>
               <div class="stat-right">
@@ -464,7 +509,7 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
             </div>
             </div>
-            <div class="stat-dashboard">
+            <div class="basics-stat-card"><div class="stat-dashboard">
             <div class="stat-dashboard-row">
               <div class="stat-num">3×</div>
               <div class="stat-right">
@@ -489,7 +534,7 @@ html,body { height:auto; overflow-x:hidden; }
                 <div class="stat-bar-track"><div class="stat-bar-fill" data-width="57"></div></div>
               </div>
             </div>
-            </div>
+            </div></div>
             <a class="basics-teardown" href="/learn/content-marketing">Full teardown →</a>
           </div>
 
@@ -500,7 +545,7 @@ html,body { height:auto; overflow-x:hidden; }
               <h3 class="concept-title">Content Marketing</h3>
               <p class="concept-body">Not blogging for the sake of it. The logic behind creating content that brings the right people to you.</p>
             </div>
-            <div class="stat-dashboard">
+            <div class="basics-stat-card"><div class="stat-dashboard">
             <div class="stat-dashboard-row">
               <div class="stat-num">3×</div>
               <div class="stat-right">
@@ -525,7 +570,7 @@ html,body { height:auto; overflow-x:hidden; }
                 <div class="stat-bar-track"><div class="stat-bar-fill" data-width="57"></div></div>
               </div>
             </div>
-            </div>
+            </div></div>
             <a class="basics-teardown" href="/learn/content-marketing">Full teardown →</a>
           </div>
 
@@ -536,7 +581,8 @@ html,body { height:auto; overflow-x:hidden; }
               <h3 class="concept-title">Social Media Marketing</h3>
               <p class="concept-body">In B2B, social media marketing is less about posting and more about presence. LinkedIn is where most of it happens — used well, it builds the kind of familiarity that makes a cold outreach feel warm. The mistake most companies make is treating social as a broadcast channel instead of a trust-building one.</p>
             </div>
-                        <div class="stat-dashboard">
+<div class="basics-stat-card">
+            <div class="basics-stat-card"><div class="stat-dashboard">
             <div class="stat-dashboard-row">
               <div class="stat-num">80%</div>
               <div class="stat-right">
@@ -562,7 +608,7 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
             </div>
             </div>
-            <div class="stat-dashboard">
+            <div class="basics-stat-card"><div class="stat-dashboard">
             <div class="stat-dashboard-row">
               <div class="stat-num">82%</div>
               <div class="stat-right">
@@ -587,7 +633,7 @@ html,body { height:auto; overflow-x:hidden; }
                 <div class="stat-bar-track"><div class="stat-bar-fill" data-width="67"></div></div>
               </div>
             </div>
-            </div>
+            </div></div>
             <a class="basics-teardown" href="/learn/personal-branding">Full teardown →</a>
           </div>
 
@@ -598,7 +644,7 @@ html,body { height:auto; overflow-x:hidden; }
               <h3 class="concept-title">Personal Branding</h3>
               <p class="concept-body">What personal brand actually means for a founder or sales leader — and how to build one without becoming a LinkedIn cliché.</p>
             </div>
-            <div class="stat-dashboard">
+            <div class="basics-stat-card"><div class="stat-dashboard">
             <div class="stat-dashboard-row">
               <div class="stat-num">82%</div>
               <div class="stat-right">
@@ -623,7 +669,7 @@ html,body { height:auto; overflow-x:hidden; }
                 <div class="stat-bar-track"><div class="stat-bar-fill" data-width="67"></div></div>
               </div>
             </div>
-            </div>
+            </div></div>
             <a class="basics-teardown" href="/learn/personal-branding">Full teardown →</a>
           </div>
 
@@ -634,7 +680,8 @@ html,body { height:auto; overflow-x:hidden; }
               <h3 class="concept-title">Email Marketing</h3>
               <p class="concept-body">Email remains the highest-ROI channel in B2B marketing. Unlike social media, you own the list — no algorithm stands between you and your audience. Used well, email nurtures prospects through the consideration stage, keeps you top of mind between conversations, and creates consistent touchpoints without requiring a salesperson to make every contact.</p>
             </div>
-                        <div class="stat-dashboard">
+<div class="basics-stat-card">
+            <div class="basics-stat-card"><div class="stat-dashboard">
             <div class="stat-dashboard-row">
               <div class="stat-num">$42</div>
               <div class="stat-right">
@@ -660,7 +707,7 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
             </div>
             </div>
-            <div class="stat-dashboard">
+            <div class="basics-stat-card"><div class="stat-dashboard">
             <div class="stat-dashboard-row">
               <div class="stat-num">63%</div>
               <div class="stat-right">
@@ -685,7 +732,7 @@ html,body { height:auto; overflow-x:hidden; }
                 <div class="stat-bar-track"><div class="stat-bar-fill" data-width="80"></div></div>
               </div>
             </div>
-            </div>
+            </div></div>
             <a class="basics-teardown" href="/learn/inbound-vs-outbound">Full teardown →</a>
           </div>
 
@@ -696,7 +743,7 @@ html,body { height:auto; overflow-x:hidden; }
               <h3 class="concept-title">Inbound vs. Outbound</h3>
               <p class="concept-body">Attracting buyers vs. going after them. The logic, the costs, and the right mix at different stages of growth.</p>
             </div>
-            <div class="stat-dashboard">
+            <div class="basics-stat-card"><div class="stat-dashboard">
             <div class="stat-dashboard-row">
               <div class="stat-num">63%</div>
               <div class="stat-right">
@@ -721,7 +768,7 @@ html,body { height:auto; overflow-x:hidden; }
                 <div class="stat-bar-track"><div class="stat-bar-fill" data-width="80"></div></div>
               </div>
             </div>
-            </div>
+            </div></div>
             <a class="basics-teardown" href="/learn/inbound-vs-outbound">Full teardown →</a>
           </div>
 
@@ -732,7 +779,8 @@ html,body { height:auto; overflow-x:hidden; }
               <h3 class="concept-title">TOFU, MOFU, BOFU</h3>
               <p class="concept-body">Top of funnel, middle of funnel, bottom of funnel. These three stages describe where a buyer is in their journey — and what kind of content or conversation they need at each stage. TOFU is awareness — broad, educational. MOFU is evaluation — comparative, specific. BOFU is decision — proof, ROI, risk reduction. Most companies only create content for one stage and wonder why the others stall.</p>
             </div>
-                        <div class="stat-dashboard">
+<div class="basics-stat-card">
+            <div class="basics-stat-card"><div class="stat-dashboard">
             <div class="stat-dashboard-row">
               <div class="stat-num">67%</div>
               <div class="stat-right">
@@ -758,7 +806,7 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
             </div>
             </div>
-            <div class="stat-dashboard">
+            <div class="basics-stat-card"><div class="stat-dashboard">
             <div class="stat-dashboard-row">
               <div class="stat-num">65%</div>
               <div class="stat-right">
@@ -783,7 +831,7 @@ html,body { height:auto; overflow-x:hidden; }
                 <div class="stat-bar-track"><div class="stat-bar-fill" data-width="40"></div></div>
               </div>
             </div>
-            </div>
+            </div></div>
             <a class="basics-teardown" href="/learn/paid-advertising">Full teardown →</a>
           </div>
 
@@ -794,7 +842,7 @@ html,body { height:auto; overflow-x:hidden; }
               <h3 class="concept-title">Paid Advertising</h3>
               <p class="concept-body">Paid vs. organic — not which is better, but when each makes sense and where to spend first.</p>
             </div>
-            <div class="stat-dashboard">
+            <div class="basics-stat-card"><div class="stat-dashboard">
             <div class="stat-dashboard-row">
               <div class="stat-num">65%</div>
               <div class="stat-right">
@@ -819,7 +867,7 @@ html,body { height:auto; overflow-x:hidden; }
                 <div class="stat-bar-track"><div class="stat-bar-fill" data-width="40"></div></div>
               </div>
             </div>
-            </div>
+            </div></div>
             <a class="basics-teardown" href="/learn/paid-advertising">Full teardown →</a>
           </div>
 
@@ -830,7 +878,8 @@ html,body { height:auto; overflow-x:hidden; }
               <h3 class="concept-title">Brand vs. Performance</h3>
               <p class="concept-body">Performance marketing drives measurable, immediate results — clicks, leads, conversions. Brand marketing builds the long-term reputation that makes performance marketing cheaper and more effective over time. Most early-stage companies default to performance only because it's measurable. But companies that neglect brand find themselves paying more and more for the same leads as competitors who built recognition.</p>
             </div>
-                        <div class="stat-dashboard">
+<div class="basics-stat-card">
+            <div class="basics-stat-card"><div class="stat-dashboard">
             <div class="stat-dashboard-row">
               <div class="stat-num">80%</div>
               <div class="stat-right">
@@ -856,7 +905,7 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
             </div>
             </div>
-            <div class="stat-dashboard">
+            <div class="basics-stat-card"><div class="stat-dashboard">
             <div class="stat-dashboard-row">
               <div class="stat-num">80%</div>
               <div class="stat-right">
@@ -881,7 +930,7 @@ html,body { height:auto; overflow-x:hidden; }
                 <div class="stat-bar-track"><div class="stat-bar-fill" data-width="25"></div></div>
               </div>
             </div>
-            </div>
+            </div></div>
             <a class="basics-teardown" href="/learn/analytics-attribution">Full teardown →</a>
           </div>
 
@@ -892,7 +941,7 @@ html,body { height:auto; overflow-x:hidden; }
               <h3 class="concept-title">Analytics and Attribution</h3>
               <p class="concept-body">Analytics tells you what's happening. Attribution tells you why — which channels and touchpoints contributed to a conversion. In B2B, attribution is genuinely hard. Most attribution models credit the last thing that happened. That's rarely the thing that actually worked.</p>
             </div>
-            <div class="stat-dashboard">
+            <div class="basics-stat-card"><div class="stat-dashboard">
             <div class="stat-dashboard-row">
               <div class="stat-num">21%</div>
               <div class="stat-right">
@@ -917,7 +966,7 @@ html,body { height:auto; overflow-x:hidden; }
                 <div class="stat-bar-track"><div class="stat-bar-fill" data-width="37"></div></div>
               </div>
             </div>
-            </div>
+            </div></div>
             <a class="basics-teardown" href="/learn/analytics-attribution">Full teardown →</a>
           </div>
 
