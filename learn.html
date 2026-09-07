@@ -67,13 +67,16 @@ html,body { height:auto; overflow-x:hidden; }
 .funnel-sub-title {
   font-family: var(--font-display);
   font-size: clamp(2rem, 3.5vw, 3.2rem);
-  font-weight: 700; line-height: 1.0;
+  font-weight: 900; line-height: 1.0;
   letter-spacing: -0.03em; color: var(--ink);
   position: relative; z-index: 1; margin-bottom: 0.7rem;
 }
-.funnel-sub-hook { color: var(--lime); }
+.funnel-sub-hook {
+  color: var(--lime);
+  font-weight: 400;
+}
 .funnel-sub-body {
-  font-size: 0.88rem; font-weight: 300; line-height: 1.75;
+  font-size: 0.95rem; font-weight: 300; line-height: 1.8;
   color: var(--ink-dim);
   position: relative; z-index: 1;
 }
@@ -290,6 +293,10 @@ html,body { height:auto; overflow-x:hidden; }
   .learn-nav-item{padding:0.3rem 0.5rem}
   .learn-content-area{padding:1.5rem}
 
+  .funnel-subsection{grid-template-columns:1fr}
+  .funnel-sub-left{border-right:none;border-bottom:1px solid rgba(30,44,58,0.08);padding:2rem 1.5rem 1.5rem}
+  .funnel-subsection-first{padding-top:0}
+  .funnel-subsection-last{padding-bottom:0}
   .concept-grid{grid-template-columns:1fr}
   .stat-dashboard-row{flex-wrap:wrap}
   .stat-num{width:auto;text-align:left}
