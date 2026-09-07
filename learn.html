@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/global.css">
 <style>
-:root { --font-display:'Roboto',sans-serif; --font-body:'Roboto',sans-serif; }
+:root { --font-display:'Roboto',sans-serif; --font-body:'Roboto',sans-serif; --teal:#00CED1; --orange-alt:#F27B20; }
 html,body { height:auto; overflow-x:hidden; }
 
 /* NAV */
@@ -72,6 +72,18 @@ html,body { height:auto; overflow-x:hidden; }
   letter-spacing: -0.03em; color: var(--ink);
   position: relative; z-index: 1; margin-bottom: 0.7rem;
 }
+.funnel-title-lime   { color: var(--lime); }
+.funnel-title-teal   { color: var(--teal); }
+.funnel-title-orange { color: var(--orange-alt); }
+.funnel-stage-lime  .funnel-dot { background: var(--lime); }
+.funnel-stage-teal  .funnel-dot { background: var(--teal); }
+.funnel-stage-orange .funnel-dot { background: var(--orange-alt); }
+.funnel-stage-lime  .funnel-link:hover { background: rgba(184,212,0,0.06); }
+.funnel-stage-teal  .funnel-link:hover { background: rgba(0,206,209,0.06); }
+.funnel-stage-orange .funnel-link:hover { background: rgba(242,123,32,0.06); }
+.funnel-stage-lime  .funnel-link:hover .funnel-link-arrow { color: var(--lime); }
+.funnel-stage-teal  .funnel-link:hover .funnel-link-arrow { color: var(--teal); }
+.funnel-stage-orange .funnel-link:hover .funnel-link-arrow { color: var(--orange-alt); }
 .funnel-sub-hook {
   color: rgba(30,44,58,0.45);
   font-weight: 300;
@@ -342,10 +354,10 @@ html,body { height:auto; overflow-x:hidden; }
   <!-- BASICS -->
   <div class="basics-full">
 
-    <div class="funnel-subsection funnel-subsection-first">
+    <div class="funnel-subsection funnel-subsection-first funnel-stage-lime">
       <div class="funnel-sub-left">
         <p class="funnel-sub-num">01</p>
-        <h3 class="funnel-sub-title">Awareness. <span class="funnel-sub-hook">What gets you in front of buyers.</span></h3>
+        <h3 class="funnel-sub-title funnel-title-lime">Awareness. <span class="funnel-sub-hook">What gets you in front of buyers.</span></h3>
       </div>
       <div class="funnel-sub-right">
         <p class="funnel-sub-right-intro">Before a prospect can consider you, they have to know you exist. These are the channels and tactics that create that first moment of recognition — search, content, social, and personal brand.</p>
@@ -356,10 +368,10 @@ html,body { height:auto; overflow-x:hidden; }
       </div>
     </div>
 
-    <div class="funnel-subsection">
+    <div class="funnel-subsection funnel-stage-teal">
       <div class="funnel-sub-left">
         <p class="funnel-sub-num">02</p>
-        <h3 class="funnel-sub-title">Consideration. <span class="funnel-sub-hook">Where most deals are quietly won or lost.</span></h3>
+        <h3 class="funnel-sub-title funnel-title-teal">Consideration. <span class="funnel-sub-hook">Where most deals are quietly won or lost.</span></h3>
       </div>
       <div class="funnel-sub-right">
         <p class="funnel-sub-right-intro">The prospect knows you exist. Now they're deciding whether you're worth trusting. This is the longest stage — and the one most companies leave to chance.</p>
@@ -369,10 +381,10 @@ html,body { height:auto; overflow-x:hidden; }
       </div>
     </div>
 
-    <div class="funnel-subsection funnel-subsection-last">
+    <div class="funnel-subsection funnel-subsection-last funnel-stage-orange">
       <div class="funnel-sub-left">
         <p class="funnel-sub-num">03</p>
-        <h3 class="funnel-sub-title">Decision. <span class="funnel-sub-hook">Convert intent into action.</span></h3>
+        <h3 class="funnel-sub-title funnel-title-orange">Decision. <span class="funnel-sub-hook">Convert intent into action.</span></h3>
       </div>
       <div class="funnel-sub-right">
         <p class="funnel-sub-right-intro">The buyer is ready. These are the tools that close the loop — paid channels that accelerate timing, brand investment that builds long-term trust, and attribution that tells you what actually worked.</p>
