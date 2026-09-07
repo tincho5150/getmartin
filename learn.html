@@ -103,9 +103,9 @@ html,body { height:auto; overflow-x:hidden; }
   margin-bottom: 0.4rem;
 }
 .funnel-sub-hook { color: var(--white-dim); font-weight: 300; }
-.funnel-title-lime   { color: var(--lime); }
-.funnel-title-teal   { color: var(--teal); }
-.funnel-title-orange { color: var(--orange-alt); }
+.funnel-title-lime   { color: var(--white); }
+.funnel-title-teal   { color: var(--white); }
+.funnel-title-orange { color: var(--white); }
 .funnel-sub-left-intro {
   font-size: 0.88rem; font-weight: 300; line-height: 1.75;
   color: var(--white-dim);
@@ -125,6 +125,16 @@ html,body { height:auto; overflow-x:hidden; }
   background-size: 72px 72px; pointer-events: none;
 }
 .step-cards { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 2px; }
+.funnel-intro-card {
+  background: var(--lime);
+  padding: 1.1rem 1.3rem;
+  margin-bottom: 2px;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 600; line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--navy-dark);
+}
 .funnel-sub-num { display: none; }
 .funnel-sub-title {
   font-family: var(--font-display);
@@ -133,9 +143,9 @@ html,body { height:auto; overflow-x:hidden; }
   letter-spacing: -0.03em; color: var(--ink);
   position: relative; z-index: 1; margin-bottom: 0.7rem;
 }
-.funnel-title-lime   { color: var(--lime); }
-.funnel-title-teal   { color: var(--teal); }
-.funnel-title-orange { color: var(--orange-alt); }
+.funnel-title-lime   { color: var(--white); }
+.funnel-title-teal   { color: var(--white); }
+.funnel-title-orange { color: var(--white); }
 .funnel-stage-lime  .funnel-dot { background: var(--lime); }
 .funnel-stage-teal  .funnel-dot { background: var(--teal); }
 .funnel-stage-orange .funnel-dot { background: var(--orange-alt); }
@@ -406,10 +416,10 @@ html,body { height:auto; overflow-x:hidden; }
     <div class="funnel-subsection funnel-subsection-first">
       <div class="funnel-sub-left">
         <h3 class="funnel-sub-title funnel-title-lime">Awareness. <span class="funnel-sub-hook">What gets you in front of buyers.</span></h3>
-        <p class="funnel-sub-left-intro">Before a prospect can consider you, they have to know you exist. These are the channels that create that first moment of recognition.</p>
       </div>
       <div class="funnel-sub-right">
         <div class="step-cards">
+          <div class="funnel-intro-card">Before a prospect can consider you, they have to know you exist. These are the channels that create that first moment of recognition.</div>
           <a class="step-card" href="/learn/seo">
             <div class="step-num">01</div>
             <div class="step-content">
@@ -445,10 +455,10 @@ html,body { height:auto; overflow-x:hidden; }
     <div class="funnel-subsection">
       <div class="funnel-sub-left">
         <h3 class="funnel-sub-title funnel-title-teal">Consideration. <span class="funnel-sub-hook">Where most deals are quietly won or lost.</span></h3>
-        <p class="funnel-sub-left-intro">The prospect knows you exist. Now they're deciding whether you're worth trusting. This is the longest stage — and the one most companies leave to chance.</p>
       </div>
       <div class="funnel-sub-right">
         <div class="step-cards">
+          <div class="funnel-intro-card">The prospect knows you exist. Now they're deciding whether you're worth trusting. This is the longest stage — and the one most companies leave to chance.</div>
           <a class="step-card" href="/learn/email-marketing">
             <div class="step-num">01</div>
             <div class="step-content">
@@ -477,10 +487,10 @@ html,body { height:auto; overflow-x:hidden; }
     <div class="funnel-subsection funnel-subsection-last">
       <div class="funnel-sub-left">
         <h3 class="funnel-sub-title funnel-title-orange">Decision. <span class="funnel-sub-hook">Convert intent into action.</span></h3>
-        <p class="funnel-sub-left-intro">The buyer is ready. These are the tools that close the loop — and tell you what actually worked so you can do it again.</p>
       </div>
       <div class="funnel-sub-right">
         <div class="step-cards">
+          <div class="funnel-intro-card">The buyer is ready. These are the tools that close the loop — and tell you what actually worked so you can do it again.</div>
           <a class="step-card" href="/learn/paid-advertising">
             <div class="step-num">01</div>
             <div class="step-content">
