@@ -47,42 +47,47 @@ html,body { height:auto; overflow-x:hidden; }
 
 /* BASICS FULL WIDTH */
 .basics-full {
-  background: #ffffff;
+  background: var(--navy-dark);
   border-bottom: 1px solid var(--white-faint);
   position: relative;
 }
-.basics-full::before { display: none; }
-/* FUNNEL SUBSECTIONS — stacked */
+.basics-full::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px; pointer-events: none;
+}
+/* FUNNEL SUBSECTIONS — dark stacked */
 .funnel-subsection {
-  border-top: 1px solid rgba(30,44,58,0.12);
-  background: #ffffff;
+  border-top: 1px solid var(--white-faint);
   position: relative; z-index: 1;
   padding: 3vw 5vw;
 }
-.funnel-subsection-first { border-top: none; }
+.funnel-subsection-first { border-top: none; padding-top: 4vw; }
 .funnel-subsection-last { padding-bottom: 4vw; }
 .funnel-sub-left {
   display: flex; flex-direction: column;
   margin-bottom: 1.2rem;
 }
 .funnel-sub-left::before { display: none; }
+.funnel-sub-num { display: none; }
 .funnel-sub-title {
   font-family: var(--font-display);
   font-size: clamp(2rem, 3.5vw, 3.2rem);
   font-weight: 900; line-height: 1.0;
-  letter-spacing: -0.03em; color: var(--ink);
+  letter-spacing: -0.03em; color: var(--white);
   margin-bottom: 0.2rem;
 }
-.funnel-sub-hook { color: rgba(30,44,58,0.45); font-weight: 300; }
+.funnel-sub-hook { color: var(--white-dim); font-weight: 300; }
 .funnel-title-lime   { color: var(--lime); }
 .funnel-title-teal   { color: var(--teal); }
 .funnel-title-orange { color: var(--orange-alt); }
 .funnel-sub-right { display: flex; flex-direction: column; }
 .funnel-sub-right-intro {
-  font-size: 0.88rem; font-weight: 400; line-height: 1.75;
-  color: rgba(30,44,58,0.75);
+  font-size: 0.88rem; font-weight: 300; line-height: 1.75;
+  color: var(--white-dim);
   padding-bottom: 0.8rem;
-  border-bottom: 1px solid rgba(30,44,58,0.07);
+  border-bottom: 1px solid var(--white-faint);
   margin-bottom: 0.2rem;
 }
 .funnel-sub-num { display: none; }
@@ -129,40 +134,37 @@ html,body { height:auto; overflow-x:hidden; }
   display: flex; align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem 0;
+  padding: 0.9rem 0;
   text-decoration: none;
-  border-bottom: 1px solid rgba(30,44,58,0.07);
-  transition: background 0.15s;
+  border-bottom: 1px solid var(--white-faint);
+  transition: opacity 0.15s;
   position: relative; z-index: 1;
 }
 .funnel-link:last-child { border-bottom: none; }
-.funnel-link:hover { background: rgba(184,212,0,0.06); }
+.funnel-link:hover { opacity: 0.7; }
 .funnel-link-left { display: flex; align-items: center; gap: 1rem; flex: 1; min-width: 0; }
 .funnel-dot {
   width: 6px; height: 6px; border-radius: 50%;
-  background: var(--lime); flex-shrink: 0;
-  transition: background 0.15s;
-}
-.funnel-link:hover .funnel-dot { background: var(--lime); }
-.funnel-link-title {
-  font-size: 0.88rem; font-weight: 400;
-  color: rgba(30,44,58,0.7); line-height: 1.4;
-  transition: color 0.15s; flex: 1;
-}
-.funnel-link:hover .funnel-link-title { color: var(--ink); }
-.funnel-link-tag {
-  font-size: 0.6rem; font-weight: 500;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: rgba(30,44,58,0.3);
   flex-shrink: 0;
-  transition: color 0.15s;
 }
-.funnel-link:hover .funnel-link-tag { color: rgba(30,44,58,0.5); }
+.funnel-link-title {
+  font-size: 0.88rem; font-weight: 300;
+  color: var(--white-dim); line-height: 1.4;
+  flex: 1;
+}
+.funnel-link-tag {
+  font-size: 0.6rem; font-weight: 400;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(240,239,240,0.25); flex-shrink: 0;
+}
 .funnel-link-arrow {
-  font-size: 0.72rem; color: rgba(30,44,58,0.2);
+  font-size: 0.72rem; color: rgba(240,239,240,0.2);
   flex-shrink: 0; transition: color 0.15s, transform 0.15s;
 }
-.funnel-link:hover .funnel-link-arrow { color: var(--lime); transform: translateX(3px); }
+.funnel-link:hover .funnel-link-arrow { color: var(--white); transform: translateX(3px); }
+.funnel-stage-lime  .funnel-dot { background: var(--lime); }
+.funnel-stage-teal  .funnel-dot { background: var(--teal); }
+.funnel-stage-orange .funnel-dot { background: var(--orange-alt); }
 .learn-section { display:grid;grid-template-columns:2fr 3fr;border-bottom:1px solid var(--white-faint); }
 
 /* FULL WIDTH SECTION — no dark left col */
