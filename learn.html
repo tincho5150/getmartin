@@ -49,7 +49,8 @@ html,body { height:auto; overflow-x:hidden; }
   background: #ffffff;
   position: relative; z-index: 1;
 }
-.funnel-subsection-first { border-top: none; }
+.funnel-subsection-first { border-top: none; padding-top: 2.5vw; }
+.funnel-subsection-last { padding-bottom: 2.5vw; }
 .funnel-sub-left {
   padding: 3vw 3vw 3vw 5vw;
   display: flex; flex-direction: column; justify-content: center;
@@ -65,9 +66,9 @@ html,body { height:auto; overflow-x:hidden; }
 .funnel-sub-num { display: none; }
 .funnel-sub-title {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
   font-weight: 700; line-height: 1.0;
-  letter-spacing: -0.025em; color: var(--ink);
+  letter-spacing: -0.03em; color: var(--ink);
   position: relative; z-index: 1; margin-bottom: 0.7rem;
 }
 .funnel-sub-hook { color: var(--lime); }
@@ -353,7 +354,7 @@ html,body { height:auto; overflow-x:hidden; }
       </div>
     </div>
 
-    <div class="funnel-subsection">
+    <div class="funnel-subsection funnel-subsection-last">
       <div class="funnel-sub-left">
         <p class="funnel-sub-num">03</p>
         <h3 class="funnel-sub-title">Decision. <span class="funnel-sub-hook">Convert intent into action.</span></h3>
