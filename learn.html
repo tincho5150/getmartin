@@ -29,12 +29,77 @@ html,body { height:auto; overflow-x:hidden; }
 .page { min-height:100vh;padding-top:var(--nav-height); }
 
 /* HERO */
-.hero { position:relative;z-index:1;border-bottom:1px solid var(--white-faint);padding:8vw 5vw 6vw;min-height:42vh;display:flex;flex-direction:column;justify-content:flex-end; }
-.hero::before { content:'';position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:72px 72px;pointer-events:none; }
+/* HERO — split layout */
+.hero {
+  position:relative;z-index:1;
+  border-bottom:1px solid var(--white-faint);
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:50vh;
+}
+.hero-left {
+  padding:8vw 3.5vw 6vw 5vw;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  border-right:1px solid var(--white-faint);
+  position:relative;
+}
+.hero-left::before { content:'';position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:72px 72px;pointer-events:none; }
+.hero-right {
+  background:#ffffff;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:5vw 5vw 5vw 3.5vw;
+  position:relative;
+}
+.hero-right::before { content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(30,44,58,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(30,44,58,0.04) 1px,transparent 1px);background-size:72px 72px;pointer-events:none; }
 .hero-eyebrow { position:relative;z-index:2;font-size:0.72rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--lime);margin-bottom:1rem;opacity:0;animation:fadeUp 0.5s var(--ease-out) 0.2s forwards; }
-.hero-headline { position:relative;z-index:2;font-family:var(--font-display);font-size:clamp(2.8rem,5.5vw,5.5rem);font-weight:700;line-height:1.0;letter-spacing:-0.03em;color:var(--white);max-width:18ch;opacity:0;animation:fadeUp 0.7s var(--ease-out) 0.3s forwards; }
+.hero-headline { position:relative;z-index:2;font-family:var(--font-display);font-size:clamp(2.8rem,5.5vw,5.5rem);font-weight:700;line-height:1.0;letter-spacing:-0.03em;color:var(--white);opacity:0;animation:fadeUp 0.7s var(--ease-out) 0.3s forwards; }
 .hero-headline .dim { color:var(--white-dim); }
-.hero-sub { position:relative;z-index:2;font-size:clamp(1.15rem,2vw,1.5rem);font-weight:400;line-height:1.6;color:var(--white-dim);max-width:48ch;margin-top:1.5rem;opacity:0;animation:fadeUp 0.6s var(--ease-out) 0.5s forwards; }
+.hero-sub { position:relative;z-index:2;font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.6;color:var(--white-dim);margin-top:1.5rem;opacity:0;animation:fadeUp 0.6s var(--ease-out) 0.5s forwards; }
+/* Hero right track list */
+.hero-track-label { font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(30,44,58,0.35);margin-bottom:1.2rem;position:relative;z-index:1; }
+.hero-track-list { display:flex;flex-direction:column;position:relative;z-index:1; }
+.hero-track-item {
+  display:flex;align-items:center;gap:1rem;
+  padding:1rem 0;
+  border-bottom:1px solid rgba(30,44,58,0.07);
+  text-decoration:none;
+  transition:background 0.15s;
+}
+.hero-track-item:first-child { border-top:1px solid rgba(30,44,58,0.07); }
+.hero-track-item:hover { background:rgba(184,212,0,0.04); margin:0 -1rem;padding-left:1rem;padding-right:1rem; }
+.hero-track-dot { width:8px;height:8px;border-radius:50%;flex-shrink:0; }
+.hero-track-dot-lime   { background:var(--lime); }
+.hero-track-dot-purple { background:var(--teal); }
+.hero-track-dot-orange { background:var(--orange-alt); }
+.hero-track-name { font-family:var(--font-display);font-size:clamp(1.1rem,1.8vw,1.5rem);font-weight:700;letter-spacing:-0.01em;color:var(--ink);flex:1; }
+.hero-track-desc { font-size:0.78rem;font-weight:300;color:rgba(30,44,58,0.4); }
+.hero-track-arrow { font-size:0.75rem;color:rgba(30,44,58,0.2);transition:color 0.15s,transform 0.15s; }
+.hero-track-item:hover .hero-track-arrow { color:var(--lime);transform:translateX(3px); }
+
+/* BASICS STAT CARD */
+.basics-stat-card {
+  display: grid; grid-template-columns: auto 1fr;
+  align-items: center; gap: 3rem;
+  padding: 3vw 5vw;
+  background: var(--lime);
+  position: relative; z-index: 1;
+}
+.basics-stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 700; line-height: 1;
+  letter-spacing: -0.04em; color: var(--navy-dark);
+}
+.basics-stat-text {
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  font-weight: 300; line-height: 1.7;
+  color: rgba(30,44,58,0.7);
+}
+.basics-stat-text span { color: var(--navy-dark); font-weight: 500; }
+.funnel-sub-context {
+  font-size: 0.88rem; font-weight: 300; line-height: 1.75;
+  color: var(--ink-dim); position: relative; z-index: 1;
+  margin-top: 0.5rem;
+}
 
 /* BASICS FULL WIDTH */
 .basics-full {
@@ -313,6 +378,10 @@ html,body { height:auto; overflow-x:hidden; }
   .learn-nav-item{padding:0.3rem 0.5rem}
   .learn-content-area{padding:1.5rem}
 
+  .hero{grid-template-columns:1fr}
+  .hero-left{border-right:none;border-bottom:1px solid var(--white-faint)}
+  .hero-right{padding:2rem 1.5rem}
+  .basics-stat-card{grid-template-columns:1fr;gap:1rem}
   .funnel-subsection{grid-template-columns:1fr}
   .funnel-sub-left{border-right:none;border-bottom:1px solid rgba(30,44,58,0.08);padding:2rem 1.5rem 1.5rem}
   .funnel-subsection-first{padding-top:0}
@@ -341,23 +410,53 @@ html,body { height:auto; overflow-x:hidden; }
 <div class="page">
 
   <div class="hero">
-    <p class="hero-eyebrow">Learn</p>
-    <h1 class="hero-headline">Marketing and sales.<br><span class="dim">Without the bull$h¡t.</span></h1>
-    <p class="hero-sub">Better products lose every day. To worse ones, better explained.</p>
+    <div class="hero-left">
+      <p class="hero-eyebrow">Learn</p>
+      <h1 class="hero-headline">Marketing and sales.<br><span class="dim">Without the bull$h¡t.</span></h1>
+      <p class="hero-sub">Better products lose every day. To worse ones, better explained.</p>
+    </div>
+    <div class="hero-right">
+      <p class="hero-track-label">What's inside</p>
+      <div class="hero-track-list">
+        <a class="hero-track-item" href="#basics">
+          <span class="hero-track-dot hero-track-dot-lime"></span>
+          <span class="hero-track-name">The Basics</span>
+          <span class="hero-track-desc">10 articles</span>
+          <span class="hero-track-arrow">→</span>
+        </a>
+        <a class="hero-track-item" href="#psychology">
+          <span class="hero-track-dot hero-track-dot-purple"></span>
+          <span class="hero-track-name">Buyer Psychology</span>
+          <span class="hero-track-desc">5 concepts</span>
+          <span class="hero-track-arrow">→</span>
+        </a>
+        <a class="hero-track-item" href="#sales">
+          <span class="hero-track-dot hero-track-dot-orange"></span>
+          <span class="hero-track-name">Sales Process</span>
+          <span class="hero-track-desc">5 stages</span>
+          <span class="hero-track-arrow">→</span>
+        </a>
+      </div>
+    </div>
   </div>
 
   <!-- SECTION BREAK -->
-  <div class="section-break">
+  <div class="section-break" id="basics">
     <p class="section-break-label">The Basics. <span class="section-break-sub">Ten concepts mapped to where they actually matter in the buyer's journey.</span></p>
   </div>
 
   <!-- BASICS -->
   <div class="basics-full">
+    <div class="basics-stat-card">
+      <div class="basics-stat-num">67%</div>
+      <div class="basics-stat-text">of B2B marketing programmes fail not because of budget or strategy — but because the team doesn't share a common vocabulary. <span>These ten concepts fix that.</span></div>
+    </div>
 
     <div class="funnel-subsection funnel-subsection-first funnel-stage-lime">
       <div class="funnel-sub-left">
         <p class="funnel-sub-num">01</p>
         <h3 class="funnel-sub-title funnel-title-lime">Awareness. <span class="funnel-sub-hook">What gets you in front of buyers.</span></h3>
+        <p class="funnel-sub-context">Before a prospect can consider you, they have to know you exist. These are the fundamentals of being findable — and shareable.</p>
       </div>
       <div class="funnel-sub-right">
         <p class="funnel-sub-right-intro">Before a prospect can consider you, they have to know you exist. These are the channels and tactics that create that first moment of recognition — search, content, social, and personal brand.</p>
@@ -372,6 +471,7 @@ html,body { height:auto; overflow-x:hidden; }
       <div class="funnel-sub-left">
         <p class="funnel-sub-num">02</p>
         <h3 class="funnel-sub-title funnel-title-teal">Consideration. <span class="funnel-sub-hook">Where most deals are quietly won or lost.</span></h3>
+        <p class="funnel-sub-context">The prospect knows you exist. Now they're deciding if you're worth trusting. This stage is longer than most companies realise — and it's where most lose.</p>
       </div>
       <div class="funnel-sub-right">
         <p class="funnel-sub-right-intro">The prospect knows you exist. Now they're deciding whether you're worth trusting. This is the longest stage — and the one most companies leave to chance.</p>
@@ -385,6 +485,7 @@ html,body { height:auto; overflow-x:hidden; }
       <div class="funnel-sub-left">
         <p class="funnel-sub-num">03</p>
         <h3 class="funnel-sub-title funnel-title-orange">Decision. <span class="funnel-sub-hook">Convert intent into action.</span></h3>
+        <p class="funnel-sub-context">The buyer is ready. These are the tools that close the loop — and tell you what actually worked so you can do it again.</p>
       </div>
       <div class="funnel-sub-right">
         <p class="funnel-sub-right-intro">The buyer is ready. These are the tools that close the loop — paid channels that accelerate timing, brand investment that builds long-term trust, and attribution that tells you what actually worked.</p>
@@ -397,7 +498,7 @@ html,body { height:auto; overflow-x:hidden; }
   </div>
 
   <!-- SECTION BREAK -->
-  <div class="section-break">
+  <div class="section-break" id="psychology">
     <p class="section-break-label">Buyer Psychology. <span class="section-break-sub">Why buyers do what they do — and how to use it to create genuine urgency.</span></p>
   </div>
 
@@ -597,7 +698,7 @@ html,body { height:auto; overflow-x:hidden; }
   </div>
 
   <!-- SECTION BREAK -->
-  <div class="section-break">
+  <div class="section-break" id="sales">
     <p class="section-break-label">Sales Process. <span class="section-break-sub">Where deals move, where they stall, and what determines the outcome.</span></p>
   </div>
 
