@@ -284,15 +284,14 @@ html,body { height:auto; overflow-x:hidden; }
 .section-break-label {
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 5.5vw, 5.5rem);
-  font-weight: 700; line-height: 1.0; letter-spacing: -0.03em;
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
   color: var(--lime);
+  position: relative; z-index: 1;
 }
 .section-break-sub {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2.4vw, 2.2rem);
-  font-weight: 300; line-height: 1.2; letter-spacing: -0.01em;
+  font-weight: 300;
   color: var(--white-dim);
-  max-width: 36ch;
+  letter-spacing: -0.02em;
 }
 .section-break-line { display: none; }
 
@@ -347,8 +346,7 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- SECTION BREAK -->
   <div class="section-break">
-    <p class="section-break-label">The Basics</p>
-    <p class="section-break-sub">Ten concepts mapped to where they actually matter in the buyer's journey.</p>
+    <p class="section-break-label">The Basics. <span class="section-break-sub">Ten concepts mapped to where they actually matter in the buyer's journey.</span></p>
   </div>
 
   <!-- BASICS -->
@@ -398,8 +396,7 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- SECTION BREAK -->
   <div class="section-break">
-    <p class="section-break-label">Buyer Psychology</p>
-    <p class="section-break-sub">Why buyers do what they do — and how to use it to create genuine urgency.</p>
+    <p class="section-break-label">Buyer Psychology. <span class="section-break-sub">Why buyers do what they do — and how to use it to create genuine urgency.</span></p>
   </div>
 
   <!-- BUYER PSYCHOLOGY -->
@@ -599,8 +596,7 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- SECTION BREAK -->
   <div class="section-break">
-    <p class="section-break-label">Sales Process</p>
-    <p class="section-break-sub">Where deals move, where they stall, and what determines the outcome.</p>
+    <p class="section-break-label">Sales Process. <span class="section-break-sub">Where deals move, where they stall, and what determines the outcome.</span></p>
   </div>
 
   <!-- SALES PROCESS -->
