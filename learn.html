@@ -52,20 +52,52 @@ html,body { height:auto; overflow-x:hidden; }
   position: relative;
 }
 .basics-full::before { display: none; }
-/* FUNNEL SUBSECTIONS — stacked: title, intro, links */
-.funnel-subsection {
-  border-top: 1px solid rgba(30,44,58,0.12);
+/* FUNNEL TABS */
+.funnel-tabs {
   background: #ffffff;
   position: relative; z-index: 1;
-  padding: 3vw 5vw;
 }
-.funnel-subsection-first { border-top: none; padding-top: 3vw; }
-.funnel-subsection-last { padding-bottom: 3vw; }
-.funnel-sub-left {
+.funnel-tab-nav {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid rgba(30,44,58,0.1);
+  position: relative;
+}
+.funnel-tab-btn {
   display: flex; flex-direction: column;
-  margin-bottom: 1.5rem;
+  padding: 2.5vw 3vw;
+  cursor: pointer; background: none; border: none;
+  text-align: left;
+  border-right: 1px solid rgba(30,44,58,0.08);
+  border-bottom: 3px solid transparent;
+  transition: background 0.15s, border-color 0.2s;
+  position: relative;
 }
-.funnel-sub-left::before { display: none; }
+.funnel-tab-btn:last-child { border-right: none; }
+.funnel-tab-btn:hover { background: rgba(30,44,58,0.02); }
+.funnel-tab-btn.active { border-bottom-color: currentColor; background: #fff; }
+.funnel-tab-btn.tab-lime   { color: var(--lime); }
+.funnel-tab-btn.tab-purple { color: var(--teal); }
+.funnel-tab-btn.tab-orange { color: var(--orange-alt); }
+.funnel-tab-btn.tab-lime.active   { border-bottom-color: var(--lime); }
+.funnel-tab-btn.tab-purple.active { border-bottom-color: var(--teal); }
+.funnel-tab-btn.tab-orange.active { border-bottom-color: var(--orange-alt); }
+.funnel-tab-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 900; line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: inherit;
+}
+.funnel-tab-hook {
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  font-weight: 300; color: rgba(30,44,58,0.4);
+  margin-top: 0.3rem; letter-spacing: -0.01em;
+}
+.funnel-tab-panel {
+  display: none;
+  padding: 2.5vw 5vw;
+}
+.funnel-tab-panel.active { display: block; }
 .funnel-sub-num { display: none; }
 .funnel-sub-title {
   font-family: var(--font-display);
@@ -99,12 +131,12 @@ html,body { height:auto; overflow-x:hidden; }
 .funnel-sub-right-intro {
   font-size: 0.88rem; font-weight: 400; line-height: 1.75;
   color: rgba(30,44,58,0.75);
-  padding: 1rem 0;
+  padding-bottom: 1rem;
   border-bottom: 1px solid rgba(30,44,58,0.07);
+  margin-bottom: 0.5rem;
 }
 .funnel-sub-right {
   display: flex; flex-direction: column;
-  border-top: 1px solid rgba(30,44,58,0.08);
 }
 .funnel-link {
   display: flex; align-items: center;
@@ -347,43 +379,42 @@ html,body { height:auto; overflow-x:hidden; }
   <div class="basics-full">
 
 
-    <div class="funnel-subsection funnel-subsection-first funnel-stage-lime">
-      <div class="funnel-sub-left">
-        <p class="funnel-sub-num">01</p>
-        <h3 class="funnel-sub-title funnel-title-lime">Awareness. <span class="funnel-sub-hook">What gets you in front of buyers.</span></h3>
+    <div class="funnel-tabs">
+      <div class="funnel-tab-nav">
+        <button class="funnel-tab-btn tab-lime active" data-tab="awareness">
+          <span class="funnel-tab-title">Awareness.</span>
+          <span class="funnel-tab-hook">What gets you in front of buyers.</span>
+        </button>
+        <button class="funnel-tab-btn tab-purple" data-tab="consideration">
+          <span class="funnel-tab-title">Consideration.</span>
+          <span class="funnel-tab-hook">Where most deals are quietly won or lost.</span>
+        </button>
+        <button class="funnel-tab-btn tab-orange" data-tab="decision">
+          <span class="funnel-tab-title">Decision.</span>
+          <span class="funnel-tab-hook">Convert intent into action.</span>
+        </button>
       </div>
-      <div class="funnel-sub-right">
-        <p class="funnel-sub-right-intro">Before a prospect can consider you, they have to know you exist. These are the channels and tactics that create that first moment of recognition — search, content, social, and personal brand.</p>
-        <a class="funnel-link" href="/learn/seo"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">SEO — What It Is and How It Works</span></span><span class="funnel-link-tag">Search</span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link" href="/learn/content-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Content Marketing — What It Actually Means</span></span><span class="funnel-link-tag">Content</span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link" href="/learn/social-media-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Social Media Marketing — Beyond Posting and Hoping</span></span><span class="funnel-link-tag">Social</span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link" href="/learn/personal-branding"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Personal Branding — People Buy From People, Not Logos</span></span><span class="funnel-link-tag">Brand</span><span class="funnel-link-arrow">→</span></a>
-      </div>
-    </div>
 
-    <div class="funnel-subsection funnel-stage-teal">
-      <div class="funnel-sub-left">
-        <p class="funnel-sub-num">02</p>
-        <h3 class="funnel-sub-title funnel-title-teal">Consideration. <span class="funnel-sub-hook">Where most deals are quietly won or lost.</span></h3>
+      <div class="funnel-tab-panel active" id="tab-awareness">
+        <p class="funnel-sub-right-intro">Before a prospect can consider you, they have to know you exist. These are the channels that create that first moment of recognition.</p>
+        <a class="funnel-link funnel-stage-lime" href="/learn/seo"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">SEO — What It Is and How It Works</span></span><span class="funnel-link-tag">Search</span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link funnel-stage-lime" href="/learn/content-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Content Marketing — What It Actually Means</span></span><span class="funnel-link-tag">Content</span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link funnel-stage-lime" href="/learn/social-media-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Social Media Marketing — Beyond Posting and Hoping</span></span><span class="funnel-link-tag">Social</span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link funnel-stage-lime" href="/learn/personal-branding"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Personal Branding — People Buy From People, Not Logos</span></span><span class="funnel-link-tag">Brand</span><span class="funnel-link-arrow">→</span></a>
       </div>
-      <div class="funnel-sub-right">
+
+      <div class="funnel-tab-panel" id="tab-consideration">
         <p class="funnel-sub-right-intro">The prospect knows you exist. Now they're deciding whether you're worth trusting. This is the longest stage — and the one most companies leave to chance.</p>
-        <a class="funnel-link" href="/learn/email-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Email Marketing — Boring Name, Best Returns</span></span><span class="funnel-link-tag">Email</span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link" href="/learn/inbound-vs-outbound"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Inbound vs. Outbound — Two Different Games</span></span><span class="funnel-link-tag">Strategy</span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link" href="/learn/marketing-funnel"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains</span></span><span class="funnel-link-tag">Funnel</span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link funnel-stage-teal" href="/learn/email-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Email Marketing — Boring Name, Best Returns</span></span><span class="funnel-link-tag">Email</span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link funnel-stage-teal" href="/learn/inbound-vs-outbound"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Inbound vs. Outbound — Two Different Games</span></span><span class="funnel-link-tag">Strategy</span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link funnel-stage-teal" href="/learn/marketing-funnel"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains</span></span><span class="funnel-link-tag">Funnel</span><span class="funnel-link-arrow">→</span></a>
       </div>
-    </div>
 
-    <div class="funnel-subsection funnel-subsection-last funnel-stage-orange">
-      <div class="funnel-sub-left">
-        <p class="funnel-sub-num">03</p>
-        <h3 class="funnel-sub-title funnel-title-orange">Decision. <span class="funnel-sub-hook">Convert intent into action.</span></h3>
-      </div>
-      <div class="funnel-sub-right">
-        <p class="funnel-sub-right-intro">The buyer is ready. These are the tools that close the loop — paid channels that accelerate timing, brand investment that builds long-term trust, and attribution that tells you what actually worked.</p>
-        <a class="funnel-link" href="/learn/paid-advertising"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Paid Advertising — When to Buy Attention vs. Earn It</span></span><span class="funnel-link-tag">Paid</span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link" href="/learn/brand-vs-performance"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Brand vs. Performance — One Makes the Phone Ring Today</span></span><span class="funnel-link-tag">Strategy</span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link" href="/learn/analytics-attribution"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Analytics and Attribution — The Last Click Gets the Credit</span></span><span class="funnel-link-tag">Analytics</span><span class="funnel-link-arrow">→</span></a>
+      <div class="funnel-tab-panel" id="tab-decision">
+        <p class="funnel-sub-right-intro">The buyer is ready. These are the tools that close the loop — and tell you what actually worked so you can do it again.</p>
+        <a class="funnel-link funnel-stage-orange" href="/learn/paid-advertising"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Paid Advertising — When to Buy Attention vs. Earn It</span></span><span class="funnel-link-tag">Paid</span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link funnel-stage-orange" href="/learn/brand-vs-performance"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Brand vs. Performance — One Makes the Phone Ring Today</span></span><span class="funnel-link-tag">Strategy</span><span class="funnel-link-arrow">→</span></a>
+        <a class="funnel-link funnel-stage-orange" href="/learn/analytics-attribution"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Analytics and Attribution — The Last Click Gets the Credit</span></span><span class="funnel-link-tag">Analytics</span><span class="funnel-link-arrow">→</span></a>
       </div>
     </div>
 
