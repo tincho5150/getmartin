@@ -29,50 +29,19 @@ html,body { height:auto; overflow-x:hidden; }
 .page { min-height:100vh;padding-top:var(--nav-height); }
 
 /* HERO */
-/* HERO — split layout */
+/* HERO — full width */
 .hero {
   position:relative;z-index:1;
-  display:grid;grid-template-columns:1fr 1fr;
+  border-bottom:1px solid var(--white-faint);
+  padding:10vw 5vw 8vw;
   min-height:50vh;
-}
-.hero-left {
-  padding:8vw 3.5vw 6vw 5vw;
   display:flex;flex-direction:column;justify-content:flex-end;
-  border-right:1px solid var(--white-faint);
-  position:relative;
 }
-.hero-left::before { content:'';position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:72px 72px;pointer-events:none; }
-.hero-right {
-  background:#ffffff;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:5vw 5vw 5vw 3.5vw;
-  position:relative;
-}
-.hero-right::before { content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(30,44,58,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(30,44,58,0.04) 1px,transparent 1px);background-size:72px 72px;pointer-events:none; }
+.hero::before { content:'';position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:72px 72px;pointer-events:none; }
 .hero-eyebrow { position:relative;z-index:2;font-size:0.72rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--lime);margin-bottom:1rem;opacity:0;animation:fadeUp 0.5s var(--ease-out) 0.2s forwards; }
-.hero-headline { position:relative;z-index:2;font-family:var(--font-display);font-size:clamp(2.8rem,5.5vw,5.5rem);font-weight:700;line-height:1.0;letter-spacing:-0.03em;color:var(--white);opacity:0;animation:fadeUp 0.7s var(--ease-out) 0.3s forwards; }
+.hero-headline { position:relative;z-index:2;font-family:var(--font-display);font-size:clamp(2.8rem,5.5vw,5.5rem);font-weight:700;line-height:1.0;letter-spacing:-0.03em;color:var(--white);max-width:18ch;opacity:0;animation:fadeUp 0.7s var(--ease-out) 0.3s forwards; }
 .hero-headline .dim { color:var(--white-dim); }
-.hero-sub { position:relative;z-index:2;font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.6;color:var(--white-dim);margin-top:1.5rem;opacity:0;animation:fadeUp 0.6s var(--ease-out) 0.5s forwards; }
-/* Hero right track list */
-.hero-track-label { font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(30,44,58,0.35);margin-bottom:1.2rem;position:relative;z-index:1; }
-.hero-track-list { display:flex;flex-direction:column;position:relative;z-index:1; }
-.hero-track-item {
-  display:flex;align-items:center;gap:1rem;
-  padding:1rem 0;
-  border-bottom:1px solid rgba(30,44,58,0.07);
-  text-decoration:none;
-  transition:background 0.15s;
-}
-.hero-track-item:first-child { border-top:1px solid rgba(30,44,58,0.07); }
-.hero-track-item:hover { background:rgba(184,212,0,0.04); margin:0 -1rem;padding-left:1rem;padding-right:1rem; }
-.hero-track-dot { width:8px;height:8px;border-radius:50%;flex-shrink:0; }
-.hero-track-dot-lime   { background:var(--lime); }
-.hero-track-dot-purple { background:var(--teal); }
-.hero-track-dot-orange { background:var(--orange-alt); }
-.hero-track-name { font-family:var(--font-display);font-size:clamp(1.1rem,1.8vw,1.5rem);font-weight:700;letter-spacing:-0.01em;color:var(--ink);flex:1; }
-.hero-track-desc { font-size:0.78rem;font-weight:300;color:rgba(30,44,58,0.4); }
-.hero-track-arrow { font-size:0.75rem;color:rgba(30,44,58,0.2);transition:color 0.15s,transform 0.15s; }
-.hero-track-item:hover .hero-track-arrow { color:var(--lime);transform:translateX(3px); }
+.hero-sub { position:relative;z-index:2;font-size:clamp(1.15rem,2vw,1.5rem);font-weight:400;line-height:1.6;color:var(--white-dim);max-width:48ch;margin-top:1.5rem;opacity:0;animation:fadeUp 0.6s var(--ease-out) 0.5s forwards; }
 
 .funnel-sub-context {
   font-size: 0.88rem; font-weight: 300; line-height: 1.75;
@@ -306,8 +275,7 @@ html,body { height:auto; overflow-x:hidden; }
   background: var(--navy-dark);
   position: relative;
 }
-.section-break { margin-top: 0; }
-.section-break-first { margin-top: 0; }
+
 .section-break::before {
   content: ''; position: absolute; inset: 0;
   background-image: linear-gradient(var(--grid) 1px, transparent 1px),
@@ -359,9 +327,6 @@ html,body { height:auto; overflow-x:hidden; }
   .learn-nav-item{padding:0.3rem 0.5rem}
   .learn-content-area{padding:1.5rem}
 
-  .hero{grid-template-columns:1fr}
-  .hero-left{border-right:none;border-bottom:1px solid var(--white-faint)}
-  .hero-right{padding:2rem 1.5rem}
   .funnel-subsection{grid-template-columns:1fr}
   .funnel-sub-left{border-right:none;border-bottom:1px solid rgba(30,44,58,0.08);padding:2rem 1.5rem 1.5rem}
   .funnel-subsection-first{padding-top:0}
@@ -390,38 +355,10 @@ html,body { height:auto; overflow-x:hidden; }
 <div class="page">
 
   <div class="hero">
-    <div class="hero-left">
-      <p class="hero-eyebrow">Learn</p>
-      <h1 class="hero-headline">Marketing and sales.<br><span class="dim">Without the bull$h¡t.</span></h1>
-      <p class="hero-sub">Better products lose every day. To worse ones, better explained.</p>
-    </div>
-    <div class="hero-right">
-      <p class="hero-track-label">What's inside</p>
-      <div class="hero-track-list">
-        <a class="hero-track-item" href="#basics">
-          <span class="hero-track-dot hero-track-dot-lime"></span>
-          <span class="hero-track-name">The Basics</span>
-          <span class="hero-track-desc">10 articles</span>
-          <span class="hero-track-arrow">→</span>
-        </a>
-        <a class="hero-track-item" href="#psychology">
-          <span class="hero-track-dot hero-track-dot-purple"></span>
-          <span class="hero-track-name">Buyer Psychology</span>
-          <span class="hero-track-desc">5 concepts</span>
-          <span class="hero-track-arrow">→</span>
-        </a>
-        <a class="hero-track-item" href="#sales">
-          <span class="hero-track-dot hero-track-dot-orange"></span>
-          <span class="hero-track-name">Sales Process</span>
-          <span class="hero-track-desc">5 stages</span>
-          <span class="hero-track-arrow">→</span>
-        </a>
-      </div>
-    </div>
+    <p class="hero-eyebrow">Learn</p>
+    <h1 class="hero-headline">Marketing and sales.<br><span class="dim">Without the bull$h¡t.</span></h1>
+    <p class="hero-sub">Better products lose every day. To worse ones, better explained.</p>
   </div>
-
-  <!-- WHITE SPACER -->
-  <div style="height:8vw;background:#ffffff;"></div>
 
   <!-- SECTION BREAK -->
   <div class="section-break section-break-first" id="basics">
