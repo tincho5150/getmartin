@@ -225,18 +225,7 @@ html,body { height:auto; overflow-x:hidden; }
 .learn-section-intro { position:relative;z-index:1;font-size:1rem;font-weight:300;line-height:1.75;color:var(--white-dim);margin-top:1.5rem;max-width:38ch; }
 .learn-section-intro strong { color:var(--white);font-weight:400; }
 .learn-right-intro { display: none; }
-.basics-stat-card {
-  background: #1e2c3a;
-  border: 1px solid #1e2c3a;
-  padding: 0.5rem 1.3rem 1.3rem;
-}
-.basics-stat-card .stat-dashboard { border-top: none; padding-top: 0.5rem; }
-.basics-stat-card .stat-num { color: var(--lime); }
-.basics-stat-card .stat-desc { color: rgba(240,239,240,0.75); }
-.basics-stat-card .stat-source { color: rgba(240,239,240,0.3); }
-.basics-stat-card .stat-bar-track { background: rgba(240,239,240,0.08); }
-.basics-stat-card .stat-bar-fill { background: var(--lime); }
-.basics-stat-card .stat-dashboard-row { border-bottom-color: rgba(240,239,240,0.07); }
+.basics-teardown {
   display: inline-flex; align-items: center; gap: 0.5rem;
   font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em;
   text-transform: uppercase; text-decoration: none;
@@ -442,377 +431,500 @@ html,body { height:auto; overflow-x:hidden; }
           <div class="learn-nav-item" data-section="basics" data-panel="9"><span class="learn-nav-dot"></span><span class="learn-nav-title">Analytics and Attribution</span></div>
         </nav>
         <div class="learn-content-area">
+          <!-- 0: SEO -->
           <div class="learn-panel active" data-section="basics" data-panel="0" id="basics-0">
             <div class="concept-card">
               <p class="concept-eyebrow">Awareness</p>
               <h3 class="concept-title">SEO</h3>
               <p class="concept-body">Search Engine Optimisation is how you earn organic visibility on Google and other search engines. When a prospect searches for a problem your product solves, SEO determines whether you show up — or your competitor does. It's not about tricks or hacks. It's about creating genuinely useful content that matches what buyers are actually searching for, on a site that's technically sound enough for search engines to trust.</p>
             </div>
-            <div class="basics-stat-card">
-              <div class="stat-dashboard">
-              <div class="stat-dashboard-row">
-                <div class="stat-num">53%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">of all B2B inbound leads come from organic search</div>
-                  <div class="stat-source">BrightEdge</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="53"></div></div>
-                </div>
-              </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">14.6%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">organic search lead close rate vs 1.7% for outbound</div>
-                  <div class="stat-source">HubSpot</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="15"></div></div>
-                </div>
-              </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">748%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">average ROI from B2B SEO investment</div>
-                  <div class="stat-source">SEO Sherpa</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="75"></div></div>
-                </div>
-              </div>
+                        <div class="stat-dashboard">
+            <div class="stat-dashboard-row">
+              <div class="stat-num">53%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of all B2B inbound leads come from organic search</div>
+                <div class="stat-source">BrightEdge</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="53"></div></div>
               </div>
             </div>
-            <a class="basics-teardown" href="/learn/seo">Full teardown →</a>
-          </div>
-
-          <div class="learn-panel" data-section="basics" data-panel="1" id="basics-1">
-            <div class="concept-card">
-              <p class="concept-eyebrow">Awareness</p>
-              <h3 class="concept-title">Content Marketing</h3>
-              <p class="concept-body">Content marketing is the practice of creating and distributing useful, relevant content to attract and retain a clearly defined audience. In B2B, it means publishing articles, guides, and resources that your buyers actually want to read — not product-first promotional material. Done right, content builds trust long before anyone is ready to buy.</p>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">14.6%</div>
+              <div class="stat-right">
+                <div class="stat-desc">organic search lead close rate vs 1.7% for outbound</div>
+                <div class="stat-source">HubSpot</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="15"></div></div>
+              </div>
             </div>
-            <div class="basics-stat-card">
-              <div class="stat-dashboard">
-              <div class="stat-dashboard-row">
-                <div class="stat-num">3×</div>
-                <div class="stat-right">
-                  <div class="stat-desc">more leads per dollar vs traditional outbound marketing</div>
-                  <div class="stat-source">Demand Metric</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="75"></div></div>
-                </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">748%</div>
+              <div class="stat-right">
+                <div class="stat-desc">average ROI from B2B SEO investment</div>
+                <div class="stat-source">SEO Sherpa</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="75"></div></div>
               </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">62%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">less cost per lead than outbound channels</div>
-                  <div class="stat-source">Content Marketing Institute</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="62"></div></div>
-                </div>
+            </div>
+            </div>
+            <div class="stat-dashboard">
+            <div class="stat-dashboard-row">
+              <div class="stat-num">3×</div>
+              <div class="stat-right">
+                <div class="stat-desc">more leads per dollar vs traditional outbound marketing</div>
+                <div class="stat-source">Demand Metric</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="75"></div></div>
               </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">287%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">median B2B content marketing ROI</div>
-                  <div class="stat-source">V12 AI / CMI</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="57"></div></div>
-                </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">62%</div>
+              <div class="stat-right">
+                <div class="stat-desc">less cost per lead than outbound channels</div>
+                <div class="stat-source">Content Marketing Institute</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="62"></div></div>
               </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">287%</div>
+              <div class="stat-right">
+                <div class="stat-desc">median B2B content marketing ROI</div>
+                <div class="stat-source">V12 AI / CMI</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="57"></div></div>
               </div>
+            </div>
             </div>
             <a class="basics-teardown" href="/learn/content-marketing">Full teardown →</a>
           </div>
 
+                    <!-- 1: Content Marketing -->
+          <div class="learn-panel" data-section="basics" data-panel="1" id="basics-1">
+            <div class="concept-card">
+              <p class="concept-eyebrow">Awareness</p>
+              <h3 class="concept-title">Content Marketing</h3>
+              <p class="concept-body">Not blogging for the sake of it. The logic behind creating content that brings the right people to you.</p>
+            </div>
+            <div class="stat-dashboard">
+            <div class="stat-dashboard-row">
+              <div class="stat-num">3×</div>
+              <div class="stat-right">
+                <div class="stat-desc">more leads per dollar vs traditional outbound marketing</div>
+                <div class="stat-source">Demand Metric</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="75"></div></div>
+              </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">62%</div>
+              <div class="stat-right">
+                <div class="stat-desc">less cost per lead than outbound channels</div>
+                <div class="stat-source">Content Marketing Institute</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="62"></div></div>
+              </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">287%</div>
+              <div class="stat-right">
+                <div class="stat-desc">median B2B content marketing ROI</div>
+                <div class="stat-source">V12 AI / CMI</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="57"></div></div>
+              </div>
+            </div>
+            </div>
+            <a class="basics-teardown" href="/learn/content-marketing">Full teardown →</a>
+          </div>
+
+          <!-- 2: Social Media Marketing -->
           <div class="learn-panel" data-section="basics" data-panel="2" id="basics-2">
             <div class="concept-card">
               <p class="concept-eyebrow">Awareness</p>
               <h3 class="concept-title">Social Media Marketing</h3>
               <p class="concept-body">In B2B, social media marketing is less about posting and more about presence. LinkedIn is where most of it happens — used well, it builds the kind of familiarity that makes a cold outreach feel warm. The mistake most companies make is treating social as a broadcast channel instead of a trust-building one.</p>
             </div>
-            <div class="basics-stat-card">
-              <div class="stat-dashboard">
-              <div class="stat-dashboard-row">
-                <div class="stat-num">80%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">of B2B social media leads come from LinkedIn</div>
-                  <div class="stat-source">LinkedIn / Sprout Social</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="80"></div></div>
-                </div>
-              </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">2.74%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">LinkedIn visitor-to-lead conversion rate vs 0.77% Facebook</div>
-                  <div class="stat-source">HubSpot</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="27"></div></div>
-                </div>
-              </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">70%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">of marketers report positive ROI from LinkedIn</div>
-                  <div class="stat-source">Hootsuite</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="70"></div></div>
-                </div>
-              </div>
+                        <div class="stat-dashboard">
+            <div class="stat-dashboard-row">
+              <div class="stat-num">80%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of B2B social media leads come from LinkedIn</div>
+                <div class="stat-source">LinkedIn / Sprout Social</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="80"></div></div>
               </div>
             </div>
-            <a class="basics-teardown" href="/learn/social-media-marketing">Full teardown →</a>
-          </div>
-
-          <div class="learn-panel" data-section="basics" data-panel="3" id="basics-3">
-            <div class="concept-card">
-              <p class="concept-eyebrow">Awareness</p>
-              <h3 class="concept-title">Personal Branding</h3>
-              <p class="concept-body">People buy from people. In B2B, the founder or sales leader's personal brand often carries more weight than the company brand — especially in the early stages. Personal branding isn't about becoming an influencer. It's about being visible, consistent, and credible in the spaces where your buyers spend time.</p>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">2.74%</div>
+              <div class="stat-right">
+                <div class="stat-desc">LinkedIn visitor-to-lead conversion rate vs 0.77% Facebook</div>
+                <div class="stat-source">HubSpot</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="27"></div></div>
+              </div>
             </div>
-            <div class="basics-stat-card">
-              <div class="stat-dashboard">
-              <div class="stat-dashboard-row">
-                <div class="stat-num">82%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">more likely to trust a company when executives are active on social</div>
-                  <div class="stat-source">Edelman</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="82"></div></div>
-                </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">70%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of marketers report positive ROI from LinkedIn</div>
+                <div class="stat-source">Hootsuite</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="70"></div></div>
               </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">44%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">of a company's market value tied to the CEO's reputation</div>
-                  <div class="stat-source">Brunswick Group</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="44"></div></div>
-                </div>
+            </div>
+            </div>
+            <div class="stat-dashboard">
+            <div class="stat-dashboard-row">
+              <div class="stat-num">82%</div>
+              <div class="stat-right">
+                <div class="stat-desc">more likely to trust a company when executives are active on social</div>
+                <div class="stat-source">Edelman</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="82"></div></div>
               </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">67%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">of buyers pay more from companies whose founders' values align with theirs</div>
-                  <div class="stat-source">Brand Builders Group</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="67"></div></div>
-                </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">44%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of a company's market value is tied to the CEO's reputation</div>
+                <div class="stat-source">Brunswick Group</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="44"></div></div>
               </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">67%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of buyers pay more from companies whose founders' values align with theirs</div>
+                <div class="stat-source">Brand Builders Group</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="67"></div></div>
               </div>
+            </div>
             </div>
             <a class="basics-teardown" href="/learn/personal-branding">Full teardown →</a>
           </div>
 
+                    <!-- 3: Personal Branding -->
+          <div class="learn-panel" data-section="basics" data-panel="3" id="basics-3">
+            <div class="concept-card">
+              <p class="concept-eyebrow">Awareness</p>
+              <h3 class="concept-title">Personal Branding</h3>
+              <p class="concept-body">What personal brand actually means for a founder or sales leader — and how to build one without becoming a LinkedIn cliché.</p>
+            </div>
+            <div class="stat-dashboard">
+            <div class="stat-dashboard-row">
+              <div class="stat-num">82%</div>
+              <div class="stat-right">
+                <div class="stat-desc">more likely to trust a company when executives are active on social</div>
+                <div class="stat-source">Edelman</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="82"></div></div>
+              </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">44%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of a company's market value is tied to the CEO's reputation</div>
+                <div class="stat-source">Brunswick Group</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="44"></div></div>
+              </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">67%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of buyers pay more from companies whose founders' values align with theirs</div>
+                <div class="stat-source">Brand Builders Group</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="67"></div></div>
+              </div>
+            </div>
+            </div>
+            <a class="basics-teardown" href="/learn/personal-branding">Full teardown →</a>
+          </div>
+
+          <!-- 4: Email Marketing -->
           <div class="learn-panel" data-section="basics" data-panel="4" id="basics-4">
             <div class="concept-card">
               <p class="concept-eyebrow">Consideration</p>
               <h3 class="concept-title">Email Marketing</h3>
               <p class="concept-body">Email remains the highest-ROI channel in B2B marketing. Unlike social media, you own the list — no algorithm stands between you and your audience. Used well, email nurtures prospects through the consideration stage, keeps you top of mind between conversations, and creates consistent touchpoints without requiring a salesperson to make every contact.</p>
             </div>
-            <div class="basics-stat-card">
-              <div class="stat-dashboard">
-              <div class="stat-dashboard-row">
-                <div class="stat-num">$42</div>
-                <div class="stat-right">
-                  <div class="stat-desc">return for every $1 spent — highest ROI of any B2B channel</div>
-                  <div class="stat-source">Litmus 2024</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="84"></div></div>
-                </div>
-              </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">77%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">of B2B buyers prefer email contact over any other channel</div>
-                  <div class="stat-source">Salesso 2024</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="77"></div></div>
-                </div>
-              </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">760%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">more revenue from segmented vs non-segmented campaigns</div>
-                  <div class="stat-source">Campaign Monitor</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="76"></div></div>
-                </div>
-              </div>
+                        <div class="stat-dashboard">
+            <div class="stat-dashboard-row">
+              <div class="stat-num">$42</div>
+              <div class="stat-right">
+                <div class="stat-desc">return for every $1 spent — highest ROI of any B2B channel</div>
+                <div class="stat-source">Litmus 2024</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="84"></div></div>
               </div>
             </div>
-            <a class="basics-teardown" href="/learn/email-marketing">Full teardown →</a>
-          </div>
-
-          <div class="learn-panel" data-section="basics" data-panel="5" id="basics-5">
-            <div class="concept-card">
-              <p class="concept-eyebrow">Consideration</p>
-              <h3 class="concept-title">Inbound vs. Outbound</h3>
-              <p class="concept-body">Inbound marketing attracts buyers by creating content and experiences they come to you for. Outbound goes after them directly — cold email, calls, paid ads. Neither is better in isolation. Inbound takes time to build but compounds. Outbound generates pipeline faster but requires constant input. The right mix depends on your stage, your market, and how long your sales cycle is.</p>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">77%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of B2B buyers prefer email contact over any other channel</div>
+                <div class="stat-source">Salesso 2024</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="77"></div></div>
+              </div>
             </div>
-            <div class="basics-stat-card">
-              <div class="stat-dashboard">
-              <div class="stat-dashboard-row">
-                <div class="stat-num">63%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">lower cost per lead with inbound vs outbound</div>
-                  <div class="stat-source">HubSpot</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="63"></div></div>
-                </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">760%</div>
+              <div class="stat-right">
+                <div class="stat-desc">more revenue from segmented vs non-segmented campaigns</div>
+                <div class="stat-source">Campaign Monitor</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="76"></div></div>
               </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">3×</div>
-                <div class="stat-right">
-                  <div class="stat-desc">more likely to see higher ROI with inbound marketing</div>
-                  <div class="stat-source">HubSpot</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="75"></div></div>
-                </div>
+            </div>
+            </div>
+            <div class="stat-dashboard">
+            <div class="stat-dashboard-row">
+              <div class="stat-num">63%</div>
+              <div class="stat-right">
+                <div class="stat-desc">lower cost per lead with inbound vs outbound</div>
+                <div class="stat-source">HubSpot</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="63"></div></div>
               </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">80%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">drop in cost per lead after 5 months of consistent inbound</div>
-                  <div class="stat-source">HubSpot</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="80"></div></div>
-                </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">3×</div>
+              <div class="stat-right">
+                <div class="stat-desc">more likely to see higher ROI with inbound marketing</div>
+                <div class="stat-source">HubSpot</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="75"></div></div>
               </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">80%</div>
+              <div class="stat-right">
+                <div class="stat-desc">drop in cost per lead after 5 months of consistent inbound execution</div>
+                <div class="stat-source">HubSpot</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="80"></div></div>
               </div>
+            </div>
             </div>
             <a class="basics-teardown" href="/learn/inbound-vs-outbound">Full teardown →</a>
           </div>
 
+                    <!-- 5: Inbound vs. Outbound -->
+          <div class="learn-panel" data-section="basics" data-panel="5" id="basics-5">
+            <div class="concept-card">
+              <p class="concept-eyebrow">Consideration</p>
+              <h3 class="concept-title">Inbound vs. Outbound</h3>
+              <p class="concept-body">Attracting buyers vs. going after them. The logic, the costs, and the right mix at different stages of growth.</p>
+            </div>
+            <div class="stat-dashboard">
+            <div class="stat-dashboard-row">
+              <div class="stat-num">63%</div>
+              <div class="stat-right">
+                <div class="stat-desc">lower cost per lead with inbound vs outbound</div>
+                <div class="stat-source">HubSpot</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="63"></div></div>
+              </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">3×</div>
+              <div class="stat-right">
+                <div class="stat-desc">more likely to see higher ROI with inbound marketing</div>
+                <div class="stat-source">HubSpot</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="75"></div></div>
+              </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">80%</div>
+              <div class="stat-right">
+                <div class="stat-desc">drop in cost per lead after 5 months of consistent inbound execution</div>
+                <div class="stat-source">HubSpot</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="80"></div></div>
+              </div>
+            </div>
+            </div>
+            <a class="basics-teardown" href="/learn/inbound-vs-outbound">Full teardown →</a>
+          </div>
+
+          <!-- 6: TOFU/MOFU/BOFU -->
           <div class="learn-panel" data-section="basics" data-panel="6" id="basics-6">
             <div class="concept-card">
               <p class="concept-eyebrow">Consideration</p>
               <h3 class="concept-title">TOFU, MOFU, BOFU</h3>
-              <p class="concept-body">Top of funnel, middle of funnel, bottom of funnel. These three stages describe where a buyer is in their journey — and what kind of content or conversation they need at each stage. TOFU is awareness. MOFU is evaluation. BOFU is decision. Most companies only create content for one stage and wonder why the others stall.</p>
+              <p class="concept-body">Top of funnel, middle of funnel, bottom of funnel. These three stages describe where a buyer is in their journey — and what kind of content or conversation they need at each stage. TOFU is awareness — broad, educational. MOFU is evaluation — comparative, specific. BOFU is decision — proof, ROI, risk reduction. Most companies only create content for one stage and wonder why the others stall.</p>
             </div>
-            <div class="basics-stat-card">
-              <div class="stat-dashboard">
-              <div class="stat-dashboard-row">
-                <div class="stat-num">67%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">more leads per month for companies with active blogs</div>
-                  <div class="stat-source">DemandMetric</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="67"></div></div>
-                </div>
-              </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">55%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">of B2B marketers say creating content that drives conversions is hard</div>
-                  <div class="stat-source">CMI</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="55"></div></div>
-                </div>
-              </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">74%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">of B2B marketers say content generates more demand and leads</div>
-                  <div class="stat-source">CMI 2024</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="74"></div></div>
-                </div>
-              </div>
+                        <div class="stat-dashboard">
+            <div class="stat-dashboard-row">
+              <div class="stat-num">67%</div>
+              <div class="stat-right">
+                <div class="stat-desc">more leads per month for companies with active blogs</div>
+                <div class="stat-source">DemandMetric</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="67"></div></div>
               </div>
             </div>
-            <a class="basics-teardown" href="/learn/marketing-funnel">Full teardown →</a>
-          </div>
-
-          <div class="learn-panel" data-section="basics" data-panel="7" id="basics-7">
-            <div class="concept-card">
-              <p class="concept-eyebrow">Decision</p>
-              <h3 class="concept-title">Paid Advertising</h3>
-              <p class="concept-body">Paid advertising lets you buy visibility instead of earning it. In B2B, the most common channels are LinkedIn Ads, Google Search Ads, and retargeting. Paid works best when you have a clear, high-intent audience and a strong offer — it accelerates what's already working organically. Used before that foundation exists, it's an expensive way to learn what doesn't work.</p>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">55%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of B2B marketers say it's hard to create content that drives conversions</div>
+                <div class="stat-source">CMI</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="55"></div></div>
+              </div>
             </div>
-            <div class="basics-stat-card">
-              <div class="stat-dashboard">
-              <div class="stat-dashboard-row">
-                <div class="stat-num">65%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">of high-intent searches result in an ad click</div>
-                  <div class="stat-source">Google</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="65"></div></div>
-                </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">74%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of B2B marketers say content generates more demand and leads</div>
+                <div class="stat-source">CMI 2024</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="74"></div></div>
               </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">52%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">increase in brand awareness reported by companies using PPC</div>
-                  <div class="stat-source">Electroiq</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="52"></div></div>
-                </div>
+            </div>
+            </div>
+            <div class="stat-dashboard">
+            <div class="stat-dashboard-row">
+              <div class="stat-num">65%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of high-intent searches result in an ad click</div>
+                <div class="stat-source">Google</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="65"></div></div>
               </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">200%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">average Google Ads ROI ($2 return per $1 spent)</div>
-                  <div class="stat-source">Google / WordStream</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="40"></div></div>
-                </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">52%</div>
+              <div class="stat-right">
+                <div class="stat-desc">increase in brand awareness reported by companies using PPC</div>
+                <div class="stat-source">Electroiq</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="52"></div></div>
               </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">200%</div>
+              <div class="stat-right">
+                <div class="stat-desc">average Google Ads ROI ($2 return per $1 spent)</div>
+                <div class="stat-source">Google / WordStream</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="40"></div></div>
               </div>
+            </div>
             </div>
             <a class="basics-teardown" href="/learn/paid-advertising">Full teardown →</a>
           </div>
 
+                    <!-- 7: Paid Advertising -->
+          <div class="learn-panel" data-section="basics" data-panel="7" id="basics-7">
+            <div class="concept-card">
+              <p class="concept-eyebrow">Decision</p>
+              <h3 class="concept-title">Paid Advertising</h3>
+              <p class="concept-body">Paid vs. organic — not which is better, but when each makes sense and where to spend first.</p>
+            </div>
+            <div class="stat-dashboard">
+            <div class="stat-dashboard-row">
+              <div class="stat-num">65%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of high-intent searches result in an ad click</div>
+                <div class="stat-source">Google</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="65"></div></div>
+              </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">52%</div>
+              <div class="stat-right">
+                <div class="stat-desc">increase in brand awareness reported by companies using PPC</div>
+                <div class="stat-source">Electroiq</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="52"></div></div>
+              </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">200%</div>
+              <div class="stat-right">
+                <div class="stat-desc">average Google Ads ROI ($2 return per $1 spent)</div>
+                <div class="stat-source">Google / WordStream</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="40"></div></div>
+              </div>
+            </div>
+            </div>
+            <a class="basics-teardown" href="/learn/paid-advertising">Full teardown →</a>
+          </div>
+
+          <!-- 8: Brand vs Performance -->
           <div class="learn-panel" data-section="basics" data-panel="8" id="basics-8">
             <div class="concept-card">
               <p class="concept-eyebrow">Decision</p>
               <h3 class="concept-title">Brand vs. Performance</h3>
-              <p class="concept-body">Performance marketing drives measurable, immediate results — clicks, leads, conversions. Brand marketing builds the long-term reputation that makes performance marketing cheaper and more effective over time. Most early-stage companies default to performance only because it's measurable. But companies that neglect brand find themselves paying more and more for the same leads.</p>
+              <p class="concept-body">Performance marketing drives measurable, immediate results — clicks, leads, conversions. Brand marketing builds the long-term reputation that makes performance marketing cheaper and more effective over time. Most early-stage companies default to performance only because it's measurable. But companies that neglect brand find themselves paying more and more for the same leads as competitors who built recognition.</p>
             </div>
-            <div class="basics-stat-card">
-              <div class="stat-dashboard">
-              <div class="stat-dashboard-row">
-                <div class="stat-num">80%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">of customers say brand trust is the deciding factor in B2B purchases</div>
-                  <div class="stat-source">Edelman</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="80"></div></div>
-                </div>
-              </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">20%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">B2B companies with strong brands outperform weak ones by this margin</div>
-                  <div class="stat-source">McKinsey</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="20"></div></div>
-                </div>
-              </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">25%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">of B2B companies commit less than a fifth of budget to brand</div>
-                  <div class="stat-source">Studio Sunup</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="25"></div></div>
-                </div>
-              </div>
+                        <div class="stat-dashboard">
+            <div class="stat-dashboard-row">
+              <div class="stat-num">80%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of customers say brand trust is the deciding factor in B2B purchase decisions</div>
+                <div class="stat-source">Edelman</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="80"></div></div>
               </div>
             </div>
-            <a class="basics-teardown" href="/learn/brand-vs-performance">Full teardown →</a>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">20%</div>
+              <div class="stat-right">
+                <div class="stat-desc">B2B companies with strong brands outperform weak ones by this margin</div>
+                <div class="stat-source">McKinsey</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="20"></div></div>
+              </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">25%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of B2B companies commit less than a fifth of budget to brand marketing</div>
+                <div class="stat-source">Studio Sunup</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="25"></div></div>
+              </div>
+            </div>
+            </div>
+            <div class="stat-dashboard">
+            <div class="stat-dashboard-row">
+              <div class="stat-num">80%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of customers say brand trust is the deciding factor in B2B purchase decisions</div>
+                <div class="stat-source">Edelman</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="80"></div></div>
+              </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">20%</div>
+              <div class="stat-right">
+                <div class="stat-desc">B2B companies with strong brands outperform weak ones by this margin</div>
+                <div class="stat-source">McKinsey</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="20"></div></div>
+              </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">25%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of B2B companies commit less than a fifth of budget to brand marketing</div>
+                <div class="stat-source">Studio Sunup</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="25"></div></div>
+              </div>
+            </div>
+            </div>
+            <a class="basics-teardown" href="/learn/analytics-attribution">Full teardown →</a>
           </div>
 
+          <!-- 9: Analytics and Attribution -->
           <div class="learn-panel" data-section="basics" data-panel="9" id="basics-9">
             <div class="concept-card">
               <p class="concept-eyebrow">Decision</p>
               <h3 class="concept-title">Analytics and Attribution</h3>
-              <p class="concept-body">Analytics tells you what's happening. Attribution tells you why — which channels and touchpoints contributed to a conversion. In B2B, attribution is genuinely hard. A buyer might see a LinkedIn post, read an article, attend a webinar, and then respond to a cold email six months later. Most attribution models credit the last thing that happened. That's rarely the thing that actually worked.</p>
+              <p class="concept-body">Analytics tells you what's happening. Attribution tells you why — which channels and touchpoints contributed to a conversion. In B2B, attribution is genuinely hard. Most attribution models credit the last thing that happened. That's rarely the thing that actually worked.</p>
             </div>
-            <div class="basics-stat-card">
-              <div class="stat-dashboard">
-              <div class="stat-dashboard-row">
-                <div class="stat-num">21%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">of B2B marketers are confident in their attribution model</div>
-                  <div class="stat-source">Forrester 2025</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="21"></div></div>
-                </div>
+            <div class="stat-dashboard">
+            <div class="stat-dashboard-row">
+              <div class="stat-num">21%</div>
+              <div class="stat-right">
+                <div class="stat-desc">of B2B marketers are confident in their attribution model</div>
+                <div class="stat-source">Forrester 2025</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="21"></div></div>
               </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">5.3×</div>
-                <div class="stat-right">
-                  <div class="stat-desc">higher ROI for B2B marketers using analytics properly</div>
-                  <div class="stat-source">Gartner</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="66"></div></div>
-                </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">5.3×</div>
+              <div class="stat-right">
+                <div class="stat-desc">higher ROI for B2B marketers using analytics properly</div>
+                <div class="stat-source">Gartner</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="66"></div></div>
               </div>
-              <div class="stat-dashboard-row">
-                <div class="stat-num">15–30%</div>
-                <div class="stat-right">
-                  <div class="stat-desc">improvement in ROI from switching to multi-touch attribution</div>
-                  <div class="stat-source">Forrester</div>
-                  <div class="stat-bar-track"><div class="stat-bar-fill" data-width="37"></div></div>
-                </div>
+            </div>
+            <div class="stat-dashboard-row">
+              <div class="stat-num">15–30%</div>
+              <div class="stat-right">
+                <div class="stat-desc">improvement in ROI from multi-touch attribution</div>
+                <div class="stat-source">Forrester</div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="37"></div></div>
               </div>
-              </div>
+            </div>
             </div>
             <a class="basics-teardown" href="/learn/analytics-attribution">Full teardown →</a>
           </div>
 
         </div>
+      </div>
+    </div>
+  </div>
 
   <!-- SECTION BREAK -->
   <div class="section-break" id="psychology">
