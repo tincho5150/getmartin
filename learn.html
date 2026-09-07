@@ -47,15 +47,8 @@ html,body { height:auto; overflow-x:hidden; }
 
 /* BASICS FULL WIDTH */
 .basics-full {
-  background: var(--navy-dark);
   border-bottom: 1px solid var(--white-faint);
   position: relative;
-}
-.basics-full::before {
-  content: ''; position: absolute; inset: 0;
-  background-image: linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 72px 72px; pointer-events: none;
 }
 /* STEP CARDS — from index.html */
 .step-card {
@@ -126,14 +119,15 @@ html,body { height:auto; overflow-x:hidden; }
 }
 .step-cards { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 2px; }
 .funnel-intro-card {
-  background: var(--lime);
-  padding: 1.1rem 1.3rem;
+  background: #1e2c3a;
+  border: 1px solid #1e2c3a;
+  padding: 1.4rem;
   margin-bottom: 2px;
   font-family: var(--font-display);
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  font-weight: 600; line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: var(--navy-dark);
+  font-size: clamp(1.3rem, 2.2vw, 2rem);
+  font-weight: 700; line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #f0eff0;
 }
 .funnel-sub-num { display: none; }
 .funnel-sub-title {
