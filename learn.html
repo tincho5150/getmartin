@@ -75,26 +75,6 @@ html,body { height:auto; overflow-x:hidden; }
 .hero-track-arrow { font-size:0.75rem;color:rgba(30,44,58,0.2);transition:color 0.15s,transform 0.15s; }
 .hero-track-item:hover .hero-track-arrow { color:var(--lime);transform:translateX(3px); }
 
-/* BASICS STAT CARD */
-.basics-stat-card {
-  display: grid; grid-template-columns: auto 1fr;
-  align-items: center; gap: 3rem;
-  padding: 3vw 5vw;
-  background: var(--lime);
-  position: relative; z-index: 1;
-}
-.basics-stat-num {
-  font-family: var(--font-display);
-  font-size: clamp(3.5rem, 7vw, 6rem);
-  font-weight: 700; line-height: 1;
-  letter-spacing: -0.04em; color: var(--navy-dark);
-}
-.basics-stat-text {
-  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
-  font-weight: 300; line-height: 1.7;
-  color: rgba(30,44,58,0.7);
-}
-.basics-stat-text span { color: var(--navy-dark); font-weight: 500; }
 .funnel-sub-context {
   font-size: 0.88rem; font-weight: 300; line-height: 1.75;
   color: var(--ink-dim); position: relative; z-index: 1;
@@ -381,7 +361,6 @@ html,body { height:auto; overflow-x:hidden; }
   .hero{grid-template-columns:1fr}
   .hero-left{border-right:none;border-bottom:1px solid var(--white-faint)}
   .hero-right{padding:2rem 1.5rem}
-  .basics-stat-card{grid-template-columns:1fr;gap:1rem}
   .funnel-subsection{grid-template-columns:1fr}
   .funnel-sub-left{border-right:none;border-bottom:1px solid rgba(30,44,58,0.08);padding:2rem 1.5rem 1.5rem}
   .funnel-subsection-first{padding-top:0}
@@ -447,10 +426,7 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- BASICS -->
   <div class="basics-full">
-    <div class="basics-stat-card">
-      <div class="basics-stat-num">67%</div>
-      <div class="basics-stat-text">of B2B marketing programmes fail not because of budget or strategy — but because the team doesn't share a common vocabulary. <span>These ten concepts fix that.</span></div>
-    </div>
+
 
     <div class="funnel-subsection funnel-subsection-first funnel-stage-lime">
       <div class="funnel-sub-left">
