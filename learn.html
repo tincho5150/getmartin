@@ -29,11 +29,12 @@ html,body { height:auto; overflow-x:hidden; }
 .page { min-height:100vh;padding-top:var(--nav-height); }
 
 /* HERO */
-.hero { position:relative;z-index:1;border-bottom:1px solid var(--white-faint);padding:6vw 5vw 5vw;min-height:28vh;display:flex;flex-direction:column;justify-content:flex-end; }
+.hero { position:relative;z-index:1;border-bottom:1px solid var(--white-faint);padding:8vw 5vw 6vw;min-height:42vh;display:flex;flex-direction:column;justify-content:flex-end; }
 .hero::before { content:'';position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:72px 72px;pointer-events:none; }
 .hero-eyebrow { position:relative;z-index:2;font-size:0.72rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--lime);margin-bottom:1rem;opacity:0;animation:fadeUp 0.5s var(--ease-out) 0.2s forwards; }
-.hero-headline { position:relative;z-index:2;font-family:var(--font-display);font-size:clamp(2.8rem,5.5vw,5.5rem);font-weight:700;line-height:1.0;letter-spacing:-0.03em;color:var(--white);max-width:14ch;opacity:0;animation:fadeUp 0.7s var(--ease-out) 0.3s forwards; }
+.hero-headline { position:relative;z-index:2;font-family:var(--font-display);font-size:clamp(2.8rem,5.5vw,5.5rem);font-weight:700;line-height:1.0;letter-spacing:-0.03em;color:var(--white);max-width:18ch;opacity:0;animation:fadeUp 0.7s var(--ease-out) 0.3s forwards; }
 .hero-headline .dim { color:var(--white-dim); }
+.hero-sub { position:relative;z-index:2;font-size:clamp(1rem,1.6vw,1.25rem);font-weight:300;line-height:1.6;color:var(--white-dim);max-width:48ch;margin-top:1.5rem;opacity:0;animation:fadeUp 0.6s var(--ease-out) 0.5s forwards; }
 
 /* BASICS FULL WIDTH */
 .basics-full {
@@ -341,7 +342,8 @@ html,body { height:auto; overflow-x:hidden; }
 
   <div class="hero">
     <p class="hero-eyebrow">Learn</p>
-    <h1 class="hero-headline">Marketing and sales.<br><span class="dim">Properly explained.</span></h1>
+    <h1 class="hero-headline">Marketing and sales.<br><span class="dim">Without the bull$h¡t.</span></h1>
+    <p class="hero-sub">Better products lose every day. To worse ones, better explained.</p>
   </div>
 
   <!-- SECTION BREAK -->
