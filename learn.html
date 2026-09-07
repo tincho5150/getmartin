@@ -57,6 +57,21 @@ html,body { height:auto; overflow-x:hidden; }
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 72px 72px; pointer-events: none;
 }
+/* STEP CARDS — from index.html */
+.step-card {
+  background: #1e2c3a;
+  border: 1px solid #1e2c3a;
+  padding: 1.1rem 1.3rem; display: grid;
+  grid-template-columns: 2rem 1fr; gap: 0 1rem; align-items: start;
+  transition: background var(--dur-base), transform var(--dur-base) var(--ease-out);
+}
+.step-card:hover { background: #2a3a4a; transform: translateY(-2px); }
+.step-num { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--lime); letter-spacing: 0.04em; padding-top: 0.1rem; }
+.step-content { display: flex; flex-direction: column; gap: 0.25rem; }
+.step-title { font-family: var(--font-display); font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; color: #f0eff0; }
+.step-desc { font-size: 0.88rem; font-weight: 300; color: rgba(240,239,240,0.6); line-height: 1.55; }
+.step-cards { display: flex; flex-direction: column; gap: 2px; }
+
 /* FUNNEL SUBSECTIONS — dark stacked */
 .funnel-subsection {
   border-top: 1px solid var(--white-faint);
@@ -366,40 +381,94 @@ html,body { height:auto; overflow-x:hidden; }
   <div class="basics-full">
 
 
-    <div class="funnel-subsection funnel-subsection-first funnel-stage-lime">
-      <div class="funnel-sub-left">
-        <h3 class="funnel-sub-title funnel-title-lime">Awareness. <span class="funnel-sub-hook">What gets you in front of buyers.</span></h3>
-      </div>
-      <div class="funnel-sub-right">
-        <p class="funnel-sub-right-intro">Before a prospect can consider you, they have to know you exist. These are the channels that create that first moment of recognition.</p>
-        <a class="funnel-link funnel-stage-lime" href="/learn/seo"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">SEO — What It Is and How It Works</span></span><span class="funnel-link-tag">Search</span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link funnel-stage-lime" href="/learn/content-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Content Marketing — What It Actually Means</span></span><span class="funnel-link-tag">Content</span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link funnel-stage-lime" href="/learn/social-media-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Social Media Marketing — Beyond Posting and Hoping</span></span><span class="funnel-link-tag">Social</span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link funnel-stage-lime" href="/learn/personal-branding"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Personal Branding — People Buy From People, Not Logos</span></span><span class="funnel-link-tag">Brand</span><span class="funnel-link-arrow">→</span></a>
+    <div class="funnel-subsection funnel-subsection-first">
+      <h3 class="funnel-sub-title funnel-title-lime">Awareness. <span class="funnel-sub-hook">What gets you in front of buyers.</span></h3>
+      <p class="funnel-sub-right-intro">Before a prospect can consider you, they have to know you exist. These are the channels that create that first moment of recognition.</p>
+      <div class="step-cards">
+        <a class="step-card" href="/learn/seo">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title">SEO — What It Is and How It Works</div>
+            <div class="step-desc">Why some pages show up on Google and others don't — and what you can actually do about it.</div>
+          </div>
+        </a>
+        <a class="step-card" href="/learn/content-marketing">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title">Content Marketing — What It Actually Means</div>
+            <div class="step-desc">Not blogging for the sake of it. The logic behind creating content that brings the right people to you.</div>
+          </div>
+        </a>
+        <a class="step-card" href="/learn/social-media-marketing">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title">Social Media Marketing — Beyond Posting and Hoping</div>
+            <div class="step-desc">What social actually does in a B2B sales cycle — and what it can't.</div>
+          </div>
+        </a>
+        <a class="step-card" href="/learn/personal-branding">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <div class="step-title">Personal Branding — People Buy From People, Not Logos</div>
+            <div class="step-desc">What personal brand actually means for a founder or sales leader — and how to build one without becoming a LinkedIn cliché.</div>
+          </div>
+        </a>
       </div>
     </div>
 
-    <div class="funnel-subsection funnel-stage-teal">
-      <div class="funnel-sub-left">
-        <h3 class="funnel-sub-title funnel-title-teal">Consideration. <span class="funnel-sub-hook">Where most deals are quietly won or lost.</span></h3>
-      </div>
-      <div class="funnel-sub-right">
-        <p class="funnel-sub-right-intro">The prospect knows you exist. Now they're deciding whether you're worth trusting. This is the longest stage — and the one most companies leave to chance.</p>
-        <a class="funnel-link funnel-stage-teal" href="/learn/email-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Email Marketing — Boring Name, Best Returns</span></span><span class="funnel-link-tag">Email</span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link funnel-stage-teal" href="/learn/inbound-vs-outbound"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Inbound vs. Outbound — Two Different Games</span></span><span class="funnel-link-tag">Strategy</span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link funnel-stage-teal" href="/learn/marketing-funnel"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains</span></span><span class="funnel-link-tag">Funnel</span><span class="funnel-link-arrow">→</span></a>
+    <div class="funnel-subsection">
+      <h3 class="funnel-sub-title funnel-title-teal">Consideration. <span class="funnel-sub-hook">Where most deals are quietly won or lost.</span></h3>
+      <p class="funnel-sub-right-intro">The prospect knows you exist. Now they're deciding whether you're worth trusting. This is the longest stage — and the one most companies leave to chance.</p>
+      <div class="step-cards">
+        <a class="step-card" href="/learn/email-marketing">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title">Email Marketing — Boring Name, Best Returns</div>
+            <div class="step-desc">Why email outperforms every other channel in B2B — and how to use it without sounding like everyone else.</div>
+          </div>
+        </a>
+        <a class="step-card" href="/learn/inbound-vs-outbound">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title">Inbound vs. Outbound — Two Different Games</div>
+            <div class="step-desc">Attracting buyers vs. going after them. The logic, the costs, and the right mix at different stages of growth.</div>
+          </div>
+        </a>
+        <a class="step-card" href="/learn/marketing-funnel">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title">TOFU, MOFU, BOFU — The Acronyms Nobody Explains</div>
+            <div class="step-desc">What each funnel stage actually means and where most companies get stuck.</div>
+          </div>
+        </a>
       </div>
     </div>
 
-    <div class="funnel-subsection funnel-subsection-last funnel-stage-orange">
-      <div class="funnel-sub-left">
-        <h3 class="funnel-sub-title funnel-title-orange">Decision. <span class="funnel-sub-hook">Convert intent into action.</span></h3>
-      </div>
-      <div class="funnel-sub-right">
-        <p class="funnel-sub-right-intro">The buyer is ready. These are the tools that close the loop — and tell you what actually worked so you can do it again.</p>
-        <a class="funnel-link funnel-stage-orange" href="/learn/paid-advertising"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Paid Advertising — When to Buy Attention vs. Earn It</span></span><span class="funnel-link-tag">Paid</span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link funnel-stage-orange" href="/learn/brand-vs-performance"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Brand vs. Performance — One Makes the Phone Ring Today</span></span><span class="funnel-link-tag">Strategy</span><span class="funnel-link-arrow">→</span></a>
-        <a class="funnel-link funnel-stage-orange" href="/learn/analytics-attribution"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Analytics and Attribution — The Last Click Gets the Credit</span></span><span class="funnel-link-tag">Analytics</span><span class="funnel-link-arrow">→</span></a>
+    <div class="funnel-subsection funnel-subsection-last">
+      <h3 class="funnel-sub-title funnel-title-orange">Decision. <span class="funnel-sub-hook">Convert intent into action.</span></h3>
+      <p class="funnel-sub-right-intro">The buyer is ready. These are the tools that close the loop — and tell you what actually worked so you can do it again.</p>
+      <div class="step-cards">
+        <a class="step-card" href="/learn/paid-advertising">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title">Paid Advertising — When to Buy Attention vs. Earn It</div>
+            <div class="step-desc">Paid vs. organic — not which is better, but when each makes sense and where to spend first.</div>
+          </div>
+        </a>
+        <a class="step-card" href="/learn/brand-vs-performance">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title">Brand vs. Performance — One Makes the Phone Ring Today</div>
+            <div class="step-desc">Building long-term trust vs. generating immediate pipeline. Why you need both and when to lean on each.</div>
+          </div>
+        </a>
+        <a class="step-card" href="/learn/analytics-attribution">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title">Analytics and Attribution — The Last Click Gets the Credit</div>
+            <div class="step-desc">What to measure, what to ignore, and the honest truth about why attribution in B2B is harder than anyone admits.</div>
+          </div>
+        </a>
       </div>
     </div>
 
