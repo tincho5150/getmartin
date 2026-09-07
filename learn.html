@@ -307,6 +307,7 @@ html,body { height:auto; overflow-x:hidden; }
   background: var(--navy-dark);
   position: relative;
 }
+.section-break-first { margin-top: 4vw; }
 .section-break::before {
   content: ''; position: absolute; inset: 0;
   background-image: linear-gradient(var(--grid) 1px, transparent 1px),
@@ -420,7 +421,7 @@ html,body { height:auto; overflow-x:hidden; }
   </div>
 
   <!-- SECTION BREAK -->
-  <div class="section-break" id="basics">
+  <div class="section-break section-break-first" id="basics">
     <p class="section-break-label">The Basics. <span class="section-break-sub">Ten concepts mapped to where they actually matter in the buyer's journey.</span></p>
   </div>
 
