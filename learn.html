@@ -29,10 +29,10 @@ html,body { height:auto; overflow-x:hidden; }
 .page { min-height:100vh;padding-top:var(--nav-height); }
 
 /* HERO */
-.hero { position:relative;border-bottom:1px solid var(--white-faint);padding:6vw 5vw 5vw;min-height:28vh;display:flex;flex-direction:column;justify-content:flex-end; }
+.hero { position:relative;z-index:1;border-bottom:1px solid var(--white-faint);padding:6vw 5vw 5vw;min-height:28vh;display:flex;flex-direction:column;justify-content:flex-end; }
 .hero::before { content:'';position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:72px 72px;pointer-events:none; }
-.hero-eyebrow { position:relative;z-index:1;font-size:0.72rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--lime);margin-bottom:1rem;opacity:0;animation:fadeUp 0.5s var(--ease-out) 0.2s forwards; }
-.hero-headline { position:relative;z-index:1;font-family:var(--font-display);font-size:clamp(2.8rem,5.5vw,5.5rem);font-weight:700;line-height:1.0;letter-spacing:-0.03em;color:var(--white);max-width:14ch;opacity:0;animation:fadeUp 0.7s var(--ease-out) 0.3s forwards; }
+.hero-eyebrow { position:relative;z-index:2;font-size:0.72rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--lime);margin-bottom:1rem;opacity:0;animation:fadeUp 0.5s var(--ease-out) 0.2s forwards; }
+.hero-headline { position:relative;z-index:2;font-family:var(--font-display);font-size:clamp(2.8rem,5.5vw,5.5rem);font-weight:700;line-height:1.0;letter-spacing:-0.03em;color:var(--white);max-width:14ch;opacity:0;animation:fadeUp 0.7s var(--ease-out) 0.3s forwards; }
 .hero-headline .dim { color:var(--white-dim); }
 
 /* BASICS FULL WIDTH */
@@ -53,30 +53,31 @@ html,body { height:auto; overflow-x:hidden; }
   background: #ffffff;
 }
 .funnel-sub-left {
-  padding: 2.5vw 5vw 1.5vw;
+  padding: 2.5vw 5vw 2vw;
   display: flex; flex-direction: column;
-  border-bottom: 1px solid rgba(30,44,58,0.08);
+  background: var(--navy-dark);
   position: relative;
 }
 .funnel-sub-left::before {
   content: ''; position: absolute; inset: 0;
-  background-image: linear-gradient(rgba(30,44,58,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(30,44,58,0.04) 1px, transparent 1px);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 72px 72px; pointer-events: none;
 }
-.funnel-sub-num {
-  font-size: 0.65rem; font-weight: 700;
-  letter-spacing: 0.14em; color: rgba(184,212,0,0.6);
-  margin-bottom: 0.5rem; position: relative; z-index: 1;
-}
+.funnel-sub-num { display: none; }
 .funnel-sub-title {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
   font-weight: 700; line-height: 1.0;
-  letter-spacing: -0.025em; color: var(--ink);
-  position: relative; z-index: 1;
+  letter-spacing: -0.025em; color: var(--white);
+  position: relative; z-index: 1; margin-bottom: 0.7rem;
 }
 .funnel-sub-hook { color: var(--lime); font-weight: 700; }
+.funnel-sub-body {
+  font-size: 0.95rem; font-weight: 300; line-height: 1.75;
+  color: var(--white-dim); max-width: 52ch;
+  position: relative; z-index: 1;
+}
 .funnel-sub-desc { display: none; }
 .funnel-sub-right {
   background: #ffffff;
@@ -262,14 +263,14 @@ html,body { height:auto; overflow-x:hidden; }
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 5.5vw, 5.5rem);
   font-weight: 700; line-height: 1.0; letter-spacing: -0.03em;
-  color: var(--white);
+  color: var(--white-dim);
 }
 .section-break-sub {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3.2vw, 3.2rem);
-  font-weight: 700; line-height: 1.0; letter-spacing: -0.02em;
+  font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+  font-weight: 300; line-height: 1.2; letter-spacing: -0.01em;
   color: var(--white-dim);
-  max-width: 24ch;
+  max-width: 36ch;
 }
 .section-break-line { display: none; }
 
@@ -320,11 +321,7 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- SECTION BREAK -->
   <div class="section-break">
-    <div class="section-break-top">
-      <span class="section-break-num">01</span>
-      <span class="section-break-dot"></span>
-      <span class="section-break-label">The Basics</span>
-    </div>
+    <p class="section-break-label">The Basics</p>
     <p class="section-break-sub">Ten concepts mapped to where they actually matter in the buyer's journey.</p>
   </div>
 
@@ -335,6 +332,7 @@ html,body { height:auto; overflow-x:hidden; }
       <div class="funnel-sub-left">
         <p class="funnel-sub-num">01</p>
         <h3 class="funnel-sub-title">Awareness. <span class="funnel-sub-hook">What gets you in front of buyers.</span></h3>
+        <p class="funnel-sub-body">Before a prospect can consider you, they have to know you exist. These are the channels and tactics that create that first moment of recognition — search, content, social, and personal brand.</p>
       </div>
       <div class="funnel-sub-right">
         <a class="funnel-link" href="/learn/seo"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">SEO — What It Is and How It Works</span></span><span class="funnel-link-tag">Search</span><span class="funnel-link-arrow">→</span></a>
@@ -348,6 +346,7 @@ html,body { height:auto; overflow-x:hidden; }
       <div class="funnel-sub-left">
         <p class="funnel-sub-num">02</p>
         <h3 class="funnel-sub-title">Consideration. <span class="funnel-sub-hook">Where most deals are quietly won or lost.</span></h3>
+        <p class="funnel-sub-body">The prospect knows you exist. Now they're deciding whether you're worth trusting. This is the longest stage — and the one most companies leave to chance.</p>
       </div>
       <div class="funnel-sub-right">
         <a class="funnel-link" href="/learn/email-marketing"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Email Marketing — Boring Name, Best Returns</span></span><span class="funnel-link-tag">Email</span><span class="funnel-link-arrow">→</span></a>
@@ -360,6 +359,7 @@ html,body { height:auto; overflow-x:hidden; }
       <div class="funnel-sub-left">
         <p class="funnel-sub-num">03</p>
         <h3 class="funnel-sub-title">Decision. <span class="funnel-sub-hook">Convert intent into action.</span></h3>
+        <p class="funnel-sub-body">The buyer is ready. These are the tools that close the loop — paid channels that accelerate timing, brand investment that builds long-term trust, and attribution that tells you what actually worked.</p>
       </div>
       <div class="funnel-sub-right">
         <a class="funnel-link" href="/learn/paid-advertising"><span class="funnel-link-left"><span class="funnel-dot"></span><span class="funnel-link-title">Paid Advertising — When to Buy Attention vs. Earn It</span></span><span class="funnel-link-tag">Paid</span><span class="funnel-link-arrow">→</span></a>
@@ -372,11 +372,7 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- SECTION BREAK -->
   <div class="section-break">
-    <div class="section-break-top">
-      <span class="section-break-num">02</span>
-      <span class="section-break-dot"></span>
-      <span class="section-break-label">Buyer Psychology</span>
-    </div>
+    <p class="section-break-label">Buyer Psychology</p>
     <p class="section-break-sub">Why buyers do what they do — and how to use it to create genuine urgency.</p>
   </div>
 
@@ -577,11 +573,7 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- SECTION BREAK -->
   <div class="section-break">
-    <div class="section-break-top">
-      <span class="section-break-num">03</span>
-      <span class="section-break-dot"></span>
-      <span class="section-break-label">Sales Process</span>
-    </div>
+    <p class="section-break-label">Sales Process</p>
     <p class="section-break-sub">Where deals move, where they stall, and what determines the outcome.</p>
   </div>
 
