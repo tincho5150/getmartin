@@ -551,6 +551,9 @@ html,body { height:auto; overflow-x:hidden; }
   padding-left: 1.5rem;
   position: relative; z-index: 1;
 }
+/* the intro reads as two paragraphs; spans keep it one grid child */
+.section-break-body span { display: block; }
+.section-break-body span + span { margin-top: 1.1em; }
 </style>
 </head>
 <body>
@@ -838,7 +841,7 @@ html,body { height:auto; overflow-x:hidden; }
   <!-- SECTION BREAK -->
   <div class="section-break" id="psychology">
     <p class="section-break-label">Buyer Psychology. <span class="section-break-sub">Why buyers do what they do.</span></p>
-    <p class="section-break-body">B2B buyers are not rational actors. They are people — under pressure, managing risk, protecting their careers.<br>Understanding the mental models that drive real decisions is what separates genuine urgency from adding more slides to the deck.</p>
+    <p class="section-break-body"><span>B2B buyers are not rational actors. They are people — under pressure, managing risk, protecting their careers.</span><span>Understanding the mental models that drive real decisions is what separates genuine urgency from adding more slides to the deck.</span></p>
   </div>
 
   <!-- BUYER PSYCHOLOGY -->
@@ -987,7 +990,7 @@ html,body { height:auto; overflow-x:hidden; }
   <!-- SECTION BREAK -->
   <div class="section-break" id="sales">
     <p class="section-break-label">Sales Process. <span class="section-break-sub">Most deals don't lose. They stall.</span></p>
-    <p class="section-break-body">Most B2B sales processes fail at predictable moments — and almost always for the same reasons.<br>This track maps where deals move, where they stall, and what the people who close them consistently do differently.</p>
+    <p class="section-break-body"><span>Most B2B sales processes fail at predictable moments — and almost always for the same reasons.</span><span>This track maps where deals move, where they stall, and what the people who close them consistently do differently.</span></p>
   </div>
 
   <!-- SALES PROCESS -->
