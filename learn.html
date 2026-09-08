@@ -519,6 +519,14 @@ html,body { height:auto; overflow-x:hidden; }
 .panel-competitor-item:last-child { border-bottom:none; }
 .panel-competitor-dot { width:5px;height:5px;border-radius:50%;background:var(--lime);flex-shrink:0;margin-top:6px; }
 .panel-competitor-text { font-size:0.9rem;font-weight:400;color:rgba(240,239,240,0.85);line-height:1.6; }
+.section-break-body {
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  font-weight: 300; line-height: 1.7;
+  color: rgba(240,239,240,0.5);
+  max-width: 52ch;
+  position: relative; z-index: 1;
+  margin-top: 0.4rem;
+}
 </style>
 </head>
 <body>
@@ -806,6 +814,7 @@ html,body { height:auto; overflow-x:hidden; }
   <!-- SECTION BREAK -->
   <div class="section-break" id="psychology">
     <p class="section-break-label">Buyer Psychology. <span class="section-break-sub">Why buyers do what they do.</span></p>
+    <p class="section-break-body">B2B buyers are not rational actors. They are people — under pressure, managing risk, protecting their careers. Understanding the mental models that drive real decisions is what separates genuine urgency from adding more slides to the deck.</p>
   </div>
 
   <!-- BUYER PSYCHOLOGY -->
@@ -820,7 +829,6 @@ html,body { height:auto; overflow-x:hidden; }
           <div class="learn-nav-item" data-section="psychology" data-panel="4"><span class="learn-nav-dot"></span><span class="learn-nav-title">Social Proof</span></div>
         </nav>
         <div class="learn-content-area">
-          <p class="learn-panel-intro">B2B buyers are not rational actors. They are people — under pressure, managing risk, protecting their careers. <strong>Understanding the mental models that drive real buying decisions is what separates genuine urgency from adding more slides to the deck.</strong></p>
 
           <div class="learn-panel active" id="psychology-0">
             <div class="panel-tiles">
@@ -955,6 +963,7 @@ html,body { height:auto; overflow-x:hidden; }
   <!-- SECTION BREAK -->
   <div class="section-break" id="sales">
     <p class="section-break-label">Sales Process. <span class="section-break-sub">Most deals don't lose. They stall.</span></p>
+    <p class="section-break-body">Most B2B sales processes fail at predictable moments — and almost always for the same reasons. This track maps where deals move, where they stall, and what the people who close them consistently do differently.</p>
   </div>
 
   <!-- SALES PROCESS -->
@@ -969,7 +978,6 @@ html,body { height:auto; overflow-x:hidden; }
           <div class="learn-nav-item" data-section="sales" data-panel="4"><span class="learn-nav-dot"></span><span class="learn-nav-title">The Close</span></div>
         </nav>
         <div class="learn-content-area">
-          <p class="learn-panel-intro">Most B2B sales processes fail at predictable moments. <strong>This track maps how complex deals move — or stall — and where the decisions that determine the outcome are actually made.</strong></p>
 
           <div class="learn-panel active" id="sales-0">
             <div class="panel-tiles">
