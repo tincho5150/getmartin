@@ -520,12 +520,28 @@ html,body { height:auto; overflow-x:hidden; }
 .panel-competitor-dot { width:5px;height:5px;border-radius:50%;background:var(--lime);flex-shrink:0;margin-top:6px; }
 .panel-competitor-text { font-size:0.9rem;font-weight:400;color:rgba(240,239,240,0.85);line-height:1.6; }
 .section-break-body {
-  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
-  font-weight: 300; line-height: 1.7;
-  color: rgba(240,239,240,0.5);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  font-weight: 400; line-height: 1.65;
+  color: rgba(240,239,240,0.62);
   max-width: 52ch;
   position: relative; z-index: 1;
   margin-top: 0.4rem;
+}
+
+/* Section breaks that carry an intro go two-column on wide screens:
+   heading left, intro right. Below 1025px they stack (the base flex column).
+   :has() scopes this to breaks with a body — The Basics is unaffected. */
+@media (min-width: 1025px) {
+  .section-break:has(.section-break-body) {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    column-gap: 4vw;
+    align-items: end;
+  }
+  .section-break:has(.section-break-body) .section-break-body {
+    margin-top: 0;
+    padding-bottom: 0.9rem;
+  }
 }
 </style>
 </head>
