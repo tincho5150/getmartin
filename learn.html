@@ -420,7 +420,7 @@ html,body { height:auto; overflow-x:hidden; }
   display: flex; flex-direction: column; align-items: flex-start;
   justify-content: center;
   gap: 0.5rem;
-  min-height: 36vh;
+  min-height: calc(100vh - var(--nav-height));
   padding: 6vw 5vw;
   border-bottom: 1px solid var(--white-faint);
   background: var(--navy-dark);
@@ -462,7 +462,7 @@ html,body { height:auto; overflow-x:hidden; }
 .section-break-line { display: none; }
 .section-break-first {
   padding-top: calc(var(--nav-height) + 8vw);
-  min-height: 40vh;
+  min-height: calc(100vh - var(--nav-height));
   justify-content: flex-end;
 }
 
@@ -538,14 +538,16 @@ html,body { height:auto; overflow-x:hidden; }
 /* No frames on these blocks: the section break's own background grid is the
    only grid, so the cards sit directly on it. */
 .section-break-right { position:relative;z-index:1;display:flex;flex-direction:column;gap:1.6rem; }
-.section-break-numbers { display:flex;flex-direction:column;gap:0.9rem; }
-.section-break-num-row { display:grid;grid-template-columns:3.5rem 1fr;align-items:baseline;gap:0.9rem; }
-.section-break-num-val { font-family:var(--font-display);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;letter-spacing:-0.03em;color:var(--lime);line-height:1; }
-.section-break-num-desc { font-size:0.88rem;font-weight:400;color:rgba(240,239,240,0.8);line-height:1.5; }
 .section-break-misconceptions-label { font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--lime);margin-bottom:0.7rem; }
 .section-break-misconception-item { display:flex;align-items:flex-start;gap:0.75rem;padding:0.35rem 0; }
 .section-break-misconception-dot { width:5px;height:5px;border-radius:50%;background:var(--lime);flex-shrink:0;margin-top:8px; }
 .section-break-misconception-text { font-size:0.9rem;font-weight:400;color:rgba(240,239,240,0.8);line-height:1.6; }
+/* Closing band — reuses .section-break for the navy + grid, minus the full height */
+.learn-outro { min-height:auto;justify-content:flex-start;gap:0;border-bottom:none; }
+.learn-outro-label { font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--lime);position:relative;z-index:1;margin-bottom:0.9rem; }
+.learn-outro-title { font-family:var(--font-display);font-size:clamp(1.8rem,3.4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:#f0eff0;position:relative;z-index:1; }
+.learn-outro-body { font-size:1rem;font-weight:400;line-height:1.6;color:rgba(240,239,240,0.7);max-width:52ch;position:relative;z-index:1;margin-top:0.9rem; }
+.learn-outro-actions { display:flex;flex-wrap:wrap;gap:0.8rem;position:relative;z-index:1;margin-top:2rem; }
 </style>
 </head>
 <body>
@@ -606,7 +608,7 @@ html,body { height:auto; overflow-x:hidden; }
                 <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Showing up when your prospect Googles their problem — and you're nowhere to be found</span></div>
               </div>
             </div>
-            <a class="basics-teardown" href="/learn/content-marketing">Full teardown →</a>
+            <a class="basics-teardown" href="/learn/seo">Full teardown →</a>
           </div>
 
                     <!-- 1: Content Marketing -->
@@ -654,7 +656,7 @@ html,body { height:auto; overflow-x:hidden; }
                 <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building familiarity that gets a reply instead of an ignore</span></div>
               </div>
             </div>
-            <a class="basics-teardown" href="/learn/personal-branding">Full teardown →</a>
+            <a class="basics-teardown" href="/learn/social-media-marketing">Full teardown →</a>
           </div>
 
                     <!-- 3: Personal Branding -->
@@ -702,7 +704,7 @@ html,body { height:auto; overflow-x:hidden; }
                 <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Staying present in the inbox of every prospect who ever showed interest</span></div>
               </div>
             </div>
-            <a class="basics-teardown" href="/learn/inbound-vs-outbound">Full teardown →</a>
+            <a class="basics-teardown" href="/learn/email-marketing">Full teardown →</a>
           </div>
 
                     <!-- 5: Inbound vs. Outbound -->
@@ -750,7 +752,7 @@ html,body { height:auto; overflow-x:hidden; }
                 <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building pipeline six months out while you're focused on this quarter</span></div>
               </div>
             </div>
-            <a class="basics-teardown" href="/learn/paid-advertising">Full teardown →</a>
+            <a class="basics-teardown" href="/learn/marketing-funnel">Full teardown →</a>
           </div>
 
                     <!-- 7: Paid Advertising -->
@@ -798,7 +800,7 @@ html,body { height:auto; overflow-x:hidden; }
                 <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Making their sales team's job easier because prospects already want to work with them</span></div>
               </div>
             </div>
-            <a class="basics-teardown" href="/learn/analytics-attribution">Full teardown →</a>
+            <a class="basics-teardown" href="/learn/brand-vs-performance">Full teardown →</a>
           </div>
 
           <!-- 9: Analytics and Attribution -->
@@ -834,20 +836,6 @@ html,body { height:auto; overflow-x:hidden; }
   <div class="section-break" id="psychology">
     <p class="section-break-label">Buyer Psychology. <span class="section-break-sub">Why buyers do what they do.</span></p>
     <div class="section-break-right">
-      <div class="section-break-numbers">
-        <div class="section-break-num-row">
-          <span class="section-break-num-val">81%</span>
-          <span class="section-break-num-desc">of buyers pick a preferred vendor before first contact</span>
-        </div>
-        <div class="section-break-num-row">
-          <span class="section-break-num-val">86%</span>
-          <span class="section-break-num-desc">of B2B purchases stall before a decision is reached</span>
-        </div>
-        <div class="section-break-num-row">
-          <span class="section-break-num-val">60%</span>
-          <span class="section-break-num-desc">of no-decision losses trace to fear of a wrong choice</span>
-        </div>
-      </div>
       <div class="section-break-misconceptions">
         <p class="section-break-misconceptions-label">What most people get wrong</p>
         <div class="section-break-misconception-item"><span class="section-break-misconception-dot"></span><span class="section-break-misconception-text">Buyers decide based on the best product</span></div>
@@ -1004,20 +992,6 @@ html,body { height:auto; overflow-x:hidden; }
   <div class="section-break" id="sales">
     <p class="section-break-label">Sales Process. <span class="section-break-sub">Most deals don't lose. They stall.</span></p>
     <div class="section-break-right">
-      <div class="section-break-numbers">
-        <div class="section-break-num-row">
-          <span class="section-break-num-val">21%</span>
-          <span class="section-break-num-desc">average B2B win rate — four in five worked deals are lost</span>
-        </div>
-        <div class="section-break-num-row">
-          <span class="section-break-num-val">48%</span>
-          <span class="section-break-num-desc">of salespeople never ask for the order</span>
-        </div>
-        <div class="section-break-num-row">
-          <span class="section-break-num-val">80%</span>
-          <span class="section-break-num-desc">of sales require 5+ follow-ups after first contact</span>
-        </div>
-      </div>
       <div class="section-break-misconceptions">
         <p class="section-break-misconceptions-label">What most people get wrong</p>
         <div class="section-break-misconception-item"><span class="section-break-misconception-dot"></span><span class="section-break-misconception-text">The best salesperson talks the most</span></div>
@@ -1172,6 +1146,17 @@ html,body { height:auto; overflow-x:hidden; }
 
         </div>
       </div>
+    </div>
+  </div>
+
+
+  <div class="section-break learn-outro" id="learn-end">
+    <p class="learn-outro-label">That's the map</p>
+    <p class="learn-outro-title">Knowing how buyers decide is the easy part.</p>
+    <p class="learn-outro-body">The hard part is building the thing that reaches them — before the competitor who read the same research does.</p>
+    <div class="learn-outro-actions">
+      <a class="btn-primary" href="/proof">See what we've built</a>
+      <a class="btn-secondary" href="/#ch5">Let's talk</a>
     </div>
   </div>
 
