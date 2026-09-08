@@ -490,6 +490,13 @@ html,body { height:auto; overflow-x:hidden; }
   .nav-link{display:none}
   .nav-link-cta{display:block}
 }
+.basics-pain-list { display:flex;flex-direction:column;margin-top:2px; }
+.basics-pain-item { display:flex;align-items:flex-start;gap:0.85rem;padding:0.85rem 1.3rem;background:#1e2c3a;border-bottom:1px solid rgba(240,239,240,0.06);transition:background 0.15s; }
+.basics-pain-item:hover { background:#2a3a4a; }
+.basics-pain-item:hover .basics-pain-dot { background:var(--lime); }
+.basics-pain-item:hover .basics-pain-text { color:var(--white); }
+.basics-pain-dot { width:6px;height:6px;border-radius:50%;background:rgba(240,239,240,0.2);flex-shrink:0;margin-top:6px;transition:background 0.15s; }
+.basics-pain-text { font-size:0.88rem;font-weight:300;color:var(--white-dim);line-height:1.6; }
 </style>
 </head>
 <body>
@@ -534,7 +541,12 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="concept-card">
               <p class="concept-eyebrow">Awareness</p>
               <h3 class="concept-title">SEO</h3>
-              <p class="concept-body">Search Engine Optimisation is how you earn organic visibility on Google and other search engines. When a prospect searches for a problem your product solves, SEO determines whether you show up — or your competitor does. It's not about tricks or hacks. It's about creating genuinely useful content that matches what buyers are actually searching for, on a site that's technically sound enough for search engines to trust.</p>
+              <p class="concept-body">Your competitor showing up on page one isn't luck. It's infrastructure. SEO determines whether you appear when a buyer searches for the problem you solve — before they've talked to anyone, before they've heard of you.</p>
+            </div>
+            <div class="basics-pain-list">
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Buyers who can't find you will find someone else — and never know they missed you</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">75% of users never scroll past the first page of results</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Every piece of content you publish without SEO is invisible by default</span></div>
             </div>
                         <div class="stat-dashboard">
             <div class="stat-dashboard-row">
@@ -570,7 +582,12 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="concept-card">
               <p class="concept-eyebrow">Awareness</p>
               <h3 class="concept-title">Content Marketing</h3>
-              <p class="concept-body">Not blogging for the sake of it. The logic behind creating content that brings the right people to you.</p>
+              <p class="concept-body">The best salespeople in B2B aren't people. They're articles that rank. Content marketing is creating useful, relevant material your buyers actually want — not product-first promotion dressed up as a blog post.</p>
+            </div>
+            <div class="basics-pain-list">
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Content without strategy is just publishing into the void</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Most B2B content gets written for the product, not the buyer's problem</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Companies that publish consistently generate 67% more leads — those that don't pay for the gap in outbound</span></div>
             </div>
             <div class="stat-dashboard">
             <div class="stat-dashboard-row">
@@ -606,7 +623,12 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="concept-card">
               <p class="concept-eyebrow">Awareness</p>
               <h3 class="concept-title">Social Media Marketing</h3>
-              <p class="concept-body">In B2B, social media marketing is less about posting and more about presence. LinkedIn is where most of it happens — used well, it builds the kind of familiarity that makes a cold outreach feel warm. The mistake most companies make is treating social as a broadcast channel instead of a trust-building one.</p>
+              <p class="concept-body">Nobody buys from a LinkedIn post. But they stop buying from people they've never heard of. Social media in B2B is less about posting and more about presence — the kind of familiarity that makes a cold outreach feel warm.</p>
+            </div>
+            <div class="basics-pain-list">
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Social doesn't close deals — it determines whether your cold outreach gets a reply</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Most companies treat social as broadcast. Buyers treat it as a trust signal</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Absence from social in B2B reads as either small or irrelevant</span></div>
             </div>
                         <div class="stat-dashboard">
             <div class="stat-dashboard-row">
@@ -642,7 +664,12 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="concept-card">
               <p class="concept-eyebrow">Awareness</p>
               <h3 class="concept-title">Personal Branding</h3>
-              <p class="concept-body">What personal brand actually means for a founder or sales leader — and how to build one without becoming a LinkedIn cliché.</p>
+              <p class="concept-body">Buyers Google you before they Google your company. What comes up matters. Personal branding isn't about becoming an influencer — it's about being visible and credible in the spaces where your buyers already spend time.</p>
+            </div>
+            <div class="basics-pain-list">
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">A founder with no online presence makes every warm intro start cold</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Personal brand compounds — every post, talk, or article builds equity you don't pay for again</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">The people your buyers trust most are the ones they feel like they already know</span></div>
             </div>
             <div class="stat-dashboard">
             <div class="stat-dashboard-row">
@@ -678,7 +705,12 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="concept-card">
               <p class="concept-eyebrow">Consideration</p>
               <h3 class="concept-title">Email Marketing</h3>
-              <p class="concept-body">Email remains the highest-ROI channel in B2B marketing. Unlike social media, you own the list — no algorithm stands between you and your audience. Used well, email nurtures prospects through the consideration stage, keeps you top of mind between conversations, and creates consistent touchpoints without requiring a salesperson to make every contact.</p>
+              <p class="concept-body">You don't own your LinkedIn followers. You own your list. Email is the highest-ROI channel in B2B precisely because you own the relationship — no algorithm stands between you and your audience.</p>
+            </div>
+            <div class="basics-pain-list">
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Every channel you don't own can be taken from you — algorithm changes, bans, shutdowns</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Most B2B email fails because it's written for the sender, not the reader</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">The difference between spam and a welcome email is relevance and timing — not the channel</span></div>
             </div>
                         <div class="stat-dashboard">
             <div class="stat-dashboard-row">
@@ -714,7 +746,12 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="concept-card">
               <p class="concept-eyebrow">Consideration</p>
               <h3 class="concept-title">Inbound vs. Outbound</h3>
-              <p class="concept-body">Attracting buyers vs. going after them. The logic, the costs, and the right mix at different stages of growth.</p>
+              <p class="concept-body">Outbound rents attention. Inbound owns it. Neither is better in isolation — but companies that only do outbound eventually get priced out of it, while inbound compounds over time.</p>
+            </div>
+            <div class="basics-pain-list">
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Outbound stops the moment you stop spending — inbound compounds over time</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Most early-stage companies default to outbound because it feels faster. It is. Until it isn't</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">The best pipeline has both — but outbound-only is a treadmill you can never step off</span></div>
             </div>
             <div class="stat-dashboard">
             <div class="stat-dashboard-row">
@@ -750,7 +787,12 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="concept-card">
               <p class="concept-eyebrow">Consideration</p>
               <h3 class="concept-title">TOFU, MOFU, BOFU</h3>
-              <p class="concept-body">Top of funnel, middle of funnel, bottom of funnel. These three stages describe where a buyer is in their journey — and what kind of content or conversation they need at each stage. TOFU is awareness — broad, educational. MOFU is evaluation — comparative, specific. BOFU is decision — proof, ROI, risk reduction. Most companies only create content for one stage and wonder why the others stall.</p>
+              <p class="concept-body">Most companies have bottom-of-funnel content and nothing else. Then wonder why leads don't convert. The funnel is a buying timeline — buyers move through it whether you have content for each stage or not.</p>
+            </div>
+            <div class="basics-pain-list">
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Buyers who don't know you exist can't reach your demo page</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Content that only talks to people ready to buy ignores everyone who will be ready next quarter</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">The funnel is a buying timeline, not a marketing metaphor</span></div>
             </div>
                         <div class="stat-dashboard">
             <div class="stat-dashboard-row">
@@ -786,7 +828,12 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="concept-card">
               <p class="concept-eyebrow">Decision</p>
               <h3 class="concept-title">Paid Advertising</h3>
-              <p class="concept-body">Paid vs. organic — not which is better, but when each makes sense and where to spend first.</p>
+              <p class="concept-body">Paid advertising amplifies what's already working. It doesn't fix what isn't. When you have a clear message and a defined audience, paid accelerates. When you don't, it's an expensive way to confirm the problem.</p>
+            </div>
+            <div class="basics-pain-list">
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Spending on paid before you have a clear message is paying to prove it doesn't land</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Most B2B paid fails not because of the channel — because of the offer</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">The moment you stop paying, paid traffic stops. Organic doesn't</span></div>
             </div>
             <div class="stat-dashboard">
             <div class="stat-dashboard-row">
@@ -822,7 +869,12 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="concept-card">
               <p class="concept-eyebrow">Decision</p>
               <h3 class="concept-title">Brand vs. Performance</h3>
-              <p class="concept-body">Performance marketing drives measurable, immediate results — clicks, leads, conversions. Brand marketing builds the long-term reputation that makes performance marketing cheaper and more effective over time. Most early-stage companies default to performance only because it's measurable. But companies that neglect brand find themselves paying more and more for the same leads as competitors who built recognition.</p>
+              <p class="concept-body">Performance makes the phone ring today. Brand determines whether it keeps ringing next year. Companies that only run performance marketing eventually bid against themselves — paying more for the same leads as competitors who built recognition.</p>
+            </div>
+            <div class="basics-pain-list">
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Companies that only run performance marketing eventually bid against themselves</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Brand is what makes a buyer think of you when they weren't even looking</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">The best-performing paid ads are the ones that feel like brand — not like ads</span></div>
             </div>
                         <div class="stat-dashboard">
             <div class="stat-dashboard-row">
@@ -858,7 +910,12 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="concept-card">
               <p class="concept-eyebrow">Decision</p>
               <h3 class="concept-title">Analytics and Attribution</h3>
-              <p class="concept-body">Analytics tells you what's happening. Attribution tells you why — which channels and touchpoints contributed to a conversion. In B2B, attribution is genuinely hard. Most attribution models credit the last thing that happened. That's rarely the thing that actually worked.</p>
+              <p class="concept-body">The last click gets the credit. That's almost never the whole story. In B2B, a buyer might see a LinkedIn post, read an article, attend a webinar, and respond to a cold email six months later — most attribution models only see the last step.</p>
+            </div>
+            <div class="basics-pain-list">
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Most B2B attribution models are built for e-commerce, not 6-month sales cycles</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">When you can't prove what's working, the loudest voice in the room wins the budget</span></div>
+              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Bad attribution doesn't just waste money — it actively kills the channels that actually work</span></div>
             </div>
             <div class="stat-dashboard">
             <div class="stat-dashboard-row">
