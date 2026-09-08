@@ -420,7 +420,7 @@ html,body { height:auto; overflow-x:hidden; }
   display: flex; flex-direction: column; align-items: flex-start;
   justify-content: center;
   gap: 0.5rem;
-  min-height: calc(100vh - var(--nav-height));
+  min-height: 45vh;
   padding: 6vw 5vw;
   border-bottom: 1px solid var(--white-faint);
   background: var(--navy-dark);
@@ -462,7 +462,7 @@ html,body { height:auto; overflow-x:hidden; }
 .section-break-line { display: none; }
 .section-break-first {
   padding-top: calc(var(--nav-height) + 8vw);
-  min-height: calc(100vh - var(--nav-height));
+  min-height: 45vh;
   justify-content: flex-end;
 }
 
@@ -523,31 +523,15 @@ html,body { height:auto; overflow-x:hidden; }
 .panel-competitor-dot { width:5px;height:5px;border-radius:50%;background:var(--lime);flex-shrink:0;margin-top:6px; }
 .panel-competitor-text { font-size:0.9rem;font-weight:400;color:rgba(240,239,240,0.85);line-height:1.6; }
 
-/* Section breaks that carry an intro go two-column on wide screens:
-   heading left, intro right. Below 1025px they stack (the base flex column).
-   :has() scopes this to breaks with a right column — The Basics is unaffected. */
-@media (min-width: 1025px) {
-  .section-break:has(.section-break-right) {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    column-gap: 4vw;
-    align-items: start;
-    align-content: center;
-  }
-}
 /* No frames on these blocks: the section break's own background grid is the
    only grid, so the cards sit directly on it. */
-.section-break-right { position:relative;z-index:1;display:flex;flex-direction:column;gap:1.6rem; }
-.section-break-misconceptions-label { font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--lime);margin-bottom:0.7rem; }
-.section-break-misconception-item { display:flex;align-items:flex-start;gap:0.75rem;padding:0.35rem 0; }
-.section-break-misconception-dot { width:5px;height:5px;border-radius:50%;background:var(--lime);flex-shrink:0;margin-top:8px; }
-.section-break-misconception-text { font-size:0.9rem;font-weight:400;color:rgba(240,239,240,0.8);line-height:1.6; }
 /* Closing band — reuses .section-break for the navy + grid, minus the full height */
 .learn-outro { min-height:auto;justify-content:flex-start;gap:0;border-bottom:none; }
 .learn-outro-label { font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--lime);position:relative;z-index:1;margin-bottom:0.9rem; }
 .learn-outro-title { font-family:var(--font-display);font-size:clamp(1.8rem,3.4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:#f0eff0;position:relative;z-index:1; }
 .learn-outro-body { font-size:1rem;font-weight:400;line-height:1.6;color:rgba(240,239,240,0.7);max-width:52ch;position:relative;z-index:1;margin-top:0.9rem; }
 .learn-outro-actions { display:flex;flex-wrap:wrap;gap:0.8rem;position:relative;z-index:1;margin-top:2rem; }
+.section-misconceptions { margin-top:2px; }
 </style>
 </head>
 <body>
@@ -835,14 +819,6 @@ html,body { height:auto; overflow-x:hidden; }
   <!-- SECTION BREAK -->
   <div class="section-break" id="psychology">
     <p class="section-break-label">Buyer Psychology. <span class="section-break-sub">Why buyers do what they do.</span></p>
-    <div class="section-break-right">
-      <div class="section-break-misconceptions">
-        <p class="section-break-misconceptions-label">What most people get wrong</p>
-        <div class="section-break-misconception-item"><span class="section-break-misconception-dot"></span><span class="section-break-misconception-text">Buyers decide based on the best product</span></div>
-        <div class="section-break-misconception-item"><span class="section-break-misconception-dot"></span><span class="section-break-misconception-text">A compelling pitch creates urgency</span></div>
-        <div class="section-break-misconception-item"><span class="section-break-misconception-dot"></span><span class="section-break-misconception-text">More features reduce objections</span></div>
-      </div>
-    </div>
   </div>
 
   <!-- BUYER PSYCHOLOGY -->
@@ -983,6 +959,13 @@ html,body { height:auto; overflow-x:hidden; }
             </div>
           </div>
 
+          <div class="panel-competitor section-misconceptions">
+            <p class="panel-competitor-label">What most people get wrong</p>
+            <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Buyers decide based on the best product</span></div>
+            <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">A compelling pitch creates urgency</span></div>
+            <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">More features reduce objections</span></div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -991,14 +974,6 @@ html,body { height:auto; overflow-x:hidden; }
   <!-- SECTION BREAK -->
   <div class="section-break" id="sales">
     <p class="section-break-label">Sales Process. <span class="section-break-sub">Most deals don't lose. They stall.</span></p>
-    <div class="section-break-right">
-      <div class="section-break-misconceptions">
-        <p class="section-break-misconceptions-label">What most people get wrong</p>
-        <div class="section-break-misconception-item"><span class="section-break-misconception-dot"></span><span class="section-break-misconception-text">The best salesperson talks the most</span></div>
-        <div class="section-break-misconception-item"><span class="section-break-misconception-dot"></span><span class="section-break-misconception-text">A good demo sells itself</span></div>
-        <div class="section-break-misconception-item"><span class="section-break-misconception-dot"></span><span class="section-break-misconception-text">Losing means the competitor was cheaper</span></div>
-      </div>
-    </div>
   </div>
 
   <!-- SALES PROCESS -->
@@ -1142,6 +1117,13 @@ html,body { height:auto; overflow-x:hidden; }
               <p class="concept-title-dark">Artificial urgency signals the value was never real</p>
               <p class="concept-body-dark">Discounts and deadlines that appear from nowhere destroy trust. Close on confidence, not pressure.</p>
             </div>
+          </div>
+
+          <div class="panel-competitor section-misconceptions">
+            <p class="panel-competitor-label">What most people get wrong</p>
+            <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">The best salesperson talks the most</span></div>
+            <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">A good demo sells itself</span></div>
+            <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Losing means the competitor was cheaper</span></div>
           </div>
 
         </div>
