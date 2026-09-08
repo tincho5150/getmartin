@@ -534,17 +534,17 @@ html,body { height:auto; overflow-x:hidden; }
     align-content: center;
   }
 }
-.section-break-right { position:relative;z-index:1;display:flex;flex-direction:column;gap:2px; }
-.section-break-numbers { background:rgba(30,44,58,0.5);border:1px solid rgba(240,239,240,0.06);padding:1.2rem 1.4rem;display:flex;flex-direction:column;gap:0.8rem; }
-.section-break-num-row { display:grid;grid-template-columns:3.5rem 1fr;align-items:baseline;gap:0.5rem; }
+/* No frames on these blocks: the section break's own background grid is the
+   only grid, so the cards sit directly on it. */
+.section-break-right { position:relative;z-index:1;display:flex;flex-direction:column;gap:1.6rem; }
+.section-break-numbers { display:flex;flex-direction:column;gap:0.9rem; }
+.section-break-num-row { display:grid;grid-template-columns:3.5rem 1fr;align-items:baseline;gap:0.9rem; }
 .section-break-num-val { font-family:var(--font-display);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;letter-spacing:-0.03em;color:var(--lime);line-height:1; }
-.section-break-num-desc { font-size:0.78rem;font-weight:300;color:rgba(240,239,240,0.45);line-height:1.4; }
-.section-break-misconceptions { background:rgba(30,44,58,0.5);border:1px solid rgba(240,239,240,0.06);padding:1.2rem 1.4rem; }
-.section-break-misconceptions-label { font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(240,239,240,0.3);margin-bottom:0.7rem; }
-.section-break-misconception-item { display:flex;align-items:flex-start;gap:0.6rem;padding:0.35rem 0;border-bottom:1px solid rgba(240,239,240,0.05); }
-.section-break-misconception-item:last-child { border-bottom:none; }
-.section-break-misconception-x { font-size:0.65rem;font-weight:700;color:rgba(240,239,240,0.25);flex-shrink:0;margin-top:2px;letter-spacing:0.05em; }
-.section-break-misconception-text { font-size:0.82rem;font-weight:300;color:rgba(240,239,240,0.45);line-height:1.4;text-decoration:line-through;text-decoration-color:rgba(240,239,240,0.15); }
+.section-break-num-desc { font-size:0.88rem;font-weight:400;color:rgba(240,239,240,0.8);line-height:1.5; }
+.section-break-misconceptions-label { font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--lime);margin-bottom:0.7rem; }
+.section-break-misconception-item { display:flex;align-items:flex-start;gap:0.75rem;padding:0.35rem 0; }
+.section-break-misconception-dot { width:5px;height:5px;border-radius:50%;background:var(--lime);flex-shrink:0;margin-top:8px; }
+.section-break-misconception-text { font-size:0.9rem;font-weight:400;color:rgba(240,239,240,0.8);line-height:1.6; }
 </style>
 </head>
 <body>
@@ -835,23 +835,23 @@ html,body { height:auto; overflow-x:hidden; }
     <div class="section-break-right">
       <div class="section-break-numbers">
         <div class="section-break-num-row">
-          <span class="section-break-num-val">5</span>
-          <span class="section-break-num-desc">mental models behind every B2B buying decision</span>
+          <span class="section-break-num-val">81%</span>
+          <span class="section-break-num-desc">of buyers pick a preferred vendor before first contact</span>
         </div>
         <div class="section-break-num-row">
           <span class="section-break-num-val">86%</span>
           <span class="section-break-num-desc">of B2B purchases stall before a decision is reached</span>
         </div>
         <div class="section-break-num-row">
-          <span class="section-break-num-val">2×</span>
-          <span class="section-break-num-desc">losses feel twice as powerful as equivalent gains</span>
+          <span class="section-break-num-val">60%</span>
+          <span class="section-break-num-desc">of no-decision losses trace to fear of a wrong choice</span>
         </div>
       </div>
       <div class="section-break-misconceptions">
         <p class="section-break-misconceptions-label">What most people get wrong</p>
-        <div class="section-break-misconception-item"><span class="section-break-misconception-x">✕</span><span class="section-break-misconception-text">Buyers decide based on the best product</span></div>
-        <div class="section-break-misconception-item"><span class="section-break-misconception-x">✕</span><span class="section-break-misconception-text">A compelling pitch creates urgency</span></div>
-        <div class="section-break-misconception-item"><span class="section-break-misconception-x">✕</span><span class="section-break-misconception-text">More features reduce objections</span></div>
+        <div class="section-break-misconception-item"><span class="section-break-misconception-dot"></span><span class="section-break-misconception-text">Buyers decide based on the best product</span></div>
+        <div class="section-break-misconception-item"><span class="section-break-misconception-dot"></span><span class="section-break-misconception-text">A compelling pitch creates urgency</span></div>
+        <div class="section-break-misconception-item"><span class="section-break-misconception-dot"></span><span class="section-break-misconception-text">More features reduce objections</span></div>
       </div>
     </div>
   </div>
@@ -1005,8 +1005,8 @@ html,body { height:auto; overflow-x:hidden; }
     <div class="section-break-right">
       <div class="section-break-numbers">
         <div class="section-break-num-row">
-          <span class="section-break-num-val">5</span>
-          <span class="section-break-num-desc">stages where deals move — or die</span>
+          <span class="section-break-num-val">21%</span>
+          <span class="section-break-num-desc">average B2B win rate — four in five worked deals are lost</span>
         </div>
         <div class="section-break-num-row">
           <span class="section-break-num-val">48%</span>
@@ -1019,9 +1019,9 @@ html,body { height:auto; overflow-x:hidden; }
       </div>
       <div class="section-break-misconceptions">
         <p class="section-break-misconceptions-label">What most people get wrong</p>
-        <div class="section-break-misconception-item"><span class="section-break-misconception-x">✕</span><span class="section-break-misconception-text">The best salesperson talks the most</span></div>
-        <div class="section-break-misconception-item"><span class="section-break-misconception-x">✕</span><span class="section-break-misconception-text">A good demo sells itself</span></div>
-        <div class="section-break-misconception-item"><span class="section-break-misconception-x">✕</span><span class="section-break-misconception-text">Losing means the competitor was cheaper</span></div>
+        <div class="section-break-misconception-item"><span class="section-break-misconception-dot"></span><span class="section-break-misconception-text">The best salesperson talks the most</span></div>
+        <div class="section-break-misconception-item"><span class="section-break-misconception-dot"></span><span class="section-break-misconception-text">A good demo sells itself</span></div>
+        <div class="section-break-misconception-item"><span class="section-break-misconception-dot"></span><span class="section-break-misconception-text">Losing means the competitor was cheaper</span></div>
       </div>
     </div>
   </div>
