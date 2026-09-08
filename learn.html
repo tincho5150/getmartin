@@ -532,6 +532,9 @@ html,body { height:auto; overflow-x:hidden; }
 .learn-outro-body { font-size:1rem;font-weight:400;line-height:1.6;color:rgba(240,239,240,0.7);max-width:52ch;position:relative;z-index:1;margin-top:0.9rem; }
 .learn-outro-actions { display:flex;flex-wrap:wrap;gap:0.8rem;position:relative;z-index:1;margin-top:2rem; }
 .section-misconceptions { margin-top:2px; }
+.basics-competitor-text strong, .panel-competitor-text strong { color:var(--white);font-weight:600; }
+.learn-nav-item { appearance:none;-webkit-appearance:none;background:none;border:none;font:inherit;color:inherit;text-align:left;width:100%; }
+.learn-nav-item:focus-visible { outline:2px solid var(--lime);outline-offset:2px; }
 </style>
 </head>
 <body>
@@ -551,7 +554,7 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- SECTION BREAK -->
   <div class="section-break section-break-first" id="basics">
-    <p class="section-break-label">The Basics. <span class="section-break-sub">Marketing and sales. Without the bull$h¡t.</span></p>
+    <h1 class="section-break-label">The Basics. <span class="section-break-sub">Marketing and sales. Without the bull$h¡t.</span></h1>
   </div>
 
   <!-- BASICS -->
@@ -559,23 +562,23 @@ html,body { height:auto; overflow-x:hidden; }
     <div class="learn-right">
       <div class="learn-body">
         <nav class="learn-nav" id="nav-basics">
-          <div class="learn-nav-item active" data-section="basics" data-panel="0"><span class="learn-nav-dot"></span><span class="learn-nav-title">SEO</span></div>
-          <div class="learn-nav-item" data-section="basics" data-panel="1"><span class="learn-nav-dot"></span><span class="learn-nav-title">Content Marketing</span></div>
-          <div class="learn-nav-item" data-section="basics" data-panel="2"><span class="learn-nav-dot"></span><span class="learn-nav-title">Social Media Marketing</span></div>
-          <div class="learn-nav-item" data-section="basics" data-panel="3"><span class="learn-nav-dot"></span><span class="learn-nav-title">Personal Branding</span></div>
-          <div class="learn-nav-item" data-section="basics" data-panel="4"><span class="learn-nav-dot"></span><span class="learn-nav-title">Email Marketing</span></div>
-          <div class="learn-nav-item" data-section="basics" data-panel="5"><span class="learn-nav-dot"></span><span class="learn-nav-title">Inbound vs. Outbound</span></div>
-          <div class="learn-nav-item" data-section="basics" data-panel="6"><span class="learn-nav-dot"></span><span class="learn-nav-title">TOFU, MOFU, BOFU</span></div>
-          <div class="learn-nav-item" data-section="basics" data-panel="7"><span class="learn-nav-dot"></span><span class="learn-nav-title">Paid Advertising</span></div>
-          <div class="learn-nav-item" data-section="basics" data-panel="8"><span class="learn-nav-dot"></span><span class="learn-nav-title">Brand vs. Performance</span></div>
-          <div class="learn-nav-item" data-section="basics" data-panel="9"><span class="learn-nav-dot"></span><span class="learn-nav-title">Analytics and Attribution</span></div>
+          <button type="button" class="learn-nav-item active" data-section="basics" data-panel="0"><span class="learn-nav-dot"></span><span class="learn-nav-title">SEO</span></button>
+          <button type="button" class="learn-nav-item" data-section="basics" data-panel="1"><span class="learn-nav-dot"></span><span class="learn-nav-title">Content Marketing</span></button>
+          <button type="button" class="learn-nav-item" data-section="basics" data-panel="2"><span class="learn-nav-dot"></span><span class="learn-nav-title">Social Media Marketing</span></button>
+          <button type="button" class="learn-nav-item" data-section="basics" data-panel="3"><span class="learn-nav-dot"></span><span class="learn-nav-title">Personal Branding</span></button>
+          <button type="button" class="learn-nav-item" data-section="basics" data-panel="4"><span class="learn-nav-dot"></span><span class="learn-nav-title">Email Marketing</span></button>
+          <button type="button" class="learn-nav-item" data-section="basics" data-panel="5"><span class="learn-nav-dot"></span><span class="learn-nav-title">Inbound vs. Outbound</span></button>
+          <button type="button" class="learn-nav-item" data-section="basics" data-panel="6"><span class="learn-nav-dot"></span><span class="learn-nav-title">TOFU, MOFU, BOFU</span></button>
+          <button type="button" class="learn-nav-item" data-section="basics" data-panel="7"><span class="learn-nav-dot"></span><span class="learn-nav-title">Paid Advertising</span></button>
+          <button type="button" class="learn-nav-item" data-section="basics" data-panel="8"><span class="learn-nav-dot"></span><span class="learn-nav-title">Brand vs. Performance</span></button>
+          <button type="button" class="learn-nav-item" data-section="basics" data-panel="9"><span class="learn-nav-dot"></span><span class="learn-nav-title">Analytics and Attribution</span></button>
         </nav>
         <div class="learn-content-area">
           <!-- 0: SEO -->
           <div class="learn-panel active" data-section="basics" data-panel="0" id="basics-0">
             <div class="basics-tiles">
               <div class="basics-tile-full basics-assertion">
-                <p class="basics-assertion-text">Your competitor showing up on page one isn't luck. It's infrastructure you haven't built yet.</p>
+                <h3 class="basics-assertion-text">Your competitor showing up on page one isn't luck. It's infrastructure you haven't built yet.</h3>
               </div>
               <div class="basics-stat-tile">
                 <div class="basics-stat-num">748%</div>
@@ -587,9 +590,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="basics-competitor basics-tile-full">
                 <p class="basics-competitor-label">While you read this, your competitor is...</p>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Publishing content optimised for the exact searches your buyers are running right now</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building domain authority you'll spend years trying to catch up to</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Showing up when your prospect Googles their problem — and you're nowhere to be found</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Publishing content optimised for <strong>the exact searches your buyers are running right now</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building <strong>domain authority</strong> you'll spend years trying to catch up to</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Showing up when your prospect Googles their problem — and <strong>you're nowhere to be found</strong></span></div>
               </div>
             </div>
             <a class="basics-teardown" href="/learn/seo">Full teardown →</a>
@@ -599,7 +602,7 @@ html,body { height:auto; overflow-x:hidden; }
           <div class="learn-panel" data-section="basics" data-panel="1" id="basics-1">
             <div class="basics-tiles">
               <div class="basics-tile-full basics-assertion">
-                <p class="basics-assertion-text">The best B2B salespeople aren't people. They're articles that rank and answer the question before the call.</p>
+                <h3 class="basics-assertion-text">The best B2B salespeople aren't people. They're articles that rank and answer the question before the call.</h3>
               </div>
               <div class="basics-stat-tile">
                 <div class="basics-stat-num">3×</div>
@@ -611,9 +614,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="basics-competitor basics-tile-full">
                 <p class="basics-competitor-label">While you read this, your competitor is...</p>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Answering your buyer's questions before they ever talk to a salesperson</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building a library of content that generates leads while they sleep</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Getting found by buyers who didn't know they were looking for a solution</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Answering your buyer's questions <strong>before they ever talk to a salesperson</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building a library of content that <strong>generates leads while they sleep</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Getting found by buyers who <strong>didn't know they were looking for a solution</strong></span></div>
               </div>
             </div>
             <a class="basics-teardown" href="/learn/content-marketing">Full teardown →</a>
@@ -623,7 +626,7 @@ html,body { height:auto; overflow-x:hidden; }
           <div class="learn-panel" data-section="basics" data-panel="2" id="basics-2">
             <div class="basics-tiles">
               <div class="basics-tile-full basics-assertion">
-                <p class="basics-assertion-text">Nobody buys from a LinkedIn post. But they stop buying from people they've never heard of.</p>
+                <h3 class="basics-assertion-text">Nobody buys from a LinkedIn post. But they stop buying from people they've never heard of.</h3>
               </div>
               <div class="basics-stat-tile">
                 <div class="basics-stat-num">80%</div>
@@ -635,9 +638,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="basics-competitor basics-tile-full">
                 <p class="basics-competitor-label">While you read this, your competitor is...</p>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Staying top of mind for buyers who aren't ready yet — but will be</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Making cold outreach feel warm because the prospect already knows their name</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building familiarity that gets a reply instead of an ignore</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Staying top of mind for buyers who <strong>aren't ready yet — but will be</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Making cold outreach feel warm because the prospect <strong>already knows their name</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building familiarity that gets <strong>a reply instead of an ignore</strong></span></div>
               </div>
             </div>
             <a class="basics-teardown" href="/learn/social-media-marketing">Full teardown →</a>
@@ -647,7 +650,7 @@ html,body { height:auto; overflow-x:hidden; }
           <div class="learn-panel" data-section="basics" data-panel="3" id="basics-3">
             <div class="basics-tiles">
               <div class="basics-tile-full basics-assertion">
-                <p class="basics-assertion-text">Buyers Google you before they Google your company. What they find is part of the sales process.</p>
+                <h3 class="basics-assertion-text">Buyers Google you before they Google your company. What they find is part of the sales process.</h3>
               </div>
               <div class="basics-stat-tile">
                 <div class="basics-stat-num">82%</div>
@@ -659,9 +662,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="basics-competitor basics-tile-full">
                 <p class="basics-competitor-label">While you read this, your competitor is...</p>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building credibility that transfers to every product they sell</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Getting warm introductions because people feel like they already know them</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Showing up in searches your buyers are running — with their name, not just their company's</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building credibility that <strong>transfers to every product they sell</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Getting warm introductions because people <strong>feel like they already know them</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Showing up in searches your buyers are running — <strong>with their name, not just their company's</strong></span></div>
               </div>
             </div>
             <a class="basics-teardown" href="/learn/personal-branding">Full teardown →</a>
@@ -671,7 +674,7 @@ html,body { height:auto; overflow-x:hidden; }
           <div class="learn-panel" data-section="basics" data-panel="4" id="basics-4">
             <div class="basics-tiles">
               <div class="basics-tile-full basics-assertion">
-                <p class="basics-assertion-text">You don't own your LinkedIn followers. You own your list. One algorithm change and the rest is gone.</p>
+                <h3 class="basics-assertion-text">You don't own your LinkedIn followers. You own your list. One algorithm change and the rest is gone.</h3>
               </div>
               <div class="basics-stat-tile">
                 <div class="basics-stat-num">$42</div>
@@ -683,9 +686,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="basics-competitor basics-tile-full">
                 <p class="basics-competitor-label">While you read this, your competitor is...</p>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Nurturing buyers who aren't ready yet — so when they are, they think of them first</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Sending emails that feel like they were written by a person, not a marketing team</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Staying present in the inbox of every prospect who ever showed interest</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Nurturing buyers who aren't ready yet — so when they are, <strong>they think of them first</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Sending emails that feel like they were <strong>written by a person, not a marketing team</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Staying present in the inbox of <strong>every prospect who ever showed interest</strong></span></div>
               </div>
             </div>
             <a class="basics-teardown" href="/learn/email-marketing">Full teardown →</a>
@@ -695,7 +698,7 @@ html,body { height:auto; overflow-x:hidden; }
           <div class="learn-panel" data-section="basics" data-panel="5" id="basics-5">
             <div class="basics-tiles">
               <div class="basics-tile-full basics-assertion">
-                <p class="basics-assertion-text">Outbound rents attention. Inbound owns it. One compounds. The other stops the moment you stop paying.</p>
+                <h3 class="basics-assertion-text">Outbound rents attention. Inbound owns it. One compounds. The other stops the moment you stop paying.</h3>
               </div>
               <div class="basics-stat-tile">
                 <div class="basics-stat-num">63%</div>
@@ -707,9 +710,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="basics-competitor basics-tile-full">
                 <p class="basics-competitor-label">While you read this, your competitor is...</p>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building an inbound engine that generates leads without a budget line</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Making outbound cheaper because prospects already know their name when the email arrives</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Compounding trust and visibility while you're still renting attention one send at a time</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building an inbound engine that generates leads <strong>without a budget line</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Making outbound cheaper because prospects <strong>already know their name when the email arrives</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Compounding trust and visibility while you're still <strong>renting attention one send at a time</strong></span></div>
               </div>
             </div>
             <a class="basics-teardown" href="/learn/inbound-vs-outbound">Full teardown →</a>
@@ -719,7 +722,7 @@ html,body { height:auto; overflow-x:hidden; }
           <div class="learn-panel" data-section="basics" data-panel="6" id="basics-6">
             <div class="basics-tiles">
               <div class="basics-tile-full basics-assertion">
-                <p class="basics-assertion-text">Most companies only have bottom-of-funnel content. They're talking to buyers who are already deciding — and missing everyone else.</p>
+                <h3 class="basics-assertion-text">Most companies only have bottom-of-funnel content. They're talking to buyers who are already deciding — and missing everyone else.</h3>
               </div>
               <div class="basics-stat-tile">
                 <div class="basics-stat-num">67%</div>
@@ -731,9 +734,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="basics-competitor basics-tile-full">
                 <p class="basics-competitor-label">While you read this, your competitor is...</p>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Capturing buyers at the beginning of their journey — before they know what they're looking for</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Educating prospects through every stage so by the time they talk to sales, they're already sold</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building pipeline six months out while you're focused on this quarter</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Capturing buyers at the beginning of their journey — <strong>before they know what they're looking for</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Educating prospects through every stage so by the time they talk to sales, <strong>they're already sold</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building pipeline <strong>six months out</strong> while you're focused on this quarter</span></div>
               </div>
             </div>
             <a class="basics-teardown" href="/learn/marketing-funnel">Full teardown →</a>
@@ -743,7 +746,7 @@ html,body { height:auto; overflow-x:hidden; }
           <div class="learn-panel" data-section="basics" data-panel="7" id="basics-7">
             <div class="basics-tiles">
               <div class="basics-tile-full basics-assertion">
-                <p class="basics-assertion-text">Paid amplifies what's working. It doesn't fix what isn't. Spending before you have a clear message is paying to prove it doesn't land.</p>
+                <h3 class="basics-assertion-text">Paid amplifies what's working. It doesn't fix what isn't. Spending before you have a clear message is paying to prove it doesn't land.</h3>
               </div>
               <div class="basics-stat-tile">
                 <div class="basics-stat-num">65%</div>
@@ -755,9 +758,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="basics-competitor basics-tile-full">
                 <p class="basics-competitor-label">While you read this, your competitor is...</p>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Running ads with a message sharp enough that clicks actually convert</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Retargeting buyers who visited their site — including yours</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Using paid to accelerate organic traction, not replace it</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Running ads with a message sharp enough that <strong>clicks actually convert</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Retargeting buyers who visited their site — <strong>including yours</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Using paid to <strong>accelerate organic traction</strong>, not replace it</span></div>
               </div>
             </div>
             <a class="basics-teardown" href="/learn/paid-advertising">Full teardown →</a>
@@ -767,7 +770,7 @@ html,body { height:auto; overflow-x:hidden; }
           <div class="learn-panel" data-section="basics" data-panel="8" id="basics-8">
             <div class="basics-tiles">
               <div class="basics-tile-full basics-assertion">
-                <p class="basics-assertion-text">Performance makes the phone ring today. Brand determines whether it keeps ringing next year — at a lower cost per lead.</p>
+                <h3 class="basics-assertion-text">Performance makes the phone ring today. Brand determines whether it keeps ringing next year — at a lower cost per lead.</h3>
               </div>
               <div class="basics-stat-tile">
                 <div class="basics-stat-num">80%</div>
@@ -779,9 +782,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="basics-competitor basics-tile-full">
                 <p class="basics-competitor-label">While you read this, your competitor is...</p>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building recognition that makes every paid campaign cheaper to run</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Staying in buyers' minds between purchase cycles without spending a dollar</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Making their sales team's job easier because prospects already want to work with them</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building recognition that makes every paid campaign <strong>cheaper to run</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Staying in buyers' minds between purchase cycles <strong>without spending a dollar</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Making their sales team's job easier because prospects <strong>already want to work with them</strong></span></div>
               </div>
             </div>
             <a class="basics-teardown" href="/learn/brand-vs-performance">Full teardown →</a>
@@ -791,7 +794,7 @@ html,body { height:auto; overflow-x:hidden; }
           <div class="learn-panel" data-section="basics" data-panel="9" id="basics-9">
             <div class="basics-tiles">
               <div class="basics-tile-full basics-assertion">
-                <p class="basics-assertion-text">The last click gets the credit. That's almost never the thing that actually worked. And if you don't know what worked, you can't do more of it.</p>
+                <h3 class="basics-assertion-text">The last click gets the credit. That's almost never the thing that actually worked. And if you don't know what worked, you can't do more of it.</h3>
               </div>
               <div class="basics-stat-tile">
                 <div class="basics-stat-num">5.3×</div>
@@ -803,9 +806,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="basics-competitor basics-tile-full">
                 <p class="basics-competitor-label">While you read this, your competitor is...</p>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Knowing exactly which channels drive pipeline — and doubling down on them</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Cutting spend on what looks good in dashboards but doesn't drive revenue</span></div>
-                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Making budget decisions based on data, not on who argues loudest in the room</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Knowing exactly which channels drive pipeline — and <strong>doubling down on them</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Cutting spend on what looks good in dashboards but <strong>doesn't drive revenue</strong></span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Making budget decisions <strong>based on data</strong>, not on who argues loudest in the room</span></div>
               </div>
             </div>
             <a class="basics-teardown" href="/learn/analytics-attribution">Full teardown →</a>
@@ -818,7 +821,7 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- SECTION BREAK -->
   <div class="section-break" id="psychology">
-    <p class="section-break-label">Buyer Psychology. <span class="section-break-sub">Why buyers do what they do.</span></p>
+    <h2 class="section-break-label">Buyer Psychology. <span class="section-break-sub">Why buyers do what they do.</span></h2>
   </div>
 
   <!-- BUYER PSYCHOLOGY -->
@@ -826,11 +829,11 @@ html,body { height:auto; overflow-x:hidden; }
     <div class="learn-right">
       <div class="learn-body">
         <nav class="learn-nav">
-          <div class="learn-nav-item active" data-section="psychology" data-panel="0"><span class="learn-nav-dot"></span><span class="learn-nav-title">The Buying Journey</span></div>
-          <div class="learn-nav-item" data-section="psychology" data-panel="1"><span class="learn-nav-dot"></span><span class="learn-nav-title">Status Quo Bias</span></div>
-          <div class="learn-nav-item" data-section="psychology" data-panel="2"><span class="learn-nav-dot"></span><span class="learn-nav-title">Loss Aversion</span></div>
-          <div class="learn-nav-item" data-section="psychology" data-panel="3"><span class="learn-nav-dot"></span><span class="learn-nav-title">The Champion Problem</span></div>
-          <div class="learn-nav-item" data-section="psychology" data-panel="4"><span class="learn-nav-dot"></span><span class="learn-nav-title">Social Proof</span></div>
+          <button type="button" class="learn-nav-item active" data-section="psychology" data-panel="0"><span class="learn-nav-dot"></span><span class="learn-nav-title">The Buying Journey</span></button>
+          <button type="button" class="learn-nav-item" data-section="psychology" data-panel="1"><span class="learn-nav-dot"></span><span class="learn-nav-title">Status Quo Bias</span></button>
+          <button type="button" class="learn-nav-item" data-section="psychology" data-panel="2"><span class="learn-nav-dot"></span><span class="learn-nav-title">Loss Aversion</span></button>
+          <button type="button" class="learn-nav-item" data-section="psychology" data-panel="3"><span class="learn-nav-dot"></span><span class="learn-nav-title">The Champion Problem</span></button>
+          <button type="button" class="learn-nav-item" data-section="psychology" data-panel="4"><span class="learn-nav-dot"></span><span class="learn-nav-title">Social Proof</span></button>
         </nav>
         <div class="learn-content-area">
 
@@ -838,7 +841,7 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="panel-tiles">
               <div class="panel-tile-full panel-assertion">
                 <p class="panel-assertion-label">The Buying Journey</p>
-                <p class="panel-assertion-text">75% of the decision happens before they talk to you. Your job is to shape that view during the research phase — not overcome it after the fact.</p>
+                <h3 class="panel-assertion-text">75% of the decision happens before they talk to you. Your job is to shape that view during the research phase — not overcome it after the fact.</h3>
               </div>
               <div class="panel-stat-tile">
                 <div class="panel-stat-num">81%</div>
@@ -850,9 +853,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="panel-competitor panel-tile-full">
                 <p class="panel-competitor-label">While you read this, your competitor is...</p>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Publishing content that shapes how buyers define their problem — before they talk to anyone</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Showing up in every self-directed research moment your buyer has</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Being the preferred vendor before your sales team even knows the deal exists</span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Publishing content that shapes how buyers define their problem — <strong>before they talk to anyone</strong></span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Showing up in <strong>every self-directed research moment</strong> your buyer has</span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Being the preferred vendor <strong>before your sales team even knows the deal exists</strong></span></div>
               </div>
             </div>
           </div>
@@ -861,7 +864,7 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="panel-tiles">
               <div class="panel-tile-full panel-assertion">
                 <p class="panel-assertion-label">Status Quo Bias</p>
-                <p class="panel-assertion-text">Doing nothing always wins — unless you make the cost of staying still more visible than the risk of changing.</p>
+                <h3 class="panel-assertion-text">Doing nothing always wins — unless you make the cost of staying still more visible than the risk of changing.</h3>
               </div>
               <div class="panel-stat-tile">
                 <div class="panel-stat-num">40–60%</div>
@@ -873,9 +876,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="panel-competitor panel-tile-full">
                 <p class="panel-competitor-label">While you read this, your competitor is...</p>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Making the cost of inaction concrete — not just the benefit of switching</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Reframing the risk of change as smaller than the risk of staying still</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Closing deals your pipeline wrote off as "no decision"</span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Making <strong>the cost of inaction concrete</strong> — not just the benefit of switching</span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Reframing the risk of change as <strong>smaller than the risk of staying still</strong></span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Closing deals your pipeline <strong>wrote off as "no decision"</strong></span></div>
               </div>
             </div>
           </div>
@@ -884,7 +887,7 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="panel-tiles">
               <div class="panel-tile-full panel-assertion">
                 <p class="panel-assertion-label">Loss Aversion</p>
-                <p class="panel-assertion-text">Losses feel twice as powerful as equivalent gains. Buyers aren't irrational — they're protecting themselves. Your message needs to speak to that.</p>
+                <h3 class="panel-assertion-text">Losses feel twice as powerful as equivalent gains. Buyers aren't irrational — they're protecting themselves. Your message needs to speak to that.</h3>
               </div>
               <div class="panel-stat-tile">
                 <div class="panel-stat-num">2×</div>
@@ -896,9 +899,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="panel-competitor panel-tile-full">
                 <p class="panel-competitor-label">While you read this, your competitor is...</p>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Framing their offer around what buyers stand to lose — not just what they'll gain</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Reducing perceived switching risk with proof, guarantees, and phased rollouts</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Turning your prospect's fear of change into a reason to move — not a reason to stall</span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Framing their offer around <strong>what buyers stand to lose</strong> — not just what they'll gain</span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Reducing perceived switching risk with <strong>proof, guarantees, and phased rollouts</strong></span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Turning your prospect's fear of change into <strong>a reason to move — not a reason to stall</strong></span></div>
               </div>
             </div>
             <div class="concept-card-lime">
@@ -912,7 +915,7 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="panel-tiles">
               <div class="panel-tile-full panel-assertion">
                 <p class="panel-assertion-label">The Champion Problem</p>
-                <p class="panel-assertion-text">Your champion has to sell your deal without you in the room. If they can't explain it, they won't defend it.</p>
+                <h3 class="panel-assertion-text">Your champion has to sell your deal without you in the room. If they can't explain it, they won't defend it.</h3>
               </div>
               <div class="panel-stat-tile">
                 <div class="panel-stat-num">13</div>
@@ -924,9 +927,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="panel-competitor panel-tile-full">
                 <p class="panel-competitor-label">While you read this, your competitor is...</p>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Giving their champion a business case they can present without the sales deck</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Arming every stakeholder with the specific answer to their specific objection</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Winning internal buy-in before the committee meeting — not during it</span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Giving their champion a business case they can present <strong>without the sales deck</strong></span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Arming every stakeholder with <strong>the specific answer to their specific objection</strong></span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Winning internal buy-in <strong>before the committee meeting</strong> — not during it</span></div>
               </div>
             </div>
           </div>
@@ -935,7 +938,7 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="panel-tiles">
               <div class="panel-tile-full panel-assertion">
                 <p class="panel-assertion-label">Social Proof</p>
-                <p class="panel-assertion-text">What others say about you does more work than anything you say about yourself. In B2B, proof isn't a nice-to-have — it's the deciding factor.</p>
+                <h3 class="panel-assertion-text">What others say about you does more work than anything you say about yourself. In B2B, proof isn't a nice-to-have — it's the deciding factor.</h3>
               </div>
               <div class="panel-stat-tile">
                 <div class="panel-stat-num">92%</div>
@@ -947,9 +950,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="panel-competitor panel-tile-full">
                 <p class="panel-competitor-label">While you read this, your competitor is...</p>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Collecting case studies that speak directly to each buyer's industry and problem</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Getting reviews on every platform their buyers use to research vendors</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Letting customers close deals their sales team could never close alone</span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Collecting case studies that speak directly to <strong>each buyer's industry and problem</strong></span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Getting reviews on <strong>every platform their buyers use to research vendors</strong></span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Letting customers close deals their sales team <strong>could never close alone</strong></span></div>
               </div>
             </div>
             <div class="concept-card-lime">
@@ -973,7 +976,7 @@ html,body { height:auto; overflow-x:hidden; }
 
   <!-- SECTION BREAK -->
   <div class="section-break" id="sales">
-    <p class="section-break-label">Sales Process. <span class="section-break-sub">Most deals don't lose. They stall.</span></p>
+    <h2 class="section-break-label">Sales Process. <span class="section-break-sub">Most deals don't lose. They stall.</span></h2>
   </div>
 
   <!-- SALES PROCESS -->
@@ -981,11 +984,11 @@ html,body { height:auto; overflow-x:hidden; }
     <div class="learn-right">
       <div class="learn-body">
         <nav class="learn-nav">
-          <div class="learn-nav-item active" data-section="sales" data-panel="0"><span class="learn-nav-dot"></span><span class="learn-nav-title">Discovery</span></div>
-          <div class="learn-nav-item" data-section="sales" data-panel="1"><span class="learn-nav-dot"></span><span class="learn-nav-title">Qualification</span></div>
-          <div class="learn-nav-item" data-section="sales" data-panel="2"><span class="learn-nav-dot"></span><span class="learn-nav-title">The Demo</span></div>
-          <div class="learn-nav-item" data-section="sales" data-panel="3"><span class="learn-nav-dot"></span><span class="learn-nav-title">The Proposal</span></div>
-          <div class="learn-nav-item" data-section="sales" data-panel="4"><span class="learn-nav-dot"></span><span class="learn-nav-title">The Close</span></div>
+          <button type="button" class="learn-nav-item active" data-section="sales" data-panel="0"><span class="learn-nav-dot"></span><span class="learn-nav-title">Discovery</span></button>
+          <button type="button" class="learn-nav-item" data-section="sales" data-panel="1"><span class="learn-nav-dot"></span><span class="learn-nav-title">Qualification</span></button>
+          <button type="button" class="learn-nav-item" data-section="sales" data-panel="2"><span class="learn-nav-dot"></span><span class="learn-nav-title">The Demo</span></button>
+          <button type="button" class="learn-nav-item" data-section="sales" data-panel="3"><span class="learn-nav-dot"></span><span class="learn-nav-title">The Proposal</span></button>
+          <button type="button" class="learn-nav-item" data-section="sales" data-panel="4"><span class="learn-nav-dot"></span><span class="learn-nav-title">The Close</span></button>
         </nav>
         <div class="learn-content-area">
 
@@ -993,7 +996,7 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="panel-tiles">
               <div class="panel-tile-full panel-assertion">
                 <p class="panel-assertion-label">Discovery</p>
-                <p class="panel-assertion-text">The most important call you'll ever turn into a pitch. Discovery done right means the demo is just confirmation of what the buyer already believes.</p>
+                <h3 class="panel-assertion-text">The most important call you'll ever turn into a pitch. Discovery done right means the demo is just confirmation of what the buyer already believes.</h3>
               </div>
               <div class="panel-stat-tile">
                 <div class="panel-stat-num">47%</div>
@@ -1005,9 +1008,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="panel-competitor panel-tile-full">
                 <p class="panel-competitor-label">While you read this, your competitor is...</p>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Asking questions that make buyers feel understood before they've seen a single slide</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Learning what the buyer actually cares about — then building the entire pitch around it</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Disqualifying bad fits early — so they win more of the deals they work</span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Asking questions that make buyers feel understood <strong>before they've seen a single slide</strong></span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Learning what the buyer actually cares about — then <strong>building the entire pitch around it</strong></span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Disqualifying bad fits early — so they <strong>win more of the deals they work</strong></span></div>
               </div>
             </div>
             <div class="concept-card-lime">
@@ -1021,7 +1024,7 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="panel-tiles">
               <div class="panel-tile-full panel-assertion">
                 <p class="panel-assertion-label">Qualification</p>
-                <p class="panel-assertion-text">Not every prospect is a real opportunity. The fastest way to improve your win rate is to stop working deals you were never going to win.</p>
+                <h3 class="panel-assertion-text">Not every prospect is a real opportunity. The fastest way to improve your win rate is to stop working deals you were never going to win.</h3>
               </div>
               <div class="panel-stat-tile">
                 <div class="panel-stat-num">21%</div>
@@ -1033,9 +1036,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="panel-competitor panel-tile-full">
                 <p class="panel-competitor-label">While you read this, your competitor is...</p>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Spending their time on deals with real budget, real authority, and real urgency</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Walking away from deals that look big but will never close — before they waste six months</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Getting to the economic buyer in week one, not month three</span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Spending their time on deals with <strong>real budget, real authority, and real urgency</strong></span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Walking away from deals that look big but will never close — <strong>before they waste six months</strong></span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Getting to the economic buyer in <strong>week one, not month three</strong></span></div>
               </div>
             </div>
           </div>
@@ -1044,7 +1047,7 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="panel-tiles">
               <div class="panel-tile-full panel-assertion">
                 <p class="panel-assertion-label">The Demo</p>
-                <p class="panel-assertion-text">By the time they see it, they should already want it. A demo that explains the product is too late. A demo that confirms the decision is just right.</p>
+                <h3 class="panel-assertion-text">By the time they see it, they should already want it. A demo that explains the product is too late. A demo that confirms the decision is just right.</h3>
               </div>
               <div class="panel-stat-tile">
                 <div class="panel-stat-num">78%</div>
@@ -1056,9 +1059,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="panel-competitor panel-tile-full">
                 <p class="panel-competitor-label">While you read this, your competitor is...</p>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Running demos built around the buyer's exact use case — not a generic feature tour</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Letting buyers self-serve the parts they care about — and closing on momentum</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Making every demo feel like it was built specifically for that one prospect</span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Running demos built around <strong>the buyer's exact use case</strong> — not a generic feature tour</span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Letting buyers self-serve the parts they care about — and <strong>closing on momentum</strong></span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Making every demo feel like it was <strong>built specifically for that one prospect</strong></span></div>
               </div>
             </div>
             <div class="concept-card-lime">
@@ -1072,7 +1075,7 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="panel-tiles">
               <div class="panel-tile-full panel-assertion">
                 <p class="panel-assertion-label">The Proposal</p>
-                <p class="panel-assertion-text">A proposal is a business case for people you've never met. It needs to win the room when you're not in it.</p>
+                <h3 class="panel-assertion-text">A proposal is a business case for people you've never met. It needs to win the room when you're not in it.</h3>
               </div>
               <div class="panel-stat-tile">
                 <div class="panel-stat-num">45%</div>
@@ -1084,9 +1087,9 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="panel-competitor panel-tile-full">
                 <p class="panel-competitor-label">While you read this, your competitor is...</p>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Sending proposals that speak the CFO's language — not just the champion's</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Including ROI models that make the business case for the people who weren't in the demo</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Following up faster than you — and winning on speed, not just substance</span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Sending proposals that speak <strong>the CFO's language</strong> — not just the champion's</span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Including ROI models that make the business case for <strong>the people who weren't in the demo</strong></span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Following up faster than you — and <strong>winning on speed, not just substance</strong></span></div>
               </div>
             </div>
           </div>
@@ -1095,7 +1098,7 @@ html,body { height:auto; overflow-x:hidden; }
             <div class="panel-tiles">
               <div class="panel-tile-full panel-assertion">
                 <p class="panel-assertion-label">The Close</p>
-                <p class="panel-assertion-text">The close isn't a technique. It's the natural conclusion of a process that removed every reason to say no before the question was asked.</p>
+                <h3 class="panel-assertion-text">The close isn't a technique. It's the natural conclusion of a process that removed every reason to say no before the question was asked.</h3>
               </div>
               <div class="panel-stat-tile">
                 <div class="panel-stat-num">48%</div>
@@ -1107,8 +1110,8 @@ html,body { height:auto; overflow-x:hidden; }
               </div>
               <div class="panel-competitor panel-tile-full">
                 <p class="panel-competitor-label">While you read this, your competitor is...</p>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Following up consistently — because most deals go to whoever stays present longest</span></div>
-                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Creating urgency that's real — tied to business timing, not arbitrary deadlines</span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Following up consistently — because most deals go to <strong>whoever stays present longest</strong></span></div>
+                <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Creating urgency that's real — <strong>tied to business timing</strong>, not arbitrary deadlines</span></div>
                 <div class="panel-competitor-item"><span class="panel-competitor-dot"></span><span class="panel-competitor-text">Asking for the order — clearly, directly, without flinching</span></div>
               </div>
             </div>
@@ -1134,7 +1137,7 @@ html,body { height:auto; overflow-x:hidden; }
 
   <div class="section-break learn-outro" id="learn-end">
     <p class="learn-outro-label">That's the map</p>
-    <p class="learn-outro-title">Knowing how buyers decide is the easy part.</p>
+    <h2 class="learn-outro-title">Knowing how buyers decide is the easy part.</h2>
     <p class="learn-outro-body">The hard part is building the thing that reaches them — before the competitor who read the same research does.</p>
     <div class="learn-outro-actions">
       <a class="btn-primary" href="/proof">See what we've built</a>
