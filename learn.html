@@ -418,8 +418,10 @@ html,body { height:auto; overflow-x:hidden; }
 /* SECTION BREAK */
 .section-break {
   display: flex; flex-direction: column; align-items: flex-start;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 4vw 5vw;
+  min-height: 36vh;
+  padding: 6vw 5vw;
   border-bottom: 1px solid var(--white-faint);
   background: var(--navy-dark);
   position: relative;
@@ -537,6 +539,7 @@ html,body { height:auto; overflow-x:hidden; }
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     column-gap: 4vw;
     align-items: start;
+    align-content: center;
   }
   .section-break:has(.section-break-body) .section-break-body {
     /* both first lines carry near-identical box-to-cap offsets, so plain
