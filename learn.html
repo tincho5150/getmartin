@@ -490,13 +490,20 @@ html,body { height:auto; overflow-x:hidden; }
   .nav-link{display:none}
   .nav-link-cta{display:block}
 }
-.basics-pain-list { display:flex;flex-direction:column;margin-top:2px; }
-.basics-pain-item { display:flex;align-items:flex-start;gap:0.85rem;padding:0.85rem 1.3rem;background:#1e2c3a;border-bottom:1px solid rgba(240,239,240,0.06);transition:background 0.15s; }
-.basics-pain-item:hover { background:#2a3a4a; }
-.basics-pain-item:hover .basics-pain-dot { background:var(--lime); }
-.basics-pain-item:hover .basics-pain-text { color:var(--white); }
-.basics-pain-dot { width:6px;height:6px;border-radius:50%;background:rgba(240,239,240,0.2);flex-shrink:0;margin-top:6px;transition:background 0.15s; }
-.basics-pain-text { font-size:0.88rem;font-weight:300;color:var(--white-dim);line-height:1.6; }
+.basics-tiles { display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:2px; }
+.basics-tile-full { grid-column:1/-1; }
+.basics-assertion { background:#1e2c3a;border:1px solid #1e2c3a;padding:1.4rem; }
+.basics-assertion-text { font-family:var(--font-display);font-size:clamp(1.1rem,1.8vw,1.5rem);font-weight:600;line-height:1.2;letter-spacing:-0.01em;color:#f0eff0; }
+.basics-stat-tile { background:var(--lime);border:1px solid var(--lime);padding:1.4rem 1.4rem 1.6rem;transition:background var(--dur-base),transform var(--dur-base) var(--ease-out); }
+.basics-stat-tile:hover { background:var(--lime-hover);transform:translateY(-2px); }
+.basics-stat-num { font-family:var(--font-display);font-size:clamp(2.4rem,4.2vw,4rem);font-weight:700;line-height:0.95;letter-spacing:-0.03em;color:var(--navy-dark);margin-bottom:0.8rem; }
+.basics-stat-desc { font-size:0.88rem;font-weight:300;line-height:1.4;color:rgba(30,44,58,0.65); }
+.basics-competitor { background:#1e2c3a;border:1px solid #1e2c3a;padding:1.4rem;grid-column:1/-1; }
+.basics-competitor-label { font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(184,212,0,0.6);margin-bottom:0.8rem; }
+.basics-competitor-item { display:flex;align-items:flex-start;gap:0.75rem;padding:0.6rem 0;border-bottom:1px solid rgba(240,239,240,0.06); }
+.basics-competitor-item:last-child { border-bottom:none; }
+.basics-competitor-dot { width:5px;height:5px;border-radius:50%;background:var(--lime);flex-shrink:0;margin-top:6px; }
+.basics-competitor-text { font-size:0.85rem;font-weight:300;color:var(--white-dim);line-height:1.5; }
 </style>
 </head>
 <body>
@@ -538,410 +545,240 @@ html,body { height:auto; overflow-x:hidden; }
         <div class="learn-content-area">
           <!-- 0: SEO -->
           <div class="learn-panel active" data-section="basics" data-panel="0" id="basics-0">
-            <div class="concept-card">
-              <p class="concept-eyebrow">Awareness</p>
-              <h3 class="concept-title">SEO</h3>
-              <p class="concept-body">Your competitor showing up on page one isn't luck. It's infrastructure. SEO determines whether you appear when a buyer searches for the problem you solve — before they've talked to anyone, before they've heard of you.</p>
-            </div>
-            <div class="basics-pain-list">
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Buyers who can't find you will find someone else — and never know they missed you</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">75% of users never scroll past the first page of results</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Every piece of content you publish without SEO is invisible by default</span></div>
-            </div>
-                        <div class="stat-dashboard">
-            <div class="stat-dashboard-row">
-              <div class="stat-num">53%</div>
-              <div class="stat-right">
-                <div class="stat-desc">of all B2B inbound leads come from organic search</div>
-                <div class="stat-source">BrightEdge</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="53"></div></div>
+            <div class="basics-tiles">
+              <div class="basics-tile-full basics-assertion">
+                <p class="basics-assertion-text">Your competitor showing up on page one isn't luck. It's infrastructure you haven't built yet.</p>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">14.6%</div>
-              <div class="stat-right">
-                <div class="stat-desc">organic search lead close rate vs 1.7% for outbound</div>
-                <div class="stat-source">HubSpot</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="15"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">748%</div>
+                <div class="basics-stat-desc">average ROI from B2B SEO investment</div>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">748%</div>
-              <div class="stat-right">
-                <div class="stat-desc">average ROI from B2B SEO investment</div>
-                <div class="stat-source">SEO Sherpa</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="75"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">53%</div>
+                <div class="basics-stat-desc">of all B2B inbound leads come from organic search</div>
               </div>
-            </div>
+              <div class="basics-competitor basics-tile-full">
+                <p class="basics-competitor-label">While you read this, your competitor is...</p>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Publishing content optimised for the exact searches your buyers are running right now</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building domain authority you'll spend years trying to catch up to</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Showing up when your prospect Googles their problem — and you're nowhere to be found</span></div>
+              </div>
             </div>
             <a class="basics-teardown" href="/learn/content-marketing">Full teardown →</a>
           </div>
 
                     <!-- 1: Content Marketing -->
           <div class="learn-panel" data-section="basics" data-panel="1" id="basics-1">
-            <div class="concept-card">
-              <p class="concept-eyebrow">Awareness</p>
-              <h3 class="concept-title">Content Marketing</h3>
-              <p class="concept-body">The best salespeople in B2B aren't people. They're articles that rank. Content marketing is creating useful, relevant material your buyers actually want — not product-first promotion dressed up as a blog post.</p>
-            </div>
-            <div class="basics-pain-list">
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Content without strategy is just publishing into the void</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Most B2B content gets written for the product, not the buyer's problem</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Companies that publish consistently generate 67% more leads — those that don't pay for the gap in outbound</span></div>
-            </div>
-            <div class="stat-dashboard">
-            <div class="stat-dashboard-row">
-              <div class="stat-num">3×</div>
-              <div class="stat-right">
-                <div class="stat-desc">more leads per dollar vs traditional outbound marketing</div>
-                <div class="stat-source">Demand Metric</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="75"></div></div>
+            <div class="basics-tiles">
+              <div class="basics-tile-full basics-assertion">
+                <p class="basics-assertion-text">The best B2B salespeople aren't people. They're articles that rank and answer the question before the call.</p>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">62%</div>
-              <div class="stat-right">
-                <div class="stat-desc">less cost per lead than outbound channels</div>
-                <div class="stat-source">Content Marketing Institute</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="62"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">3×</div>
+                <div class="basics-stat-desc">more leads per dollar vs traditional outbound</div>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">287%</div>
-              <div class="stat-right">
-                <div class="stat-desc">median B2B content marketing ROI</div>
-                <div class="stat-source">V12 AI / CMI</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="57"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">62%</div>
+                <div class="basics-stat-desc">lower cost per lead than outbound channels</div>
               </div>
-            </div>
+              <div class="basics-competitor basics-tile-full">
+                <p class="basics-competitor-label">While you read this, your competitor is...</p>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Answering your buyer's questions before they ever talk to a salesperson</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building a library of content that generates leads while they sleep</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Getting found by buyers who didn't know they were looking for a solution</span></div>
+              </div>
             </div>
             <a class="basics-teardown" href="/learn/content-marketing">Full teardown →</a>
           </div>
 
           <!-- 2: Social Media Marketing -->
           <div class="learn-panel" data-section="basics" data-panel="2" id="basics-2">
-            <div class="concept-card">
-              <p class="concept-eyebrow">Awareness</p>
-              <h3 class="concept-title">Social Media Marketing</h3>
-              <p class="concept-body">Nobody buys from a LinkedIn post. But they stop buying from people they've never heard of. Social media in B2B is less about posting and more about presence — the kind of familiarity that makes a cold outreach feel warm.</p>
-            </div>
-            <div class="basics-pain-list">
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Social doesn't close deals — it determines whether your cold outreach gets a reply</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Most companies treat social as broadcast. Buyers treat it as a trust signal</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Absence from social in B2B reads as either small or irrelevant</span></div>
-            </div>
-                        <div class="stat-dashboard">
-            <div class="stat-dashboard-row">
-              <div class="stat-num">80%</div>
-              <div class="stat-right">
-                <div class="stat-desc">of B2B social media leads come from LinkedIn</div>
-                <div class="stat-source">LinkedIn / Sprout Social</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="80"></div></div>
+            <div class="basics-tiles">
+              <div class="basics-tile-full basics-assertion">
+                <p class="basics-assertion-text">Nobody buys from a LinkedIn post. But they stop buying from people they've never heard of.</p>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">2.74%</div>
-              <div class="stat-right">
-                <div class="stat-desc">LinkedIn visitor-to-lead conversion rate vs 0.77% Facebook</div>
-                <div class="stat-source">HubSpot</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="27"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">80%</div>
+                <div class="basics-stat-desc">of B2B social media leads come from LinkedIn</div>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">70%</div>
-              <div class="stat-right">
-                <div class="stat-desc">of marketers report positive ROI from LinkedIn</div>
-                <div class="stat-source">Hootsuite</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="70"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">2.74%</div>
+                <div class="basics-stat-desc">LinkedIn visitor-to-lead conversion rate vs 0.77% on Facebook</div>
               </div>
-            </div>
+              <div class="basics-competitor basics-tile-full">
+                <p class="basics-competitor-label">While you read this, your competitor is...</p>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Staying top of mind for buyers who aren't ready yet — but will be</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Making cold outreach feel warm because the prospect already knows their name</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building familiarity that gets a reply instead of an ignore</span></div>
+              </div>
             </div>
             <a class="basics-teardown" href="/learn/personal-branding">Full teardown →</a>
           </div>
 
                     <!-- 3: Personal Branding -->
           <div class="learn-panel" data-section="basics" data-panel="3" id="basics-3">
-            <div class="concept-card">
-              <p class="concept-eyebrow">Awareness</p>
-              <h3 class="concept-title">Personal Branding</h3>
-              <p class="concept-body">Buyers Google you before they Google your company. What comes up matters. Personal branding isn't about becoming an influencer — it's about being visible and credible in the spaces where your buyers already spend time.</p>
-            </div>
-            <div class="basics-pain-list">
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">A founder with no online presence makes every warm intro start cold</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Personal brand compounds — every post, talk, or article builds equity you don't pay for again</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">The people your buyers trust most are the ones they feel like they already know</span></div>
-            </div>
-            <div class="stat-dashboard">
-            <div class="stat-dashboard-row">
-              <div class="stat-num">82%</div>
-              <div class="stat-right">
-                <div class="stat-desc">more likely to trust a company when executives are active on social</div>
-                <div class="stat-source">Edelman</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="82"></div></div>
+            <div class="basics-tiles">
+              <div class="basics-tile-full basics-assertion">
+                <p class="basics-assertion-text">Buyers Google you before they Google your company. What they find is part of the sales process.</p>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">44%</div>
-              <div class="stat-right">
-                <div class="stat-desc">of a company's market value is tied to the CEO's reputation</div>
-                <div class="stat-source">Brunswick Group</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="44"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">82%</div>
+                <div class="basics-stat-desc">more likely to trust a company when executives are active on social</div>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">67%</div>
-              <div class="stat-right">
-                <div class="stat-desc">of buyers pay more from companies whose founders' values align with theirs</div>
-                <div class="stat-source">Brand Builders Group</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="67"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">44%</div>
+                <div class="basics-stat-desc">of company market value tied to the CEO's reputation</div>
               </div>
-            </div>
+              <div class="basics-competitor basics-tile-full">
+                <p class="basics-competitor-label">While you read this, your competitor is...</p>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building credibility that transfers to every product they sell</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Getting warm introductions because people feel like they already know them</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Showing up in searches your buyers are running — with their name, not just their company's</span></div>
+              </div>
             </div>
             <a class="basics-teardown" href="/learn/personal-branding">Full teardown →</a>
           </div>
 
           <!-- 4: Email Marketing -->
           <div class="learn-panel" data-section="basics" data-panel="4" id="basics-4">
-            <div class="concept-card">
-              <p class="concept-eyebrow">Consideration</p>
-              <h3 class="concept-title">Email Marketing</h3>
-              <p class="concept-body">You don't own your LinkedIn followers. You own your list. Email is the highest-ROI channel in B2B precisely because you own the relationship — no algorithm stands between you and your audience.</p>
-            </div>
-            <div class="basics-pain-list">
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Every channel you don't own can be taken from you — algorithm changes, bans, shutdowns</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Most B2B email fails because it's written for the sender, not the reader</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">The difference between spam and a welcome email is relevance and timing — not the channel</span></div>
-            </div>
-                        <div class="stat-dashboard">
-            <div class="stat-dashboard-row">
-              <div class="stat-num">$42</div>
-              <div class="stat-right">
-                <div class="stat-desc">return for every $1 spent — highest ROI of any B2B channel</div>
-                <div class="stat-source">Litmus 2024</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="84"></div></div>
+            <div class="basics-tiles">
+              <div class="basics-tile-full basics-assertion">
+                <p class="basics-assertion-text">You don't own your LinkedIn followers. You own your list. One algorithm change and the rest is gone.</p>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">77%</div>
-              <div class="stat-right">
-                <div class="stat-desc">of B2B buyers prefer email contact over any other channel</div>
-                <div class="stat-source">Salesso 2024</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="77"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">$42</div>
+                <div class="basics-stat-desc">return for every $1 spent — highest ROI of any B2B channel</div>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">760%</div>
-              <div class="stat-right">
-                <div class="stat-desc">more revenue from segmented vs non-segmented campaigns</div>
-                <div class="stat-source">Campaign Monitor</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="76"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">77%</div>
+                <div class="basics-stat-desc">of B2B buyers prefer email contact over any other channel</div>
               </div>
-            </div>
+              <div class="basics-competitor basics-tile-full">
+                <p class="basics-competitor-label">While you read this, your competitor is...</p>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Nurturing buyers who aren't ready yet — so when they are, they think of them first</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Sending emails that feel like they were written by a person, not a marketing team</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Staying present in the inbox of every prospect who ever showed interest</span></div>
+              </div>
             </div>
             <a class="basics-teardown" href="/learn/inbound-vs-outbound">Full teardown →</a>
           </div>
 
                     <!-- 5: Inbound vs. Outbound -->
           <div class="learn-panel" data-section="basics" data-panel="5" id="basics-5">
-            <div class="concept-card">
-              <p class="concept-eyebrow">Consideration</p>
-              <h3 class="concept-title">Inbound vs. Outbound</h3>
-              <p class="concept-body">Outbound rents attention. Inbound owns it. Neither is better in isolation — but companies that only do outbound eventually get priced out of it, while inbound compounds over time.</p>
-            </div>
-            <div class="basics-pain-list">
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Outbound stops the moment you stop spending — inbound compounds over time</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Most early-stage companies default to outbound because it feels faster. It is. Until it isn't</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">The best pipeline has both — but outbound-only is a treadmill you can never step off</span></div>
-            </div>
-            <div class="stat-dashboard">
-            <div class="stat-dashboard-row">
-              <div class="stat-num">63%</div>
-              <div class="stat-right">
-                <div class="stat-desc">lower cost per lead with inbound vs outbound</div>
-                <div class="stat-source">HubSpot</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="63"></div></div>
+            <div class="basics-tiles">
+              <div class="basics-tile-full basics-assertion">
+                <p class="basics-assertion-text">Outbound rents attention. Inbound owns it. One compounds. The other stops the moment you stop paying.</p>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">3×</div>
-              <div class="stat-right">
-                <div class="stat-desc">more likely to see higher ROI with inbound marketing</div>
-                <div class="stat-source">HubSpot</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="75"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">63%</div>
+                <div class="basics-stat-desc">lower cost per lead with inbound vs outbound</div>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">80%</div>
-              <div class="stat-right">
-                <div class="stat-desc">drop in cost per lead after 5 months of consistent inbound execution</div>
-                <div class="stat-source">HubSpot</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="80"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">80%</div>
+                <div class="basics-stat-desc">drop in cost per lead after 5 months of consistent inbound</div>
               </div>
-            </div>
+              <div class="basics-competitor basics-tile-full">
+                <p class="basics-competitor-label">While you read this, your competitor is...</p>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building an inbound engine that generates leads without a budget line</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Making outbound cheaper because prospects already know their name when the email arrives</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Compounding trust and visibility while you're still renting attention one send at a time</span></div>
+              </div>
             </div>
             <a class="basics-teardown" href="/learn/inbound-vs-outbound">Full teardown →</a>
           </div>
 
           <!-- 6: TOFU/MOFU/BOFU -->
           <div class="learn-panel" data-section="basics" data-panel="6" id="basics-6">
-            <div class="concept-card">
-              <p class="concept-eyebrow">Consideration</p>
-              <h3 class="concept-title">TOFU, MOFU, BOFU</h3>
-              <p class="concept-body">Most companies have bottom-of-funnel content and nothing else. Then wonder why leads don't convert. The funnel is a buying timeline — buyers move through it whether you have content for each stage or not.</p>
-            </div>
-            <div class="basics-pain-list">
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Buyers who don't know you exist can't reach your demo page</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Content that only talks to people ready to buy ignores everyone who will be ready next quarter</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">The funnel is a buying timeline, not a marketing metaphor</span></div>
-            </div>
-                        <div class="stat-dashboard">
-            <div class="stat-dashboard-row">
-              <div class="stat-num">67%</div>
-              <div class="stat-right">
-                <div class="stat-desc">more leads per month for companies with active blogs</div>
-                <div class="stat-source">DemandMetric</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="67"></div></div>
+            <div class="basics-tiles">
+              <div class="basics-tile-full basics-assertion">
+                <p class="basics-assertion-text">Most companies only have bottom-of-funnel content. They're talking to buyers who are already deciding — and missing everyone else.</p>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">55%</div>
-              <div class="stat-right">
-                <div class="stat-desc">of B2B marketers say it's hard to create content that drives conversions</div>
-                <div class="stat-source">CMI</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="55"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">67%</div>
+                <div class="basics-stat-desc">more leads per month for companies with active blogs</div>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">74%</div>
-              <div class="stat-right">
-                <div class="stat-desc">of B2B marketers say content generates more demand and leads</div>
-                <div class="stat-source">CMI 2024</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="74"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">74%</div>
+                <div class="basics-stat-desc">of B2B marketers say content generates more demand and leads</div>
               </div>
-            </div>
+              <div class="basics-competitor basics-tile-full">
+                <p class="basics-competitor-label">While you read this, your competitor is...</p>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Capturing buyers at the beginning of their journey — before they know what they're looking for</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Educating prospects through every stage so by the time they talk to sales, they're already sold</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building pipeline six months out while you're focused on this quarter</span></div>
+              </div>
             </div>
             <a class="basics-teardown" href="/learn/paid-advertising">Full teardown →</a>
           </div>
 
                     <!-- 7: Paid Advertising -->
           <div class="learn-panel" data-section="basics" data-panel="7" id="basics-7">
-            <div class="concept-card">
-              <p class="concept-eyebrow">Decision</p>
-              <h3 class="concept-title">Paid Advertising</h3>
-              <p class="concept-body">Paid advertising amplifies what's already working. It doesn't fix what isn't. When you have a clear message and a defined audience, paid accelerates. When you don't, it's an expensive way to confirm the problem.</p>
-            </div>
-            <div class="basics-pain-list">
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Spending on paid before you have a clear message is paying to prove it doesn't land</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Most B2B paid fails not because of the channel — because of the offer</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">The moment you stop paying, paid traffic stops. Organic doesn't</span></div>
-            </div>
-            <div class="stat-dashboard">
-            <div class="stat-dashboard-row">
-              <div class="stat-num">65%</div>
-              <div class="stat-right">
-                <div class="stat-desc">of high-intent searches result in an ad click</div>
-                <div class="stat-source">Google</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="65"></div></div>
+            <div class="basics-tiles">
+              <div class="basics-tile-full basics-assertion">
+                <p class="basics-assertion-text">Paid amplifies what's working. It doesn't fix what isn't. Spending before you have a clear message is paying to prove it doesn't land.</p>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">52%</div>
-              <div class="stat-right">
-                <div class="stat-desc">increase in brand awareness reported by companies using PPC</div>
-                <div class="stat-source">Electroiq</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="52"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">65%</div>
+                <div class="basics-stat-desc">of high-intent searches result in an ad click</div>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">200%</div>
-              <div class="stat-right">
-                <div class="stat-desc">average Google Ads ROI ($2 return per $1 spent)</div>
-                <div class="stat-source">Google / WordStream</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="40"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">200%</div>
+                <div class="basics-stat-desc">average Google Ads ROI — $2 return per $1 spent</div>
               </div>
-            </div>
+              <div class="basics-competitor basics-tile-full">
+                <p class="basics-competitor-label">While you read this, your competitor is...</p>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Running ads with a message sharp enough that clicks actually convert</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Retargeting buyers who visited their site — including yours</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Using paid to accelerate organic traction, not replace it</span></div>
+              </div>
             </div>
             <a class="basics-teardown" href="/learn/paid-advertising">Full teardown →</a>
           </div>
 
           <!-- 8: Brand vs Performance -->
           <div class="learn-panel" data-section="basics" data-panel="8" id="basics-8">
-            <div class="concept-card">
-              <p class="concept-eyebrow">Decision</p>
-              <h3 class="concept-title">Brand vs. Performance</h3>
-              <p class="concept-body">Performance makes the phone ring today. Brand determines whether it keeps ringing next year. Companies that only run performance marketing eventually bid against themselves — paying more for the same leads as competitors who built recognition.</p>
-            </div>
-            <div class="basics-pain-list">
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Companies that only run performance marketing eventually bid against themselves</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Brand is what makes a buyer think of you when they weren't even looking</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">The best-performing paid ads are the ones that feel like brand — not like ads</span></div>
-            </div>
-                        <div class="stat-dashboard">
-            <div class="stat-dashboard-row">
-              <div class="stat-num">80%</div>
-              <div class="stat-right">
-                <div class="stat-desc">of customers say brand trust is the deciding factor in B2B purchase decisions</div>
-                <div class="stat-source">Edelman</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="80"></div></div>
+            <div class="basics-tiles">
+              <div class="basics-tile-full basics-assertion">
+                <p class="basics-assertion-text">Performance makes the phone ring today. Brand determines whether it keeps ringing next year — at a lower cost per lead.</p>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">20%</div>
-              <div class="stat-right">
-                <div class="stat-desc">B2B companies with strong brands outperform weak ones by this margin</div>
-                <div class="stat-source">McKinsey</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="20"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">80%</div>
+                <div class="basics-stat-desc">of customers say brand trust is the deciding factor in B2B purchases</div>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">25%</div>
-              <div class="stat-right">
-                <div class="stat-desc">of B2B companies commit less than a fifth of budget to brand marketing</div>
-                <div class="stat-source">Studio Sunup</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="25"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">20%</div>
+                <div class="basics-stat-desc">outperformance by B2B companies with strong brands vs weak ones</div>
               </div>
-            </div>
+              <div class="basics-competitor basics-tile-full">
+                <p class="basics-competitor-label">While you read this, your competitor is...</p>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Building recognition that makes every paid campaign cheaper to run</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Staying in buyers' minds between purchase cycles without spending a dollar</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Making their sales team's job easier because prospects already want to work with them</span></div>
+              </div>
             </div>
             <a class="basics-teardown" href="/learn/analytics-attribution">Full teardown →</a>
           </div>
 
           <!-- 9: Analytics and Attribution -->
           <div class="learn-panel" data-section="basics" data-panel="9" id="basics-9">
-            <div class="concept-card">
-              <p class="concept-eyebrow">Decision</p>
-              <h3 class="concept-title">Analytics and Attribution</h3>
-              <p class="concept-body">The last click gets the credit. That's almost never the whole story. In B2B, a buyer might see a LinkedIn post, read an article, attend a webinar, and respond to a cold email six months later — most attribution models only see the last step.</p>
-            </div>
-            <div class="basics-pain-list">
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Most B2B attribution models are built for e-commerce, not 6-month sales cycles</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">When you can't prove what's working, the loudest voice in the room wins the budget</span></div>
-              <div class="basics-pain-item"><span class="basics-pain-dot"></span><span class="basics-pain-text">Bad attribution doesn't just waste money — it actively kills the channels that actually work</span></div>
-            </div>
-            <div class="stat-dashboard">
-            <div class="stat-dashboard-row">
-              <div class="stat-num">21%</div>
-              <div class="stat-right">
-                <div class="stat-desc">of B2B marketers are confident in their attribution model</div>
-                <div class="stat-source">Forrester 2025</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="21"></div></div>
+            <div class="basics-tiles">
+              <div class="basics-tile-full basics-assertion">
+                <p class="basics-assertion-text">The last click gets the credit. That's almost never the thing that actually worked. And if you don't know what worked, you can't do more of it.</p>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">5.3×</div>
-              <div class="stat-right">
-                <div class="stat-desc">higher ROI for B2B marketers using analytics properly</div>
-                <div class="stat-source">Gartner</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="66"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">5.3×</div>
+                <div class="basics-stat-desc">higher ROI for B2B marketers using analytics properly</div>
               </div>
-            </div>
-            <div class="stat-dashboard-row">
-              <div class="stat-num">15–30%</div>
-              <div class="stat-right">
-                <div class="stat-desc">improvement in ROI from multi-touch attribution</div>
-                <div class="stat-source">Forrester</div>
-                <div class="stat-bar-track"><div class="stat-bar-fill" data-width="37"></div></div>
+              <div class="basics-stat-tile">
+                <div class="basics-stat-num">21%</div>
+                <div class="basics-stat-desc">of B2B marketers are confident in their attribution model</div>
               </div>
-            </div>
+              <div class="basics-competitor basics-tile-full">
+                <p class="basics-competitor-label">While you read this, your competitor is...</p>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Knowing exactly which channels drive pipeline — and doubling down on them</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Cutting spend on what looks good in dashboards but doesn't drive revenue</span></div>
+                <div class="basics-competitor-item"><span class="basics-competitor-dot"></span><span class="basics-competitor-text">Making budget decisions based on data, not on who argues loudest in the room</span></div>
+              </div>
             </div>
             <a class="basics-teardown" href="/learn/analytics-attribution">Full teardown →</a>
           </div>
