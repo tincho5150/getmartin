@@ -139,20 +139,27 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .insight-text strong { color: var(--white); font-weight: 400; }
 
+/* Lime tiles, matching the stat cards on /learn. text-transform and
+   letter-spacing are reset here: global.css .stat-label sets them to
+   uppercase, which turned these descriptions into wide-tracked labels. */
 .stat-block {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: var(--white-faint);
-  border: 1px solid var(--white-faint); margin: 2.5rem 0;
+  gap: 2px; margin: 2.5rem 0;
 }
-.stat { background: #1e2c3a; padding: 1.4rem 1.2rem; }
+.stat { background: var(--lime); border: 1px solid var(--lime); padding: 1.4rem 1.2rem 1.6rem; }
 .stat-num {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 3vw, 2.4rem);
-  font-weight: 700; line-height: 1;
-  letter-spacing: -0.03em; color: var(--lime); margin-bottom: 0.4rem;
+  font-weight: 700; line-height: 0.95;
+  letter-spacing: -0.03em; color: var(--navy-dark); margin-bottom: 0.6rem;
 }
-.stat-label { font-size: 0.82rem; font-weight: 300; color: var(--white-dim); line-height: 1.5; }
-.stat-source { font-size: 0.68rem; color: rgba(240,239,240,0.25); margin-top: 0.3rem; }
+.stat-label {
+  font-size: 0.9rem; font-weight: 300; line-height: 1.45;
+  color: rgba(30,44,58,0.65);
+  text-transform: none; letter-spacing: 0; margin-bottom: 0;
+}
+.stat-label strong { color: #1e2c3a; font-weight: 600; }
+.stat-source { font-size: 0.68rem; color: rgba(30,44,58,0.42); margin-top: 0.4rem; }
 
 .callout {
   background: #1e2c3a; border: 1px solid rgba(240,239,240,0.06);
@@ -337,6 +344,9 @@ html, body { height: auto; overflow-x: hidden; }
   .nav-link-cta { display: block; }
   .stat-block { grid-template-columns: repeat(2, 1fr); }
   .article { padding: 3rem 1.2rem 5rem; }
+}
+@media (max-width: 480px) {
+  .stat-block { grid-template-columns: 1fr; }
 }
 
 </style>
