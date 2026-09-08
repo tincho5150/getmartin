@@ -521,42 +521,30 @@ html,body { height:auto; overflow-x:hidden; }
 .panel-competitor-item:last-child { border-bottom:none; }
 .panel-competitor-dot { width:5px;height:5px;border-radius:50%;background:var(--lime);flex-shrink:0;margin-top:6px; }
 .panel-competitor-text { font-size:0.9rem;font-weight:400;color:rgba(240,239,240,0.85);line-height:1.6; }
-.section-break-body {
-  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
-  font-weight: 400; line-height: 1.65;
-  color: rgba(240,239,240,0.62);
-  max-width: 52ch;
-  position: relative; z-index: 1;
-  margin-top: 0.4rem;
-}
 
 /* Section breaks that carry an intro go two-column on wide screens:
    heading left, intro right. Below 1025px they stack (the base flex column).
-   :has() scopes this to breaks with a body — The Basics is unaffected. */
+   :has() scopes this to breaks with a right column — The Basics is unaffected. */
 @media (min-width: 1025px) {
-  .section-break:has(.section-break-body) {
+  .section-break:has(.section-break-right) {
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     column-gap: 4vw;
     align-items: start;
     align-content: center;
   }
-  .section-break:has(.section-break-body) .section-break-body {
-    /* both first lines carry near-identical box-to-cap offsets, so plain
-       start alignment already lands the cap heights level */
-    margin-top: 0;
-  }
 }
-/* Lime rule marking the right-hand intro column. The requested selector
-   .section-break-right matches nothing; the element is .section-break-body. */
-.section-break-body {
-  border-left: 2px solid rgba(184,212,0,0.4);
-  padding-left: 1.5rem;
-  position: relative; z-index: 1;
-}
-/* the intro reads as two paragraphs; spans keep it one grid child */
-.section-break-body span { display: block; }
-.section-break-body span + span { margin-top: 1.1em; }
+.section-break-right { position:relative;z-index:1;display:flex;flex-direction:column;gap:2px; }
+.section-break-numbers { background:rgba(30,44,58,0.5);border:1px solid rgba(240,239,240,0.06);padding:1.2rem 1.4rem;display:flex;flex-direction:column;gap:0.8rem; }
+.section-break-num-row { display:grid;grid-template-columns:3.5rem 1fr;align-items:baseline;gap:0.5rem; }
+.section-break-num-val { font-family:var(--font-display);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;letter-spacing:-0.03em;color:var(--lime);line-height:1; }
+.section-break-num-desc { font-size:0.78rem;font-weight:300;color:rgba(240,239,240,0.45);line-height:1.4; }
+.section-break-misconceptions { background:rgba(30,44,58,0.5);border:1px solid rgba(240,239,240,0.06);padding:1.2rem 1.4rem; }
+.section-break-misconceptions-label { font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(240,239,240,0.3);margin-bottom:0.7rem; }
+.section-break-misconception-item { display:flex;align-items:flex-start;gap:0.6rem;padding:0.35rem 0;border-bottom:1px solid rgba(240,239,240,0.05); }
+.section-break-misconception-item:last-child { border-bottom:none; }
+.section-break-misconception-x { font-size:0.65rem;font-weight:700;color:rgba(240,239,240,0.25);flex-shrink:0;margin-top:2px;letter-spacing:0.05em; }
+.section-break-misconception-text { font-size:0.82rem;font-weight:300;color:rgba(240,239,240,0.45);line-height:1.4;text-decoration:line-through;text-decoration-color:rgba(240,239,240,0.15); }
 </style>
 </head>
 <body>
@@ -844,7 +832,28 @@ html,body { height:auto; overflow-x:hidden; }
   <!-- SECTION BREAK -->
   <div class="section-break" id="psychology">
     <p class="section-break-label">Buyer Psychology. <span class="section-break-sub">Why buyers do what they do.</span></p>
-    <p class="section-break-body"><span>B2B buyers are not rational actors. They are people — under pressure, managing risk, protecting their careers.</span><span>Understanding the mental models that drive real decisions is what separates genuine urgency from adding more slides to the deck.</span></p>
+    <div class="section-break-right">
+      <div class="section-break-numbers">
+        <div class="section-break-num-row">
+          <span class="section-break-num-val">5</span>
+          <span class="section-break-num-desc">mental models behind every B2B buying decision</span>
+        </div>
+        <div class="section-break-num-row">
+          <span class="section-break-num-val">86%</span>
+          <span class="section-break-num-desc">of B2B purchases stall before a decision is reached</span>
+        </div>
+        <div class="section-break-num-row">
+          <span class="section-break-num-val">2×</span>
+          <span class="section-break-num-desc">losses feel twice as powerful as equivalent gains</span>
+        </div>
+      </div>
+      <div class="section-break-misconceptions">
+        <p class="section-break-misconceptions-label">What most people get wrong</p>
+        <div class="section-break-misconception-item"><span class="section-break-misconception-x">✕</span><span class="section-break-misconception-text">Buyers decide based on the best product</span></div>
+        <div class="section-break-misconception-item"><span class="section-break-misconception-x">✕</span><span class="section-break-misconception-text">A compelling pitch creates urgency</span></div>
+        <div class="section-break-misconception-item"><span class="section-break-misconception-x">✕</span><span class="section-break-misconception-text">More features reduce objections</span></div>
+      </div>
+    </div>
   </div>
 
   <!-- BUYER PSYCHOLOGY -->
@@ -993,7 +1002,28 @@ html,body { height:auto; overflow-x:hidden; }
   <!-- SECTION BREAK -->
   <div class="section-break" id="sales">
     <p class="section-break-label">Sales Process. <span class="section-break-sub">Most deals don't lose. They stall.</span></p>
-    <p class="section-break-body"><span>Most B2B sales processes fail at predictable moments — and almost always for the same reasons.</span><span>This track maps where deals move, where they stall, and what the people who close them consistently do differently.</span></p>
+    <div class="section-break-right">
+      <div class="section-break-numbers">
+        <div class="section-break-num-row">
+          <span class="section-break-num-val">5</span>
+          <span class="section-break-num-desc">stages where deals move — or die</span>
+        </div>
+        <div class="section-break-num-row">
+          <span class="section-break-num-val">48%</span>
+          <span class="section-break-num-desc">of salespeople never ask for the order</span>
+        </div>
+        <div class="section-break-num-row">
+          <span class="section-break-num-val">80%</span>
+          <span class="section-break-num-desc">of sales require 5+ follow-ups after first contact</span>
+        </div>
+      </div>
+      <div class="section-break-misconceptions">
+        <p class="section-break-misconceptions-label">What most people get wrong</p>
+        <div class="section-break-misconception-item"><span class="section-break-misconception-x">✕</span><span class="section-break-misconception-text">The best salesperson talks the most</span></div>
+        <div class="section-break-misconception-item"><span class="section-break-misconception-x">✕</span><span class="section-break-misconception-text">A good demo sells itself</span></div>
+        <div class="section-break-misconception-item"><span class="section-break-misconception-x">✕</span><span class="section-break-misconception-text">Losing means the competitor was cheaper</span></div>
+      </div>
+    </div>
   </div>
 
   <!-- SALES PROCESS -->
