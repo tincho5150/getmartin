@@ -536,11 +536,12 @@ html,body { height:auto; overflow-x:hidden; }
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     column-gap: 4vw;
-    align-items: end;
+    align-items: start;
   }
   .section-break:has(.section-break-body) .section-break-body {
+    /* both first lines carry near-identical box-to-cap offsets, so plain
+       start alignment already lands the cap heights level */
     margin-top: 0;
-    padding-bottom: 0.9rem;
   }
 }
 </style>
