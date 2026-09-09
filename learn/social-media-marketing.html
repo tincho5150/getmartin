@@ -175,66 +175,25 @@ html, body { height: auto; overflow-x: hidden; }
 .callout-text strong { color: #f0eff0; font-weight: 600; }
 
 /* ── REACH COMPARISON ── */
-.reach-wrap {
-  margin: 2rem 0;
-  border: 1px solid var(--white-faint);
-  background: #151f29;
-  padding: 1.6rem;
-}
-.reach-title {
-  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; color: rgba(240,239,240,0.3);
-  margin-bottom: 1.4rem;
-}
-.reach-cols {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1px; background: var(--white-faint);
-  margin-bottom: 1rem;
-}
-.reach-col {
-  background: #1a2739; padding: 1.2rem;
-  display: flex; flex-direction: column; gap: 0.8rem;
-}
-.reach-col-personal { background: rgba(184,212,0,0.04); }
-.reach-header { display: flex; align-items: center; gap: 10px; }
-.reach-avatar {
-  width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.65rem; font-weight: 700;
-}
-.reach-avatar-co { background: rgba(255,255,255,0.08); color: var(--white-dim); border: 1px solid rgba(255,255,255,0.1); }
-.reach-avatar-pers { background: rgba(184,212,0,0.2); color: var(--lime); border: 1px solid rgba(184,212,0,0.3); }
-.reach-name { font-size: 0.82rem; font-weight: 500; color: var(--white); line-height: 1.2; }
-.reach-handle { font-size: 0.7rem; font-weight: 400; color: rgba(240,239,240,0.72); }
-.reach-post {
-  font-size: 0.78rem; font-weight: 400; line-height: 1.6;
-  color: rgba(240,239,240,0.72); font-style: italic;
-  padding: 0.6rem; background: rgba(255,255,255,0.03);
-  border-left: 2px solid rgba(255,255,255,0.08);
-}
-.reach-col-personal .reach-post { border-left-color: rgba(184,212,0,0.3); }
-.reach-bar-wrap {
-  height: 6px; background: rgba(255,255,255,0.06); overflow: hidden;
-}
-.reach-bar {
-  height: 100%; width: 0%;
-  transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
-}
-.reach-bar-co { background: rgba(255,255,255,0.2); }
+.reach-wrap { margin: 2rem 0; border: 1px solid var(--white-faint); background: #151f29; padding: 1.6rem; }
+.reach-title { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(240,239,240,0.45); margin-bottom: 1.3rem; }
+.reach-rows { display: flex; flex-direction: column; gap: 2px; }
+.reach-row { display: grid; grid-template-columns: minmax(0,0.9fr) minmax(0,1.5fr) auto; align-items: center; gap: 1.2rem; padding: 1rem 1.1rem; background: #1a2739; }
+.reach-row-personal { background: rgba(184,212,0,0.07); }
+.reach-who { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.reach-kind { font-size: 0.86rem; font-weight: 600; color: var(--white); line-height: 1.3; }
+.reach-note { font-size: 0.7rem; font-weight: 400; color: rgba(240,239,240,0.45); }
+.reach-bar-wrap { height: 10px; background: rgba(255,255,255,0.06); overflow: hidden; }
+.reach-bar { height: 100%; width: 0%; transition: width 1.4s cubic-bezier(0.4,0,0.2,1); }
+.reach-bar-co { background: rgba(255,255,255,0.22); }
 .reach-bar-pers { background: var(--lime); }
-.reach-metrics { display: flex; align-items: center; justify-content: space-between; }
-.reach-metric { font-size: 0.85rem; font-weight: 500; color: var(--white-dim); }
-.reach-metric-high { color: var(--lime); }
-.reach-metric-low { color: rgba(240,239,240,0.4); }
-.reach-tag {
-  font-size: 0.62rem; font-weight: 400; letter-spacing: 0.06em;
-  text-transform: uppercase; color: rgba(240,239,240,0.25);
-}
-.reach-tag-high { color: rgba(184,212,0,0.6); }
-.reach-source {
-  font-size: 0.68rem; font-weight: 300; color: rgba(240,239,240,0.2);
-  line-height: 1.5;
-}
+.reach-val { white-space: nowrap; text-align: right; }
+.reach-num { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; color: rgba(240,239,240,0.55); }
+.reach-num-high { color: var(--lime); }
+.reach-unit { font-size: 0.7rem; font-weight: 400; color: rgba(240,239,240,0.4); }
+.reach-callout { font-size: 0.92rem; font-weight: 400; line-height: 1.6; color: rgba(240,239,240,0.72); margin-top: 1.1rem; }
+.reach-callout strong { color: var(--lime); font-weight: 600; }
+.reach-source { font-size: 0.68rem; font-weight: 400; color: rgba(240,239,240,0.42); line-height: 1.5; margin-top: 0.5rem; }
 
 .nav-next {
   display: flex; flex-direction: column; gap: 0.4rem;
@@ -385,44 +344,27 @@ html, body { height: auto; overflow-x: hidden; }
 
       <!-- REACH COMPARISON VISUAL -->
       <div class="reach-wrap">
-        <p class="reach-title">The same post — two different accounts</p>
-        <div class="reach-cols">
-          <div class="reach-col">
-            <div class="reach-header">
-              <div class="reach-avatar reach-avatar-co">Co</div>
-              <div>
-                <p class="reach-name">Company Page</p>
-                <p class="reach-handle">@YourCompany · 2,400 followers</p>
-              </div>
+        <p class="reach-title">Identical content, two accounts</p>
+        <div class="reach-rows">
+          <div class="reach-row">
+            <div class="reach-who">
+              <span class="reach-kind">Company page</span>
+              <span class="reach-note">2,400 followers</span>
             </div>
-            <div class="reach-post">"We're excited to share our latest thinking on supply chain optimisation..."</div>
-            <div class="reach-bar-wrap">
-              <div class="reach-bar reach-bar-co" id="barCo"></div>
-            </div>
-            <div class="reach-metrics">
-              <span class="reach-metric reach-metric-low" id="metCo">~120 impressions</span>
-              <span class="reach-tag">Limited organic reach</span>
-            </div>
+            <div class="reach-bar-wrap"><div class="reach-bar reach-bar-co" id="barCo"></div></div>
+            <div class="reach-val"><span class="reach-num">1,200</span> <span class="reach-unit">impressions</span></div>
           </div>
-          <div class="reach-col reach-col-personal">
-            <div class="reach-header">
-              <div class="reach-avatar reach-avatar-pers">MC</div>
-              <div>
-                <p class="reach-name">Martin Casalini</p>
-                <p class="reach-handle">Founder · 2,400 connections</p>
-              </div>
+          <div class="reach-row reach-row-personal">
+            <div class="reach-who">
+              <span class="reach-kind">Someone who works there</span>
+              <span class="reach-note">2,400 connections</span>
             </div>
-            <div class="reach-post">"We're excited to share our latest thinking on supply chain optimisation..."</div>
-            <div class="reach-bar-wrap">
-              <div class="reach-bar reach-bar-pers" id="barPers"></div>
-            </div>
-            <div class="reach-metrics">
-              <span class="reach-metric reach-metric-high" id="metPers">~3,300 impressions</span>
-              <span class="reach-tag reach-tag-high">2.75× more impressions</span>
-            </div>
+            <div class="reach-bar-wrap"><div class="reach-bar reach-bar-pers" id="barPers"></div></div>
+            <div class="reach-val"><span class="reach-num reach-num-high">3,300</span> <span class="reach-unit">impressions</span></div>
           </div>
         </div>
-        <p class="reach-source">Based on Refine Labs research: personal profiles deliver 2.75× more impressions and 5× more engagement than company pages for identical content.</p>
+        <p class="reach-callout"><strong>2.75× the reach</strong> and five times the engagement, for the same words.</p>
+        <p class="reach-source">Refine Labs: personal profiles deliver 2.75× more impressions and 5× more engagement than company pages for identical content.</p>
       </div>
     </div>
 
@@ -479,9 +421,9 @@ const reachObs = new IntersectionObserver((entries) => {
     if (entry.isIntersecting && !reachTriggered) {
       reachTriggered = true;
       setTimeout(() => {
-        document.getElementById('barCo').style.width = '10%';
+        document.getElementById('barCo').style.width = '33.5%';
         setTimeout(() => {
-          document.getElementById('barPers').style.width = '90%';
+          document.getElementById('barPers').style.width = '92%';
         }, 300);
       }, 200);
     }

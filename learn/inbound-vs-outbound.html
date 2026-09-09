@@ -175,68 +175,27 @@ html, body { height: auto; overflow-x: hidden; }
 .callout-text strong { color: #f0eff0; font-weight: 600; }
 
 /* ── COMPARISON GRID ── */
-.compare-wrap {
-  margin: 3rem 0;
-  border: 1px solid var(--white-faint);
-  overflow: hidden;
-}
-.compare-header {
-  display: grid; grid-template-columns: 1fr 1fr;
-  border-bottom: 1px solid var(--white-faint);
-}
-.compare-header-col {
-  padding: 1.2rem 1.6rem;
-  display: flex; align-items: center; gap: 10px;
-}
-.compare-header-col:first-child {
-  border-right: 1px solid var(--white-faint);
-  background: rgba(184,212,0,0.05);
-}
-.compare-header-col:last-child {
-  background: rgba(255,255,255,0.02);
-}
-.compare-header-label {
-  font-family: var(--font-display);
-  font-size: 1rem; font-weight: 700; letter-spacing: -0.01em;
-  color: var(--white);
-}
-.compare-header-sub {
-  font-size: 0.7rem; font-weight: 400; color: rgba(240,239,240,0.72);
-  letter-spacing: 0.04em;
-}
-.compare-dot {
-  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
-}
-.compare-dot-in { background: #b8d400; }
-.compare-dot-out { background: rgba(255,255,255,0.4); }
-
-.compare-row {
-  display: grid; grid-template-columns: 1fr 1fr;
-  border-bottom: 1px solid rgba(240,239,240,0.04);
-  opacity: 0; transform: translateY(8px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-.compare-row.visible { opacity: 1; transform: translateY(0); }
+.compare-wrap { margin: 3rem 0; border: 1px solid var(--white-faint); }
+.compare-row { display: grid; grid-template-columns: minmax(0,0.62fr) minmax(0,1fr) minmax(0,1fr); border-bottom: 1px solid rgba(240,239,240,0.06); }
 .compare-row:last-child { border-bottom: none; }
-
-.compare-cell {
-  padding: 1rem 1.6rem;
-  font-size: 0.88rem; font-weight: 400; line-height: 1.6;
-  color: rgba(240,239,240,0.72);
-}
-.compare-cell:first-child {
-  border-right: 1px solid rgba(240,239,240,0.04);
-  background: rgba(184,212,0,0.02);
-}
-.compare-cell strong { color: var(--white); font-weight: 400; }
-
-.compare-attr {
-  grid-column: 1 / -1;
-  padding: 0.55rem 1.6rem;
-  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; color: rgba(184,212,0,0.45);
-  background: rgba(184,212,0,0.03);
-  border-bottom: 1px solid rgba(240,239,240,0.04);
+.js .compare-row:not(.compare-head) { opacity: 0; transform: translateY(8px); transition: opacity 0.4s ease, transform 0.4s ease; }
+.js .compare-row.visible { opacity: 1; transform: translateY(0); }
+.compare-head { border-bottom: 1px solid var(--white-faint); }
+.compare-headcell { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 8px; padding-top: 1.1rem; padding-bottom: 1.1rem; }
+.compare-header-label { font-family: var(--font-display); font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; color: var(--white); }
+.compare-header-sub { font-size: 0.72rem; font-weight: 400; color: rgba(240,239,240,0.5); }
+.compare-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; align-self: center; }
+.compare-dot-in { background: var(--lime); }
+.compare-dot-out { background: rgba(255,255,255,0.4); }
+.compare-attr { padding: 1rem 1.2rem; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,239,240,0.42); border-right: 1px solid rgba(240,239,240,0.06); display: flex; align-items: center; }
+.compare-attr-head { border-right-color: var(--white-faint); }
+.compare-cell { padding: 1rem 1.3rem; font-size: 0.88rem; font-weight: 400; line-height: 1.6; color: rgba(240,239,240,0.72); }
+.compare-cell-in { background: rgba(184,212,0,0.05); border-right: 1px solid rgba(240,239,240,0.06); }
+.compare-cell strong { color: var(--white); font-weight: 600; }
+@media (max-width: 700px) {
+  .compare-row { grid-template-columns: 1fr; }
+  .compare-attr { border-right: none; border-bottom: 1px solid rgba(240,239,240,0.06); }
+  .compare-cell-in { border-right: none; }
 }
 
 /* ── TIMELINE ANIMATION ── */
@@ -397,57 +356,48 @@ html, body { height: auto; overflow-x: hidden; }
 
     <!-- COMPARISON GRID -->
     <div class="compare-wrap" id="compareWrap">
-      <div class="compare-header">
-        <div class="compare-header-col">
-          <div class="compare-dot compare-dot-in"></div>
-          <div>
-            <p class="compare-header-label">Inbound</p>
-            <p class="compare-header-sub">They come to you</p>
-          </div>
+      <div class="compare-row compare-head">
+        <div class="compare-attr compare-attr-head">&nbsp;</div>
+        <div class="compare-cell compare-cell-in compare-headcell">
+          <span class="compare-dot compare-dot-in"></span>
+          <span class="compare-header-label">Inbound</span>
+          <span class="compare-header-sub">They come to you</span>
         </div>
-        <div class="compare-header-col">
-          <div class="compare-dot compare-dot-out"></div>
-          <div>
-            <p class="compare-header-label">Outbound</p>
-            <p class="compare-header-sub">You go to them</p>
-          </div>
+        <div class="compare-cell compare-cell-out compare-headcell">
+          <span class="compare-dot compare-dot-out"></span>
+          <span class="compare-header-label">Outbound</span>
+          <span class="compare-header-sub">You go to them</span>
         </div>
       </div>
-
-      <div class="compare-attr">Lead source</div>
       <div class="compare-row">
-        <div class="compare-cell">Buyer finds you through search, content, or referral. <strong>Intent already established.</strong></div>
-        <div class="compare-cell">You find the buyer through research and outreach. <strong>Intent unknown at first contact.</strong></div>
+        <div class="compare-attr">Lead source</div>
+        <div class="compare-cell compare-cell-in">Buyer finds you through search, content, or referral. <strong>Intent already established.</strong></div>
+        <div class="compare-cell compare-cell-out">You find the buyer through research and outreach. <strong>Intent unknown at first contact.</strong></div>
       </div>
-
-      <div class="compare-attr">Time to results</div>
       <div class="compare-row">
-        <div class="compare-cell"><strong>Slow to start</strong>: months before meaningful volume. Compounding over 12–24 months.</div>
-        <div class="compare-cell"><strong>Fast to start</strong>: results within days or weeks. Flat over time without constant effort.</div>
+        <div class="compare-attr">Time to results</div>
+        <div class="compare-cell compare-cell-in"><strong>Slow to start</strong>: months before meaningful volume. Compounding over 12–24 months.</div>
+        <div class="compare-cell compare-cell-out"><strong>Fast to start</strong>: results within days or weeks. Flat over time without constant effort.</div>
       </div>
-
-      <div class="compare-attr">Cost structure</div>
       <div class="compare-row">
-        <div class="compare-cell">High upfront investment. <strong>Cost per lead drops significantly over time</strong>, by up to 80% after 5 months.</div>
-        <div class="compare-cell">Ongoing cost per contact. <strong>Cost per lead stays relatively constant</strong>, or rises as lists saturate.</div>
+        <div class="compare-attr">Cost structure</div>
+        <div class="compare-cell compare-cell-in">High upfront investment. <strong>Cost per lead drops significantly over time</strong>, by up to 80% after 5 months.</div>
+        <div class="compare-cell compare-cell-out">Ongoing cost per contact. <strong>Cost per lead stays relatively constant</strong>, or rises as lists saturate.</div>
       </div>
-
-      <div class="compare-attr">Lead quality</div>
       <div class="compare-row">
-        <div class="compare-cell">Higher intent, higher trust. <strong>59% of sales teams prefer inbound leads</strong>, they close faster and at higher rates.</div>
-        <div class="compare-cell">Variable intent. Requires qualification. <strong>Effective at opening new relationships</strong> that inbound never reaches.</div>
+        <div class="compare-attr">Lead quality</div>
+        <div class="compare-cell compare-cell-in">Higher intent, higher trust. <strong>59% of sales teams prefer inbound leads</strong>, they close faster and at higher rates.</div>
+        <div class="compare-cell compare-cell-out">Variable intent. Requires qualification. <strong>Effective at opening new relationships</strong> that inbound never reaches.</div>
       </div>
-
-      <div class="compare-attr">Best used for</div>
       <div class="compare-row">
-        <div class="compare-cell">Building long-term pipeline. <strong>Owning a category or question</strong> in your buyer's mind over time.</div>
-        <div class="compare-cell">Opening new markets. <strong>Hitting near-term pipeline targets.</strong> Targeting specific accounts directly.</div>
+        <div class="compare-attr">Best used for</div>
+        <div class="compare-cell compare-cell-in">Building long-term pipeline. <strong>Owning a category or question</strong> in your buyer's mind over time.</div>
+        <div class="compare-cell compare-cell-out">Opening new markets. <strong>Hitting near-term pipeline targets.</strong> Targeting specific accounts directly.</div>
       </div>
-
-      <div class="compare-attr">Channels</div>
       <div class="compare-row">
-        <div class="compare-cell">SEO, content, social, thought leadership, events, referrals, PR</div>
-        <div class="compare-cell">Cold email, cold calling, LinkedIn outreach, paid ads, direct mail</div>
+        <div class="compare-attr">Channels</div>
+        <div class="compare-cell compare-cell-in">SEO, content, social, thought leadership, events, referrals, PR</div>
+        <div class="compare-cell compare-cell-out">Cold email, cold calling, LinkedIn outreach, paid ads, direct mail</div>
       </div>
 
     </div>
@@ -565,7 +515,8 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // Animate comparison rows on scroll
-const rows = document.querySelectorAll('.compare-row');
+document.documentElement.classList.add('js');
+const rows = document.querySelectorAll('.compare-row:not(.compare-head)');
 const rowObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
