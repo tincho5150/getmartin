@@ -231,6 +231,23 @@ html, body { height: auto; overflow-x: hidden; }
   .stat-block { grid-template-columns: 1fr; }
 }
 
+
+/* The chart sits ~2700px down the page; on-load animation finished long before
+   anyone scrolled to it. Gate it on .in-view instead. */
+.js .compound-wrap [style*="animation"] { animation-play-state: paused !important; }
+.js .compound-wrap.in-view [style*="animation"] { animation-play-state: running !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    animation-play-state: running !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -353,7 +370,7 @@ html, body { height: auto; overflow-x: hidden; }
         <!-- content compounding curve -->
         <path class="cm-line-content" d="M50,170 C80,168 120,162 160,150 C200,138 240,120 280,100 C320,80 360,58 400,42 C440,28 500,22 580,18" fill="none" stroke="#b8d400" stroke-width="2" stroke-linecap="round" stroke-dasharray="800" stroke-dashoffset="800" style="animation: drawPath 2.2s ease 1s forwards"/>
         <!-- annotation -->
-        <text x="420" y="36" font-family="Roboto,sans-serif" font-size="8.5" fill="#b8d400" opacity="0" style="animation: fadeInArea 0.6s ease 2.8s forwards">Keeps compounding</text>
+        <text x="452" y="50" font-family="Roboto,sans-serif" font-size="8.5" fill="#b8d400" opacity="0" style="animation: fadeInArea 0.6s ease 2.8s forwards">Keeps compounding</text>
         <text x="420" y="162" font-family="Roboto,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.3)" opacity="0" style="animation: fadeInArea 0.6s ease 2.8s forwards">Traffic drops</text>
       </svg>
     </div>
@@ -433,6 +450,24 @@ window.addEventListener('scroll', () => {
   const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
   if (progress) progress.style.width = pct + '%';
 }, { passive: true });
+
+// Only gate the chart on scroll if this script runs at all — without it the
+// .js hook is absent and the animations play on load, as they used to.
+document.documentElement.classList.add('js');
+
+// Start the compound chart when it scrolls into view
+const compoundWrap = document.querySelector('.compound-wrap');
+if (compoundWrap) {
+  const compoundObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        compoundWrap.classList.add('in-view');
+        compoundObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.35 });
+  compoundObserver.observe(compoundWrap);
+}
 </script>
 
 </body>
