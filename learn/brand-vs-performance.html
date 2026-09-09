@@ -12,8 +12,6 @@
 <style>
 
 :root {
-  --font-display: 'Roboto', sans-serif;
-  --font-body:    'Roboto', sans-serif;
   --max-w: 820px;
 }
 
@@ -210,7 +208,7 @@ html, body { height: auto; overflow-x: hidden; }
 
 /* Axes labels */
 .axis-label {
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-display);
   font-size: 10px; font-weight: 300;
   fill: rgba(240,239,240,0.25);
   letter-spacing: 0.04em;
@@ -293,7 +291,7 @@ html, body { height: auto; overflow-x: hidden; }
 .split-brand {
   background: #b8d400;
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.85rem; font-weight: 700;
   color: #1e2c3a; letter-spacing: 0.04em;
   width: 0%;
@@ -303,7 +301,7 @@ html, body { height: auto; overflow-x: hidden; }
 .split-perf {
   flex: 1;
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.85rem; font-weight: 400;
   color: rgba(240,239,240,0.6); letter-spacing: 0.04em;
   white-space: nowrap;
