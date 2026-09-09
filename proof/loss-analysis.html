@@ -225,6 +225,12 @@ html, body { height: auto; overflow-x: hidden; }
   .article { padding: 3rem 1.2rem 5rem; }
 }
 
+
+.proof-next { flex-basis: 100%; width: 100%; margin-top: 2.2rem; padding-top: 1.5rem;
+  border-top: 1px solid var(--white-faint); }
+.proof-next-label { display:block; font-size:0.7rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:rgba(240,239,240,0.4); margin-bottom:0.5rem; }
+.proof-next-link { font-family:var(--font-display); font-size:1.05rem; font-weight:700; letter-spacing:-0.01em; color:var(--white); text-decoration:none; transition:color var(--dur-base); }
+.proof-next-link:hover { color: var(--lime); }
 </style>
 </head>
 <body>
@@ -251,7 +257,7 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="article-intro">
         ProvisionAI's buyers were convinced their supply chains were fine. No pain, no urgency, no reason to change.
         <strong>The product was excellent. The prospect couldn't feel why they needed it.</strong>
-        So we built a tool that made them feel it — before a single sales call.
+        So we built a tool that made them feel it, before a single sales call.
       </p>
       <div class="tags">
         <span class="tag">Self-diagnostic</span>
@@ -269,7 +275,7 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="section-label">The problem</p>
       <h2 class="section-headline">Buyers don't resist buying.<br><span class="dim">They resist feeling the problem.</span></h2>
       <p class="section-body">
-        ProvisionAI's prospects were running supply chains at 87% payload utilisation and calling it fine. At their scale — hundreds of loads daily across a global network — that 13% gap compounded into extra trucks, extra miles, extra emissions, and extra cost every single day.
+        ProvisionAI's prospects were running supply chains at 87% payload utilisation and calling it fine. At their scale (hundreds of loads daily across a global network) that 13% gap compounded into extra trucks, extra miles, extra emissions, and extra cost every single day.
       </p>
       <p class="section-body">
         <strong>But they couldn't feel it. No benchmark. No reference point. No urgency.</strong> Every discovery call started with the rep trying to convince the prospect they had a problem that the prospect was certain they didn't have.
@@ -287,7 +293,7 @@ html, body { height: auto; overflow-x: hidden; }
           </div>
           <div class="s-url">provision-loss-analysis.vercel.app</div>
         </div>
-        <img src="/assets/loss-intro.png" alt="Supply Chain Loss Analysis — intro screen">
+        <img src="/assets/loss-intro.png" alt="Supply Chain Loss Analysis: intro screen">
       </div>
       <p class="screenshot-caption">The entry point — four modules, one picture. Score yourself to get your action plan.</p>
     </div>
@@ -304,10 +310,10 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="section-label">How it works — the diagnostic</p>
       <h2 class="section-headline">Score yourself.<br><span class="dim">The lowest score becomes priority #1.</span></h2>
       <p class="section-body">
-        Four modules — load optimisation, network flow, OTIF performance, system synchronisation. Each one covers a domain where supply chains lose money invisibly. The prospect rates themselves 1, 2, or 3 on each statement.
+        Four modules: load optimisation, network flow, OTIF performance, system synchronisation. Each one covers a domain where supply chains lose money invisibly. The prospect rates themselves 1, 2, or 3 on each statement.
       </p>
       <p class="section-body">
-        <strong>The tool shows the standard first — what good looks like. Then the prospect assesses their own gap against it.</strong> No benchmarks shown until they've scored themselves. They define the problem. The tool just holds the mirror.
+        <strong>The tool shows the standard first: what good looks like. Then the prospect assesses their own gap against it.</strong> No benchmarks shown until they've scored themselves. They define the problem. The tool just holds the mirror.
       </p>
     </div>
 
@@ -322,7 +328,7 @@ html, body { height: auto; overflow-x: hidden; }
           </div>
           <div class="s-url">provision-loss-analysis.vercel.app</div>
         </div>
-        <img src="/assets/loss-analysis.png" alt="Diagnostic complete — 67% gap vs best practice standard">
+        <img src="/assets/loss-analysis.png" alt="Diagnostic complete: 67% gap vs best practice standard">
       </div>
       <p class="screenshot-caption">Diagnostic complete — 67% vs the 100% standard. Significant gap, high leverage.</p>
     </div>
@@ -334,7 +340,7 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="section-label">The output — personalised roadmap</p>
       <h2 class="section-headline">Their roadmap,<br><span class="dim">built from their own scores.</span></h2>
       <p class="section-body">
-        Once all four modules are complete, the tool ranks the gaps. The lowest score becomes priority #1 automatically. The prospect sees a five-step fix for their most critical gap — generated from the answers they just gave, not from a generic playbook.
+        Once all four modules are complete, the tool ranks the gaps. The lowest score becomes priority #1 automatically. The prospect sees a five-step fix for their most critical gap, generated from the answers they just gave, not from a generic playbook.
       </p>
       <p class="section-body">
         <strong>A generic recommendation is easy to dismiss. A recommendation that traces directly back to their own scores is much harder to argue with.</strong> They built the brief. The tool built the plan.
@@ -352,7 +358,7 @@ html, body { height: auto; overflow-x: hidden; }
           </div>
           <div class="s-url">provision-loss-analysis.vercel.app</div>
         </div>
-        <img src="/assets/loss-roadmap.png" alt="Prioritised action plan — fix load fill first">
+        <img src="/assets/loss-roadmap.png" alt="Prioritised action plan: fix load fill first">
       </div>
       <p class="screenshot-caption">The prioritised action plan — lowest score becomes #1 priority automatically</p>
     </div>
@@ -364,10 +370,10 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="section-label">Module 3 — OTIF performance</p>
       <h2 class="section-headline">Eight levers.<br><span class="dim">Most teams pull two.</span></h2>
       <p class="section-body">
-        OTIF failures start upstream in planning — not on the dock or the road. The tool shows all eight levers that control on-time delivery. Most operations are using two or three. <strong>The other five are active sources of failure hiding in plain sight.</strong>
+        OTIF failures start upstream in planning, not on the dock or the road. The tool shows all eight levers that control on-time delivery. Most operations are using two or three. <strong>The other five are active sources of failure hiding in plain sight.</strong>
       </p>
       <p class="section-body">
-        An AI assistant — Ask Provision — is embedded directly in the tool. The prospect can ask in plain language: "what is OTIF?" or "where do I start?" and get a direct answer without leaving the diagnostic. <strong>The tool answers questions the rep would normally field on the discovery call.</strong>
+        An AI assistant, Ask Provision, is embedded directly in the tool. The prospect can ask in plain language: "what is OTIF?" or "where do I start?" and get a direct answer without leaving the diagnostic. <strong>The tool answers questions the rep would normally field on the discovery call.</strong>
       </p>
     </div>
 
@@ -382,7 +388,7 @@ html, body { height: auto; overflow-x: hidden; }
           </div>
           <div class="s-url">provision-loss-analysis.vercel.app</div>
         </div>
-        <img src="/assets/loss-otif.png" alt="OTIF performance — 8 levers with Ask Provision AI assistant">
+        <img src="/assets/loss-otif.png" alt="OTIF performance: 8 levers with Ask Provision AI assistant">
       </div>
       <p class="screenshot-caption">OTIF performance module — 8 levers, with the Ask Provision AI assistant open</p>
     </div>
@@ -394,7 +400,7 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="section-label">The depth — the playbook</p>
       <h2 class="section-headline">Not just the gap.<br><span class="dim">The five-step fix.</span></h2>
       <p class="section-body">
-        Each module has three tabs — the standard, the self-assessment, and the playbook. The playbook isn't generic advice. It's a sequenced five-step fix for the specific gap the prospect just identified. <strong>Item master accuracy. Maths-based load building. Dock-level loading diagrams. Each step closes a defined percentage of the gap.</strong>
+        Each module has three tabs: the standard, the self-assessment, and the playbook. The playbook isn't generic advice. It's a sequenced five-step fix for the specific gap the prospect just identified. <strong>Item master accuracy. Maths-based load building. Dock-level loading diagrams. Each step closes a defined percentage of the gap.</strong>
       </p>
     </div>
 
@@ -409,7 +415,7 @@ html, body { height: auto; overflow-x: hidden; }
           </div>
           <div class="s-url">provision-loss-analysis.vercel.app</div>
         </div>
-        <img src="/assets/loss-playbook.png" alt="The playbook — step by step fixes for each gap">
+        <img src="/assets/loss-playbook.png" alt="The playbook: step by step fixes for each gap">
       </div>
       <p class="screenshot-caption">The playbook — dock-level loading diagrams, maths-based load building, dynamic substitution</p>
     </div>
@@ -436,7 +442,7 @@ html, body { height: auto; overflow-x: hidden; }
 
     <div class="insight">
       <p class="insight-label">What it changes in the room</p>
-      <p class="insight-text">The discovery call becomes a confirmation call. <strong>The prospect arrives with a gap score, a ranked priority list, and a five-step fix. The rep's job is to show how the product executes the playbook — not to convince the prospect they have a problem.</strong></p>
+      <p class="insight-text">The discovery call becomes a confirmation call. <strong>The prospect arrives with a gap score, a ranked priority list, and a five-step fix. The rep's job is to show how the product executes the playbook, not to convince the prospect they have a problem.</strong></p>
     </div>
 
     <hr class="divider">
@@ -449,10 +455,10 @@ html, body { height: auto; overflow-x: hidden; }
         The diagnostic wasn't built to sit on a website waiting to be discovered. It was built as the centrepiece of a pre-call campaign around a single idea: <strong>your supply chain has a hidden cost you don't know about yet.</strong>
       </p>
       <p class="section-body">
-        Cold outreach links directly to the tool — not to a landing page, not to a calendar. The prospect scores themselves before any human contact. Their gap score arrives in the rep's inbox before the first call is booked. The roadmap becomes the demo agenda.
+        Cold outreach links directly to the tool, not to a landing page, not to a calendar. The prospect scores themselves before any human contact. Their gap score arrives in the rep's inbox before the first call is booked. The roadmap becomes the demo agenda.
       </p>
       <p class="section-body">
-        <strong>The hidden cost isn't invented by the rep. It's calculated by the prospect, in their own words, from their own operation.</strong> By the time the conversation starts, the rep isn't selling — they're confirming what the prospect already found.
+        <strong>The hidden cost isn't invented by the rep. It's calculated by the prospect, in their own words, from their own operation.</strong> By the time the conversation starts, the rep isn't selling. They're confirming what the prospect already found.
       </p>
     </div>
 
@@ -461,11 +467,12 @@ html, body { height: auto; overflow-x: hidden; }
       <h2 class="cta-headline">See it for yourself.</h2>
       <p class="cta-body">
         The diagnostic is live. Four modules, about eight minutes.
-        <strong>Score yourself honestly — the roadmap is worth it.</strong>
+        <strong>Score yourself honestly. The roadmap is worth it.</strong>
       </p>
       <div class="cta-links">
         <a class="cta-primary" href="https://provision-loss-analysis.vercel.app/" target="_blank">See it live →</a>
         <a class="cta-secondary" href="/proof">← Back to Proof</a>
+      <p class="proof-next"><span class="proof-next-label">Next in this engagement</span><a class="proof-next-link" href="/proof/truck-loader">Load Optimisation Visualiser: the sales tool →</a></p>
       </div>
     </div>
 

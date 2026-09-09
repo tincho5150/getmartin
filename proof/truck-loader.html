@@ -265,6 +265,12 @@ html, body { height: auto; overflow-x: hidden; }
   .article { padding: 3rem 1.2rem 5rem; }
 }
 
+
+.proof-next { flex-basis: 100%; width: 100%; margin-top: 2.2rem; padding-top: 1.5rem;
+  border-top: 1px solid var(--white-faint); }
+.proof-next-label { display:block; font-size:0.7rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:rgba(240,239,240,0.4); margin-bottom:0.5rem; }
+.proof-next-link { font-family:var(--font-display); font-size:1.05rem; font-weight:700; letter-spacing:-0.01em; color:var(--white); text-decoration:none; transition:color var(--dur-base); }
+.proof-next-link:hover { color: var(--lime); }
 </style>
 </head>
 <body>
@@ -290,9 +296,9 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="article-eyebrow">Supply chain · Interactive explainer</p>
       <h1 class="article-headline">Show them the math<br><span class="dim">everyone else avoids.</span></h1>
       <p class="article-intro">
-        Load optimisation software is invisible by definition — it works inside systems buyers can't see.
+        Load optimisation software is invisible by definition. It works inside systems buyers can't see.
         <strong>The value was real but abstract. Prospects couldn't connect the software to the savings.</strong>
-        So we made the math visible — in real time, in 3D, on their actual load scenarios.
+        So we made the math visible: in real time, in 3D, on their actual load scenarios.
       </p>
       <div class="tags">
         <span class="tag">3D visualiser</span>
@@ -310,7 +316,7 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="section-label">The problem</p>
       <h2 class="section-headline">You can't sell invisible software<br><span class="dim">with a slide deck.</span></h2>
       <p class="section-body">
-        ProvisionAI's load optimisation software worked inside systems buyers couldn't see. The value was real — 5–10% more product per truck, zero overweight violations, repeatable across every shift — but abstract. Prospects couldn't connect the software to the savings.
+        ProvisionAI's load optimisation software worked inside systems buyers couldn't see. The value was real (5–10% more product per truck, zero overweight violations, repeatable across every shift) but abstract. Prospects couldn't connect the software to the savings.
       </p>
       <p class="section-body">
         <strong>Every demo started with twenty minutes of explaining what the product did before anyone could talk about why it mattered.</strong> The gap between what the software did and what the prospect could feel was killing deals before they started.
@@ -328,14 +334,14 @@ html, body { height: auto; overflow-x: hidden; }
           </div>
           <div class="s-url">provision-onboarding.vercel.app</div>
         </div>
-        <img src="/assets/truck-problem.png" alt="The problem — 87% industry average vs 97% with ProvisionAI">
+        <img src="/assets/truck-problem.png" alt="The problem: 87% industry average vs 97% with ProvisionAI">
       </div>
       <p class="screenshot-caption">The problem screen — industry baseline vs. ProvisionAI, shown before the product</p>
     </div>
 
     <div class="insight">
       <p class="insight-label">The design decision</p>
-      <p class="insight-text">The experience starts by showing the gap — not the product. <strong>The prospect sees what they're losing before they see what fixes it.</strong> By the time the 3D visualiser loads, they already want to know the answer.</p>
+      <p class="insight-text">The experience starts by showing the gap, not the product. <strong>The prospect sees what they're losing before they see what fixes it.</strong> By the time the 3D visualiser loads, they already want to know the answer.</p>
     </div>
 
     <hr class="divider">
@@ -345,10 +351,10 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="section-label">Section 02 — Load optimisation</p>
       <h2 class="section-headline">Watch the algorithm<br><span class="dim">pack their truck.</span></h2>
       <p class="section-body">
-        Three real load scenarios — beverage max fill, CPG mixed load, food and beverage mixed. The buyer selects their scenario and watches the optimiser run in real time. <strong>96% capacity used. 77k lbs. LEGAL — axle-compliant across all 50 states.</strong>
+        Three real load scenarios: beverage max fill, CPG mixed load, food and beverage mixed. The buyer selects their scenario and watches the optimiser run in real time. <strong>96% capacity used. 77k lbs. LEGAL, axle-compliant across all 50 states.</strong>
       </p>
       <p class="section-body">
-        A bar chart says 96%. The 3D model shows 96%. There is no ambiguity about what the number means when you can see the truck. The abstract becomes concrete — and the question shifts from "does this work?" to "when can we start?"
+        A bar chart says 96%. The 3D model shows 96%. There is no ambiguity about what the number means when you can see the truck. The abstract becomes concrete, and the question shifts from "does this work?" to "when can we start?"
       </p>
     </div>
 
@@ -363,7 +369,7 @@ html, body { height: auto; overflow-x: hidden; }
           </div>
           <div class="s-url">provision-onboarding.vercel.app</div>
         </div>
-        <img src="/assets/truck-loader.png" alt="3D truck loading visualiser — CPG mixed load, 96% capacity">
+        <img src="/assets/truck-loader.png" alt="3D truck loading visualiser: CPG mixed load, 96% capacity">
       </div>
       <p class="screenshot-caption">CPG mixed load — 130 pallets, 5 trucks, 95% avg capacity. Drag to orbit, scroll to zoom.</p>
     </div>
@@ -375,10 +381,10 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="section-label">Section 03 — Network flow</p>
       <h2 class="section-headline">Before and after,<br><span class="dim">side by side.</span></h2>
       <p class="section-body">
-        Three scenarios: normal week, promotion spike, carrier shortage. The left panel shows what their flow looks like today — chaotic bars spiking above dock capacity. <strong>The right panel shows the LevelLoad plan — the same volume, smoothed and executable.</strong>
+        Three scenarios: normal week, promotion spike, carrier shortage. The left panel shows what their flow looks like today: chaotic bars spiking above dock capacity. <strong>The right panel shows the LevelLoad plan: the same volume, smoothed and executable.</strong>
       </p>
       <p class="section-body">
-        97% OTIF. −6.4% cost impact. 98% first tender acceptance. −62% volatility reduction. These aren't projections — <strong>they're what the model produces from the scenario the buyer just selected.</strong> Their network. Their numbers.
+        97% OTIF. −6.4% cost impact. 98% first tender acceptance. −62% volatility reduction. These aren't projections. <strong>They're what the model produces from the scenario the buyer just selected.</strong> Their network. Their numbers.
       </p>
     </div>
 
@@ -393,7 +399,7 @@ html, body { height: auto; overflow-x: hidden; }
           </div>
           <div class="s-url">provision-onboarding.vercel.app</div>
         </div>
-        <img src="/assets/truck-network.png" alt="Network flow simulator — promotion spike, before and after">
+        <img src="/assets/truck-network.png" alt="Network flow simulator: promotion spike, before and after">
       </div>
       <p class="screenshot-caption">Promotion spike scenario — your flow today vs. the LevelLoad plan</p>
     </div>
@@ -405,7 +411,7 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="section-label">Section 04 — ROI calculator</p>
       <h2 class="section-headline">A number they<br><span class="dim">built themselves.</span></h2>
       <p class="section-body">
-        The buyer enters their annual freight spend. They move a slider to their assumed savings rate. <strong>The calculator returns annual savings, monthly savings, and the rate — live, as they adjust.</strong>
+        The buyer enters their annual freight spend. They move a slider to their assumed savings rate. <strong>The calculator returns annual savings, monthly savings, and the rate, live, as they adjust.</strong>
       </p>
       <p class="section-body">
         At $3.5M freight spend and 7% savings: $245K annually. $20K a month. A number the buyer calculated themselves is worth ten times a number a rep quoted them. <strong>They can't argue with their own maths.</strong>
@@ -423,7 +429,7 @@ html, body { height: auto; overflow-x: hidden; }
           </div>
           <div class="s-url">provision-onboarding.vercel.app</div>
         </div>
-        <img src="/assets/truck-roi.png" alt="ROI calculator — $245K annual savings at 7% rate">
+        <img src="/assets/truck-roi.png" alt="ROI calculator: $245K annual savings at 7% rate">
       </div>
       <p class="screenshot-caption">ROI calculator — their freight spend, their savings rate, their number</p>
     </div>
@@ -450,7 +456,7 @@ html, body { height: auto; overflow-x: hidden; }
 
     <div class="insight">
       <p class="insight-label">What it changes in the room</p>
-      <p class="insight-text">The rep arrives to a prospect who has already run the numbers. <strong>The conversation is about implementation, not justification.</strong> The ROI conversation starts before the first call — without a rep in the room.</p>
+      <p class="insight-text">The rep arrives to a prospect who has already run the numbers. <strong>The conversation is about implementation, not justification.</strong> The ROI conversation starts before the first call, without a rep in the room.</p>
     </div>
 
     <hr class="divider">
@@ -460,10 +466,10 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="section-label">The campaign around the tool</p>
       <h2 class="section-headline">The visualiser is the campaign.<br><span class="dim">Sent at exactly the right moment.</span></h2>
       <p class="section-body">
-        The 3D visualiser wasn't built for a website homepage. It was built for a specific moment in the sales cycle — the moment when a prospect says they understand the value but can't justify the spend internally.
+        The 3D visualiser wasn't built for a website homepage. It was built for a specific moment in the sales cycle: the moment when a prospect says they understand the value but can't justify the spend internally.
       </p>
       <p class="section-body">
-        <strong>Every truck leaving your dock below 96% capacity is a cost you're already paying — you just can't see it on a slide.</strong> The visualiser makes that invisible cost visible. Three load scenarios. Real numbers. A ROI calculator that uses their freight spend, not a generic benchmark.
+        <strong>Every truck leaving your dock below 96% capacity is a cost you're already paying. You just can't see it on a slide.</strong> The visualiser makes that invisible cost visible. Three load scenarios. Real numbers. A ROI calculator that uses their freight spend, not a generic benchmark.
       </p>
       <p class="section-body">
         Sent in outreach as a replace for "let me send you a deck." Used mid-cycle when deals stall on ROI. Left with the internal champion so they can run the numbers for their CFO without needing a rep in the room. <strong>The hidden cost becomes the business case. The business case closes the deal.</strong>
@@ -474,12 +480,13 @@ html, body { height: auto; overflow-x: hidden; }
     <div class="cta-block">
       <h2 class="cta-headline">See it for yourself.</h2>
       <p class="cta-body">
-        The experience is live. Walk through all four sections — the problem, the 3D loader, the network flow simulator, and the ROI calculator.
+        The experience is live. Walk through all four sections: the problem, the 3D loader, the network flow simulator, and the ROI calculator.
         <strong>It takes about four minutes.</strong>
       </p>
       <div class="cta-links">
         <a class="cta-primary" href="https://provision-onboarding.vercel.app/" target="_blank">See it live →</a>
         <a class="cta-secondary" href="/proof">← Back to Proof</a>
+      <p class="proof-next"><span class="proof-next-label">Next in this engagement</span><a class="proof-next-link" href="/proof/provisionai">ProvisionAI: the full site →</a></p>
       </div>
     </div>
 
