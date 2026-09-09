@@ -2,7 +2,20 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/404.html", "status": 404 }
+    {
+      "src": "/truck-loader",
+      "status": 308,
+      "headers": {
+        "Location": "/proof/truck-loader"
+      }
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/404.html",
+      "status": 404
+    }
   ]
 }
