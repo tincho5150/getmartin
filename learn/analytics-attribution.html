@@ -198,10 +198,11 @@ html, body { height: auto; overflow-x: hidden; }
 .journey-step {
   display: flex; flex-direction: column; align-items: center;
   gap: 8px; flex-shrink: 0; width: 100px;
-  opacity: 0; transform: translateY(6px);
+  
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
-.journey-step.visible { opacity: 1; transform: translateY(0); }
+.js .journey-step { opacity: 0; transform: translateY(8px); }
+.js .journey-step.visible { opacity: 1; transform: translateY(0); }
 .step-node {
   width: 100%; min-height: 64px;
   border: 1px solid rgba(240,239,240,0.1);
@@ -212,6 +213,7 @@ html, body { height: auto; overflow-x: hidden; }
   line-height: 1.4; padding: 0.6rem 0.5rem;
   transition: border-color 0.3s, background 0.3s, color 0.3s;
 }
+.step-node-end { border-color: rgba(184,212,0,0.45); color: var(--white); font-weight: 600; }
 .step-node.highlighted {
   border-color: var(--lime);
   background: rgba(184,212,0,0.1);
@@ -225,9 +227,10 @@ html, body { height: auto; overflow-x: hidden; }
 .step-credit {
   font-size: 0.9rem; font-weight: 700; color: var(--lime);
   min-height: 20px; letter-spacing: -0.02em;
-  opacity: 0; transition: opacity 0.3s;
+   transition: opacity 0.3s;
 }
-.step-credit.visible { opacity: 1; }
+.js .step-credit { opacity: 0; }
+.js .step-credit.visible { opacity: 1; }
 
 .journey-arrow {
   display: flex; align-items: center; justify-content: center;
@@ -411,7 +414,7 @@ html, body { height: auto; overflow-x: hidden; }
           <div class="journey-arrow"></div>
 
           <div class="journey-step" id="step5">
-            <div class="step-node" id="node5">✓ Deal signed</div>
+            <div class="step-node step-node-end" id="node5">Deal signed</div>
             <p class="step-label">Day 221</p>
             <p class="step-credit" id="credit5"></p>
           </div>
@@ -428,7 +431,7 @@ html, body { height: auto; overflow-x: hidden; }
 
       <div class="attr-explanation">
         <p class="attr-explanation-text" id="attrExplanation">
-          <strong>Last-touch attribution</strong> gives 100% of the credit to the final touchpoint before conversion — in this case, the branded search that led to a demo request. Every earlier touchpoint gets zero credit. Most CRMs and ad platforms use this model by default.
+          <strong>Last-touch attribution</strong> gives 100% of the credit to the final touchpoint before conversion, in this case, the branded search that led to a demo request. Every earlier touchpoint gets zero credit. Most CRMs and ad platforms use this model by default.
         </p>
       </div>
 
@@ -508,6 +511,7 @@ html, body { height: auto; overflow-x: hidden; }
 </div>
 
 <script>
+document.documentElement.classList.add('js');
 const progress = document.querySelector('.nav-progress');
 window.addEventListener('scroll', () => {
   const scrollH = document.documentElement.scrollHeight - window.innerHeight;
@@ -536,25 +540,25 @@ const models = {
     credits: ['0%', '0%', '0%', '0%', '100%', ''],
     highlighted: [4],
     faded: [0, 1, 2, 3],
-    explanation: '<strong>Last-touch attribution</strong> gives 100% of the credit to the final touchpoint — branded search to demo. Every earlier touchpoint gets zero. Most CRMs and ad platforms default to this model. The LinkedIn article that started everything is invisible in the data.'
+    explanation: '<strong>Last-touch attribution</strong> gives 100% of the credit to the final touchpoint, branded search to demo. Every earlier touchpoint gets zero. Most CRMs and ad platforms default to this model. The LinkedIn article that started everything is invisible in the data.'
   },
   first: {
     credits: ['100%', '0%', '0%', '0%', '0%', ''],
     highlighted: [0],
     faded: [1, 2, 3, 4],
-    explanation: '<strong>First-touch attribution</strong> gives 100% of the credit to the very first touchpoint — the LinkedIn article. Everything that happened in between — including the webinar that convinced them — gets nothing. Better for understanding demand creation, but equally incomplete.'
+    explanation: '<strong>First-touch attribution</strong> gives 100% of the credit to the very first touchpoint (the LinkedIn article. Everything that happened in between) including the webinar that convinced them, gets nothing. Better for understanding demand creation, but equally incomplete.'
   },
   linear: {
     credits: ['20%', '20%', '20%', '20%', '20%', ''],
     highlighted: [0, 1, 2, 3, 4],
     faded: [],
-    explanation: '<strong>Linear attribution</strong> distributes credit equally across all five touchpoints — 20% each. Fairer than single-touch models, but treats the initial LinkedIn article and the demo request as equally important, which is probably not right either. An improvement, not a solution.'
+    explanation: '<strong>Linear attribution</strong> distributes credit equally across all five touchpoints, 20% each. Fairer than single-touch models, but treats the initial LinkedIn article and the demo request as equally important, which is probably not right either. An improvement, not a solution.'
   },
   position: {
     credits: ['40%', '5%', '5%', '5%', '40%', ''],
     highlighted: [0, 4],
     faded: [],
-    explanation: '<strong>Position-based attribution</strong> weights the first and last touches most heavily — 40% each — with 20% split across the middle. More nuanced. Recognises that starting and closing the journey are the most important moments. Still imperfect, but closer to reality than last-touch alone.'
+    explanation: '<strong>Position-based attribution</strong> weights the first and last touches most heavily (40% each) with 20% split across the middle. More nuanced. Recognises that starting and closing the journey are the most important moments. Still imperfect, but closer to reality than last-touch alone.'
   }
 };
 

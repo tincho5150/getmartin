@@ -315,10 +315,7 @@ html, body { height: auto; overflow-x: hidden; }
   font-size: 0.72rem; font-weight: 400; color: rgba(240,239,240,0.72);
 }
 .split-label span { color: var(--lime); font-weight: 500; }
-.split-source {
-  font-size: 0.65rem; color: rgba(240,239,240,0.2);
-  margin-top: 0.8rem;
-}
+.split-source { font-size: 0.68rem; font-weight: 400; color: rgba(240,239,240,0.42); margin-top: 0.8rem; }
 
 .nav-next {
   display: flex; flex-direction: column; gap: 0.4rem;
@@ -361,6 +358,10 @@ html, body { height: auto; overflow-x: hidden; }
     scroll-behavior: auto !important;
   }
 }
+
+/* width lives on the element as --w so the bar is right with no JS;
+   the .js hook only holds it at zero until the wrapper scrolls into view. */
+.js .split-wrap:not(.in-view) .split-brand { width: 0 !important; }
 </style>
 </head>
 <body>
@@ -509,12 +510,12 @@ html, body { height: auto; overflow-x: hidden; }
     <div class="split-wrap" id="splitWrap">
       <p class="split-title">The Binet & Field recommended starting split</p>
       <div class="split-bar-wrap">
-        <div class="split-brand" id="splitBrand">60% Brand</div>
+        <div class="split-brand" id="splitBrand" style="width:60%">60% Brand</div>
         <div class="split-perf">40% Performance</div>
       </div>
       <div class="split-labels">
-        <span class="split-label"><span>Brand</span> — long-term, awareness, trust, preference</span>
-        <span class="split-label"><span>Performance</span> — short-term, demand capture, conversion</span>
+        <span class="split-label"><span>Brand</span>: long-term, awareness, trust, preference</span>
+        <span class="split-label"><span>Performance</span>: short-term, demand capture, conversion</span>
       </div>
       <p class="split-source">Source: Binet & Field, "The Long and the Short of It", IPA, 2013. Widely replicated and extended since.</p>
     </div>
@@ -580,6 +581,7 @@ html, body { height: auto; overflow-x: hidden; }
 </div>
 
 <script>
+document.documentElement.classList.add('js');
 const progress = document.querySelector('.nav-progress');
 window.addEventListener('scroll', () => {
   const scrollH = document.documentElement.scrollHeight - window.innerHeight;
@@ -595,9 +597,9 @@ let splitTriggered = false;
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !splitTriggered) {
+      document.querySelector('.split-wrap').classList.add('in-view');
       splitTriggered = true;
       setTimeout(() => {
-        splitBrand.style.width = '60%';
       }, 200);
     }
   });

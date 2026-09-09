@@ -203,20 +203,13 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .gap-bar-create { background: var(--lime); }
 .gap-bar-consume { background: rgba(255,255,255,0.15); }
-.gap-pct {
-  font-size: 0.78rem; font-weight: 500;
-  position: absolute; right: 8px;
-}
-.gap-pct-create { color: #1e2c3a; }
-.gap-pct-consume { color: var(--white-dim); }
+.gap-pct { font-size: 0.82rem; font-weight: 600; color: rgba(240,239,240,0.75); width: 46px; text-align: right; flex-shrink: 0; }
 .gap-insight {
   font-size: 0.88rem; font-weight: 400; line-height: 1.6;
   color: rgba(240,239,240,0.72); margin-bottom: 0.5rem;
 }
 .gap-insight strong { color: var(--white); font-weight: 500; }
-.gap-source {
-  font-size: 0.65rem; font-weight: 300; color: rgba(240,239,240,0.2);
-}
+.gap-source { font-size: 0.68rem; font-weight: 400; color: rgba(240,239,240,0.42); }
 
 .nav-next {
   display: flex; flex-direction: column; gap: 0.4rem;
@@ -259,6 +252,10 @@ html, body { height: auto; overflow-x: hidden; }
     scroll-behavior: auto !important;
   }
 }
+
+/* width lives on the element as --w so the bar is right with no JS;
+   the .js hook only holds it at zero until the wrapper scrolls into view. */
+.js .gap-wrap:not(.in-view) .gap-bar { width: 0 !important; }
 </style>
 </head>
 <body>
@@ -353,17 +350,13 @@ html, body { height: auto; overflow-x: hidden; }
         <div class="gap-bars">
           <div class="gap-row">
             <p class="gap-label">Create content weekly</p>
-            <div class="gap-track">
-              <div class="gap-bar gap-bar-create" id="gapCreate"></div>
-              <span class="gap-pct gap-pct-create" id="gapPctCreate">1%</span>
-            </div>
+            <div class="gap-track"><div class="gap-bar gap-bar-create" id="gapCreate" style="width:1%"></div></div>
+              <span class="gap-pct">1%</span>
           </div>
           <div class="gap-row">
             <p class="gap-label">Only consume</p>
-            <div class="gap-track">
-              <div class="gap-bar gap-bar-consume" id="gapConsume"></div>
-              <span class="gap-pct gap-pct-consume" id="gapPctConsume">99%</span>
-            </div>
+            <div class="gap-track"><div class="gap-bar gap-bar-consume" id="gapConsume" style="width:99%"></div></div>
+              <span class="gap-pct">99%</span>
           </div>
         </div>
         <p class="gap-insight">That 1% generates <strong>9 billion impressions</strong>, across 1.1 billion members. The gap is the opportunity.</p>
@@ -415,6 +408,7 @@ html, body { height: auto; overflow-x: hidden; }
 </div>
 
 <script>
+document.documentElement.classList.add('js');
 const progress = document.querySelector('.nav-progress');
 window.addEventListener('scroll', () => {
   const scrollH = document.documentElement.scrollHeight - window.innerHeight;
@@ -426,14 +420,10 @@ let gapTriggered = false;
 const gapObs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !gapTriggered) {
+      document.querySelector('.gap-wrap').classList.add('in-view');
       gapTriggered = true;
       setTimeout(() => {
-        document.getElementById('gapCreate').style.width = '1%';
-        document.getElementById('gapPctCreate').style.left = '4px';
-        document.getElementById('gapPctCreate').style.right = 'auto';
-        document.getElementById('gapPctCreate').style.color = '#b8d400';
         setTimeout(() => {
-          document.getElementById('gapConsume').style.width = '99%';
         }, 400);
       }, 200);
     }

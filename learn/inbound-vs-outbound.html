@@ -310,6 +310,10 @@ html, body { height: auto; overflow-x: hidden; }
     scroll-behavior: auto !important;
   }
 }
+
+/* width lives on the element as --w so the bar is right with no JS;
+   the .js hook only holds it at zero until the wrapper scrolls into view. */
+.js .timeline-wrap:not(.in-view) .timeline-bar { width: 0 !important; }
 </style>
 </head>
 <body>
@@ -425,7 +429,7 @@ html, body { height: auto; overflow-x: hidden; }
         <p class="timeline-label"><span class="tl-dot tl-dot-out"></span> Outbound</p>
         <div>
           <div class="timeline-bar-bg">
-            <div class="timeline-bar timeline-bar-out" id="barOut">Immediate results, consistent effort required</div>
+            <div class="timeline-bar timeline-bar-out" id="barOut" style="width:72%">Immediate results, consistent effort required</div>
           </div>
         </div>
       </div>
@@ -434,7 +438,7 @@ html, body { height: auto; overflow-x: hidden; }
         <p class="timeline-label"><span class="tl-dot tl-dot-in"></span> Inbound</p>
         <div>
           <div class="timeline-bar-bg">
-            <div class="timeline-bar timeline-bar-in" id="barIn">Slow start, compounding returns</div>
+            <div class="timeline-bar timeline-bar-in" id="barIn" style="width:88%">Slow start, compounding returns</div>
           </div>
           <div class="timeline-phases">
             <span>Month 1–3: minimal</span>
@@ -507,6 +511,7 @@ html, body { height: auto; overflow-x: hidden; }
 </div>
 
 <script>
+document.documentElement.classList.add('js');
 const progress = document.querySelector('.nav-progress');
 window.addEventListener('scroll', () => {
   const scrollH = document.documentElement.scrollHeight - window.innerHeight;
@@ -532,11 +537,10 @@ let timelineTriggered = false;
 const tlObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !timelineTriggered) {
+      document.querySelector('.timeline-wrap').classList.add('in-view');
       timelineTriggered = true;
       setTimeout(() => {
-        document.getElementById('barOut').style.width = '72%';
         setTimeout(() => {
-          document.getElementById('barIn').style.width = '88%';
         }, 400);
       }, 200);
     }

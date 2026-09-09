@@ -192,9 +192,7 @@ html, body { height: auto; overflow-x: hidden; }
 .email-row-name {
   font-size: 0.8rem; font-weight: 400; color: var(--white); line-height: 1.2;
 }
-.email-row-sub {
-  font-size: 0.68rem; font-weight: 400; color: rgba(240,239,240,0.3);
-}
+.email-row-sub { font-size: 0.7rem; font-weight: 400; color: rgba(240,239,240,0.45); }
 .email-row-track {
   flex: 1; height: 36px; background: rgba(255,255,255,0.04);
   position: relative; display: flex; align-items: center;
@@ -214,10 +212,7 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .email-bar-value-hi { color: rgba(184,212,0,0.8); font-weight: 500; }
 .email-bar-value-top { color: #1e2c3a; right: auto; left: 8px; font-weight: 700; }
-.email-visual-source {
-  font-size: 0.65rem; font-weight: 300; color: rgba(240,239,240,0.2);
-  line-height: 1.5;
-}
+.email-visual-source { font-size: 0.68rem; font-weight: 400; color: rgba(240,239,240,0.42); line-height: 1.5; }
 
 .nav-next {
   display: flex; flex-direction: column; gap: 0.4rem;
@@ -260,6 +255,10 @@ html, body { height: auto; overflow-x: hidden; }
     scroll-behavior: auto !important;
   }
 }
+
+/* width lives on the element as --w so the bar is right with no JS;
+   the .js hook only holds it at zero until the wrapper scrolls into view. */
+.js .email-visual-wrap:not(.in-view) .email-bar { width: 0 !important; }
 </style>
 </head>
 <body>
@@ -349,7 +348,7 @@ html, body { height: auto; overflow-x: hidden; }
             <p class="email-row-sub">Scheduled blast</p>
           </div>
           <div class="email-row-track">
-            <div class="email-bar email-bar-manual" id="emailBarManual"></div>
+            <div class="email-bar email-bar-manual" id="emailBarManual" style="width:0.7%"></div>
             <span class="email-bar-value">$0.11 / recipient</span>
           </div>
         </div>
@@ -360,7 +359,7 @@ html, body { height: auto; overflow-x: hidden; }
             <p class="email-row-sub">Automated sequence</p>
           </div>
           <div class="email-row-track">
-            <div class="email-bar email-bar-welcome" id="emailBarWelcome"></div>
+            <div class="email-bar email-bar-welcome" id="emailBarWelcome" style="width:16%"></div>
             <span class="email-bar-value email-bar-value-hi">$2.65 / recipient</span>
           </div>
         </div>
@@ -371,7 +370,7 @@ html, body { height: auto; overflow-x: hidden; }
             <p class="email-row-sub">Best-performing flows</p>
           </div>
           <div class="email-row-track">
-            <div class="email-bar email-bar-top" id="emailBarTop"></div>
+            <div class="email-bar email-bar-top" id="emailBarTop" style="width:100%"></div>
             <span class="email-bar-value email-bar-value-top">$16.96 / recipient</span>
           </div>
         </div>
@@ -436,6 +435,7 @@ html, body { height: auto; overflow-x: hidden; }
 </div>
 
 <script>
+document.documentElement.classList.add('js');
 const progress = document.querySelector('.nav-progress');
 window.addEventListener('scroll', () => {
   const scrollH = document.documentElement.scrollHeight - window.innerHeight;
@@ -448,13 +448,11 @@ let emailTriggered = false;
 const emailObs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !emailTriggered) {
+      document.querySelector('.email-visual-wrap').classList.add('in-view');
       emailTriggered = true;
       setTimeout(() => {
-        document.getElementById('emailBarManual').style.width = '0.7%';
         setTimeout(() => {
-          document.getElementById('emailBarWelcome').style.width = '16%';
           setTimeout(() => {
-            document.getElementById('emailBarTop').style.width = '100%';
           }, 300);
         }, 200);
       }, 200);

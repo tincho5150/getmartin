@@ -236,6 +236,10 @@ html, body { height: auto; overflow-x: hidden; }
     scroll-behavior: auto !important;
   }
 }
+
+/* width lives on the element as --w so the bar is right with no JS;
+   the .js hook only holds it at zero until the wrapper scrolls into view. */
+.js .reach-wrap:not(.in-view) .reach-bar { width: 0 !important; }
 </style>
 </head>
 <body>
@@ -351,7 +355,7 @@ html, body { height: auto; overflow-x: hidden; }
               <span class="reach-kind">Company page</span>
               <span class="reach-note">2,400 followers</span>
             </div>
-            <div class="reach-bar-wrap"><div class="reach-bar reach-bar-co" id="barCo"></div></div>
+            <div class="reach-bar-wrap"><div class="reach-bar reach-bar-co" id="barCo" style="width:33.5%"></div></div>
             <div class="reach-val"><span class="reach-num">1,200</span> <span class="reach-unit">impressions</span></div>
           </div>
           <div class="reach-row reach-row-personal">
@@ -359,7 +363,7 @@ html, body { height: auto; overflow-x: hidden; }
               <span class="reach-kind">Someone who works there</span>
               <span class="reach-note">2,400 connections</span>
             </div>
-            <div class="reach-bar-wrap"><div class="reach-bar reach-bar-pers" id="barPers"></div></div>
+            <div class="reach-bar-wrap"><div class="reach-bar reach-bar-pers" id="barPers" style="width:92%"></div></div>
             <div class="reach-val"><span class="reach-num reach-num-high">3,300</span> <span class="reach-unit">impressions</span></div>
           </div>
         </div>
@@ -407,6 +411,7 @@ html, body { height: auto; overflow-x: hidden; }
 </div>
 
 <script>
+document.documentElement.classList.add('js');
 const progress = document.querySelector('.nav-progress');
 window.addEventListener('scroll', () => {
   const scrollH = document.documentElement.scrollHeight - window.innerHeight;
@@ -419,11 +424,10 @@ let reachTriggered = false;
 const reachObs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !reachTriggered) {
+      document.querySelector('.reach-wrap').classList.add('in-view');
       reachTriggered = true;
       setTimeout(() => {
-        document.getElementById('barCo').style.width = '33.5%';
         setTimeout(() => {
-          document.getElementById('barPers').style.width = '92%';
         }, 300);
       }, 200);
     }
