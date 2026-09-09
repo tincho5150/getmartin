@@ -108,7 +108,8 @@ body {
 }
 
 img, video, svg { display: block; max-width: 100%; }
-button { cursor: pointer; font-family: inherit; }
+button, input, select, textarea { font-family: inherit; }
+button { cursor: pointer; }
 a { cursor: pointer; }
 
 
