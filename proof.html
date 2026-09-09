@@ -21,7 +21,7 @@ html, body { height: 100%; overflow: hidden; }
 .site-wrapper {
   height: 100vh;
   overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
 }
 
@@ -64,7 +64,7 @@ html, body { height: 100%; overflow: hidden; }
 /* CHAPTER */
 .chapter {
   scroll-snap-align: start; scroll-snap-stop: always;
-  height: 100vh; padding-top: var(--nav-height);
+  min-height: 100vh; height: auto; padding-top: var(--nav-height);
   display: flex; flex-direction: column;
   position: relative; overflow: hidden;
 }
@@ -84,7 +84,7 @@ html, body { height: 100%; overflow: hidden; }
 .columns {
   position: relative; z-index: 1; flex: 1;
   display: grid; grid-template-columns: 1fr 1fr;
-  overflow: hidden; height: 100%;
+  height: auto; min-height: 100%;
 }
 /* ── FULL-WIDTH HERO CHAPTER ── */
 .chapter-hero {
