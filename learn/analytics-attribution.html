@@ -311,6 +311,41 @@ html, body { height: auto; overflow-x: hidden; }
     scroll-behavior: auto !important;
   }
 }
+
+/* HEALTHCHECK — an instrument, not another dot list. Real checkboxes so it is
+   keyboard reachable and works with no JS; the score is the only enhanced part. */
+.hc { margin: 2rem 0 0; border: 1px solid var(--white-faint); background: #151f29; }
+.hc-list { list-style: none; margin: 0; padding: 0; }
+.hc-item { display: grid; grid-template-columns: auto 1fr; gap: 0 1rem; padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid rgba(240,239,240,0.07); align-items: start; }
+.hc-box { appearance: none; -webkit-appearance: none; margin: 2px 0 0; width: 20px; height: 20px;
+  border: 1px solid rgba(240,239,240,0.28); background: transparent; cursor: pointer;
+  flex-shrink: 0; position: relative; transition: background var(--dur-base), border-color var(--dur-base); }
+.hc-box:hover { border-color: var(--lime); }
+.hc-box:checked { background: var(--lime); border-color: var(--lime); }
+.hc-box:checked::after { content: ''; position: absolute; left: 6px; top: 2px; width: 5px; height: 10px;
+  border: solid var(--navy-dark); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.hc-box:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+.hc-label { cursor: pointer; display: block; }
+.hc-claim { display: block; font-size: 0.95rem; font-weight: 400; line-height: 1.55; color: var(--white); }
+.hc-why { display: block; font-size: 0.8rem; font-weight: 400; line-height: 1.55;
+  color: rgba(240,239,240,0.5); margin-top: 0.35rem; }
+.hc-box:checked ~ .hc-label .hc-claim { color: rgba(240,239,240,0.42); }
+.hc-box:checked ~ .hc-label .hc-why { color: rgba(240,239,240,0.28); }
+.hc-result { display: grid; grid-template-columns: auto 1fr; gap: 1.4rem; align-items: center;
+  padding: 1.3rem 1.4rem; background: rgba(184,212,0,0.06); border-bottom: 1px solid rgba(240,239,240,0.07); }
+.hc-score { display: flex; align-items: baseline; }
+.hc-score-num { font-family: var(--font-display); font-size: clamp(2.4rem,5vw,3.4rem); font-weight: 700;
+  line-height: 0.9; letter-spacing: -0.03em; color: var(--lime); }
+.hc-score-of { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+  color: rgba(240,239,240,0.35); margin-left: 2px; }
+.hc-meter { height: 6px; background: rgba(255,255,255,0.08); margin-bottom: 0.7rem; }
+.hc-meter-fill { height: 100%; width: 0%; background: var(--lime); transition: width var(--dur-base) var(--ease-out); }
+.hc-verdict { font-size: 0.95rem; font-weight: 600; line-height: 1.4; color: var(--white); }
+.hc-next { font-size: 0.85rem; font-weight: 400; line-height: 1.6; color: rgba(240,239,240,0.6); padding: 1rem 1.4rem; }
+@media (max-width: 560px) {
+  .hc-result { grid-template-columns: 1fr; gap: 0.8rem; }
+}
 </style>
 </head>
 <body>
@@ -340,7 +375,7 @@ html, body { height: auto; overflow-x: hidden; }
  </p>
       <div class="article-meta">
         <span>The Basics</span>
-        <span>6 min read</span>
+        <span>7 min read</span>
       </div>
     </div>
 
@@ -500,6 +535,73 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="insight-text">This week, add one question to your sales process: "Before we start: how did you first hear about us?" Record the answers in your CRM. Do this for 90 days. Then look at what you collected. <strong>That simple data point (gathered consistently over time) will tell you more about what is actually driving your business than any analytics dashboard you currently have access to.</strong></p>
     </div>
 
+    <hr class="divider">
+
+    <!-- HEALTHCHECK -->
+    <div class="section">
+      <p class="section-label">Healthcheck</p>
+      <h2 class="section-headline">Six questions<br><span class="dim">about what you can actually prove</span></h2>
+      <p class="body">Answer honestly. The ones you cannot tick are the work, in the order you find them.</p>
+
+      <div class="hc" id="healthcheck">
+        <ul class="hc-list">
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc0">
+          <label class="hc-label" for="hc0">
+            <span class="hc-claim">Every deal in your CRM has a source attached to it.</span>
+            <span class="hc-why">Imperfect and directional beats precise and absent.</span>
+          </label>
+        </li>
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc1">
+          <label class="hc-label" for="hc1">
+            <span class="hc-claim">You ask new customers how they first heard of you, in conversation.</span>
+            <span class="hc-why">The answer regularly contradicts the dashboard, and the human answer is usually righter.</span>
+          </label>
+        </li>
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc2">
+          <label class="hc-label" for="hc2">
+            <span class="hc-claim">You measure pipeline contribution, not just lead volume.</span>
+            <span class="hc-why">A hundred leads that never become opportunities are worth less than ten that do.</span>
+          </label>
+        </li>
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc3">
+          <label class="hc-label" for="hc3">
+            <span class="hc-claim">Your attribution window is longer than a month.</span>
+            <span class="hc-why">B2B buying takes closer to a year. A thirty-day window sees the last step only.</span>
+          </label>
+        </li>
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc4">
+          <label class="hc-label" for="hc4">
+            <span class="hc-claim">You know which channel gets credit it does not deserve.</span>
+            <span class="hc-why">Branded search is the usual culprit: it harvests demand something else created.</span>
+          </label>
+        </li>
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc5">
+          <label class="hc-label" for="hc5">
+            <span class="hc-claim">A budget decision has been changed by what you measured.</span>
+            <span class="hc-why">If measurement never changes a decision, it is reporting rather than analytics.</span>
+          </label>
+        </li>
+        </ul>
+
+        <div class="hc-result">
+          <div class="hc-score"><span class="hc-score-num" id="hcNum">0</span><span class="hc-score-of">/6</span></div>
+          <div class="hc-readout">
+            <div class="hc-meter"><div class="hc-meter-fill" id="hcFill"></div></div>
+            <p class="hc-verdict" id="hcVerdict">Tick what is true today.</p>
+          </div>
+        </div>
+
+        <p class="hc-next" id="hcNext">Your first unticked answer is where to start.</p>
+      </div>
+    </div>
+
+    
     <div class="nav-next">
       <span class="nav-next-label">Read next</span>
       <a class="nav-next-link" href="/learn/inbound-vs-outbound">
@@ -589,6 +691,41 @@ modelBtns.forEach(btn => {
 
 // Apply default
 applyModel('last');
+
+// Healthcheck: score, verdict and recall. Native checkboxes work without any of this.
+(function () {
+  const wrap = document.getElementById('healthcheck');
+  if (!wrap) return;
+  const boxes = [...wrap.querySelectorAll('.hc-box')];
+  const num = document.getElementById('hcNum');
+  const fill = document.getElementById('hcFill');
+  const verdict = document.getElementById('hcVerdict');
+  const next = document.getElementById('hcNext');
+  const KEY = 'gm-analytics-attribution-healthcheck';
+
+  const BANDS = [[0, 1, "Flying blind", "The loudest voice in the room is setting the budget."], [2, 3, "Reporting", "You have numbers. They are not yet changing anything."], [4, 5, "Directional", "Good enough to act on, which is the realistic goal."], [6, 6, "Evidence-led", "You can show which work created pipeline and defend it."]];
+
+  function render() {
+    const done = boxes.filter(b => b.checked).length;
+    num.textContent = done;
+    fill.style.width = (done / boxes.length * 100) + '%';
+    const band = BANDS.find(b => done >= b[0] && done <= b[1]);
+    verdict.textContent = band[2];
+    const firstOpen = boxes.find(b => !b.checked);
+    next.textContent = firstOpen
+      ? band[3]
+      : 'Nothing left to tick. Worth re-reading this page in six months, because the answers change.';
+    try { localStorage.setItem(KEY, JSON.stringify(boxes.map(b => b.checked))); } catch (e) {}
+  }
+
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || '[]');
+    if (Array.isArray(saved)) saved.forEach((v, i) => { if (boxes[i]) boxes[i].checked = !!v; });
+  } catch (e) {}
+
+  boxes.forEach(b => b.addEventListener('change', render));
+  render();
+})();
 </script>
 
 </body>

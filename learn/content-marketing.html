@@ -248,6 +248,41 @@ html, body { height: auto; overflow-x: hidden; }
     scroll-behavior: auto !important;
   }
 }
+
+/* HEALTHCHECK — an instrument, not another dot list. Real checkboxes so it is
+   keyboard reachable and works with no JS; the score is the only enhanced part. */
+.hc { margin: 2rem 0 0; border: 1px solid var(--white-faint); background: #151f29; }
+.hc-list { list-style: none; margin: 0; padding: 0; }
+.hc-item { display: grid; grid-template-columns: auto 1fr; gap: 0 1rem; padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid rgba(240,239,240,0.07); align-items: start; }
+.hc-box { appearance: none; -webkit-appearance: none; margin: 2px 0 0; width: 20px; height: 20px;
+  border: 1px solid rgba(240,239,240,0.28); background: transparent; cursor: pointer;
+  flex-shrink: 0; position: relative; transition: background var(--dur-base), border-color var(--dur-base); }
+.hc-box:hover { border-color: var(--lime); }
+.hc-box:checked { background: var(--lime); border-color: var(--lime); }
+.hc-box:checked::after { content: ''; position: absolute; left: 6px; top: 2px; width: 5px; height: 10px;
+  border: solid var(--navy-dark); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.hc-box:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+.hc-label { cursor: pointer; display: block; }
+.hc-claim { display: block; font-size: 0.95rem; font-weight: 400; line-height: 1.55; color: var(--white); }
+.hc-why { display: block; font-size: 0.8rem; font-weight: 400; line-height: 1.55;
+  color: rgba(240,239,240,0.5); margin-top: 0.35rem; }
+.hc-box:checked ~ .hc-label .hc-claim { color: rgba(240,239,240,0.42); }
+.hc-box:checked ~ .hc-label .hc-why { color: rgba(240,239,240,0.28); }
+.hc-result { display: grid; grid-template-columns: auto 1fr; gap: 1.4rem; align-items: center;
+  padding: 1.3rem 1.4rem; background: rgba(184,212,0,0.06); border-bottom: 1px solid rgba(240,239,240,0.07); }
+.hc-score { display: flex; align-items: baseline; }
+.hc-score-num { font-family: var(--font-display); font-size: clamp(2.4rem,5vw,3.4rem); font-weight: 700;
+  line-height: 0.9; letter-spacing: -0.03em; color: var(--lime); }
+.hc-score-of { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+  color: rgba(240,239,240,0.35); margin-left: 2px; }
+.hc-meter { height: 6px; background: rgba(255,255,255,0.08); margin-bottom: 0.7rem; }
+.hc-meter-fill { height: 100%; width: 0%; background: var(--lime); transition: width var(--dur-base) var(--ease-out); }
+.hc-verdict { font-size: 0.95rem; font-weight: 600; line-height: 1.4; color: var(--white); }
+.hc-next { font-size: 0.85rem; font-weight: 400; line-height: 1.6; color: rgba(240,239,240,0.6); padding: 1rem 1.4rem; }
+@media (max-width: 560px) {
+  .hc-result { grid-template-columns: 1fr; gap: 0.8rem; }
+}
 </style>
 </head>
 <body>
@@ -424,13 +459,68 @@ html, body { height: auto; overflow-x: hidden; }
 
     <hr class="divider">
 
-    <!-- WHERE TO START -->
+    <!-- HEALTHCHECK -->
     <div class="section">
-      <p class="section-label">Where to start</p>
-      <h2 class="section-headline">One concrete next step</h2>
-      <p class="body">List the five questions your sales team hears most often in the first call with a new prospect. The questions prospects ask before they feel comfortable moving forward, about the problem, about the solution, about why they should trust you over the alternatives.</p>
-      <p class="body">Those five questions are your first five pieces of content. Answer each one honestly, in writing, in the same way you would answer it on a call. Publish them. Make them easy to find. Send them to prospects before calls.</p>
-      <p class="body"><strong>You will have done more useful content marketing in that exercise than most companies do in a year of blogging.</strong> The sophistication comes later. The foundation is answering the questions your buyers are already asking, better than anyone else is answering them.</p>
+      <p class="section-label">Healthcheck</p>
+      <h2 class="section-headline">Six questions<br><span class="dim">about the content you already have</span></h2>
+      <p class="body">Answer honestly. The ones you cannot tick are the work, in the order you find them.</p>
+
+      <div class="hc" id="healthcheck">
+        <ul class="hc-list">
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc0">
+          <label class="hc-label" for="hc0">
+            <span class="hc-claim">You could name the five questions your buyers ask most often before they agree to a call.</span>
+            <span class="hc-why">Content that does not answer a question a buyer is already asking is production, not marketing.</span>
+          </label>
+        </li>
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc1">
+          <label class="hc-label" for="hc1">
+            <span class="hc-claim">Every piece you publish has an obvious next thing for the reader to do.</span>
+            <span class="hc-why">Content with no next step is an island. It gets read and forgotten.</span>
+          </label>
+        </li>
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc2">
+          <label class="hc-label" for="hc2">
+            <span class="hc-claim">Someone other than the founder can write in your company's voice.</span>
+            <span class="hc-why">If publishing depends on one person's calendar, it stops the first busy month.</span>
+          </label>
+        </li>
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc3">
+          <label class="hc-label" for="hc3">
+            <span class="hc-claim">You have published consistently for at least two quarters.</span>
+            <span class="hc-why">The returns are compounding, which means they do not exist yet at three months.</span>
+          </label>
+        </li>
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc4">
+          <label class="hc-label" for="hc4">
+            <span class="hc-claim">You know which existing piece brings in the most qualified enquiries.</span>
+            <span class="hc-why">Most companies have one piece doing the work and cannot name it.</span>
+          </label>
+        </li>
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc5">
+          <label class="hc-label" for="hc5">
+            <span class="hc-claim">You have written something a competitor would not publish because it is too honest.</span>
+            <span class="hc-why">The pieces that build trust are the ones that cost something to say.</span>
+          </label>
+        </li>
+        </ul>
+
+        <div class="hc-result">
+          <div class="hc-score"><span class="hc-score-num" id="hcNum">0</span><span class="hc-score-of">/6</span></div>
+          <div class="hc-readout">
+            <div class="hc-meter"><div class="hc-meter-fill" id="hcFill"></div></div>
+            <p class="hc-verdict" id="hcVerdict">Tick what is true today.</p>
+          </div>
+        </div>
+
+        <p class="hc-next" id="hcNext">Your first unticked answer is where to start.</p>
+      </div>
     </div>
 
     <div class="nav-next">
@@ -468,6 +558,41 @@ if (compoundWrap) {
   }, { threshold: 0.35 });
   compoundObserver.observe(compoundWrap);
 }
+
+// Healthcheck: score, verdict and recall. Native checkboxes work without any of this.
+(function () {
+  const wrap = document.getElementById('healthcheck');
+  if (!wrap) return;
+  const boxes = [...wrap.querySelectorAll('.hc-box')];
+  const num = document.getElementById('hcNum');
+  const fill = document.getElementById('hcFill');
+  const verdict = document.getElementById('hcVerdict');
+  const next = document.getElementById('hcNext');
+  const KEY = 'gm-content-marketing-healthcheck';
+
+  const BANDS = [[0, 1, "Publishing into the void", "Nothing here compounds yet. Start with the first unticked line."], [2, 3, "Producing, not compounding", "You are making content. It is not yet doing work for you."], [4, 5, "Working, one gap left", "Close the remaining gap and this becomes an asset rather than an output."], [6, 6, "Compounding", "Rare. The job now is protecting the cadence when things get busy."]];
+
+  function render() {
+    const done = boxes.filter(b => b.checked).length;
+    num.textContent = done;
+    fill.style.width = (done / boxes.length * 100) + '%';
+    const band = BANDS.find(b => done >= b[0] && done <= b[1]);
+    verdict.textContent = band[2];
+    const firstOpen = boxes.find(b => !b.checked);
+    next.textContent = firstOpen
+      ? band[3]
+      : 'Nothing left to tick. Worth re-reading this page in six months, because the answers change.';
+    try { localStorage.setItem(KEY, JSON.stringify(boxes.map(b => b.checked))); } catch (e) {}
+  }
+
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || '[]');
+    if (Array.isArray(saved)) saved.forEach((v, i) => { if (boxes[i]) boxes[i].checked = !!v; });
+  } catch (e) {}
+
+  boxes.forEach(b => b.addEventListener('change', render));
+  render();
+})();
 </script>
 
 </body>

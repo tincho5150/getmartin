@@ -259,6 +259,41 @@ html, body { height: auto; overflow-x: hidden; }
 /* width lives on the element as --w so the bar is right with no JS;
    the .js hook only holds it at zero until the wrapper scrolls into view. */
 .js .email-visual-wrap:not(.in-view) .email-bar { width: 0 !important; }
+
+/* HEALTHCHECK — an instrument, not another dot list. Real checkboxes so it is
+   keyboard reachable and works with no JS; the score is the only enhanced part. */
+.hc { margin: 2rem 0 0; border: 1px solid var(--white-faint); background: #151f29; }
+.hc-list { list-style: none; margin: 0; padding: 0; }
+.hc-item { display: grid; grid-template-columns: auto 1fr; gap: 0 1rem; padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid rgba(240,239,240,0.07); align-items: start; }
+.hc-box { appearance: none; -webkit-appearance: none; margin: 2px 0 0; width: 20px; height: 20px;
+  border: 1px solid rgba(240,239,240,0.28); background: transparent; cursor: pointer;
+  flex-shrink: 0; position: relative; transition: background var(--dur-base), border-color var(--dur-base); }
+.hc-box:hover { border-color: var(--lime); }
+.hc-box:checked { background: var(--lime); border-color: var(--lime); }
+.hc-box:checked::after { content: ''; position: absolute; left: 6px; top: 2px; width: 5px; height: 10px;
+  border: solid var(--navy-dark); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.hc-box:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+.hc-label { cursor: pointer; display: block; }
+.hc-claim { display: block; font-size: 0.95rem; font-weight: 400; line-height: 1.55; color: var(--white); }
+.hc-why { display: block; font-size: 0.8rem; font-weight: 400; line-height: 1.55;
+  color: rgba(240,239,240,0.5); margin-top: 0.35rem; }
+.hc-box:checked ~ .hc-label .hc-claim { color: rgba(240,239,240,0.42); }
+.hc-box:checked ~ .hc-label .hc-why { color: rgba(240,239,240,0.28); }
+.hc-result { display: grid; grid-template-columns: auto 1fr; gap: 1.4rem; align-items: center;
+  padding: 1.3rem 1.4rem; background: rgba(184,212,0,0.06); border-bottom: 1px solid rgba(240,239,240,0.07); }
+.hc-score { display: flex; align-items: baseline; }
+.hc-score-num { font-family: var(--font-display); font-size: clamp(2.4rem,5vw,3.4rem); font-weight: 700;
+  line-height: 0.9; letter-spacing: -0.03em; color: var(--lime); }
+.hc-score-of { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+  color: rgba(240,239,240,0.35); margin-left: 2px; }
+.hc-meter { height: 6px; background: rgba(255,255,255,0.08); margin-bottom: 0.7rem; }
+.hc-meter-fill { height: 100%; width: 0%; background: var(--lime); transition: width var(--dur-base) var(--ease-out); }
+.hc-verdict { font-size: 0.95rem; font-weight: 600; line-height: 1.4; color: var(--white); }
+.hc-next { font-size: 0.85rem; font-weight: 400; line-height: 1.6; color: rgba(240,239,240,0.6); padding: 1rem 1.4rem; }
+@media (max-width: 560px) {
+  .hc-result { grid-template-columns: 1fr; gap: 0.8rem; }
+}
 </style>
 </head>
 <body>
@@ -424,6 +459,73 @@ html, body { height: auto; overflow-x: hidden; }
       <p class="insight-text">Before you think about newsletters or campaigns, set up one automated email: a welcome sequence for anyone who signs up or shows interest. Three emails over two weeks. First email: deliver what you promised. Second email: one genuinely useful thing related to the problem you solve. Third email: a soft invitation to a conversation. <strong>That sequence, running automatically in the background, will outperform most companies' entire email marketing effort, because it arrives at the right moment, every time.</strong></p>
     </div>
 
+    <hr class="divider">
+
+    <!-- HEALTHCHECK -->
+    <div class="section">
+      <p class="section-label">Healthcheck</p>
+      <h2 class="section-headline">Six questions<br><span class="dim">about the list you own</span></h2>
+      <p class="body">Answer honestly. The ones you cannot tick are the work, in the order you find them.</p>
+
+      <div class="hc" id="healthcheck">
+        <ul class="hc-list">
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc0">
+          <label class="hc-label" for="hc0">
+            <span class="hc-claim">You know how many people are on your list and how many opened the last send.</span>
+            <span class="hc-why">You cannot improve a channel you are not measuring.</span>
+          </label>
+        </li>
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc1">
+          <label class="hc-label" for="hc1">
+            <span class="hc-claim">New subscribers get something automatically in the first day.</span>
+            <span class="hc-why">Welcome sequences earn more per recipient than any campaign you will write.</span>
+          </label>
+        </li>
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc2">
+          <label class="hc-label" for="hc2">
+            <span class="hc-claim">Your emails go out from a person, not from a company address.</span>
+            <span class="hc-why">People reply to people. Reply rate is the only metric that matters here.</span>
+          </label>
+        </li>
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc3">
+          <label class="hc-label" for="hc3">
+            <span class="hc-claim">At least one email is triggered by something the reader did, not by the calendar.</span>
+            <span class="hc-why">Timing beats volume. Behaviour-triggered messages arrive when they are relevant.</span>
+          </label>
+        </li>
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc4">
+          <label class="hc-label" for="hc4">
+            <span class="hc-claim">Someone who never buys still finds your emails worth opening.</span>
+            <span class="hc-why">A list you only mail when you want something stops being a list.</span>
+          </label>
+        </li>
+        <li class="hc-item">
+          <input class="hc-box" type="checkbox" id="hc5">
+          <label class="hc-label" for="hc5">
+            <span class="hc-claim">You follow up more than once before you give up on a thread.</span>
+            <span class="hc-why">Most replies to cold sequences come after the first message, not to it.</span>
+          </label>
+        </li>
+        </ul>
+
+        <div class="hc-result">
+          <div class="hc-score"><span class="hc-score-num" id="hcNum">0</span><span class="hc-score-of">/6</span></div>
+          <div class="hc-readout">
+            <div class="hc-meter"><div class="hc-meter-fill" id="hcFill"></div></div>
+            <p class="hc-verdict" id="hcVerdict">Tick what is true today.</p>
+          </div>
+        </div>
+
+        <p class="hc-next" id="hcNext">Your first unticked answer is where to start.</p>
+      </div>
+    </div>
+
+    
     <div class="nav-next">
       <span class="nav-next-label">Read next</span>
       <a class="nav-next-link" href="/learn/social-media-marketing">
@@ -461,6 +563,41 @@ const emailObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 const emailWrap = document.getElementById('emailVisualWrap');
 if (emailWrap) emailObs.observe(emailWrap);
+
+// Healthcheck: score, verdict and recall. Native checkboxes work without any of this.
+(function () {
+  const wrap = document.getElementById('healthcheck');
+  if (!wrap) return;
+  const boxes = [...wrap.querySelectorAll('.hc-box')];
+  const num = document.getElementById('hcNum');
+  const fill = document.getElementById('hcFill');
+  const verdict = document.getElementById('hcVerdict');
+  const next = document.getElementById('hcNext');
+  const KEY = 'gm-email-marketing-healthcheck';
+
+  const BANDS = [[0, 1, "Broadcasting", "You have addresses, not an audience."], [2, 3, "Sending, not earning", "The channel works. You are using a fraction of it."], [4, 5, "Close", "One gap between this and the highest-return channel you own."], [6, 6, "Owned", "No algorithm sits between you and these people. Keep it that way."]];
+
+  function render() {
+    const done = boxes.filter(b => b.checked).length;
+    num.textContent = done;
+    fill.style.width = (done / boxes.length * 100) + '%';
+    const band = BANDS.find(b => done >= b[0] && done <= b[1]);
+    verdict.textContent = band[2];
+    const firstOpen = boxes.find(b => !b.checked);
+    next.textContent = firstOpen
+      ? band[3]
+      : 'Nothing left to tick. Worth re-reading this page in six months, because the answers change.';
+    try { localStorage.setItem(KEY, JSON.stringify(boxes.map(b => b.checked))); } catch (e) {}
+  }
+
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || '[]');
+    if (Array.isArray(saved)) saved.forEach((v, i) => { if (boxes[i]) boxes[i].checked = !!v; });
+  } catch (e) {}
+
+  boxes.forEach(b => b.addEventListener('change', render));
+  render();
+})();
 </script>
 
 </body>
