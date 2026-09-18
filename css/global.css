@@ -593,9 +593,9 @@ a.link-subtle:hover { color: var(--white); border-color: var(--white-dim); }
 
 /* ── MOBILE NAV ──────────────────────────────────────────────────────────
    Every page hides .nav-link below 768px. Without a toggle that left the
-   site unnavigable on a phone. The wrapper is display:contents on desktop so
-   the bar lays out exactly as before. */
-.nav-menu { display: contents; }
+   site unnavigable on a phone. */
+/* .nav-menu carries an inline display:flex so the desktop bar survives a stale
+   cached stylesheet; the mobile rules below need !important to beat it. */
 .nav-toggle {
   display: none; flex-direction: column; align-items: center; justify-content: center;
   width: 40px; height: 40px; margin-right: -8px;
@@ -615,12 +615,13 @@ a.link-subtle:hover { color: var(--white); border-color: var(--white-dim); }
   .nav-links .nav-link { display: block; }
   .js .nav-toggle { display: inline-flex; }
   .js .nav-menu {
-    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    display: none !important; position: absolute; top: 100%; left: 0; right: 0;
     flex-direction: column;
     background: var(--navy-dark);
     border-bottom: 1px solid var(--white-faint);
   }
-  .js .site-nav.nav-open .nav-menu { display: flex; }
+  .js .site-nav.nav-open .nav-menu { display: flex !important; gap: 0 !important;
+    align-items: stretch !important; }
   .js .nav-menu .nav-link {
     padding: 1.1rem 2.5rem; border-top: 1px solid var(--white-faint);
     font-size: 0.95rem; letter-spacing: 0.06em;
