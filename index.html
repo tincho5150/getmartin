@@ -480,10 +480,15 @@ html, body {
 <nav class="site-nav">
   <div class="nav-wordmark">get<span>martin</span></div>
   <div class="nav-links">
+    <div class="nav-menu" id="nav-menu">
     <a class="nav-link" href="/">This First</a>
     <a class="nav-link" href="/proof">Proof</a>
     <a class="nav-link" href="/learn">Learn</a>
+    </div>
     <a class="nav-link-cta" href="#ch5">Let's talk</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+      <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+    </button>
   </div>
   <div class="nav-progress"></div>
 </nav>
@@ -1052,5 +1057,6 @@ if (submitBtn) {
 }
 </script>
 
+<script src="/js/nav.js" defer></script>
 </body>
 </html>

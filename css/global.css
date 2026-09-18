@@ -590,3 +590,39 @@ a.link-subtle:hover { color: var(--white); border-color: var(--white-dim); }
 
   .nav-dots { display: none; }
 }
+
+/* ── MOBILE NAV ──────────────────────────────────────────────────────────
+   Every page hides .nav-link below 768px. Without a toggle that left the
+   site unnavigable on a phone. The wrapper is display:contents on desktop so
+   the bar lays out exactly as before. */
+.nav-menu { display: contents; }
+.nav-toggle {
+  display: none; flex-direction: column; align-items: center; justify-content: center;
+  width: 40px; height: 40px; margin-right: -8px;
+  background: none; border: none; cursor: pointer; flex-shrink: 0;
+}
+.nav-toggle-bar {
+  display: block; width: 20px; height: 2px; background: var(--white);
+  transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-base);
+}
+.nav-toggle-bar + .nav-toggle-bar { margin-top: 5px; }
+.site-nav.nav-open .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.site-nav.nav-open .nav-toggle-bar:nth-child(2) { opacity: 0; }
+.site-nav.nav-open .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  /* no-JS fallback: beat each page's own .nav-link { display: none } */
+  .nav-links .nav-link { display: block; }
+  .js .nav-toggle { display: inline-flex; }
+  .js .nav-menu {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column;
+    background: var(--navy-dark);
+    border-bottom: 1px solid var(--white-faint);
+  }
+  .js .site-nav.nav-open .nav-menu { display: flex; }
+  .js .nav-menu .nav-link {
+    padding: 1.1rem 2.5rem; border-top: 1px solid var(--white-faint);
+    font-size: 0.95rem; letter-spacing: 0.06em;
+  }
+}
