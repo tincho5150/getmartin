@@ -115,6 +115,8 @@
   color: var(--white);
 }
 .band-headline .dim { color: var(--white-dim); }
+/* the method headline is a full sentence per line; size it to hold them */
+.method .band-headline { font-size: clamp(1.8rem, 2.6vw, 2.4rem); }
 .method-body p {
   font-size: 1rem; font-weight: 300; line-height: 1.8;
   color: var(--white-dim); max-width: 46ch;
@@ -210,7 +212,7 @@
   <section class="band hero">
     <div class="band-inner">
       <p class="hero-eyebrow">See It</p>
-      <h1 class="hero-headline">Every claim here<br><span class="dim">is clickable.</span></h1>
+      <h1 class="hero-headline">The work does<br><span class="dim">the arguing.</span></h1>
       <p class="hero-sub">One buyer problem, attacked three ways. The prospect arrives at the call already sold on the problem.</p>
     </div>
   </section>
@@ -220,7 +222,7 @@
     <div class="band-inner method-inner">
       <div>
         <p class="eyebrow">The method</p>
-        <h2 class="band-headline">The format changes.<br><span class="dim">The question doesn't.</span></h2>
+        <h2 class="band-headline">The question never changes.<br><span class="dim">The answer always does.</span></h2>
       </div>
       <div class="method-body">
         <p>Three experiences: <strong>the site, the diagnostic, and the sales tool.</strong></p>
@@ -233,7 +235,7 @@
   <section class="band three">
     <div class="band-inner">
       <div class="three-head">
-        <h2 class="band-headline">Pick one.</h2>
+        <h2 class="band-headline">Three ways in.</h2>
         <p class="three-count">Three formats · One method</p>
       </div>
 
