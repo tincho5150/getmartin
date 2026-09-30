@@ -8,22 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="/css/global.css">
 <style>
-
-:root {
-  --font-display: 'Roboto', sans-serif;
-  --font-body:    'Roboto', sans-serif;
-}
-
-html, body { height: 100%; overflow: hidden; }
-
-.site-wrapper {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y proximity;
-  scroll-behavior: smooth;
-}
 
 /* NAV */
 .site-nav {
@@ -47,7 +33,7 @@ html, body { height: 100%; overflow: hidden; }
   text-transform: uppercase; color: var(--white-dim); text-decoration: none;
   transition: color var(--dur-base);
 }
-.nav-link:hover { color: var(--white); }
+.nav-link:hover  { color: var(--white); }
 .nav-link.active { color: var(--white); }
 .nav-link-cta {
   font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
@@ -61,201 +47,119 @@ html, body { height: 100%; overflow: hidden; }
   transition: width 0.3s var(--ease-out);
 }
 
-/* CHAPTER */
-.chapter {
-  scroll-snap-align: start; scroll-snap-stop: always;
-  min-height: 100vh; height: auto; padding-top: var(--nav-height);
-  display: flex; flex-direction: column;
-  position: relative; overflow: hidden;
-}
-.chapter::before {
+/* BANDS — shared grid backdrop */
+.band { position: relative; overflow: hidden; }
+.band::before {
   content: ''; position: absolute; inset: 0;
   background-image:
     linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 72px 72px; pointer-events: none; z-index: 0;
 }
-#ch0::after { content: ''; position: absolute; top: -160px; left: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(184,212,0,0.06) 0%, transparent 70%); pointer-events: none; z-index: 0; }
-#ch1::after { content: ''; position: absolute; bottom: -120px; right: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
-#ch2::after { content: ''; position: absolute; top: -120px; right: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
-#ch3::after { content: ''; position: absolute; bottom: -120px; left: -80px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(184,212,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+.band > * { position: relative; z-index: 1; }
+.band-inner { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter); }
 
-/* COLUMNS */
-.columns {
-  position: relative; z-index: 1; flex: 1;
-  display: grid; grid-template-columns: 1fr 1fr;
-  height: auto; min-height: 100%;
+/* HERO */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end;
+  padding: calc(var(--nav-height) + 6vw) 0 var(--space-16);
 }
-/* ── FULL-WIDTH HERO CHAPTER ── */
-.chapter-hero {
-  justify-content: flex-end;
-  padding-top: 0;
+.hero::after {
+  content: ''; position: absolute; top: -160px; left: -80px; width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(184,212,0,0.06) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
 }
-.hero-full {
-  position: relative; z-index: 1; flex: 1;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: calc(var(--nav-height) + 3vw) 5vw 4vw;
-}
-.hero-full-eyebrow {
+.hero-eyebrow {
   font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--lime); margin-bottom: 1.2rem;
-  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.2s forwards;
 }
-.hero-full-headline {
+.hero-headline {
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 5.5vw, 5.5rem);
   font-weight: 700; line-height: 1.0; letter-spacing: -0.03em;
   color: var(--white); max-width: 16ch; margin-bottom: 1.8rem;
-  opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards;
 }
-.hero-full-headline .dim { color: var(--white-dim); }
-.hero-full-sub {
+.hero-headline .dim { color: var(--white-dim); }
+.hero-sub {
   font-size: 1.05rem; font-weight: 300; line-height: 1.7;
   color: var(--white-dim); max-width: 52ch;
-  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.45s forwards;
-}
-.ch-indicator-hero {
-  position: relative; z-index: 1;
-  padding: 1.2rem 5vw 1.8rem;
-  display: flex; align-items: center; gap: 1rem;
-  border-top: 1px solid var(--white-faint);
 }
 
-.col-left {
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 4vw 3.5vw 4vw 5vw;
-  border-right: 1px solid rgba(30,44,58,0.15);
-}
-.col-right {
-  display: flex; flex-direction: column;
-  position: relative; z-index: 1; background: #ffffff;
-}
-.col-right::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(30,44,58,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(30,44,58,0.05) 1px, transparent 1px);
-  background-size: 72px 72px; pointer-events: none; z-index: 0;
-}
-.col-right > * { position: relative; z-index: 1; }
-.col-right { opacity: 0; animation: fadeIn 0.7s var(--ease-out) 0.4s forwards; }
-
-/* CHAPTER INDICATOR */
-.ch-indicator {
-  display: flex; align-items: center;
-  padding: 0 2rem; height: 44px;
-  border-bottom: 1px solid rgba(30,44,58,0.1);
-  background: #ffffff; flex-shrink: 0;
-}
-.ch-indicator-label {
-  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; color: #1e2c3a; flex: 1;
-}
-.ch-indicator-sep {
-  width: 1px; height: 16px; background: rgba(30,44,58,0.15);
-  margin: 0 1.5rem; flex-shrink: 0;
-}
-.ch-indicator-dots { display: flex; gap: 1.2rem; align-items: center; flex-shrink: 0; }
-.ch-dot {
-  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.08em;
-  color: rgba(30,44,58,0.25); border: none; background: none;
-  cursor: pointer; padding: 0; transition: color var(--dur-base);
-}
-.ch-dot:hover  { color: rgba(30,44,58,0.5); }
-.ch-dot.active { color: #1e2c3a; font-weight: 700; }
-
-/* RIGHT CONTENT */
-.col-right-content {
-  flex: 1; display: flex; flex-direction: column; justify-content: center;
-  gap: var(--col-gap); padding: 3vw 3.5vw 3vw 3vw;
-}
-
-/* LEFT TYPOGRAPHY */
-.ch-eyebrow {
+/* METHOD */
+.method { border-top: 1px solid var(--white-faint); padding: var(--space-16) 0; }
+.method-inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: start; }
+.eyebrow {
   font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
-  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.2s forwards;
 }
-.ch-headline {
+.band-headline {
   font-family: var(--font-display);
   font-size: clamp(2rem, 3.2vw, 3.4rem);
   font-weight: 700; line-height: 1.05; letter-spacing: -0.02em;
-  color: var(--white); margin-bottom: 1.6rem;
-  opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.3s forwards;
+  color: var(--white);
 }
-.ch-headline .dim { color: var(--white-dim); }
-.ch-section {
-  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--lime);
-  margin-bottom: 0.4rem; margin-top: 1.1rem;
-  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.4s forwards;
-}
-.ch-body {
+.band-headline .dim { color: var(--white-dim); }
+.method-body p {
   font-size: 1rem; font-weight: 300; line-height: 1.8;
-  color: var(--white-dim); max-width: 42ch;
-  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.45s forwards;
+  color: var(--white-dim); max-width: 46ch;
 }
-.ch-body strong { color: var(--white); font-weight: 400; }
-.ch-next {
-  display: inline-flex; align-items: center; gap: 8px;
+.method-body p + p { margin-top: var(--space-6); }
+.method-body strong { color: var(--white); font-weight: 400; }
+
+/* THE THREE */
+.three { border-top: 1px solid var(--white-faint); padding: var(--space-16) 0 var(--space-24); }
+.three-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-3) var(--space-6); margin-bottom: var(--space-8); }
+.three-count { font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white-dim); }
+.three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+
+.work-card {
+  display: flex; flex-direction: column;
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  text-decoration: none; color: inherit; overflow: hidden;
+  transition: background var(--dur-base), border-color var(--dur-base), transform var(--dur-base) var(--ease-out);
+}
+.work-card:hover { background: var(--card-bg-hover); border-color: var(--card-border-hover); transform: translateY(-3px); }
+.work-card:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+.work-thumb { display: block; border-bottom: 1px solid var(--card-border); background: var(--navy-mid); }
+.work-thumb img { width: 100%; height: 190px; object-fit: cover; object-position: top center; display: block; }
+.work-body { padding: var(--space-6); display: flex; flex-direction: column; flex: 1; }
+.work-eyebrow {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.8rem;
+}
+.work-headline {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em;
+  color: var(--white); margin-bottom: 0.9rem;
+}
+.work-line { font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--white-dim); }
+.work-line strong { color: var(--white); font-weight: 400; }
+.work-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--space-6); }
+.work-more {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: auto; padding-top: var(--space-6);
   font-size: 0.85rem; font-weight: 400; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--navy-dark); background: var(--lime);
-  border: none; padding: 0.9rem 1.8rem; cursor: pointer;
-  text-decoration: none; width: fit-content; margin-top: 2rem;
-  transition: background var(--dur-base), gap var(--dur-base) var(--ease-out);
-  opacity: 0; animation: fadeUp 0.5s var(--ease-out) 0.6s forwards;
+  text-transform: uppercase; color: var(--lime);
+  transition: gap var(--dur-base) var(--ease-out);
 }
-.ch-next:hover { background: var(--lime-hover); gap: 14px; }
-
-/* CARDS */
-.card-navy {
-  background: #1e2c3a; border: 1px solid #1e2c3a; padding: 1.4rem;
-}
-.card-navy-label {
-  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; color: rgba(240,239,240,0.35); margin-bottom: 0.6rem;
-}
-.card-navy-text {
-  font-size: 1rem; font-weight: 300; line-height: 1.7; color: rgba(240,239,240,0.75);
-}
-.card-navy-text strong { color: #f0eff0; font-weight: 500; }
-
-
-.mockup-img {
-  width: 100%;
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
-.mockup-img img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.tag-card {
-  background: #1e2c3a; border: 1px solid #1e2c3a;
-  padding: 1rem 1.4rem; display: flex; flex-wrap: wrap; gap: 6px;
-}
-.tag {
-  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em;
-  text-transform: uppercase; padding: 0.25rem 0.6rem;
-  border: 1px solid rgba(240,239,240,0.15); color: rgba(240,239,240,0.5);
-}
-
-/* ANIMATIONS */
-@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.work-card:hover .work-more { gap: 14px; }
 
 /* MOBILE */
+@media (max-width: 900px) {
+  .three-grid { grid-template-columns: 1fr; }
+  .method-inner { grid-template-columns: 1fr; gap: var(--space-8); }
+}
 @media (max-width: 768px) {
-  html, body { overflow: auto; height: auto; }
-  .site-wrapper { overflow: visible; scroll-snap-type: none; height: auto; }
-  .chapter { height: auto; scroll-snap-align: none; }
-  .columns { grid-template-columns: 1fr; height: auto; }
-  .col-left { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--white-faint); }
-  .col-right-content { padding: 2rem 1.5rem 3rem; }
+  .site-nav { padding: 0 1.5rem; }
   .nav-link { display: none; }
   .nav-link-cta { display: block; }
+  .hero { min-height: auto; padding: calc(var(--nav-height) + 5rem) 0 var(--space-12); }
+  .method, .three { padding: var(--space-12) 0; }
+  .work-thumb img { height: 200px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-card, .work-more, .nav-progress { transition: none; }
+  .work-card:hover { transform: none; }
 }
 
 </style>
@@ -278,202 +182,114 @@ html, body { height: 100%; overflow: hidden; }
   <div class="nav-progress"></div>
 </nav>
 
-<div class="site-wrapper" id="site-wrapper">
+<main>
 
   <!-- HERO -->
-  <section class="chapter chapter-hero" id="ch-hero">
-    <div class="hero-full">
-      <p class="hero-full-eyebrow">See It</p>
-      <h1 class="hero-full-headline">The argument.<br><span class="dim">Backed up.</span></h1>
-      <p class="hero-full-sub">Three experiences for one client: one buyer problem, attacked three ways. Different formats, same method, and the prospect arrives already sold on the problem.</p>
+  <section class="band hero">
+    <div class="band-inner">
+      <p class="hero-eyebrow">See It</p>
+      <h1 class="hero-headline">The argument.<br><span class="dim">Backed up.</span></h1>
+      <p class="hero-sub">Three experiences for one client: one buyer problem, attacked three ways. Different formats, same method, and the prospect arrives already sold on the problem.</p>
     </div>
-    <div class="ch-indicator ch-indicator-hero">
-      <div class="ch-indicator-dots">
-        <button class="ch-dot" data-chapter="1">01</button>
-        <button class="ch-dot" data-chapter="2">02</button>
-        <button class="ch-dot" data-chapter="3">03</button>
-        <button class="ch-dot" data-chapter="4">04</button>
+  </section>
+
+  <!-- THE METHOD -->
+  <section class="band method">
+    <div class="band-inner method-inner">
+      <div>
+        <p class="eyebrow">The method</p>
+        <h2 class="band-headline">One question.<br><span class="dim">Three answers.</span></h2>
+      </div>
+      <div class="method-body">
+        <p>Three experiences for ProvisionAI, built over one engagement: <strong>the site, the diagnostic, and the sales tool.</strong> Each one answers the same question in a different format.</p>
+        <p>Every experience starts with the same question: <strong>what does the prospect need to feel before they'll say yes?</strong> The research leads. The format follows. The output is always different. The result is always the same.</p>
       </div>
     </div>
   </section>
 
-  <!-- CH0 — INTRO -->
-  <section class="chapter" id="ch0">
-    <div class="columns">
-      <div class="col-left">
-        <p class="ch-eyebrow">The method</p>
-        <h2 class="ch-headline">One question.<br><span class="dim">Three answers.</span></h2>
-        <p class="ch-body">Three experiences for ProvisionAI, built over one engagement: <strong>the site, the diagnostic, and the sales tool.</strong> Each one answers the same question in a different format.</p>
+  <!-- THE THREE -->
+  <section class="band three">
+    <div class="band-inner">
+      <div class="three-head">
+        <h2 class="band-headline">The three.</h2>
+        <p class="three-count">One client · One engagement</p>
       </div>
-      <div class="col-right">
-        <div class="ch-indicator">
-          <span class="ch-indicator-label">What you'll see</span>
-          <div class="ch-indicator-sep"></div>
-          <div class="ch-indicator-dots">
-            <button class="ch-dot active" data-chapter="1">01</button>
-            <button class="ch-dot" data-chapter="2">02</button>
-            <button class="ch-dot" data-chapter="3">03</button>
-            <button class="ch-dot" data-chapter="4">04</button>
+
+      <div class="three-grid">
+
+        <a class="work-card" href="/work/loss-analysis">
+          <div class="work-thumb">
+            <img src="/assets/loss-analysis-thumb.png" width="840" height="811" loading="lazy" decoding="async" alt="Supply Chain Loss Analysis: the diagnostic results screen">
           </div>
-        </div>
-        <div class="col-right-content">
-          <div class="mockup-img">
-            <img src="assets/proof-hero.png" alt="Supply Chain Loss Analysis: rate yourself">
+          <div class="work-body">
+            <p class="work-eyebrow">Supply chain · Diagnostic tool</p>
+            <h3 class="work-headline">Make them feel the cost they didn't know they had.</h3>
+            <p class="work-line">The call starts with the prospect already knowing their biggest gap. <strong>The rep arrives to confirm, not convince.</strong></p>
+            <div class="work-tags">
+              <span class="tag tag-default">Self-diagnostic</span>
+              <span class="tag tag-default">Scoring system</span>
+              <span class="tag tag-default">Personalised roadmap</span>
+              <span class="tag tag-default">Pre-call qualifier</span>
+            </div>
+            <span class="work-more">Read the case →</span>
           </div>
-          <div class="card-navy">
-            <div class="card-navy-label">The method behind every piece</div>
-            <div class="card-navy-text">Every experience starts with the same question: <strong>what does the prospect need to feel before they'll say yes?</strong> The research leads. The format follows. The output is always different. The result is always the same.</div>
+        </a>
+
+        <a class="work-card" href="/work/truck-loader">
+          <div class="work-thumb">
+            <img src="/assets/truck-loader-thumb.png" width="840" height="652" loading="lazy" decoding="async" alt="Load Optimisation Visualiser: the 3D truck packing view">
           </div>
-        </div>
+          <div class="work-body">
+            <p class="work-eyebrow">Supply chain · Interactive explainer</p>
+            <h3 class="work-headline">Show them the math everyone else avoids.</h3>
+            <p class="work-line">The abstract becomes concrete. <strong>They've seen their truck get packed before the demo.</strong></p>
+            <div class="work-tags">
+              <span class="tag tag-default">3D visualiser</span>
+              <span class="tag tag-default">Interactive scenarios</span>
+              <span class="tag tag-default">ROI calculator</span>
+              <span class="tag tag-default">Network simulator</span>
+              <span class="tag tag-default">Onboarding experience</span>
+            </div>
+            <span class="work-more">Read the case →</span>
+          </div>
+        </a>
+
+        <a class="work-card" href="/work/provisionai">
+          <div class="work-thumb">
+            <img src="/assets/provisionai-hub-thumb.png" width="840" height="620" loading="lazy" decoding="async" alt="ProvisionAI: the supply chain resource hub home page">
+          </div>
+          <div class="work-body">
+            <p class="work-eyebrow">Supply chain · Full site + resource hub</p>
+            <h3 class="work-headline">The Netflix of supply chain content.</h3>
+            <p class="work-line">Prospects arrive from organic search already educated. <strong>The site does the selling before the SDR sends the first email.</strong></p>
+            <div class="work-tags">
+              <span class="tag tag-default">Full site</span>
+              <span class="tag tag-default">GEO optimisation</span>
+              <span class="tag tag-default">Resource hub</span>
+              <span class="tag tag-default">Multi-persona</span>
+              <span class="tag tag-default">Content strategy</span>
+            </div>
+            <span class="work-more">Read the case →</span>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
 
-  <!-- CH1 — LOSS ANALYSIS -->
-  <section class="chapter" id="ch1">
-    <div class="columns">
-      <div class="col-left">
-        <p class="ch-eyebrow">Supply chain · Diagnostic tool</p>
-        <h2 class="ch-headline">Make them feel<br><span class="dim">the cost they didn't know they had.</span></h2>
-        <p class="ch-section">The problem</p>
-        <p class="ch-body">ProvisionAI's buyers were convinced their supply chains were fine. No pain, no urgency, no reason to change. <strong>The product was excellent. The prospect couldn't feel why they needed it.</strong></p>
-        <p class="ch-section">What it changes</p>
-        <p class="ch-body">The call starts with the prospect already knowing their biggest gap. <strong>The rep arrives to confirm, not convince.</strong></p>
-        <a class="ch-next" href="/work/loss-analysis">Read the case →</a>
-      </div>
-      <div class="col-right">
-        <div class="ch-indicator">
-          <span class="ch-indicator-label">Supply Chain Loss Analysis</span>
-          <div class="ch-indicator-sep"></div>
-          <div class="ch-indicator-dots">
-            <button class="ch-dot" data-chapter="1">01</button>
-            <button class="ch-dot active" data-chapter="2">02</button>
-            <button class="ch-dot" data-chapter="3">03</button>
-            <button class="ch-dot" data-chapter="4">04</button>
-          </div>
-        </div>
-        <div class="col-right-content">
-          <div class="mockup-img">
-            <img src="assets/loss-analysis.png" alt="Supply Chain Loss Analysis: diagnostic results">
-          </div>
-          <div class="tag-card">
-            <span class="tag">Self-diagnostic</span>
-            <span class="tag">Scoring system</span>
-            <span class="tag">Personalised roadmap</span>
-            <span class="tag">Pre-call qualifier</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CH2 — 3D TRUCK LOADER -->
-  <section class="chapter" id="ch2">
-    <div class="columns">
-      <div class="col-left">
-        <p class="ch-eyebrow">Supply chain · Interactive explainer</p>
-        <h2 class="ch-headline">Show them the math<br><span class="dim">everyone else avoids.</span></h2>
-        <p class="ch-section">The problem</p>
-        <p class="ch-body">Load optimisation software is invisible by definition. It works inside systems buyers can't see. <strong>The value was real but abstract.</strong> Prospects couldn't connect the software to the savings.</p>
-        <p class="ch-section">What it changes</p>
-        <p class="ch-body">The abstract becomes concrete. <strong>They've seen their truck get packed before the demo.</strong> The question shifts from "does this work?" to "when can we start?"</p>
-        <a class="ch-next" href="/work/truck-loader">Read the case →</a>
-      </div>
-      <div class="col-right">
-        <div class="ch-indicator">
-          <span class="ch-indicator-label">Load Optimisation Visualiser</span>
-          <div class="ch-indicator-sep"></div>
-          <div class="ch-indicator-dots">
-            <button class="ch-dot" data-chapter="1">01</button>
-            <button class="ch-dot" data-chapter="2">02</button>
-            <button class="ch-dot active" data-chapter="3">03</button>
-            <button class="ch-dot" data-chapter="4">04</button>
-          </div>
-        </div>
-        <div class="col-right-content">
-          <div class="mockup-img">
-            <img src="assets/truck-loader.png" alt="Load Optimisation Visualiser: 3D truck">
-          </div>
-          <div class="tag-card">
-            <span class="tag">3D visualiser</span>
-            <span class="tag">Interactive scenarios</span>
-            <span class="tag">ROI calculator</span>
-            <span class="tag">Network simulator</span>
-            <span class="tag">Onboarding experience</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CH3 — PROVISIONAI.COM -->
-  <section class="chapter" id="ch3">
-    <div class="columns">
-      <div class="col-left">
-        <p class="ch-eyebrow">Supply chain · Full site + resource hub</p>
-        <h2 class="ch-headline">The Netflix of<br><span class="dim">supply chain content.</span></h2>
-        <p class="ch-section">The problem</p>
-        <p class="ch-body">ProvisionAI needed to own the supply chain optimisation conversation online. <strong>Competitors had more brand recognition. The product had more depth.</strong> The site needed to close that gap before a prospect ever picked up the phone.</p>
-        <p class="ch-section">What it changes</p>
-        <p class="ch-body">Prospects arrive from organic search already educated. <strong>The site does the selling before the SDR sends the first email.</strong></p>
-        <a class="ch-next" href="/work/provisionai">Read the case →</a>
-      </div>
-      <div class="col-right">
-        <div class="ch-indicator">
-          <span class="ch-indicator-label">ProvisionAI — Full Site</span>
-          <div class="ch-indicator-sep"></div>
-          <div class="ch-indicator-dots">
-            <button class="ch-dot" data-chapter="1">01</button>
-            <button class="ch-dot" data-chapter="2">02</button>
-            <button class="ch-dot" data-chapter="3">03</button>
-            <button class="ch-dot active" data-chapter="4">04</button>
-          </div>
-        </div>
-        <div class="col-right-content">
-          <div class="mockup-img">
-            <img src="assets/provisionai-hub.png" alt="ProvisionAI: Supply Chain, On Demand">
-          </div>
-          <div class="tag-card">
-            <span class="tag">Full site</span>
-            <span class="tag">GEO optimisation</span>
-            <span class="tag">Resource hub</span>
-            <span class="tag">Multi-persona</span>
-            <span class="tag">Content strategy</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</div>
+</main>
 
 <script>
-const chapters = document.querySelectorAll('.chapter');
 const progress = document.querySelector('.nav-progress');
-const wrapper  = document.getElementById('site-wrapper');
-
-function scrollToChapter(index) {
-  if (chapters[index]) chapters[index].scrollIntoView({ behavior: 'smooth' });
+if (progress) {
+  const update = () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  };
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
 }
-
-document.querySelectorAll('.ch-dot').forEach(dot => {
-  dot.addEventListener('click', () => scrollToChapter(parseInt(dot.dataset.chapter)));
-});
-
-wrapper.addEventListener('scroll', () => {
-  const scrollTop = wrapper.scrollTop;
-  const scrollH   = wrapper.scrollHeight - wrapper.clientHeight;
-  const pct       = scrollH > 0 ? (scrollTop / scrollH) * 100 : 0;
-  if (progress) progress.style.width = pct + '%';
-  chapters.forEach((ch, i) => {
-    const rect = ch.getBoundingClientRect();
-    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-      document.querySelectorAll('.ch-dot').forEach(d => {
-        d.classList.toggle('active', parseInt(d.dataset.chapter) === i);
-      });
-    }
-  });
-}, { passive: true });
 </script>
 
 <script src="/js/nav.js" defer></script>
