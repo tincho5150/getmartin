@@ -136,8 +136,15 @@
 }
 .work-card:hover { background: var(--card-bg-hover); border-color: var(--card-border-hover); transform: translateY(-3px); }
 .work-card:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
-.work-thumb { display: block; border-bottom: 1px solid var(--card-border); background: var(--navy-mid); }
-.work-thumb img { width: 100%; height: 190px; object-fit: cover; object-position: top center; display: block; }
+.work-thumb {
+  display: block; padding: var(--space-4) var(--space-4) 0;
+  background: var(--navy-mid); border-bottom: 1px solid var(--card-border);
+}
+.work-thumb img {
+  width: 100%; height: 215px; display: block;
+  object-fit: cover; object-position: top center;
+  border-radius: 3px 3px 0 0; box-shadow: 0 -1px 0 rgba(240,239,240,0.08);
+}
 .work-body { padding: var(--space-6); display: flex; flex-direction: column; flex: 1; }
 .work-eyebrow {
   font-size: 0.72rem; font-weight: 400; letter-spacing: 0.12em;
@@ -150,7 +157,6 @@
 }
 .work-line { font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--white-dim); }
 .work-line strong { color: var(--white); font-weight: 400; }
-.work-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--space-6); }
 .work-more {
   display: inline-flex; align-items: center; gap: 8px; margin-top: auto; padding-top: var(--space-6);
   font-size: 0.85rem; font-weight: 400; letter-spacing: 0.1em;
@@ -170,7 +176,7 @@
   .nav-link-cta { display: block; }
   .hero { min-height: auto; padding: calc(var(--nav-height) + 5rem) 0 var(--space-12); }
   .method, .three { padding: var(--space-12) 0; }
-  .work-thumb img { height: 200px; }
+  .work-thumb img { height: 190px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -205,7 +211,7 @@
     <div class="band-inner">
       <p class="hero-eyebrow">See It</p>
       <h1 class="hero-headline">The argument.<br><span class="dim">Backed up.</span></h1>
-      <p class="hero-sub">Three experiences for one client: one buyer problem, attacked three ways. Different formats, same method, and the prospect arrives already sold on the problem.</p>
+      <p class="hero-sub">One buyer problem, attacked three ways. Different formats, same method, and the prospect arrives already sold on the problem.</p>
     </div>
   </section>
 
@@ -217,7 +223,7 @@
         <h2 class="band-headline">One question.<br><span class="dim">Three answers.</span></h2>
       </div>
       <div class="method-body">
-        <p>Three experiences for ProvisionAI, built over one engagement: <strong>the site, the diagnostic, and the sales tool.</strong> Each one answers the same question in a different format.</p>
+        <p>Three experiences: <strong>the site, the diagnostic, and the sales tool.</strong> Each one answers the same question in a different format.</p>
         <p>Every experience starts with the same question: <strong>what does the prospect need to feel before they'll say yes?</strong> The research leads. The format follows. The output is always different. The result is always the same.</p>
       </div>
     </div>
@@ -228,7 +234,7 @@
     <div class="band-inner">
       <div class="three-head">
         <h2 class="band-headline">The three.</h2>
-        <p class="three-count">One client · One engagement</p>
+        <p class="three-count">Three formats · One method</p>
       </div>
 
       <div class="three-grid">
@@ -239,14 +245,8 @@
           </div>
           <div class="work-body">
             <p class="work-eyebrow">Supply chain · Diagnostic tool</p>
-            <h3 class="work-headline">Make them feel the cost they didn't know they had.</h3>
-            <p class="work-line">The call starts with the prospect already knowing their biggest gap. <strong>The rep arrives to confirm, not convince.</strong></p>
-            <div class="work-tags">
-              <span class="tag tag-default">Self-diagnostic</span>
-              <span class="tag tag-default">Scoring system</span>
-              <span class="tag tag-default">Personalised roadmap</span>
-              <span class="tag tag-default">Pre-call qualifier</span>
-            </div>
+            <h3 class="work-headline">The rep stops convincing.</h3>
+            <p class="work-line">They score themselves against the standard, and <strong>walk into the call already naming their biggest gap.</strong></p>
             <span class="work-more">Read the case →</span>
           </div>
         </a>
@@ -257,15 +257,8 @@
           </div>
           <div class="work-body">
             <p class="work-eyebrow">Supply chain · Interactive explainer</p>
-            <h3 class="work-headline">Show them the math everyone else avoids.</h3>
-            <p class="work-line">The abstract becomes concrete. <strong>They've seen their truck get packed before the demo.</strong></p>
-            <div class="work-tags">
-              <span class="tag tag-default">3D visualiser</span>
-              <span class="tag tag-default">Interactive scenarios</span>
-              <span class="tag tag-default">ROI calculator</span>
-              <span class="tag tag-default">Network simulator</span>
-              <span class="tag tag-default">Onboarding experience</span>
-            </div>
+            <h3 class="work-headline">The demo starts sold.</h3>
+            <p class="work-line">They watch the algorithm pack their own truck, and <strong>run the numbers against their real freight spend.</strong></p>
             <span class="work-more">Read the case →</span>
           </div>
         </a>
@@ -276,15 +269,8 @@
           </div>
           <div class="work-body">
             <p class="work-eyebrow">Supply chain · Full site + resource hub</p>
-            <h3 class="work-headline">The Netflix of supply chain content.</h3>
-            <p class="work-line">Prospects arrive from organic search already educated. <strong>The site does the selling before the SDR sends the first email.</strong></p>
-            <div class="work-tags">
-              <span class="tag tag-default">Full site</span>
-              <span class="tag tag-default">GEO optimisation</span>
-              <span class="tag tag-default">Resource hub</span>
-              <span class="tag tag-default">Multi-persona</span>
-              <span class="tag tag-default">Content strategy</span>
-            </div>
+            <h3 class="work-headline">Search does the selling.</h3>
+            <p class="work-line">They arrive from organic search already educated, <strong>before an SDR has sent anything.</strong></p>
             <span class="work-more">Read the case →</span>
           </div>
         </a>
