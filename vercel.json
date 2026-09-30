@@ -5,9 +5,17 @@
     {
       "src": "/truck-loader",
       "status": 308,
-      "headers": {
-        "Location": "/proof/truck-loader"
-      }
+      "headers": { "Location": "/work/truck-loader" }
+    },
+    {
+      "src": "/proof",
+      "status": 308,
+      "headers": { "Location": "/work" }
+    },
+    {
+      "src": "/proof/(.*)",
+      "status": 308,
+      "headers": { "Location": "/work/$1" }
     },
     {
       "handle": "filesystem"

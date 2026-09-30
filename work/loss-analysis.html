@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="getmartin — Show them the math everyone else avoids. A 3D interactive load optimisation experience for ProvisionAI.">
-<title>Load Optimisation Visualiser — getmartin</title>
+<meta name="description" content="getmartin — Make them feel the cost they didn't know they had. A self-diagnostic sales experience for ProvisionAI.">
+<title>Supply Chain Loss Analysis — getmartin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -19,7 +19,6 @@
 
 html, body { height: auto; overflow-x: hidden; }
 
-/* NAV */
 .site-nav {
   position: fixed; top: 0; left: 0; right: 0;
   height: var(--nav-height); z-index: 100;
@@ -55,12 +54,7 @@ html, body { height: auto; overflow-x: hidden; }
   transition: width 0.2s linear;
 }
 
-/* PAGE */
-.page {
-  min-height: 100vh;
-  padding-top: var(--nav-height);
-  position: relative;
-}
+.page { min-height: 100vh; padding-top: var(--nav-height); position: relative; }
 .page::before {
   content: ''; position: fixed; inset: 0;
   background-image:
@@ -69,7 +63,6 @@ html, body { height: auto; overflow-x: hidden; }
   background-size: 72px 72px; pointer-events: none; z-index: 0;
 }
 
-/* ARTICLE */
 .article {
   position: relative; z-index: 1;
   max-width: var(--max-w);
@@ -77,7 +70,6 @@ html, body { height: auto; overflow-x: hidden; }
   padding: 5vw 2rem 8rem;
 }
 
-/* BACK */
 .back {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em;
@@ -87,7 +79,6 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .back:hover { color: var(--white); }
 
-/* HEADER */
 .article-header { margin-bottom: 3.5rem; }
 .article-eyebrow {
   font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
@@ -108,7 +99,6 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .article-intro strong { color: var(--white); font-weight: 400; }
 
-/* TAGS */
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1.6rem; }
 .tag {
   font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em;
@@ -116,12 +106,10 @@ html, body { height: auto; overflow-x: hidden; }
   border: 1px solid var(--white-faint); color: var(--white-dim);
 }
 
-/* SECTION */
 .section { margin-bottom: 4rem; }
 .section-label {
   font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--lime);
-  margin-bottom: 0.8rem;
+  text-transform: uppercase; color: var(--lime); margin-bottom: 0.8rem;
 }
 .section-headline {
   font-family: var(--font-display);
@@ -137,31 +125,18 @@ html, body { height: auto; overflow-x: hidden; }
 .section-body strong { color: var(--white); font-weight: 400; }
 .section-body + .section-body { margin-top: 1rem; }
 
-/* DIVIDER */
-.divider {
-  border: none; border-top: 1px solid var(--white-faint);
-  margin: 3.5rem 0;
-}
+.divider { border: none; border-top: 1px solid var(--white-faint); margin: 3.5rem 0; }
 
-/* SCREENSHOT */
-.screenshot-wrap {
-  margin: 2.5rem 0;
-  position: relative;
-}
+.screenshot-wrap { margin: 2.5rem 0; }
 .screenshot-browser {
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow:
-    0 2px 4px rgba(0,0,0,0.2),
-    0 12px 40px rgba(0,0,0,0.4),
-    0 0 0 1px rgba(255,255,255,0.06);
+  border-radius: 10px; overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 12px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06);
 }
 .screenshot-bar {
   height: 40px; background: #0c1520;
   display: flex; align-items: center;
   padding: 0 12px; gap: 8px;
   border-bottom: 1px solid rgba(255,255,255,0.06);
-  flex-shrink: 0;
 }
 .s-dots { display: flex; gap: 6px; }
 .s-dot { width: 10px; height: 10px; border-radius: 50%; }
@@ -173,56 +148,42 @@ html, body { height: auto; overflow-x: hidden; }
   display: flex; align-items: center; padding: 0 10px;
   font-size: 11px; color: rgba(255,255,255,0.25);
 }
-.screenshot-browser img {
-  width: 100%; height: auto; display: block;
-}
+.screenshot-browser img { width: 100%; height: auto; display: block; }
 .screenshot-caption {
   font-size: 0.78rem; font-weight: 300; letter-spacing: 0.04em;
   color: rgba(240,239,240,0.35);
   margin-top: 0.8rem; text-align: center;
 }
 
-/* METRICS */
 .metrics {
   display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 1px; background: var(--white-faint);
   border: 1px solid var(--white-faint);
   margin: 2.5rem 0;
 }
-.metric {
-  background: #1e2c3a;
-  padding: 1.4rem 1.2rem;
-}
+.metric { background: #1e2c3a; padding: 1.4rem 1.2rem; }
 .metric-num {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 700; line-height: 1;
-  letter-spacing: -0.03em; color: var(--lime);
-  margin-bottom: 0.4rem;
+  letter-spacing: -0.03em; color: var(--lime); margin-bottom: 0.4rem;
 }
-.metric-label {
-  font-size: 0.82rem; font-weight: 300;
-  color: var(--white-dim); line-height: 1.4;
-}
+.metric-label { font-size: 0.82rem; font-weight: 300; color: var(--white-dim); line-height: 1.4; }
 
-/* INSIGHT CARD */
 .insight {
   background: rgba(184,212,0,0.06);
   border-left: 2px solid var(--lime);
-  padding: 1.2rem 1.4rem;
-  margin: 2rem 0;
+  padding: 1.2rem 1.4rem; margin: 2rem 0;
 }
 .insight-label {
   font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
   text-transform: uppercase; color: var(--lime); margin-bottom: 0.5rem;
 }
 .insight-text {
-  font-size: 1rem; font-weight: 300; line-height: 1.7;
-  color: var(--white-dim);
+  font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--white-dim);
 }
 .insight-text strong { color: var(--white); font-weight: 400; }
 
-/* CTA */
 .cta-block {
   margin-top: 4rem; padding-top: 3rem;
   border-top: 1px solid var(--white-faint);
@@ -257,7 +218,6 @@ html, body { height: auto; overflow-x: hidden; }
 }
 .cta-secondary:hover { color: var(--white); border-color: var(--white-dim); }
 
-/* MOBILE */
 @media (max-width: 768px) {
   .nav-link { display: none; }
   .nav-link-cta { display: block; }
@@ -280,7 +240,7 @@ html, body { height: auto; overflow-x: hidden; }
   <div class="nav-links">
     <div class="nav-menu" id="nav-menu" style="display:flex;align-items:center;gap:2rem">
     <a class="nav-link" href="/">This First</a>
-    <a class="nav-link active" href="/proof">Proof</a>
+    <a class="nav-link active" href="/work">See It</a>
     <a class="nav-link" href="/learn">Learn</a>
     </div>
     <a class="nav-link-cta" href="/#ch5">Let's talk</a>
@@ -294,23 +254,22 @@ html, body { height: auto; overflow-x: hidden; }
 <div class="page">
   <div class="article">
 
-    <a class="back" href="/proof">← Back to Proof</a>
+    <a class="back" href="/work">← Back to the work</a>
 
-    <!-- HEADER -->
     <div class="article-header">
-      <p class="article-eyebrow">Supply chain · Interactive explainer</p>
-      <h1 class="article-headline">Show them the math<br><span class="dim">everyone else avoids.</span></h1>
+      <p class="article-eyebrow">Supply chain · Diagnostic tool</p>
+      <h1 class="article-headline">Make them feel<br><span class="dim">the cost they didn't know they had.</span></h1>
       <p class="article-intro">
-        Load optimisation software is invisible by definition. It works inside systems buyers can't see.
-        <strong>The value was real but abstract. Prospects couldn't connect the software to the savings.</strong>
-        So we made the math visible: in real time, in 3D, on their actual load scenarios.
+        ProvisionAI's buyers were convinced their supply chains were fine. No pain, no urgency, no reason to change.
+        <strong>The product was excellent. The prospect couldn't feel why they needed it.</strong>
+        So we built a tool that made them feel it, before a single sales call.
       </p>
       <div class="tags">
-        <span class="tag">3D visualiser</span>
-        <span class="tag">Interactive scenarios</span>
-        <span class="tag">ROI calculator</span>
-        <span class="tag">Network simulator</span>
-        <span class="tag">Onboarding experience</span>
+        <span class="tag">Self-diagnostic</span>
+        <span class="tag">Scoring system</span>
+        <span class="tag">Personalised roadmap</span>
+        <span class="tag">AI assistant</span>
+        <span class="tag">Pre-call qualifier</span>
       </div>
     </div>
 
@@ -319,16 +278,16 @@ html, body { height: auto; overflow-x: hidden; }
     <!-- THE PROBLEM -->
     <div class="section">
       <p class="section-label">The problem</p>
-      <h2 class="section-headline">You can't sell invisible software<br><span class="dim">with a slide deck.</span></h2>
+      <h2 class="section-headline">Buyers don't resist buying.<br><span class="dim">They resist feeling the problem.</span></h2>
       <p class="section-body">
-        ProvisionAI's load optimisation software worked inside systems buyers couldn't see. The value was real (5–10% more product per truck, zero overweight violations, repeatable across every shift) but abstract. Prospects couldn't connect the software to the savings.
+        ProvisionAI's prospects were running supply chains at 87% payload utilisation and calling it fine. At their scale (hundreds of loads daily across a global network) that 13% gap compounded into extra trucks, extra miles, extra emissions, and extra cost every single day.
       </p>
       <p class="section-body">
-        <strong>Every demo started with twenty minutes of explaining what the product did before anyone could talk about why it mattered.</strong> The gap between what the software did and what the prospect could feel was killing deals before they started.
+        <strong>But they couldn't feel it. No benchmark. No reference point. No urgency.</strong> Every discovery call started with the rep trying to convince the prospect they had a problem that the prospect was certain they didn't have.
       </p>
     </div>
 
-    <!-- SCREENSHOT: PROBLEM -->
+    <!-- SCREENSHOT: INTRO -->
     <div class="screenshot-wrap">
       <div class="screenshot-browser">
         <div class="screenshot-bar">
@@ -337,33 +296,33 @@ html, body { height: auto; overflow-x: hidden; }
             <div class="s-dot s-dot-a"></div>
             <div class="s-dot s-dot-g"></div>
           </div>
-          <div class="s-url">provision-onboarding.vercel.app</div>
+          <div class="s-url">provision-loss-analysis.vercel.app</div>
         </div>
-        <img src="/assets/truck-problem.png" alt="The problem: 87% industry average vs 97% with ProvisionAI">
+        <img src="/assets/loss-intro.png" alt="Supply Chain Loss Analysis: intro screen">
       </div>
-      <p class="screenshot-caption">The problem screen — industry baseline vs. ProvisionAI, shown before the product</p>
+      <p class="screenshot-caption">The entry point — four modules, one picture. Score yourself to get your action plan.</p>
     </div>
 
     <div class="insight">
-      <p class="insight-label">The design decision</p>
-      <p class="insight-text">The experience starts by showing the gap, not the product. <strong>The prospect sees what they're losing before they see what fixes it.</strong> By the time the 3D visualiser loads, they already want to know the answer.</p>
+      <p class="insight-label">The core insight</p>
+      <p class="insight-text">A tool that surfaces hidden cost in the prospect's own words removes the resistance before the sales conversation begins. <strong>They don't need to be convinced of a problem they just discovered themselves.</strong></p>
     </div>
 
     <hr class="divider">
 
-    <!-- THE 3D TRUCK -->
+    <!-- THE DIAGNOSTIC -->
     <div class="section">
-      <p class="section-label">Section 02 — Load optimisation</p>
-      <h2 class="section-headline">Watch the algorithm<br><span class="dim">pack their truck.</span></h2>
+      <p class="section-label">How it works — the diagnostic</p>
+      <h2 class="section-headline">Score yourself.<br><span class="dim">The lowest score becomes priority #1.</span></h2>
       <p class="section-body">
-        Three real load scenarios: beverage max fill, CPG mixed load, food and beverage mixed. The buyer selects their scenario and watches the optimiser run in real time. <strong>96% capacity used. 77k lbs. LEGAL, axle-compliant across all 50 states.</strong>
+        Four modules: load optimisation, network flow, OTIF performance, system synchronisation. Each one covers a domain where supply chains lose money invisibly. The prospect rates themselves 1, 2, or 3 on each statement.
       </p>
       <p class="section-body">
-        A bar chart says 96%. The 3D model shows 96%. There is no ambiguity about what the number means when you can see the truck. The abstract becomes concrete, and the question shifts from "does this work?" to "when can we start?"
+        <strong>The tool shows the standard first: what good looks like. Then the prospect assesses their own gap against it.</strong> No benchmarks shown until they've scored themselves. They define the problem. The tool just holds the mirror.
       </p>
     </div>
 
-    <!-- SCREENSHOT: 3D TRUCK -->
+    <!-- SCREENSHOT: DIAGNOSTIC -->
     <div class="screenshot-wrap">
       <div class="screenshot-browser">
         <div class="screenshot-bar">
@@ -372,28 +331,28 @@ html, body { height: auto; overflow-x: hidden; }
             <div class="s-dot s-dot-a"></div>
             <div class="s-dot s-dot-g"></div>
           </div>
-          <div class="s-url">provision-onboarding.vercel.app</div>
+          <div class="s-url">provision-loss-analysis.vercel.app</div>
         </div>
-        <img src="/assets/truck-loader.png" alt="3D truck loading visualiser: CPG mixed load, 96% capacity">
+        <img src="/assets/loss-analysis.png" alt="Diagnostic complete: 67% gap vs best practice standard">
       </div>
-      <p class="screenshot-caption">CPG mixed load — 130 pallets, 5 trucks, 95% avg capacity. Drag to orbit, scroll to zoom.</p>
+      <p class="screenshot-caption">Diagnostic complete — 67% vs the 100% standard. Significant gap, high leverage.</p>
     </div>
 
     <hr class="divider">
 
-    <!-- NETWORK FLOW -->
+    <!-- THE ROADMAP -->
     <div class="section">
-      <p class="section-label">Section 03 — Network flow</p>
-      <h2 class="section-headline">Before and after,<br><span class="dim">side by side.</span></h2>
+      <p class="section-label">The output — personalised roadmap</p>
+      <h2 class="section-headline">Their roadmap,<br><span class="dim">built from their own scores.</span></h2>
       <p class="section-body">
-        Three scenarios: normal week, promotion spike, carrier shortage. The left panel shows what their flow looks like today: chaotic bars spiking above dock capacity. <strong>The right panel shows the LevelLoad plan: the same volume, smoothed and executable.</strong>
+        Once all four modules are complete, the tool ranks the gaps. The lowest score becomes priority #1 automatically. The prospect sees a five-step fix for their most critical gap, generated from the answers they just gave, not from a generic playbook.
       </p>
       <p class="section-body">
-        97% OTIF. −6.4% cost impact. 98% first tender acceptance. −62% volatility reduction. These aren't projections. <strong>They're what the model produces from the scenario the buyer just selected.</strong> Their network. Their numbers.
+        <strong>A generic recommendation is easy to dismiss. A recommendation that traces directly back to their own scores is much harder to argue with.</strong> They built the brief. The tool built the plan.
       </p>
     </div>
 
-    <!-- SCREENSHOT: NETWORK FLOW -->
+    <!-- SCREENSHOT: ROADMAP -->
     <div class="screenshot-wrap">
       <div class="screenshot-browser">
         <div class="screenshot-bar">
@@ -402,28 +361,28 @@ html, body { height: auto; overflow-x: hidden; }
             <div class="s-dot s-dot-a"></div>
             <div class="s-dot s-dot-g"></div>
           </div>
-          <div class="s-url">provision-onboarding.vercel.app</div>
+          <div class="s-url">provision-loss-analysis.vercel.app</div>
         </div>
-        <img src="/assets/truck-network.png" alt="Network flow simulator: promotion spike, before and after">
+        <img src="/assets/loss-roadmap.png" alt="Prioritised action plan: fix load fill first">
       </div>
-      <p class="screenshot-caption">Promotion spike scenario — your flow today vs. the LevelLoad plan</p>
+      <p class="screenshot-caption">The prioritised action plan — lowest score becomes #1 priority automatically</p>
     </div>
 
     <hr class="divider">
 
-    <!-- ROI CALCULATOR -->
+    <!-- OTIF -->
     <div class="section">
-      <p class="section-label">Section 04 — ROI calculator</p>
-      <h2 class="section-headline">A number they<br><span class="dim">built themselves.</span></h2>
+      <p class="section-label">Module 3 — OTIF performance</p>
+      <h2 class="section-headline">Eight levers.<br><span class="dim">Most teams pull two.</span></h2>
       <p class="section-body">
-        The buyer enters their annual freight spend. They move a slider to their assumed savings rate. <strong>The calculator returns annual savings, monthly savings, and the rate, live, as they adjust.</strong>
+        OTIF failures start upstream in planning, not on the dock or the road. The tool shows all eight levers that control on-time delivery. Most operations are using two or three. <strong>The other five are active sources of failure hiding in plain sight.</strong>
       </p>
       <p class="section-body">
-        At $3.5M freight spend and 7% savings: $245K annually. $20K a month. A number the buyer calculated themselves is worth ten times a number a rep quoted them. <strong>They can't argue with their own maths.</strong>
+        An AI assistant, Ask Provision, is embedded directly in the tool. The prospect can ask in plain language: "what is OTIF?" or "where do I start?" and get a direct answer without leaving the diagnostic. <strong>The tool answers questions the rep would normally field on the discovery call.</strong>
       </p>
     </div>
 
-    <!-- SCREENSHOT: ROI -->
+    <!-- SCREENSHOT: OTIF -->
     <div class="screenshot-wrap">
       <div class="screenshot-browser">
         <div class="screenshot-bar">
@@ -432,36 +391,63 @@ html, body { height: auto; overflow-x: hidden; }
             <div class="s-dot s-dot-a"></div>
             <div class="s-dot s-dot-g"></div>
           </div>
-          <div class="s-url">provision-onboarding.vercel.app</div>
+          <div class="s-url">provision-loss-analysis.vercel.app</div>
         </div>
-        <img src="/assets/truck-roi.png" alt="ROI calculator: $245K annual savings at 7% rate">
+        <img src="/assets/loss-otif.png" alt="OTIF performance: 8 levers with Ask Provision AI assistant">
       </div>
-      <p class="screenshot-caption">ROI calculator — their freight spend, their savings rate, their number</p>
+      <p class="screenshot-caption">OTIF performance module — 8 levers, with the Ask Provision AI assistant open</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- THE PLAYBOOK -->
+    <div class="section">
+      <p class="section-label">The depth — the playbook</p>
+      <h2 class="section-headline">Not just the gap.<br><span class="dim">The five-step fix.</span></h2>
+      <p class="section-body">
+        Each module has three tabs: the standard, the self-assessment, and the playbook. The playbook isn't generic advice. It's a sequenced five-step fix for the specific gap the prospect just identified. <strong>Item master accuracy. Maths-based load building. Dock-level loading diagrams. Each step closes a defined percentage of the gap.</strong>
+      </p>
+    </div>
+
+    <!-- SCREENSHOT: PLAYBOOK -->
+    <div class="screenshot-wrap">
+      <div class="screenshot-browser">
+        <div class="screenshot-bar">
+          <div class="s-dots">
+            <div class="s-dot s-dot-r"></div>
+            <div class="s-dot s-dot-a"></div>
+            <div class="s-dot s-dot-g"></div>
+          </div>
+          <div class="s-url">provision-loss-analysis.vercel.app</div>
+        </div>
+        <img src="/assets/loss-playbook.png" alt="The playbook: step by step fixes for each gap">
+      </div>
+      <p class="screenshot-caption">The playbook — dock-level loading diagrams, maths-based load building, dynamic substitution</p>
     </div>
 
     <!-- METRICS -->
     <div class="metrics">
       <div class="metric">
-        <div class="metric-num">5–10%</div>
-        <div class="metric-label">More product per truck</div>
+        <div class="metric-num">4</div>
+        <div class="metric-label">Diagnostic modules</div>
       </div>
       <div class="metric">
-        <div class="metric-num">97%</div>
-        <div class="metric-label">OTIF achieved</div>
+        <div class="metric-num">7–10%</div>
+        <div class="metric-label">Hidden freight value surfaced</div>
       </div>
       <div class="metric">
-        <div class="metric-num">98%</div>
-        <div class="metric-label">1st tender acceptance</div>
+        <div class="metric-num">1</div>
+        <div class="metric-label">Personalised roadmap per prospect</div>
       </div>
       <div class="metric">
-        <div class="metric-num">~4%</div>
-        <div class="metric-label">Freight cost reduction</div>
+        <div class="metric-num">0</div>
+        <div class="metric-label">Cold starts — they arrive knowing their gap</div>
       </div>
     </div>
 
     <div class="insight">
       <p class="insight-label">What it changes in the room</p>
-      <p class="insight-text">The rep arrives to a prospect who has already run the numbers. <strong>The conversation is about implementation, not justification.</strong> The ROI conversation starts before the first call, without a rep in the room.</p>
+      <p class="insight-text">The discovery call becomes a confirmation call. <strong>The prospect arrives with a gap score, a ranked priority list, and a five-step fix. The rep's job is to show how the product executes the playbook, not to convince the prospect they have a problem.</strong></p>
     </div>
 
     <hr class="divider">
@@ -469,15 +455,15 @@ html, body { height: auto; overflow-x: hidden; }
     <!-- CAMPAIGN -->
     <div class="section">
       <p class="section-label">The campaign around the tool</p>
-      <h2 class="section-headline">The visualiser is the campaign.<br><span class="dim">Sent at exactly the right moment.</span></h2>
+      <h2 class="section-headline">The tool is the campaign.<br><span class="dim">Not a one-time send.</span></h2>
       <p class="section-body">
-        The 3D visualiser wasn't built for a website homepage. It was built for a specific moment in the sales cycle: the moment when a prospect says they understand the value but can't justify the spend internally.
+        The diagnostic wasn't built to sit on a website waiting to be discovered. It was built as the centrepiece of a pre-call campaign around a single idea: <strong>your supply chain has a hidden cost you don't know about yet.</strong>
       </p>
       <p class="section-body">
-        <strong>Every truck leaving your dock below 96% capacity is a cost you're already paying. You just can't see it on a slide.</strong> The visualiser makes that invisible cost visible. Three load scenarios. Real numbers. A ROI calculator that uses their freight spend, not a generic benchmark.
+        Cold outreach links directly to the tool, not to a landing page, not to a calendar. The prospect scores themselves before any human contact. Their gap score arrives in the rep's inbox before the first call is booked. The roadmap becomes the demo agenda.
       </p>
       <p class="section-body">
-        Sent in outreach as a replace for "let me send you a deck." Used mid-cycle when deals stall on ROI. Left with the internal champion so they can run the numbers for their CFO without needing a rep in the room. <strong>The hidden cost becomes the business case. The business case closes the deal.</strong>
+        <strong>The hidden cost isn't invented by the rep. It's calculated by the prospect, in their own words, from their own operation.</strong> By the time the conversation starts, the rep isn't selling. They're confirming what the prospect already found.
       </p>
     </div>
 
@@ -485,13 +471,13 @@ html, body { height: auto; overflow-x: hidden; }
     <div class="cta-block">
       <h2 class="cta-headline">See it for yourself.</h2>
       <p class="cta-body">
-        The experience is live. Walk through all four sections: the problem, the 3D loader, the network flow simulator, and the ROI calculator.
-        <strong>It takes about four minutes.</strong>
+        The diagnostic is live. Four modules, about eight minutes.
+        <strong>Score yourself honestly. The roadmap is worth it.</strong>
       </p>
       <div class="cta-links">
-        <a class="cta-primary" href="https://provision-onboarding.vercel.app/" target="_blank">See it live →</a>
-        <a class="cta-secondary" href="/proof">← Back to Proof</a>
-      <p class="proof-next"><span class="proof-next-label">Next in this engagement</span><a class="proof-next-link" href="/proof/provisionai">ProvisionAI: the full site →</a></p>
+        <a class="cta-primary" href="https://provision-loss-analysis.vercel.app/" target="_blank">See it live →</a>
+        <a class="cta-secondary" href="/work">← Back to the work</a>
+      <p class="proof-next"><span class="proof-next-label">Next in this engagement</span><a class="proof-next-link" href="/work/truck-loader">Load Optimisation Visualiser: the sales tool →</a></p>
       </div>
     </div>
 
