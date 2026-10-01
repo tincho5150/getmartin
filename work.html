@@ -75,39 +75,32 @@
 .band > * { position: relative; z-index: 1; }
 .band-inner { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter); }
 
-/* HERO */
-.hero {
-  min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end;
-  padding: calc(var(--nav-height) + 6vw) 0 var(--space-16);
-}
-.hero::after {
+/* INTRO */
+.intro { padding: calc(var(--nav-height) + var(--space-16)) 0 var(--space-16); }
+.intro::after {
   content: ''; position: absolute; top: -160px; left: -80px; width: 500px; height: 500px;
   background: radial-gradient(circle, rgba(184,212,0,0.06) 0%, transparent 70%);
   pointer-events: none; z-index: 0;
 }
-.hero-eyebrow {
+.intro-inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: start; }
+.intro-eyebrow {
   font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--lime); margin-bottom: 1.2rem;
 }
-.hero-headline {
+.intro-headline {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+  font-size: clamp(2.4rem, 4.2vw, 4.2rem);
   font-weight: 700; line-height: 1.0; letter-spacing: -0.03em;
-  color: var(--white); max-width: 16ch; margin-bottom: 1.8rem;
+  color: var(--white);
 }
-.hero-headline .dim { color: var(--white-dim); }
-.hero-sub {
-  font-size: 1.05rem; font-weight: 300; line-height: 1.7;
-  color: var(--white-dim); max-width: 52ch;
+.intro-headline .dim { color: var(--white-dim); }
+.intro-body p {
+  font-size: 1rem; font-weight: 300; line-height: 1.8;
+  color: var(--white-dim); max-width: 46ch;
 }
+.intro-body p + p { margin-top: var(--space-6); }
+.intro-body strong { color: var(--white); font-weight: 400; }
 
-/* METHOD */
-.method { border-top: 1px solid var(--white-faint); padding: var(--space-16) 0; }
-.method-inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: start; }
-.eyebrow {
-  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--lime); margin-bottom: 1rem;
-}
 .band-headline {
   font-family: var(--font-display);
   font-size: clamp(2rem, 3.2vw, 3.4rem);
@@ -115,14 +108,6 @@
   color: var(--white);
 }
 .band-headline .dim { color: var(--white-dim); }
-/* the method headline is a full sentence per line; size it to hold them */
-.method .band-headline { font-size: clamp(1.8rem, 2.6vw, 2.4rem); }
-.method-body p {
-  font-size: 1rem; font-weight: 300; line-height: 1.8;
-  color: var(--white-dim); max-width: 46ch;
-}
-.method-body p + p { margin-top: var(--space-6); }
-.method-body strong { color: var(--white); font-weight: 400; }
 
 /* THE THREE */
 .three { border-top: 1px solid var(--white-faint); padding: var(--space-16) 0 var(--space-24); }
@@ -170,14 +155,14 @@
 /* MOBILE */
 @media (max-width: 900px) {
   .three-grid { grid-template-columns: 1fr; }
-  .method-inner { grid-template-columns: 1fr; gap: var(--space-8); }
+  .intro-inner { grid-template-columns: 1fr; gap: var(--space-8); }
 }
 @media (max-width: 768px) {
   .site-nav { padding: 0 1.5rem; }
   .nav-link { display: none; }
   .nav-link-cta { display: block; }
-  .hero { min-height: auto; padding: calc(var(--nav-height) + 5rem) 0 var(--space-12); }
-  .method, .three { padding: var(--space-12) 0; }
+  .intro { padding: calc(var(--nav-height) + var(--space-8)) 0 var(--space-12); }
+  .three { padding: var(--space-12) 0; }
   .work-thumb img { height: 190px; }
 }
 
@@ -208,25 +193,17 @@
 
 <main>
 
-  <!-- HERO -->
-  <section class="band hero">
-    <div class="band-inner">
-      <p class="hero-eyebrow">See It</p>
-      <h1 class="hero-headline">The work does<br><span class="dim">the arguing.</span></h1>
-      <p class="hero-sub">One buyer problem, attacked three ways. The prospect arrives at the call already sold on the problem.</p>
-    </div>
-  </section>
-
-  <!-- THE METHOD -->
-  <section class="band method">
-    <div class="band-inner method-inner">
+  <!-- INTRO — the claim, and the method that backs it -->
+  <section class="band intro">
+    <div class="band-inner intro-inner">
       <div>
-        <p class="eyebrow">The method</p>
-        <h2 class="band-headline">The question never changes.<br><span class="dim">The answer always does.</span></h2>
+        <p class="intro-eyebrow">See It</p>
+        <h1 class="intro-headline">The work does<br><span class="dim">the arguing.</span></h1>
       </div>
-      <div class="method-body">
-        <p>Three experiences: <strong>the site, the diagnostic, and the sales tool.</strong></p>
-        <p>Every experience starts with the same question: <strong>what does the prospect need to feel before they'll say yes?</strong> The research leads. The format follows. The output is always different. The result is always the same.</p>
+      <div class="intro-body">
+        <p>One buyer problem. Three experiences: <strong>the site, the diagnostic, and the sales tool.</strong></p>
+        <p>Every experience starts from the same question: <strong>what does the prospect need to feel before they'll say yes?</strong> The research leads. The format follows. The output is always different. The result is always the same.</p>
+        <p>The prospect arrives at the call already sold on the problem.</p>
       </div>
     </div>
   </section>
